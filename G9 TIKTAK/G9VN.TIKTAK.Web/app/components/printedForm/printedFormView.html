@@ -1,0 +1,307 @@
+﻿<!--<script type="text/javascript">
+    function myFunction() {
+        var x = document.getElementById("myTextarea").value;
+        document.getElementById("demo").innerHTML = x;
+    }
+    $(document).ready(function () {
+        setInterval(function () {
+            myFunction();
+        }, 5);
+    });
+</script>-->
+<style>
+    textarea.ta-bind {
+        width: 98.9%;
+    }
+
+    #taHtmlElement6350927640447983 {
+        width: 100%;
+        height: 300px;
+    }
+</style>
+
+
+
+<!-- Page Breadcrumb -->
+<!-- /Page Header -->
+<!-- Page Body -->
+<script src="../../../Assets/admin/libs/ckeditor/ckeditor.js"></script>
+
+
+<!-- uiView: -->
+<link href="../../../Assets/admin/css/style2.css" rel="stylesheet" />
+
+<div>
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+            </li>
+            <li>
+                <a ui-sref="pageSetting" href="javascript:void(0)">Cài đặt</a>
+            </li>
+
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Header -->
+    <div class="page-header position-relative mail-header">
+        <div class="header-title">
+            <h1>
+                Cài đặt
+            </h1>
+        </div>
+        <!--Header Buttons-->
+        <div class="header-buttons">
+            <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+                <i class="fa fa-arrows-h"></i>
+            </a>
+            <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+                <i class="glyphicon glyphicon-refresh"></i>
+            </a>
+            <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+                <i class="glyphicon glyphicon-fullscreen"></i>
+            </a>
+        </div>
+        <!--Header Buttons End-->
+    </div>
+    <!-- /Page Header -->
+    <!-- Page Body -->
+    <div class="page-body no-padding">
+        <div class="mail-container">
+            <div class="mail-header">
+
+
+                <div class="draft">
+                    Cài đặt chung cho cửa hàng
+                </div>
+            </div>
+            <div class="mail-body">
+                <div>
+                    <div class="page-body ng-scope">
+                        <!-- Your Content Goes Here -->
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6" style="width:100%">
+
+
+                                <div class="widget-body">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-sm-12 col-xs-12">
+                                                <div class="row" style="background-color:white;">
+                                                    <div class="col-lg-6 col-sm-6 col-xs-12" style="width:100%">
+                                                        <div class="widget">
+                                                            <!--<div class="widget-header bordered-bottom bordered-lightred">
+                                                                <span class="widget-caption">Thông tin của hàng</span>
+                                                            </div>-->
+                                                            <style>
+                                                                .form-store {
+                                                                    margin-left: 10px;
+                                                                }
+
+                                                                .form-control {
+                                                                    width: inherit;
+                                                                    float: right;
+                                                                }
+
+                                                                .col-sm-2 {
+                                                                    float: left;
+                                                                    width: unset;
+                                                                }
+                                                            </style>
+                                                            <div class="form-group" style="margin:15px">
+                                                                <div style="margin: 0px 3px 0px 0px;display: flex;">
+
+                                                                    <!--<div class="btn-group" style="margin: 0px 67px 0px 4px;">
+
+                                                                        <select style="border-radius:5px;">
+                                                                            <option>Chọn chi nhánh</option>
+                                                                            <option>Chi nhánh mặc định</option>
+                                                                            <option>Chi nhánh 1</option>
+                                                                            <option>Chi nhánh 2</option>
+                                                                            <option>Chi nhánh 3</option>
+                                                                        </select>
+
+                                                                    </div>-->
+                                                                    <div class="btn-group" style="margin: 0px 67px 0px 4px;margin-left:0px">
+
+                                                                        <select style="border-radius:5px;" ng-model="print" ng-change="selectForm()">
+                                                                            <option ng-repeat="item in data" value="{{item.ID}}">{{item.Name}}</option>
+                                                                        </select>
+
+                                                                    </div>
+                                                                    <div class="btn-group" style="margin: 0px 67px 0px 4px;">
+                                                                        <button type="button" ng-click="updateFormView()" class="btn btn-default purple" style="margin-right: 10px;background: #2dc3e8;float: right;color: #ffffff !important;margin-left:170px"><i class="glyphicon glyphicon-floppy-saved"></i>Lưu</button>
+
+                                                                    </div>
+                                                                </div>
+                                                                <hr class="wide" style="border-color: #a4ccfb;">
+
+                                                            </div>
+                                                            <style>
+                                                                .col-md-6 {
+                                                                    border-radius: 5px;
+                                                                    margin: 5px;
+                                                                    width: 49%;
+                                                                    border-color: #a4ccfb;
+                                                                }
+
+                                                                .form-control {
+                                                                    margin: 5px;
+                                                                    border-radius: 5px;
+                                                                }
+
+                                                                .ta-toolbar {
+                                                                    border: 1px solid #808080;
+                                                                    margin-left: 0px;
+                                                                    margin-right: 10px;
+                                                                }
+
+                                                                .ng-touched {
+                                                                    margin-right: 9px;
+                                                                }
+
+                                                                .ta-bind {
+                                                                    width: 100%;
+                                                                    height: 300px
+                                                                }
+
+                                                                .ta-scroll-window {
+                                                                    width: 98.9%;
+                                                                    background: #f3f3f3;
+                                                                }
+
+                                                                .btn-group {
+                                                                    margin-left: 0px !important
+                                                                }
+
+                                                                .ta-scroll-window {
+                                                                    height: 165px !important;
+                                                                    width: 99%;
+                                                                }
+                                                            </style>
+                                                            <div class="row" style="float:left;margin-left:0px">
+                                                                <div text-angular name="demo-editor" ta-text-editor-class="btn-group" ng-model="formView.HtmlHeader" ta-html-editor-class="border-around" ta-readonly='disabled'>
+
+                                                                </div>
+                                                                <div id="print" style="float: left;margin-left: 0px;background-color: #f3f3f3;width: 99%;
+                                                                        padding-left: 10px;padding-right: 10px;font-size: 12px;"></div>
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="mail-sidebar">
+                <ul class="mail-menu">
+                    <li>
+                        <a ui-sref="pageSetting">
+                            <i class="fa fa-inbox"></i>
+                            Thông tin cửa hàng
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)" ui-sref="configurationStore">
+                            <i class="fa fa-gear"></i>
+                            Cấu hình cửa hàng
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" ui-sref="employee">
+                            <i class="fa fa-users"></i>
+                            Nhân viên
+                        </a>
+                    </li>
+
+                    <li>
+                        <a ui-sref="application_groups">
+                            <i class="fa fa-street-view"></i>
+                            Nhóm người dùng
+                        </a>
+                    </li>
+                    <li>
+                        <a ui-sref="application_users">
+                            <i class="fa fa-fax"></i>
+                            Danh sách người dùng
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)" ui-sref="printedForm">
+                            <i class="fa fa-print"></i>
+                            Mẫu in
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-calculator"></i>
+                            Thanh toán
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-truck"></i>
+                            Giao hàng
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-leanpub"></i>
+                            Nhật ký hệ thống
+                        </a>
+                    </li>
+
+                </ul>
+                <ul class="mail-menu">
+                    <li class="menu-title">
+                        <h6></h6>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+
+
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)">
+
+
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)">
+
+
+                        </a>
+                    </li>
+                    <li class="divider">
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Body -->
+</div>

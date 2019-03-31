@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TIKTAK</name>
+    </assembly>
+    <members>
+        <member name="M:G9VN.TIKTAK.Web.Api.ItemOptionController.getSKU(System.Net.Http.HttpRequestMessage)">
+            lấy mã sku khi thêm mới hàng hóa
+        </member>
+        <member name="M:G9VN.TIKTAK.Web.Api.PosController.getSKU(System.Net.Http.HttpRequestMessage)">
+            lấy mã sku khi thêm mới hàng hóa
+        </member>
+    </members>
+</doc>

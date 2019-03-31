@@ -1,0 +1,591 @@
+﻿<!-- /Page Header -->
+<script type="text/javascript">
+    function time() {
+        var today = new Date();
+        var weekday = new Array(7);
+        weekday[0] = "Chủ nhật";
+        weekday[1] = "Thứ 2";
+        weekday[2] = "Thứ 3";
+        weekday[3] = "Thứ 4";
+        weekday[4] = "Thứ 5";
+        weekday[5] = "Thứ 6";
+        weekday[6] = "Thứ 7";
+        var day = weekday[today.getDay()];
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1; //January is 0!
+        var yyyy = today.getFullYear();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        nowTime = h + ":" + m + ":" + s;
+        if (dd < 10) { dd = '0' + dd } if (mm < 10) { mm = '0' + mm } today = day + ', ' + dd + '/' + mm + '/' + yyyy;
+
+        tmp = '<span class="date">' + today + ' | ' + nowTime + '</span>';
+
+        document.getElementById("clock").innerHTML = tmp;
+
+        clocktime = setTimeout("time()", "1000", "JavaScript");
+        function checkTime(i) {
+            if (i < 10) {
+                i = "0" + i;
+            }
+            return i;
+        }
+    }
+</script>
+<!--Beyond Scripts-->
+<!-- Page Breadcrumb -->
+<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="javascript:void(0)">Home</a>
+        </li>
+    </ul>
+</div>
+<!-- /Page Breadcrumb -->
+<!-- Page Header -->
+<div class="page-header position-relative">
+    <div class="header-title">
+        <h1>
+            Tổng quan 
+            <small>
+                <i class="fa fa-angle-right"></i>
+                Trang chủ
+            </small>
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+        <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<!-- /Page Header -->
+<!-- Page Body -->
+<div class="page-body">
+
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="databox bg-white radius-bordered">
+                        <div class="databox-left bg-themesecondary">
+                            <div class="databox-piechart menu-icon fa fa-cubes"> </div>
+                        </div>
+                        <div class="databox-right">
+                            <span  class="databox-number themesecondary">{{listMan.totalRevenue|currency:'':0}}</span>
+                            <!--<div id="stext" class="databox-text darkgray ">Đơn hàng trả :{{tong|currency:'':0}}đ</div>-->
+                            <div id="stext" class="databox-text darkgray ">Tổng doanh thu</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="databox bg-white radius-bordered">
+                        <div class="databox-left bg-themethirdcolor">
+                            <div class="databox-piechart">
+                                <div data-toggle="easypiechart" class="easyPieChart" data-barcolor="#fff" data-linecap="butt" data-percent="15" data-animate="500" data-linewidth="3" data-size="47" data-trackcolor="rgba(255,255,255,0.2)">
+                                    <span class="white font-90 fa fa-server"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="databox-right">
+                            <span id="tonkho" class="databox-number themethirdcolor">{{listMan.TotalStock|currency:'':0}}</span>
+                            <div id="stext" class="databox-text darkgray">Số lượng tồn</div>
+                            <div class="databox-stat themethirdcolor radius-bordered"> <i class="stat-icon  icon-lg fa fa-envelope-o"></i> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="databox bg-white radius-bordered">
+                        <div class="databox-left bg-themeprimary">
+                            <div class="databox-piechart">
+                                <div id="users-pie" data-toggle="easypiechart" class="easyPieChart" data-barcolor="#fff" data-linecap="butt" data-percent="76" data-animate="500" data-linewidth="3" data-size="47" data-trackcolor="rgba(255,255,255,0.1)">
+                                    <span class="white font-90 menu-icon fa fa-group"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="databox-right">
+                            <span id="slkh" class="databox-number themeprimary">{{listMan.customerlength}}</span>
+                            <div id="stext" class="databox-text darkgray">Khách hàng</div>
+                            <div class="databox-state bg-themeprimary"> <i class="fa fa-check"></i> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="databox bg-white radius-bordered">
+                        <div class="databox-left mau"style="background: #39a3a7">
+                            <div class="databox-piechart">
+                                <div id="users-pie" data-toggle="easypiechart" class="easyPieChart" data-barcolor="#fff" data-linecap="butt" data-percent="76" data-animate="500" data-linewidth="3" data-size="47" data-trackcolor="rgba(255,255,255,0.1)">
+                                    <span class="white font-90 fa fa-inbox"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="databox-right">
+                            <span id="slsp" class="databox-number themeprimary">{{listMan.itemlength}}</span>
+                            <div id="stext" class="databox-text darkgray">Sản phẩm</div>
+                            <div class="databox-state bg-themeprimary"><i class="fa fa-check "></i> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="dashboard-box">
+                        <div class="box-header">
+                            <div id="clock" class="deadline" style="font-weight:bold;color:black"></div>
+                        </div>
+                        <div class="box-progress">
+                            <div class="progress progress-xs progress-no-radius bg-whitesmoke">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%"> </div>
+                            </div>
+                        </div>
+                        <div class="box-tabbs">
+                            <div class="tabbable">
+                                <style>
+                                    .highcharts-root{
+                                        font-family:'Times New Roman', Times, serif;
+                                    }
+                                </style>
+                                <div class="tab-content tabs-flat no-padding">
+                                    <div id="realtime" class="tab-pane padding-5 animated fadeInUp active">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div id="a" style="min-width: 310px; height: 285px; margin: 0 auto"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-visits">
+                            <div class="row">
+                                <div class="col-lg-4 col-sm-4 col-xs-12">
+                                    <div class="notification">
+                                        <div class="clearfix">
+                                            <div class="notification-icon"><span class="badge" style=" background-color: #a0d468; background-image: none !important; width: 35px; height: 35px; border-radius: 100% !important; padding: 7px; font-size: 20px !important;">K</span></div>
+                                            <div class="notification-body"> <span class="title" style=" padding: 10px;">Đợn vị tính hàng nghìn</span> <span class="description"></span> </div>
+                                            <div class="notification-extra"> <i class="fa fa-calendar palegreen"></i> <i class="fa fa-clock-o palegreen"></i> <span class="description">at home</span> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-4 col-xs-12">
+                                    <div class="notification">
+                                        <div class="clearfix">
+                                            <div class="notification-icon"><span class="badge" style=" background-color: #a0d468; background-image: none !important; width: 35px; height: 35px; border-radius: 100% !important; padding: 7px; font-size: 20px !important;">M</span></div>
+                                            <div class="notification-body"> <span class="title" style=" padding: 10px;">Đơn vị tính hàng triệu</span> <span class="description"></span> </div>
+                                            <div class="notification-extra"> <i class="fa fa-clock-o azure"></i> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-4 col-xs-12">
+                                    <div class="notification">
+                                        <div class="clearfix">
+                                            <div class="notification-icon"><span class="badge" style=" background-color: #a0d468; background-image: none !important; width: 35px; height: 35px; border-radius: 100% !important; padding: 7px; font-size: 20px !important;">G</span></div>
+                                            <div class="notification-body"> <span class="title" style=" padding: 10px;">Đợn vị tính hàng tỷ</span> <span class="description"></span> </div>
+                                            <div class="notification-extra"> <i class="fa fa-clock-o orange"></i> <span class="description">office</span> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+            <div class="orders-container">
+                <div class="orders-header">
+                    <h6>Lịch sử giao dịch</h6>
+                </div>
+                <div style="{{s5}}">
+                    <ul class="orders-list">
+                        <li class="order-item" ng-repeat="a in listHistory | limitTo : 5" >
+
+                            <a  href="javascript:void(0)">
+                                <div class="row" ui-sref="saleOrder_Detail({id:a.VoucherID})">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 item-left">
+                                        <div class="item-booker">{{a.VoucherNo}}</div>
+                                        <div class="item-time"> <i class="fa fa-calendar"></i> <span>{{a.VoucherDate| date:'dd/MM/yyyy'}}</span> </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 item-right">
+                                        <div class="item-price">  <span class="price">{{a.TotalAmountOC|currency:'':0}}</span> <span class="currency">đ</span> </div>
+                                    </div>
+                                </div>
+                            </a>
+                          
+                            <a class="item-more" href="javascript:void(0)" ui-sref="saleOrder_Detail({id:a.VoucherID})" > <i></i> </a>
+                        </li>
+                    </ul>
+                    <div class="orders-footer">
+                        <a class="show-all" ng-click="showAll()" href="javascript:void(0)"><i class="fa fa-angle-down"></i>{{hienthi}} </a>
+                        <div class="help"> <a href="javascript:void(0)"><i class="fa fa-question"></i></a> </div>
+                    </div>
+                </div>
+                <div style="{{stc}}">
+                    <ul class="orders-list" style="overflow:auto;overflow-x:hidden;max-height:337px">
+                        
+                        <li class="order-item" ng-repeat="a in listHistory">
+                            <a href="javascript:void(0)">
+                                <div class="row" ui-sref="saleOrder_Detail({id:a.VoucherID})">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 item-left">
+                                        <div class="item-booker">{{a.VoucherNo}}</div>
+                                        <div class="item-time"> <i class="fa fa-calendar"></i> <span>{{a.VoucherDate| date:'dd/MM/yyyy'}}</span> </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 item-right">
+                                        <div class="item-price"> <span class="price">{{a.TotalAmountOC|currency:'':0}} đ</span>  </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="item-more" href="javascript:void(0)" ui-sref="saleOrder_Detail({id:a.VoucherID})"> <i></i> </a>
+                        </li>
+                    </ul>
+                    <div class="orders-footer">
+                        <a class="show-all" ng-click="hideAll()" href="javascript:void(0)"><i class="fa fa-angle-down"></i>{{hienthi}}</a>
+                        <div class="help"> <a href="javascript:void(0)"><i class="fa fa-question"></i></a> </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+ 
+</div>
+<!-- /Page Body -->
+
+<!--Basic Scripts-->
+<!--Page Related Scripts-->
+<script src="Assets/admin/js/charts/sparkline/jquery.sparkline.js"></script>
+<script src="Assets/admin/js/charts/sparkline/sparkline-init.js"></script>
+
+<!--Easy Pie Charts Needed Scripts-->
+<script src="Assets/admin/js/charts/easypiechart/jquery.easypiechart.js"></script>
+<script src="Assets/admin/js/charts/easypiechart/easypiechart-init.js"></script>
+
+<!--Flot Charts Needed Scripts-->
+<script src="Assets/admin/js/charts/flot/jquery.flot.js"></script>
+<script src="Assets/admin/js/charts/flot/jquery.flot.resize.js"></script>
+<script src="Assets/admin/js/charts/flot/jquery.flot.pie.js"></script>
+<script src="Assets/admin/js/charts/flot/jquery.flot.tooltip.js"></script>
+<script src="Assets/admin/js/charts/flot/jquery.flot.orderBars.js"></script>
+
+<script>
+    // If you want to draw your charts with Theme colors you must run initiating charts after that current skin is loaded
+    $(window).bind("load", function () {
+
+        /*Sets Themed Colors Based on Themes*/
+        themeprimary = getThemeColorFromCss('themeprimary');
+        themesecondary = getThemeColorFromCss('themesecondary');
+        themethirdcolor = getThemeColorFromCss('themethirdcolor');
+        themefourthcolor = getThemeColorFromCss('themefourthcolor');
+        themefifthcolor = getThemeColorFromCss('themefifthcolor');
+
+        //Sets The Hidden Chart Width
+        $('#dashboard-bandwidth-chart')
+            .data('width', $('.box-tabbs')
+                .width() - 20);
+
+        //-------------------------Visitor Sources Pie Chart----------------------------------------//
+        var data = [
+            {
+                data: [[1, 21]],
+                color: '#fb6e52'
+            },
+            {
+                data: [[1, 12]],
+                color: '#e75b8d'
+            },
+            {
+                data: [[1, 11]],
+                color: '#a0d468'
+            },
+            {
+                data: [[1, 10]],
+                color: '#ffce55'
+            },
+            {
+                data: [[1, 46]],
+                color: '#5db2ff'
+            }
+        ];
+        var placeholder = $("#dashboard-pie-chart-sources");
+        placeholder.unbind();
+
+        $.plot(placeholder, data, {
+            series: {
+                pie: {
+                    innerRadius: 0.45,
+                    show: true,
+                    stroke: {
+                        width: 4
+                    }
+                }
+            }
+        });
+
+        //------------------------------Visit Chart------------------------------------------------//
+        var data2 = [{
+            color: themesecondary,
+            label: "Direct Visits",
+            data: [[3, 2], [4, 5], [5, 4], [6, 11], [7, 12], [8, 11], [9, 8], [10, 14], [11, 12], [12, 16], [13, 9],
+            [14, 10], [15, 14], [16, 15], [17, 9]],
+
+            lines: {
+                show: true,
+                fill: true,
+                lineWidth: .1,
+                fillColor: {
+                    colors: [{
+                        opacity: 0
+                    }, {
+                        opacity: 0.4
+                    }]
+                }
+            },
+            points: {
+                show: false
+            },
+            shadowSize: 0
+        },
+            {
+                color: themeprimary,
+                label: "Referral Visits",
+                data: [[3, 10], [4, 13], [5, 12], [6, 16], [7, 19], [8, 19], [9, 24], [10, 19], [11, 18], [12, 21], [13, 17],
+                [14, 14], [15, 12], [16, 14], [17, 15]],
+                bars: {
+                    order: 1,
+                    show: true,
+                    borderWidth: 0,
+                    barWidth: 0.4,
+                    lineWidth: .5,
+                    fillColor: {
+                        colors: [{
+                            opacity: 0.4
+                        }, {
+                            opacity: 1
+                        }]
+                    }
+                }
+            },
+            {
+                color: themethirdcolor,
+                label: "Search Engines",
+                data: [[3, 14], [4, 11], [5, 10], [6, 9], [7, 5], [8, 8], [9, 5], [10, 6], [11, 4], [12, 7], [13, 4],
+                [14, 3], [15, 4], [16, 6], [17, 4]],
+                lines: {
+                    show: true,
+                    fill: false,
+                    fillColor: {
+                        colors: [{
+                            opacity: 0.3
+                        }, {
+                            opacity: 0
+                        }]
+                    }
+                },
+                points: {
+                    show: true
+                }
+            }
+        ];
+        var options = {
+            legend: {
+                show: false
+            },
+            xaxis: {
+                tickDecimals: 0,
+                color: '#f3f3f3'
+            },
+            yaxis: {
+                min: 0,
+                color: '#f3f3f3',
+                tickFormatter: function (val, axis) {
+                    return "";
+                },
+            },
+            grid: {
+                hoverable: true,
+                clickable: false,
+                borderWidth: 0,
+                aboveData: false,
+                color: '#fbfbfb'
+
+            },
+            tooltip: true,
+            tooltipOpts: {
+                defaultTheme: false,
+                content: " <b>%x May</b> , <b>%s</b> : <span>%y</span>",
+            }
+        };
+        var placeholder = $("#dashboard-chart-visits");
+        var plot = $.plot(placeholder, data2, options);
+
+        //------------------------------Real-Time Chart-------------------------------------------//
+        var realTimedata = [],
+            realTimedata2 = [],
+            totalPoints = 300;
+
+        var getSeriesObj = function () {
+            return [
+            {
+                data: getRandomData(),
+                lines: {
+                    show: true,
+                    lineWidth: 1,
+                    fill: true,
+                    fillColor: {
+                        colors: [
+                            {
+                                opacity: 0
+                            }, {
+                                opacity: 1
+                            }
+                        ]
+                    },
+                    steps: false
+                },
+                shadowSize: 0
+            }, {
+                data: getRandomData2(),
+                lines: {
+                    lineWidth: 0,
+                    fill: true,
+                    fillColor: {
+                        colors: [
+                            {
+                                opacity: .5
+                            }, {
+                                opacity: 1
+                            }
+                        ]
+                    },
+                    steps: false
+                },
+                shadowSize: 0
+            }
+            ];
+        };
+        function getRandomData() {
+            if (realTimedata.length > 0)
+                realTimedata = realTimedata.slice(1);
+
+            // Do a random walk
+
+            while (realTimedata.length < totalPoints) {
+
+                var prev = realTimedata.length > 0 ? realTimedata[realTimedata.length - 1] : 50,
+                    y = prev + Math.random() * 10 - 5;
+
+                if (y < 0) {
+                    y = 0;
+                } else if (y > 100) {
+                    y = 100;
+                }
+                realTimedata.push(y);
+            }
+
+            // Zip the generated y values with the x values
+
+            var res = [];
+            for (var i = 0; i < realTimedata.length; ++i) {
+                res.push([i, realTimedata[i]]);
+            }
+
+            return res;
+        }
+        function getRandomData2() {
+            if (realTimedata2.length > 0)
+                realTimedata2 = realTimedata2.slice(1);
+
+            // Do a random walk
+
+            while (realTimedata2.length < totalPoints) {
+
+                var prev = realTimedata2.length > 0 ? realTimedata[realTimedata2.length] : 50,
+                    y = prev - 25;
+
+                if (y < 0) {
+                    y = 0;
+                } else if (y > 100) {
+                    y = 100;
+                }
+                realTimedata2.push(y);
+            }
+
+
+            var res = [];
+            for (var i = 0; i < realTimedata2.length; ++i) {
+                res.push([i, realTimedata2[i]]);
+            }
+
+            return res;
+        }
+        // Set up the control widget
+        var updateInterval = 500;
+        var plot = $.plot("#dashboard-chart-realtime", getSeriesObj(), {
+            yaxis: {
+                color: '#f3f3f3',
+                min: 0,
+                max: 100,
+                tickFormatter: function (val, axis) {
+                    return "";
+                }
+            },
+            xaxis: {
+                color: '#f3f3f3',
+                min: 0,
+                max: 100,
+                tickFormatter: function (val, axis) {
+                    return "";
+                }
+            },
+            grid: {
+                hoverable: true,
+                clickable: false,
+                borderWidth: 0,
+                aboveData: false
+            },
+            colors: ['#eee', themeprimary],
+        });
+
+        function update() {
+
+            plot.setData(getSeriesObj());
+
+            plot.draw();
+            setTimeout(update, updateInterval);
+        }
+        update();
+
+
+        //-------------------------Initiates Easy Pie Chart instances in page--------------------//
+        InitiateEasyPieChart.init();
+
+        //-------------------------Initiates Sparkline Chart instances in page------------------//
+        InitiateSparklineCharts.init();
+    });
+
+</script>
+
+
+
+
+
+
+
+<!-- /Page Body -->

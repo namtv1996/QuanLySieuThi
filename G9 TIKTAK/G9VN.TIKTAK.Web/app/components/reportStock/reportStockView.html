@@ -1,0 +1,162 @@
+﻿<style>
+    .text-head {
+        color: #0b5998;
+        font-weight: bold;
+    }
+
+    .image {
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .text-report:hover {
+        box-shadow: 1px 0 10px 1px rgba(0, 0, 0, .3);
+    }
+</style>
+<div class="page-breadcrumbs ng-scope">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a style="text-decoration: none;" href="javascript:void(0)">Trang chủ</a>
+        </li>
+        <li>
+            <a style="text-decoration: none;" href="javascript:void(0)">Báo cáo</a>
+        </li>
+    </ul>
+</div>
+<div class="page-header position-relative ng-scope">
+    <div class="header-title">
+        <h1>Báo cáo kho</h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+        <a style="text-decoration: none;" class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a style="text-decoration: none;" class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a style="text-decoration: none;" class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<div class="page-body ng-scope">
+    <!-- Your Content Goes Here -->
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-6 col-xs-12">
+                            <div class="well with-header">
+                                <div class="header bordered-darkorange">Chọn báo cáo</div>
+                                <div class="alert alert-warning fade in" style="cursor:pointer;" ui-sref="reportsInventories">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img width="60" height="60" src="../../../Assets/admin/img/icon60x60/Bao cao ton kho.png" />
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="text-head">Báo cáo tồn kho</div>
+                                            <div style="color:black">Quản lý giá trị tồn kho của chi nhánh và toàn hệ thống.</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="alert alert-warning fade in" style="cursor:pointer;" ui-sref="reportInventoriesTransaction">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img width="60" height="60" src="../../../Assets/admin/img/icon60x60/So kho.png" />
+
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="text-head">Sổ kho</div>
+                                            <div style="color:black">Quản lý thông tin nhập kho, xuất kho, tồn kho.</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="alert alert-warning fade in" style="cursor:pointer;" ui-sref="reportInventoriesLowRate">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img width="60" height="60" src="../../../Assets/admin/img/icon60x60/Bao cao duoi dinh muc.png" />
+
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="text-head">Báo cáo dưới định mức</div>
+                                            <div style="color:black">Quản lý được tồn kho và hàng hoá dưới định mức.</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-lg-6 col-sm-6 col-xs-12">
+                            <div class="well with-header">
+                                <div class="header bordered-blueberry">♦</div>
+                                <div class="alert alert-warning fade in radius-bordered alert-shadowed" style="cursor:pointer;" ui-sref="reportInventorietExportImportOnhand">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img width="60" height="60" src="../../../Assets/admin/img/icon60x60/Xuat nhap ton.png" />
+
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="text-head">Xuất, nhập tồn</div>
+                                            <div style="color:black">Quản lý giá trị tồn đầu kì, nhập trong kì, xuất trong kì, tồn cuối kì.</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="alert alert-warning fade in radius-bordered alert-shadowed" style="cursor:pointer;" ui-sref="reportInventoriesHighRate">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img width="60" height="60" src="../../../Assets/admin/img/icon60x60/Bao cao vuot dinh muc.png" />
+
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="text-head">Báo cáo vượt định mức</div>
+                                            <div style="color:black">Quản lý tồn kho và hàng hoá vượt định mức.</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="alert alert-warning fade in radius-bordered alert-shadowed" style="cursor:pointer;" ui-sref="reportsInventoriesStockAdjustments">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img width="60" height="60" src="../../../Assets/admin/img/icon60x60/Bao cao kiem hang.png" />
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="text-head">Báo cáo kiểm hàng</div>
+                                            <div style="color:black">Quản lý các thông tin khi kiểm hàng, số lượng hàng hỏng, lý do.</div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                        </div>
+                    </div>
+
+                    
+                   
+                    <div class="row">
+                        <div class="col-md-6" style="display:none;">
+                            <a style="text-decoration: none;" href="javascript:void(0)"> <!--ui-sref="reportRecommendPurchaseOrder"-->
+                                <div class="row" style="display: flex;width:100%;">
+                                    <div class="img col-md-2">
+                                        <img width="60" height="60" src="../../../Assets/admin/img/icon60x60/Bao cao goi y nhap hang.png" />
+                                    </div>
+                                     <div class="text-report col-md-10"style="border: 1px solid #eee;padding: 15px;">
+                                        <div class="text-head">Báo cáo gợi ý nhập hàng</div>
+                                        <div style="color:black">Gợi ý nhập hàng hoá dưới định mức và nhập hàng theo hàng bán chạy.</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+    </div>
+</div>
+</div>

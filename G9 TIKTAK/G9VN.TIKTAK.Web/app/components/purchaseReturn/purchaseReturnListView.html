@@ -1,0 +1,149 @@
+﻿
+<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" ui-sref="items">Hàng hóa</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" ui-sref="purchaseReturn">Danh sách đơn trả hàng</a>
+        </li>
+        <li class="active">Trả hàng mua</li>
+    </ul>
+</div>
+<div class="page-header position-relative">
+    <div class="header-title">
+        <h1>
+            Danh sách đơn trả hàng
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+        <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+
+<div class="page-body ng-scope">
+    <!-- Your Content Goes Here -->
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+
+
+            <div class="widget-body">
+                <div class="form-group">
+                    <span class="input-icon inverted" style="width:35%;">
+                        <input type="text" style="height:32px;padding-left:40px" class="form-control input-sm ng-pristine ng-untouched ng-valid ng-empty" placeholder="Tìm kiếm" ng-model="searchText" ng-keyup="search()">
+                        <i class="glyphicon glyphicon-search bg-blue"></i>
+                    </span>
+
+
+
+                </div>
+
+                <table class="table table-hover" style="width:100%">
+                    <thead class="bordered-darkorange bg-themeprimary">
+                        <tr>
+                            <th>
+                                Mã đơn trả hàng
+                            </th>
+                            <th>
+                                Chứng từ gốc
+                            </th>
+                            <th>
+                                Phiếu nhập
+                            </th>
+                            <th>
+                                Nhà cung cấp
+                            </th>
+
+                            <th>
+                                Trạng thái
+                            </th>
+                            <th>
+                                Nhận hoàn tiền
+                            </th>
+                            <th>
+                                Tổng tiền
+                            </th>
+
+                            <th>
+                                Ngày xuất trả
+                            </th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+
+                        <tr dir-paginate="purchaseReturn in listPurchaseReturn| itemsPerPage:10">
+
+                            <td ui-sref="purchaseReturnDetail({id:purchaseReturn.VoucherID})" style="color:#338fd0;cursor:pointer;">
+                                {{purchaseReturn.INVoucherNo}}
+                            </td>
+                            <td>{{purchaseReturn.OriginalVoucherNo}}</td>
+                            <td>{{purchaseReturn.InwardStockVoucherNo}}</td>
+
+                            <td>{{purchaseReturn.VendorName}}</td>
+                            <td>
+                                <i class="{{purchaseReturn.cs}}" data-original-title="" title=""></i>
+                                {{purchaseReturn.status}}
+                            </td>
+                            <td>
+                                <i style="margin-left:30px;" class="{{purchaseReturn.tt}}"></i>
+                            </td>
+                            <td>{{purchaseReturn.TotalPaymentAmount|currency:"":0}} đ</td>
+
+                            <td>
+                                {{purchaseReturn.INVoucherDate|date:'dd/MM/yyyy'}}
+                            </td>
+
+
+
+                        </tr>
+
+
+                    </tbody>
+                </table>
+                <div style="margin-top:3px ">
+                    <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" class="ng-isolate-scope">
+                        <ul class="pagination ng-scope" ng-if="1 < pages.length">
+                            <li ng-if="boundaryLinks" ng-class="{ disabled : pagination.current == 1 }" class="ng-scope disabled">
+                                <a href="" ng-click="setCurrent(1)">«</a>
+                            </li>
+                            <li ng-if="directionLinks" ng-class="{ disabled : pagination.current == 1 }" class="ng-scope disabled">
+                                <a href="" ng-click="setCurrent(pagination.current - 1)">‹</a>
+                            </li>
+                            <li ng-repeat="pageNumber in pages track by $index" ng-class="{ active : pagination.current == pageNumber, disabled : pageNumber == '...' }" class="ng-scope active">
+                                <a href="" ng-click="setCurrent(pageNumber)" class="ng-binding">1</a>
+                            </li>
+                            <li ng-repeat="pageNumber in pages track by $index" ng-class="{ active : pagination.current == pageNumber, disabled : pageNumber == '...' }" class="ng-scope">
+                                <a href="" ng-click="setCurrent(pageNumber)" class="ng-binding">2</a>
+                            </li>
+                            <li ng-if="directionLinks" ng-class="{ disabled : pagination.current == pagination.last }" class="ng-scope">
+                                <a href="" ng-click="setCurrent(pagination.current + 1)">›</a>
+                            </li>
+                            <li ng-if="boundaryLinks" ng-class="{ disabled : pagination.current == pagination.last }" class="ng-scope">
+                                <a href="" ng-click="setCurrent(pagination.last)">»</a>
+                            </li>
+                        </ul>
+                    </dir-pagination-controls>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

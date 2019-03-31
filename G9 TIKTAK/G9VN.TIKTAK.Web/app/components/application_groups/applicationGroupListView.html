@@ -1,0 +1,216 @@
+﻿<!-- uiView: -->
+<link href="../../../Assets/admin/css/style2.css" rel="stylesheet" />
+
+<script type="text/javascript">
+    function myFunction() {
+        var x = document.getElementById("myTextarea").value;
+        document.getElementById("demo").innerHTML = x;
+    }
+</script>
+<div>
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+            </li>
+            <li>
+                <a ui-sref="pageSetting" href="javascript:void(0)">Cài đặt</a>
+            </li>
+
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Header -->
+    <div class="page-header position-relative mail-header">
+        <div class="header-title">
+            <h1>
+                Cài đặt
+            </h1>
+        </div>
+        <!--Header Buttons-->
+        <div class="header-buttons">
+            <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+                <i class="fa fa-arrows-h"></i>
+            </a>
+            <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+                <i class="glyphicon glyphicon-refresh"></i>
+            </a>
+            <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+                <i class="glyphicon glyphicon-fullscreen"></i>
+            </a>
+        </div>
+        <!--Header Buttons End-->
+    </div>
+    <!-- /Page Header -->
+    <!-- Page Body -->
+    <div class="page-body no-padding">
+        <div class="mail-container">
+            <div class="mail-header">
+                <div class="draft">
+                    Cài đặt chung cho cửa hàng
+                </div>
+            </div>
+            <div class="mail-body">
+                <div>
+                    <div class="page-body ng-scope">
+                        <!-- Your Content Goes Here -->
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6" style="width:100%">
+
+
+                                <div class="widget-body">
+                                    <div class="form-group">
+                                                       
+                                                            <div class="form-group">
+                                                                <div class="col-md-6">
+                                                                    <div class="input-group">
+                                                                        <input type="text" class="form-control">
+                                                                        <span class="input-group-btn">
+                                                                            <button class="btn btn-default" type="button" ng-click="search()">Tìm kiếm</button>
+                                                                        </span>
+                                                                    </div><!-- /input-group -->
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <button class="btn btn-success" ui-sref="add_application_group">Thêm mới</button>
+                                                                    <button class="btn btn-danger" ng-click="deleteMultiple()" id="btnDelete" disabled>Xóa</button>
+                                                                </div>
+                                                            </div>
+                                                            <hr />
+                                                            <div>
+                                                                <table class="table table-bordered">
+                                                                    <tr>
+                                                                        <th style="width: 5%">ID</th>
+                                                                        <th style="width:55%">Tên nhóm</th>
+                                                                        <th style="width: 20%">Mô tả</th>
+                                                                        <th style="width: 10%">Thao tác</th>
+                                                                    </tr>
+                                                                    <tr ng-repeat="item in data">
+                                                                        <td>{{item.ID}}</td>
+                                                                        <td><a ui-sref="edit_application_group({id:item.ID})">{{item.Name}}</a></td>
+                                                                        <td>
+                                                                            {{item.Description}}
+                                                                        </td>
+                                                                        <td>
+                                                                            <button class="btn btn-sm btn-primary" ui-sref="edit_application_group({id:item.ID})"><i class="fa fa-pencil"></i></button>
+                                                                            <button class="btn  btn-sm btn-danger" ng-click="deleteItem(item.ID)"><i class="fa fa-trash"></i></button>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                     
+                                                   
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="mail-sidebar">
+                <ul class="mail-menu">
+                    <li>
+                        <a ui-sref="pageSetting">
+                            <i class="fa fa-inbox"></i>
+                            Thông tin cửa hàng
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)" ui-sref="configurationStore">
+                            <i class="fa fa-gear"></i>
+                            Cấu hình cửa hàng
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" ui-sref="employee">
+                            <i class="fa fa-users"></i>
+                            Nhân viên
+                        </a>
+                    </li>
+
+                    <li>
+                        <a ui-sref="application_groups">
+                            <i class="fa fa-street-view"></i>
+                            Nhóm người dùng
+                        </a>
+                    </li>
+                    <li>
+                        <a ui-sref="application_users">
+                            <i class="fa fa-fax"></i>
+                            Danh sách người dùng
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)" ui-sref="printedForm">
+                            <i class="fa fa-print"></i>
+                            Mẫu in
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-calculator"></i>
+                            Thanh toán
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-truck"></i>
+                            Giao hàng
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-leanpub"></i>
+                            Nhật ký hệ thống
+                        </a>
+                    </li>
+
+                </ul>
+                <ul class="mail-menu">
+                    <li class="menu-title">
+                        <h6></h6>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            
+
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)">
+                            
+
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)">
+                            
+
+                        </a>
+                    </li>
+                    <li class="divider">
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                           
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Body -->
+</div>
+
+ 
+ <!-- Content Header (Page header) -->
+

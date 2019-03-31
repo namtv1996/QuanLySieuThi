@@ -1,0 +1,307 @@
+﻿<!-- Page Breadcrumb -->
+
+<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+           <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" ui-sref="items">Hàng hóa</a>
+        </li>
+       
+        <li class="active">Trả hàng mua</li>
+    </ul>
+</div>
+<!-- /Page Breadcrumb -->
+<!-- Page Header -->
+<div class="page-header position-relative">
+    <div class="header-title">
+        <h1>
+            Chi tiết đơn trả hàng
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+       <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<!-- /Page Header -->
+
+<div class="page-body ng-scope">
+    <!-- Your Content Goes Here -->
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+
+
+            <div class="widget-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label style="font-weight:bold;font-size:20px;" class="ng-binding"> {{purchaseReturn.INVoucherNo}}</label>
+                        <span class="status-circle ng-binding" data-original-title="" title="" style="margin-left:10px;"><i class="{{purchaseReturn.cs}}" data-original-title="" title=""></i>{{purchaseReturn.tt}}</span>
+                       
+                    </div>
+
+                    <div class="col-md-4">
+                        <label> <i class="fa fa-truck" style="font-size:25px"></i><label>&nbsp;&nbsp;&nbsp;&nbsp;{{purchaseReturn.ObjectName}}</label></label>
+                    </div>
+                    <div class="col-md-4" style="display:block">
+                        <a class="btn btn-default purple" ui-sref="purchaseReturn" style="margin-right: 10px; float: right; color: #0d55a1 !important"><i class="glyphicon glyphicon-off"></i>Thoát</a>
+                        <button ng-click="deleteVoucher(purchaseReturn.VoucherID)" class="btn btn-default purple" style="margin-right: 10px; float: right; color: #0d55a1 !important"><i class="fa fa-trash-o"></i>Xóa</button>
+                    </div>
+
+
+                </div>
+                <br>
+
+                <div class="row" style="border: 1px solid rgba(128, 128, 128, 0.32);width: 100%;margin-left: 0px; padding-top:5px;">
+                  
+                    <div class="col-md-4" style="border-right:1px solid rgba(128, 128, 128, 0.32);width:31%;">
+
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label no-padding-right">Ngày tạo</label>
+                            <div class="col-sm-10">
+                                <label for="inputEmail3" class="col-sm-2 control-label no-padding-right ng-binding" style="width:100%">{{purchaseReturn.CreatedDate|date:'dd/MM/yyyy'}}</label>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label no-padding-right">Ngày xuất trả</label>
+                            <div class="col-sm-10">
+                                <label for="inputEmail3" class="col-sm-2 control-label no-padding-right ng-binding" style="width:100%">{{purchaseReturn.INVoucherDate|date:'dd/MM/yyyy'}}</label>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label no-padding-right">Chứng từ gốc</label>
+                            <div class="col-sm-10">
+                                <label for="inputEmail3" class="col-sm-2 control-label no-padding-right ng-binding" style="width:100%">{{purchaseReturn.OriginalVoucherNo}}</label>
+
+                            </div>                         
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label no-padding-right">Phiếu nhập</label>
+                            <div class="col-sm-10">
+                                <label for="inputEmail3" class="col-sm-2 control-label no-padding-right ng-binding" style="width:100%" ui-sref="inwardStockDetails({id:purchaseReturn.InwardStockID})">{{purchaseReturn.InwardStockVoucherNo}}</label>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4" style="width:40%;">
+
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label no-padding-right" style="width:15%;">Địa chỉ</label>
+                            <div class="col-sm-10" style="width:85%;">
+                                <label for="inputEmail3" class="col-sm-2 control-label no-padding-right ng-binding" style="width:100%">{{purchaseReturn.ObjectAddress}}</label>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label no-padding-right" style="width:15%;">Email</label>
+                            <div class="col-sm-10" style="width:85%;">
+                                <label for="inputEmail3" class="col-sm-2 control-label no-padding-right ng-binding" style="width:100%">{{purchaseReturn.Email}}</label>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label no-padding-right" style="width:15%;">SĐT</label>
+                            <div class="col-sm-10" style="width:85%;">
+                                <label for="inputEmail3" class="col-sm-2 control-label no-padding-right ng-binding" style="width:100%">{{purchaseReturn.Tel}}</label>
+
+                            </div>
+                        </div>
+
+                    </div>
+                   
+                    <div class="col-md-4" style="border-left:1px solid rgba(128, 128, 128, 0.32);margin-bottom:20px;width:29%;">
+
+
+                        <div class="form-group">
+
+                            <label for="inputEmail3" class="col-sm-2 control-label no-padding-right"><b>Tổng tiền: </b></label>
+                            <div class="col-sm-10">
+                                <label for="inputEmail3" class="col-sm-2 control-label no-padding-right ng-binding" style="width:100%"><b>{{purchaseReturn.TotalPaymentAmount|currency:"":0}} </b>đ</label>
+
+                            </div>
+                        </div>
+                       <br />
+                        <div class="form-group">
+
+                           <label for="inputEmail3" class="col-sm-2 control-label no-padding-right"><b>Đã nhận: </b></label>
+                            <div class="col-sm-10">
+                                <label for="inputEmail3" class="col-sm-2 control-label no-padding-right ng-binding" style="width:100%"><b>{{purchaseReturn.TotalPaymented|currency:"":0}} </b>đ</label>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <label for="inputEmail3" class="col-sm-2 control-label no-padding-right"><b>Còn lại: </b></label>
+                            <div class="col-sm-10">
+                                <label for="inputEmail3" class="col-sm-2 control-label no-padding-right ng-binding" style="width:100%"><b>{{purchaseReturn.ConLai|currency:"":0}} </b>đ</label>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <br>
+                <!--//duyệt đơn-->
+                <div class="row" style="width:100%;margin-left:0px;display:block">
+
+                    <div class="widget">
+
+                        <div class="widget-body" style="border-left: 3px solid #2dc3e8; box-shadow: none; background: aliceblue;">
+                            <div id="horizontal-form">
+
+
+                                <div class="row" style="width:100%;margin-left:0px;display: block;border: 1px solid #d6d6d6;margin-bottom: 5px;">
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <label class="col-sm-12 col-md-12 no-padding-right" style="margin-bottom: 10px;width: 100%;border-bottom: 1px #b4b2b2 dashed;margin-top: 15px;padding-left: 0px;">
+
+                                        </label>
+                                        <div>
+                                            <div class="form-group row" style="height:65px;">
+                                                <label class="col-sm-4 col-md-4 no-padding-right ng-binding" style="width:15%;">
+                                                    <h5 style="color: black;"><i class="fa fa-cubes"></i><strong> Xuất trả</strong></h5>
+                                                    <span style="margin-left: 25px;color:#53a93f"><i class="{{cls}}"></i> {{thongbao}}</span>
+                                                </label>
+
+                                                <div class="col-sm-8 col-md-8" style="display:{{dis}}">
+                                                    <a class="btn btn-success" ng-click="TraHang()" style="margin-right: 5px; "> <i class="fa fa-forward" style="display:initial !important;" aria-hidden="true" data-original-title="" title=""></i>Toàn bộ</a>
+                                                    <a ng-click="Warning()" class="btn">Một phần</a>
+                                                </div>
+
+                                            </div>
+                                            <label class="col-sm-12 col-md-12 no-padding-right" style="margin-bottom: 10px;width: 100%;border-bottom: 1px #b4b2b2 dashed;margin-top: 15px;padding-left: 0px;">
+
+                                            </label>
+                                        </div>
+                                        <div style="display:{{display}}" class="row">
+                                            <div class="form-group col-md-6 row" style="height:65px;">
+                                                <div class="row">
+                                                    <label class="col-md-6" style="width:45%;">
+                                                        <h5 style="color: black;padding-left:7%;"><i class="fa fa-money"></i><strong> Nhận hoàn tiền </strong></h5>
+                                                        <span style="margin-left: 40px;color:#53a93f;"><i class="{{cls1}}"></i> {{thongbaos}}</span>
+                                                    </label>
+                                                    
+                                                    <div class="col-md-6" style="display:{{disp}};width:55%;margin-left:-62px;">
+                                                        <a class="btn btn-success" ng-click="PaymentFull()" style="margin-right: 5px; "> <i class="fa fa-forward" style="display:initial !important;" aria-hidden="true" data-original-title="" title=""></i>Toàn bộ</a>
+                                                        <a ng-click="Display()" class="btn">Một phần</a>
+                                                    </div>
+                                                   
+                                                    <div class="col-md-8" style="display:{{display_pay}};float:right;margin-top: -14px;">
+                                                        <div class="controls">
+                                                            <input style="width:56%" placeholder="Nhập tiền thanh toán ... " min="0" max="{{purchaseReturn.ConLai}}"
+                                                                   type="number" class="form-control form-control-input-popup text-right number line_item_quantity valid" ng-model="purchaseReturn.Paymented" />
+                                                            <a class="btn" style="margin-top:-33px;margin-right:24%;float:right;" ng-click="PartialPayment()">Nhận</a>
+                                                        </div>
+                                                       
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="form-group col-md-6 row" style="border-left:1px solid #cc1313; display:{{displayReceipt}}">
+                                                <label style="margin-left:5%;">
+                                                    <h5 style="color: black;"><i class="fa fa-money"></i><strong> Phiếu thu </strong></h5>
+                                                    
+                                                </label>
+                                                <table style="width:70%;margin-left:9%;">
+                                                    <tr ng-repeat="inv in listReceipt" style="height:30px">
+                                                        
+                                                        <td style="float:left"><a ui-sref="receipt_detail({id:inv.VoucherID})">{{inv.VoucherNo}}</a></td>
+                                                        <td style="float:left;padding-left:100px;width:54%">{{inv.TotalAmount|currency:"":0}} đ</td>
+                                                        <td style="float:left;padding-left:20px;">{{inv.VoucherDate|date:'dd/MM/yyyy'}}</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--đóng gói và giao hàng-->
+                <!--Thanh toán-->
+
+                <div class="row" style="width: 100%;margin-left: 0px;">
+                    <table class="table table-hover" style="width:100%">
+                        <thead class="bordered-darkorange bg-themeprimary ">
+                            <tr>
+
+                                <th>
+                                    SKU
+                                </th>
+                                <th>
+                                    Tên hàng hóa
+                                </th>
+                                <th>
+                                    Số lượng
+                                </th>
+                                <th>
+                                    Đơn giá
+                                </th>
+                                <th>
+                                    Chiết khấu
+                                </th>
+                                <th>
+                                    Thuế(%)
+                                </th>
+                                <th>
+                                    Thành tiền
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- ngRepeat: item in listview -->
+                            <tr ng-repeat="purchase in purchaseReturnDetail">
+                                <td>
+                                    {{purchase.SKU_Code}}
+                                </td>
+
+                                <td>
+                                    {{purchase.ItemName}}
+                                </td>
+
+                                <td>
+                                    {{purchase.Quantity}}
+                                </td>
+
+                                <td>
+                                    {{purchase.UnitPrice|currency:"":0}}
+                                </td>
+
+                                <td>
+                                    {{purchase.DiscountAmount|currency:"":0}}
+                                </td>
+
+                                <td>
+                                    {{purchase.VATRate|currency:"":0}}
+                                </td>
+
+                                <td>
+                                    {{purchase.Amount|currency:"":0}} VNĐ
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

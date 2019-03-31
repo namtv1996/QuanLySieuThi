@@ -1,0 +1,225 @@
+﻿<style>
+    td {
+        padding-left: 15px;
+    }
+</style>
+<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+           <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" ui-sref="items">Hàng hóa</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" ui-sref="purchaseReturn">Danh sách đơn trả hàng</a>
+        </li>
+        <li class="active">Trả hàng mua</li>
+    </ul>
+</div>
+<div class="page-header position-relative">
+    <div class="header-title">
+        <h1>
+
+            <small>
+
+               Tạo đơn trả hàng
+            </small>
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+        <a class="sidebar-toggler" href="#">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="#">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="#">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<br />
+<div class="col-lg-6 col-sm-6 col-xs-12" style="width:100%">
+    <div class="well bordered-top bordered-blueberry">
+
+        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <b>Mã đơn trả hàng: </b>
+                    <span class="input-icon icon-right" style="margin-top:2px;">
+                        <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Nhập mã đơn trả hàng..." style="width: 200px;" ng-model="purchaseReturn.INVoucherNo">
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="buttons-preview" style="margin-top: 24px;">
+
+                 
+                    <a ng-click="AddPurchaseReturn()" class="btn btn-info" style=" margin-bottom: 6px; margin-top: 6px; margin-left: 6px;"><i class="glyphicon glyphicon-check"></i>Lưu</a>
+                    <a ui-sref="inwardStockDetails({id:inwardStock.InwardStockID})" class="btn btn-default" style=" margin-bottom: 6px; margin-top: 6px; margin-left: 6px;">Thoát</a>
+                </div>
+            </div>
+
+
+        </div>
+        <hr class="wide">
+
+        <div class="row">
+            <div class="col-md-6" style="width:70%">
+                <div class="table-responsive">
+                    <table style="width: 100%;height: 140px;border: 2px solid #3e8e8c;margin-top: 22px;">
+                        <tr>
+                            <td><b>Đơn nhận hàng : {{inwardStock.INVoucherNo}} - - Thuộc phiếu nhập : {{inwardStock.OriginalVoucherNo}}</b></td>
+                            <td><b></b></td>
+                           
+                        </tr>
+                        <tr>
+                            <td>Nhà cung cấp :      {{inwardStock.ObjectName}}</td>
+                            <td>Chi nhánh:    </td>
+                            <!--<td>Thuế :      Đã gồm thuế</td>-->
+
+                        </tr>
+                        <tr>
+                            <td>Địa chỉ :      {{inwardStock.ObjectAddress}}</td>
+                            <td></td>
+                            <!--<td>Giá bán :      20.000.000đ</td>-->
+                        </tr>
+                        <tr>
+                            <!--<td>Liên hệ :      Hà Nội</td>-->
+                            <td>Điện thoại :      {{inwardStock.Tel}}</td>
+                            <td>Email :      {{inwardStock.Email}}</td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            
+        </div>
+
+        <hr class="wide">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead class="bordered-darkorange">
+                    <tr>
+                        <th>
+                           SKU
+                        </th>
+                        <th>
+                            Tên hàng hóa
+                        </th>
+                        <th>
+                            Số lượng
+                        </th>
+                        <th>
+                            Đơn giá
+                        </th>
+                        <th>
+                            Thuế(%)
+                        </th>
+                        <th>
+                            Chiết khấu
+                        </th>
+                        <th>
+                            Thành tiền
+                        </th>
+                        <th style="text-align:center">
+                            Chọn hàng trả
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr ng-repeat="inward in voucherDetail">
+                        <td>{{inward.SKU_Code}}</td>
+                        <td>{{inward.ItemName}}</td>
+                        <td>
+                            <div class="form-group" style="float: left;margin-top:3px;margin-bottom:5px;">
+                                <div class="controls">
+                                    <input style="border-radius: 5px !important;width:70px ;height:22px" sapo-type="sapoNumber" max="{{inward.maxquantity}}" min="1"
+                                           type="number" class="form-control form-control-input-popup text-right number line_item_quantity valid"
+                                           id="quantity" ng-model="inward.quan" ng-change="changeQuantity(inward.stt)">
+                                </div>
+                            </div>  
+                        </td>
+                        <td>{{inward.UnitPrice|currency:"":0}}</td>
+                        <td>{{inward.VATRate|currency:"":0}}</td>
+                        <td>{{inward.chietkhau|currency:"":0}}</td>
+                        <td>
+                            {{inward.Amount|currency:"":0}} đ
+                        </td>
+                        <td style="text-align:center">
+                            <label>
+                                <input type="checkbox" ng-model="inward.select" ng-change="Update()">
+                                <span class="text"></span>
+                            </label>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <hr class="wide">
+        <div style="padding-top: 25px;border-top: 1px dashed #a6a6a6; text-align: center; display: block;background-color: #fbfbfb;" id="no-prd" data-original-title="" title="">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <span class="input-icon inverted">
+                            <textarea class="form-control" id="textareaanimated" placeholder="Ghi chú: " style="width: 370px;height: 100px;"></textarea>
+                        </span>
+                        <div style="width:370px;margin-top: 12px;    background-color: #fbfbfb !important;">
+                            <input type="text" data-role="tagsinput" placeholder="Add tags" style="display: none;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <ul style="width:425px;list-style: none;display: grid;">
+
+                            <li>
+                                <b>
+                                    <span style="float:left">Số lượng hàng trả lại :</span>
+                                    <span style="float:right">{{inwardStock.TotalReturnQuantity|currency:"":0}} SP</span>
+                                </b>
+                            </li>
+                            <li>
+                                <b>
+                                    <span style="float:left">Tổng tiền hàng :</span>
+                                    <span style="float:right">{{inwardStock.TotalAmountPR|currency:"":0}} VNĐ</span>
+                                </b>
+                            </li>
+                           
+                            <li>
+                                <b>
+                                    <span style="float:left">Tổng tiền thuế :</span>
+                                    <span style="float:right">{{inwardStock.TotalVATAmountPR|currency:"":0}} VNĐ</span>
+                                </b>
+                            </li>
+                            <li>
+                                <b>
+                                    <span style="float:left">Chiết khấu phân bổ :</span>
+                                    <span style="float:right">{{inwardStock.DiscountForInvoicePR|currency:"":0}} VNĐ</span>
+                                </b>
+                            </li>
+                            <hr class="wide" style="margin:1px;" />
+                            <li>
+                                <b>
+                                    <span style="float:left">Giá trị đơn trả hàng :</span>
+                                    <span style="float:right">{{inwardStock.TotalPaymentAmountPR|currency:"":0}} VNĐ</span>
+                                </b>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../../../Assets/admin/js/tagsinput/bootstrap-tagsinput.js"></script>

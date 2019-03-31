@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSetG9VC" targetNamespace="http://tempuri.org/DataSetG9VC.xsd" xmlns:mstns="http://tempuri.org/DataSetG9VC.xsd" xmlns="http://tempuri.org/DataSetG9VC.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSetG9VC" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSetG9VC" msprop:Generator_UserDSName="DataSetG9VC">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="G9VC" msprop:Generator_TableClassName="G9VCDataTable" msprop:Generator_TableVarName="tableG9VC" msprop:Generator_TablePropName="G9VC" msprop:Generator_RowDeletingName="G9VCRowDeleting" msprop:Generator_UserTableName="G9VC" msprop:Generator_RowChangingName="G9VCRowChanging" msprop:Generator_RowEvHandlerName="G9VCRowChangeEventHandler" msprop:Generator_RowDeletedName="G9VCRowDeleted" msprop:Generator_RowEvArgName="G9VCRowChangeEvent" msprop:Generator_RowChangedName="G9VCRowChanged" msprop:Generator_RowClassName="G9VCRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="G9VCID" msprop:Generator_ColumnVarNameInTable="columnG9VCID" msprop:Generator_ColumnPropNameInRow="G9VCID" msprop:Generator_ColumnPropNameInTable="G9VCIDColumn" msprop:Generator_UserColumnName="G9VCID" type="xs:int" />
+              <xs:element name="G9Version" msprop:Generator_ColumnVarNameInTable="columnG9Version" msprop:Generator_ColumnPropNameInRow="G9Version" msprop:Generator_ColumnPropNameInTable="G9VersionColumn" msprop:Generator_UserColumnName="G9Version" type="xs:string" minOccurs="0" />
+              <xs:element name="SQLText" msprop:Generator_ColumnVarNameInTable="columnSQLText" msprop:Generator_ColumnPropNameInRow="SQLText" msprop:Generator_ColumnPropNameInTable="SQLTextColumn" msprop:Generator_UserColumnName="SQLText" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:G9VC" />
+      <xs:field xpath="mstns:G9VCID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

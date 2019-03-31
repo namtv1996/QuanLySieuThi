@@ -1,0 +1,111 @@
+﻿<div class="page-breadcrumbs ng-scope">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+           <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" ui-sref="reportStock">Báo cáo</a>
+        </li>
+        <li class="active">Báo cáo kho</li>
+    </ul>
+</div>
+<div class="page-header position-relative ng-scope">
+    <div class="header-title">
+        <h1>
+            Báo cáo vượt định mức
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+        <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<div class="page-body ng-scope">
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+            <div class="widget-body">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label> Chi nhánh : </label>
+                            <select style="width:100%" ng-model="branchid" ng-change="ViewReport()">
+                                <option ng-repeat="br in list_branch" value="{{br.BranchID}}">{{br.BranchName}}</option>
+                            </select>
+                        </div>
+                      
+                    </div>
+                    <hr />
+                    <div class="row" style="width:100%;margin-left:0px">
+                        <div class="table-responsive">
+                            <table class="table table-bordered tbl-report tbl-report--inventory-onhand border-th" cellspacing="0" cellpadding="0" style="width: 100%;">
+                                <thead>
+                                    <tr role="row" style="background: #2dc3e8 !important;color:white">
+                                        <th style="width: 50px;">STT</th>
+                                        <th>SKU</th>
+                                        <th>Barcode</th>
+                                        <th>Tùy chọn hàng hóa</th>
+                                        <th>Tồn kho</th>
+                                        <th>Định mức tối đa</th>
+                                        <th>Cần bán</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                
+                                    <tr dir-paginate="i in listItemOpt| itemsPerPage:10">
+                                        <td>{{i.stt}}</td>
+                                        <td style="cursor:pointer;color:#337ab7;" ui-sref="itemOption_edit({id:i.ID})">{{i.SKU}}</td>
+                                        <td style="cursor:pointer" ui-sref="itemOption_edit({id:i.ID})">{{i.Barcode}}</td>
+                                        <td style="cursor:pointer" ui-sref="itemOption_edit({id:i.ID})">{{i.Name}}</td>
+                                        <td>{{i.Quantity}}</td>
+                                        <td>{{i.MaximumInventory}}</td>
+                                        <td>{{i.NeedToExport}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+                <div style="margin-top:3px ">
+                    <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" class="ng-isolate-scope">
+                        <ul class="pagination ng-scope" ng-if="1 < pages.length">
+                            <li ng-if="boundaryLinks" ng-class="{ disabled : pagination.current == 1 }" class="ng-scope disabled">
+                                <a href="" ng-click="setCurrent(1)">«</a>
+                            </li>
+                            <li ng-if="directionLinks" ng-class="{ disabled : pagination.current == 1 }" class="ng-scope disabled">
+                                <a href="" ng-click="setCurrent(pagination.current - 1)">‹</a>
+                            </li>
+                            <li ng-repeat="pageNumber in pages track by $index" ng-class="{ active : pagination.current == pageNumber, disabled : pageNumber == '...' }" class="ng-scope active">
+                                <a href="" ng-click="setCurrent(pageNumber)" class="ng-binding">1</a>
+                            </li>
+                            <li ng-repeat="pageNumber in pages track by $index" ng-class="{ active : pagination.current == pageNumber, disabled : pageNumber == '...' }" class="ng-scope">
+                                <a href="" ng-click="setCurrent(pageNumber)" class="ng-binding">2</a>
+                            </li>
+                            <li ng-if="directionLinks" ng-class="{ disabled : pagination.current == pagination.last }" class="ng-scope">
+                                <a href="" ng-click="setCurrent(pagination.current + 1)">›</a>
+                            </li>
+                            <li ng-if="boundaryLinks" ng-class="{ disabled : pagination.current == pagination.last }" class="ng-scope">
+                                <a href="" ng-click="setCurrent(pagination.last)">»</a>
+                            </li>
+                        </ul>
+                    </dir-pagination-controls>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+

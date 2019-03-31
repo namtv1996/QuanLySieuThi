@@ -1,0 +1,190 @@
+﻿<!-- Page Breadcrumb -->
+<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)">Kế toán</a>
+        </li>
+
+        <li class="active">Phiếu chi </li>
+    </ul>
+</div>
+<!-- /Page Breadcrumb -->
+<!-- Page Header -->
+<div class="page-header position-relative">
+    <div class="header-title">
+        <h1>
+            Chi tiết phiếu chi
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+        <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<!-- /Page Header -->
+<!-- Page Body -->
+
+
+
+<div class="page-body">
+    <form class="form-horizontal" role="form" novalidate name="frmCashPaymentDetail">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 col-xs-12">
+                <div class="row">
+                    <div class="col-lg-6 col-sm-6 col-xs-12" style="width:100%">
+                        <div class="widget">
+                            <div class="widget-header bordered-top bordered-palegreen">
+                                <span style="font-weight: bold !important;" class="widget-caption">Thông tin phiếu chi</span>
+                            </div>
+                            <div class="widget-body">
+                                <style>
+                                    .requi::after {
+                                        content: "*";
+                                        color: #f00;
+                                        margin: 0 .2em;
+                                    }
+                                </style>
+
+                                <div id="horizontal-form">
+                                    <div class="row" style="margin-top:10px;margin-left: 20px;">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label no-padding-right requi" style="text-align: left;width: 26%;">Mã phiếu</label>
+                                                <div class="col-sm-10" style="margin-bottom:10px;">
+                                                    <input style="width:100%;" type="text" class="form-control" required id="VoucherNo" name="ObjectCode" ng-model="cashPayment.INVoucherNo">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label no-padding-right requi" style="text-align: left;width: 26%;">Nhóm người nhận</label>
+                                                <div class="col-sm-10" style="margin-bottom:10px;">
+                                                    <input style="width:100%;cursor:pointer;" type="text" class="form-control" data-toggle="dropdown" name="ObjectCode" required id="ObjectKind" ng-model="cashPayment.ObjectKind" ng-click="getObjectKind()">
+                                                    <ul class="dropdown-menu" style="width:92%;margin-left: 14px;">
+                                                        <li style="border-bottom: 1px solid #decece; cursor:pointer;" ng-repeat="objKind in listObjectKind"><a ng-click="getObject(objKind.ObjectKindID)">{{objKind.ObjectKindName}}</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label no-padding-right requi" style="text-align: left;width: 26%;">Tên người nhận</label>
+                                                <div class="col-sm-10" style="margin-bottom:10px;">
+                                                    <input style="width:100%;cursor:pointer;" required id="ObjectName" data-toggle="dropdown" type="text" class="form-control" name="ObjectCode" ng-model="cashPayment.ObjectName">
+                                                    <ul class="dropdown-menu" style="width:92%;overflow:auto;overflow-x:hidden;max-height:142px;margin-left: 14px;">
+                                                        <li style="border-bottom: 1px solid #decece;cursor:pointer;" ng-repeat="obj in listObject|filter:cashPayment.ObjectName"><a ng-click="chooseObject(obj.ObjectID)">{{obj.ObjectName}}</a></li>
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label no-padding-right requi" style="text-align: left;width: 26%;">Loại phiếu chi</label>
+                                                <div class="col-sm-10" style="margin-bottom:10px;">
+                                                    <input style="width:100%;" id="loaiphieuchi0" type="text" class="form-control" name="ObjectCode" ng-model="cashPayment.loaiphieuchi0">
+
+                                                    <select style="width:100%;" type="text" class="form-control" id="loaiphieuchi1" ng-model="cashPayment.loaiphieuchi1">
+                                                        <option value="Trả lương nhân viên">Trả lương nhân viên</option>
+                                                        <option value="Chi phí sản xuất">Chi phí sản xuất</option>
+                                                        <option value="Chi phí sinh hoạt">Chi phí sinh hoạt</option>
+                                                        <option value="Phí quản lý cửa hàng">Phí quản lý cửa hàng</option>
+                                                        <option value="Phí nguyên vật liệu">Phí nguyên vật liệu</option>
+                                                        <option value="Chi phí bán hàng">Chi phí bán hàng</option>
+                                                        <option value="Chi phí giao hàng">Chi phí giao hàng</option>
+                                                        <option value="Chi phí khác">Chi phí khác</option>
+                                                    </select>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label no-padding-right requi" style="text-align: left;width: 26%;">Giá trị</label>
+                                                <div class="col-sm-10" style="margin-bottom:10px;">
+                                                    <input style="width:100%;text-align:right;" required id="TotalAmount" type="text" class="form-control" name="ObjectCode" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                                           ng-model="cashPayment.TotalAmount" ng-change="changeAmount()">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label no-padding-right requi" style="text-align: left;width: 26%;">Ngày ghi nhận</label>
+                                                <div class="col-sm-10" style="margin-bottom:10px;">
+                                                    <input style="width:100%;" required id="VoucherDate" type="date" class="form-control" name="ObjectCode" ng-model="cashPayment.INVoucherDate">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Chi nhánh</label>
+                                                <div class="col-sm-10" style="margin-bottom:10px;">
+                                                    <input style="width:100%;background-color:#e0dbd4;" disabled type="text" class="form-control" name="ObjectCode" ng-model="cashPayment.BranchName">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Chứng từ gốc</label>
+                                                <div class="col-sm-10" style="margin-bottom:10px;">
+                                                    <input style="width:100%;background-color:#e0dbd4;" disabled type="text" class="form-control" name="ObjectCode" ng-model="cashPayment.chungtugoc">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-top:10px;margin-left: 20px;">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Mô tả </label>
+                                                <div class="col-sm-10" style="margin-bottom:10px;">
+                                                    <textarea style="width:271%;height:75px;" type="text" class="form-control" name="ObjectCode" ng-model="cashPayment.Description"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 col-xs-12">
+            <div class="row" style="margin-top:-20px">
+                <div class="col-lg-6 col-sm-6 col-xs-12" style="width:100%">
+                    <div class="widget">
+
+                        <div class="widget-body" style="border-left: 3px solid #2dc3e8;">
+                            <div id="horizontal-form">
+                                <div class="row" style="margin-top:10px;margin-left: 20px;">
+                                    <div class="col-md-8">
+
+                                    </div>
+                                    <div class="col-lg-4" style="padding-right: 50px;">
+                                        <a class="btn btn-default purple" style="margin-right: 10px; float: right; color: #0d55a1 !important" onclick="goBack()"><i class="fa fa-reply-all"></i>Trở về</a>
+                                        <a class="btn btn-default purple" style="margin-right: 10px; float: right; color: #0d55a1 !important" ng-click="UpdateCashPayment()"><i class="glyphicon glyphicon-floppy-saved"></i>Cập nhật</a>
+                                        <!--<button type="submit" class="btn btn-default purple" style="margin-right: 10px; float: right; color: #0d55a1 !important"><i class="glyphicon glyphicon-floppy-saved"></i>Lưu</button>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

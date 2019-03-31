@@ -1,0 +1,285 @@
+﻿<div class="page-breadcrumbs ng-scope">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            Báo cáo
+        </li>
+        <li class="active">Báo cáo bán hàng</li>
+    </ul>
+</div>
+<div class="page-header position-relative ng-scope">
+    <div class="header-title">
+        <h1></h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+        <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<div class="page-body ng-scope">
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+
+
+            <div class="widget-body">
+                <div class="form-group">
+
+                    <div class="content-right-product container-report__main" style="padding-bottom:15px">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label> Chi nhánh</label>
+                                <select class="form-control ng-pristine ng-valid ng-empty ng-touched ng-untouched" id="inputEmail1" ng-model="branchid" style="width: 100%;">
+                                    <option ng-repeat="branch in list_branch" value="{{branch.BranchID}}">{{branch.BranchName}}</option>
+                                </select>
+                                <!--<input type="text" class="form-control ng-pristine ng-valid ng-empty ng-touched ng-untouched" id="inputEmail1" ng-model="branchName" style="width: 100%;">-->
+                            </div>
+                            <div class="col-md-3">
+                                <label> Từ ngày: </label>
+                                <input type="date" class="form-control ng-pristine ng-valid ng-empty ng-touched ng-untouched" id="inputEmail2" ng-model="start_date" style="width: 100%;">
+
+                            </div>
+                            <div class="col-md-3">
+                                <label> Đến ngày: </label>
+                                <input type="date" class="form-control ng-pristine ng-valid ng-empty ng-touched ng-untouched" id="inputEmail3" ng-model="end_date" style="width: 100%;">
+                            </div>
+                            <div class="col-md-3">
+                                <label></label>
+                                <a class="btn btn-success" style="width:100%" ng-click="ViewReport()">Xem báo cáo</a>
+
+
+                            </div>
+                        </div>
+                        <div style="margin-top: 3%;">
+                            <table id="example" class="display" cellspacing="0" style="width: 100%; background-color: #2dc3e8;color: white;height: 30px;">
+
+                                <tr>
+                                    <th style="text-align:center;">Thông tin đơn hàng</th>
+
+                                </tr>
+
+                            </table>
+
+                            <table id="example" class="display" cellspacing="0" style="width: 100%;border: 1px solid #e5e5e5">
+                                <thead>
+                                    <tr style="height: 30px;border-bottom: 1px solid #e5e5e5;">
+                                        <th style="text-align:center;">Trạng thái đơn</th>
+                                        <th style="text-align:center;">Số lượng đơn hàng</th>
+                                        <th style="text-align:center;">Tổng tiền</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="i in listReport" style="border-bottom: 1px solid #e5e5e5;height: 30px">
+                                        <td style="text-align:center;cursor:pointer;color:#2dc3e8;"><span ng-click="getSaleOrder(i.StatusID,i.QuantitySaleOrder)">{{i.InvoiceStatus}}</span></td>
+                                        <td style="text-align:center;">{{i.QuantitySaleOrder|currency:"":0}}</td>
+                                        <td style="text-align:center;">{{i.Revenue|currency:"":0}} đ</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                        <div class="row" style="display:{{displaySaleOrder}}">
+                            <div class="col-lg-12 col-sm-12 col-xs-12">
+                                <div class="row" style="margin-top:15px">
+                                    <div class="col-lg-6 col-sm-6 col-xs-12" style="width:100%">
+
+                                        <div class="widget-header bordered-top bordered-palegreen">
+                                            <span style="font-weight: bold !important;" class="widget-caption">{{title}}</span>
+                                        </div>
+
+                                        <div class="table-responsive" style="width:100%;display:{{displaySale}}">
+                                            <table class="table table-hover" style="width:100%;margin-bottom: 5px;">
+                                                <thead class="bordered-darkorange bg-themeprimary">
+                                                    <tr style="cursor:pointer;">
+                                                        <th ng-click="orderByTag('VoucherNo')" style="width:11%;">
+                                                            <span><i class={{clas1}}></i></span>    Mã đơn hàng
+                                                        </th>
+                                                        <th ng-click="orderByTag('ObjName')" style="width:14%;">
+                                                            <span><i class={{clas2}}></i></span> Khách hàng
+                                                        </th>
+                                                        <th ng-click="orderByTag('VoucherDate')" style="width: 8%;">
+                                                            <span><i class={{clas3}}></i></span>Ngày tạo
+                                                        </th>
+                                                        <th ng-click="orderByTag('StatusID')" style="width: 15%;">
+                                                            <span><i class={{clas4}}></i></span>  Trạng thái
+                                                        </th>
+                                                        <th style="width:7%;">
+                                                            Đóng gói
+                                                        </th>
+                                                        <th style="width:7%;">
+                                                            Xuất kho
+                                                        </th>
+                                                        <th style="width:9%;">
+                                                            Thanh toán
+                                                        </th>
+                                                        <th style="width:7%;">
+                                                            Trả hàng
+                                                        </th>
+                                                        <th style="width:10%;" ng-click="orderByTag('TotalAmountOC')">
+                                                            <span><i class={{clas5}}></i></span>  Tổng tiền
+                                                        </th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr dir-paginate="saleOrder in listSaleOrder|orderBy:columnname:reverse| itemsPerPage:50|filter:search">
+                                                        <td style="color:#338fd0;cursor:pointer;" ui-sref="saleOrder_Detail({id:saleOrder.VoucherID})">
+                                                            {{saleOrder.VoucherNo}}
+                                                        </td>
+                                                        <td>
+                                                            {{saleOrder.ObjName}}
+                                                        </td>
+                                                        <td>
+                                                            {{saleOrder.VoucherDate| date:'dd/MM/yyyy'}}
+                                                        </td>
+                                                        <td>
+                                                            <span class="status-circle" data-original-title="" title=""><i class="{{saleOrder.icon}}" data-original-title="" title=""></i>{{saleOrder.cl5}}</span>
+                                                        </td>
+                                                        <td style="color: #2dc3e8;font-size:15px;padding-left:30px;">
+                                                            <i class="{{saleOrder.cl1}}"></i>
+                                                        </td>
+                                                        <td style="color: #2dc3e8;font-size:15px;padding-left:30px;">
+                                                            <i class="{{saleOrder.cl2}}"></i>
+                                                        </td>
+                                                        <td style="color: #2dc3e8; font-size: 15px;padding-left:30px;">
+                                                            <i class="{{saleOrder.cl3}}"></i>
+                                                        </td>
+                                                        <td style="color: #2dc3e8; font-size: 15px;padding-left:30px;">
+                                                            <i class="{{saleOrder.cl4}}"></i>
+                                                        </td>
+                                                        <td>
+                                                            {{saleOrder.TotalAmountOC|currency:'':0}} đ
+                                                        </td>
+
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+
+                                        <div class="table-responsive" style="width:100%;display:{{displayReturn}}">
+                                            <table class="table table-hover" style="width:100%">
+                                                <thead class="bordered-darkorange bg-themeprimary">
+                                                    <tr>
+                                                        <th>
+                                                            Mã đơn trả hàng
+                                                        </th>
+                                                        <th>
+                                                            Chứng từ gốc
+                                                        </th>
+
+                                                        <th>
+                                                            Khách hàng
+                                                        </th>
+
+                                                        <th>
+                                                            Nhận hàng
+                                                        </th>
+                                                        <th>
+                                                            Hoàn tiền
+                                                        </th>
+                                                        <th>
+                                                            Tổng tiền
+                                                        </th>
+                                                        <th>
+                                                            Ngày trả
+                                                        </th>
+
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr dir-paginate="saleReturn in listSaleOrder| itemsPerPage:50">
+
+                                                        <td ui-sref="saleReturn_detail({id:saleReturn.VoucherID})" style="cursor:pointer; color:#337ab7;">
+                                                            {{saleReturn.VoucherNo}}
+                                                        </td>
+                                                        <td>{{saleReturn.OriginalVoucherNo}}</td>
+
+                                                        <td>{{saleReturn.ObjName}}</td>
+                                                        <td>
+                                                            <i class="{{saleReturn.import}}" data-original-title="" title=""></i>
+                                                            {{saleReturn.status}}
+                                                        </td>
+                                                        <td style="color:#2dc3e8;">
+                                                            <i style="margin-left:25px;" class="{{saleReturn.payment}}"></i>
+                                                        </td>
+                                                        <td>{{saleReturn.TotalAmount|currency:"":0}} đ</td>
+
+                                                        <td>
+                                                            {{saleReturn.VoucherDate|date:'dd/MM/yyyy'}}
+                                                        </td>
+
+
+
+                                                    </tr>
+
+
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+
+                                        <div style="margin-top:3px ">
+                                            <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" class="ng-isolate-scope">
+                                                <ul class="pagination ng-scope" ng-if="1 < pages.length">
+                                                    <li ng-if="boundaryLinks" ng-class="{ disabled : pagination.current == 1 }" class="ng-scope disabled">
+                                                        <a href="" ng-click="setCurrent(1)">«</a>
+                                                    </li>
+                                                    <li ng-if="directionLinks" ng-class="{ disabled : pagination.current == 1 }" class="ng-scope disabled">
+                                                        <a href="" ng-click="setCurrent(pagination.current - 1)">‹</a>
+                                                    </li>
+                                                    <li ng-repeat="pageNumber in pages track by $index" ng-class="{ active : pagination.current == pageNumber, disabled : pageNumber == '...' }" class="ng-scope active">
+                                                        <a href="" ng-click="setCurrent(pageNumber)" class="ng-binding">1</a>
+                                                    </li>
+                                                    <li ng-repeat="pageNumber in pages track by $index" ng-class="{ active : pagination.current == pageNumber, disabled : pageNumber == '...' }" class="ng-scope">
+                                                        <a href="" ng-click="setCurrent(pageNumber)" class="ng-binding">2</a>
+                                                    </li>
+                                                    <li ng-if="directionLinks" ng-class="{ disabled : pagination.current == pagination.last }" class="ng-scope">
+                                                        <a href="" ng-click="setCurrent(pagination.current + 1)">›</a>
+                                                    </li>
+                                                    <li ng-if="boundaryLinks" ng-class="{ disabled : pagination.current == pagination.last }" class="ng-scope">
+                                                        <a href="" ng-click="setCurrent(pagination.last)">»</a>
+                                                    </li>
+                                                </ul>
+                                            </dir-pagination-controls>
+                                        </div>
+
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                      
+
+                    </div>
+
+
+
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+

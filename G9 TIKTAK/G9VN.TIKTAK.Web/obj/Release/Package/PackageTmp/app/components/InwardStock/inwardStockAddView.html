@@ -1,0 +1,646 @@
+﻿<!-- Page Breadcrumb -->
+<style>
+    #close_table_select::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: #F5F5F5;
+    }
+
+    #close_table_select::-webkit-scrollbar {
+        width: 3px;
+        background-color: #F5F5F5;
+    }
+
+    #close_table_select::-webkit-scrollbar-thumb {
+        background-color: blue;
+        background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(.5, rgba(255, 255, 255, .2)), color-stop(.5, transparent), to(transparent));
+    }
+</style>
+<style>
+    input[type=checkbox].checkbox-slider ~ .text:before {
+        font-family: 'Open Sans', 'Segoe UI';
+        content: "VNĐ           %";
+        background-color: #fff;
+        color: #999;
+        font-weight: 300;
+        font-size: 10px;
+        line-height: 18px;
+        height: 20px;
+        overflow: hidden;
+        border-radius: 50rem;
+        border: 1px solid #ccc;
+        text-align: left;
+        float: left;
+        padding: 0;
+        width: 52px;
+        text-indent: -21px;
+        margin-right: 0;
+        -webkit-transition: all .3s ease 0s;
+        -moz-transition: all .3s ease 0s;
+        -o-transition: all .3s ease 0s;
+        transition: all .3s ease 0s;
+    }
+</style>
+
+
+
+<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" ui-sref="items">Hàng hóa</a>
+        </li>
+
+        <li class="active">Nhập hàng</li>
+    </ul>
+</div>
+<!-- /Page Breadcrumb -->
+<!-- Page Header -->
+<script>
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+    $(document).on("click", ".appDetails", function () {
+        alert("test");
+    });
+</script>
+<style>
+    .form-control {
+        width: 100% !important;
+    }
+
+    #hovem:hover {
+        cursor: pointer;
+    }
+
+    .requi::after {
+        content: "*";
+        color: #f00;
+        margin: 0 .2em;
+    }
+</style>
+<div class="page-header position-relative">
+    <div class="header-title">
+        <h1>
+            Tạo phiếu nhập hàng
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+        <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<!-- /Page Header -->
+<!-- Page Body -->
+<div class="page-body">
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="col-lg-6 col-sm-6 col-xs-12" style="width:100%">
+                    <div class="widget">
+                        <div class="widget-body well bordered-top bordered-blueberry">
+                            <div id="registration-form">
+                                <form class="form-horizontal" role="form" novalidate name="frmAddVendors" ng-submit="AddVendors()">
+                                    <div class="row" style="width:100%;margin-left:0px">
+                                        <div class="col-sm-3">
+                                            <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Mã phiếu..." style="width: 100%;" ng-model="InwardStock.INVoucherNo">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="input-icon inverted dropdown">
+                                                <input type="text" class="form-control input-sm dropdown-toggle" data-toggle="dropdown" style="height:34px;width:100%;" placeholder="Chọn nhà cung cấp" ng-model="infoVendor.ObjectName" />
+                                                <i id="hovem" data-toggle="modal" data-target="#myModal1" class="fa fa-plus-square success circular" title="thêm mới nhà cung cấp"></i>
+                                                <ul class="dropdown-menu" style="width:100%;overflow:auto;overflow-x:hidden;max-height:142px;">
+                                                    <li ng-repeat="vendor in listVendor|filter:infoVendor.ObjectName" style="border-bottom: 1px solid #f2f2f2;cursor:pointer;"><a ng-click="getInfoVendor(vendor.ObjectID)">{{vendor.ObjectCode}}   -   {{vendor.ObjectName}}</a></li>
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" disabled class="form-control input-sm" style="height:34px;width:100%;" placeholder="Địa chỉ" ng-model="infoVendor.ObjectAddress">
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row" style="margin: 0px 0px 0px">
+                                        <div class="col-sm-3">
+                                            <label style="color:#359b29;font-weight: 600;font-size: 16px;float:left;">
+                                                {{InwardStock.INVoucherNo}}
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <span class="input-icon inverted">
+                                                <i class="fa fa-calendar" style="background-color: inherit;color: black;"></i>
+                                                <input type="date" id="datePicker" style="height:34px;width:100%;" placeholder="Thời gian giao" ng-model="InwardStock.DeliveryDate">
+                                            </span>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <span class="input-icon icon-right">
+                                                <input type="text" disabled class="form-control" id="exampleInputEmail2" placeholder="Điện thoại" style="width: 100%;" ng-model="infoVendor.Tel">
+                                            </span>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <span class="input-icon icon-right">
+                                                <input type="text" disabled class="form-control" id="exampleInputEmail2" placeholder="Email" style="width: 100%;" ng-model="infoVendor.Email">
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="modal fade" id="myModal1" role="dialog">
+                                        <div class="modal-dialog">
+                                            <!-- Modal content-->
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title">Thêm nhà cung cấp </h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="form-horizontal" role="form" novalidate name="frmAddVendors" ng-submit="AddVendors()">
+                                                        <div class="row" style="width:100%;">
+                                                            <div class="col-md-6" style="padding-left:3%;">
+                                                                <div class="form-group">
+                                                                    <label class="col-sm-2 control-label no-padding-right">Mã nhà cung cấp</label>
+                                                                    <div class="col-sm-10">
+                                                                        <input class="form-control textbox" name="ObjectCode" ng-model="vendors.ObjectCode">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="col-sm-2 control-label no-padding-right requi">Tên nhà cung cấp</label>
+                                                                    <div class="col-sm-10">
+                                                                        <input class="form-control textbox" name="ObjectName" ng-model="vendors.ObjectName" required>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="col-sm-2 control-label no-padding-right requi">Địa chỉ</label>
+                                                                    <div class="col-sm-10">
+                                                                        <input class="form-control textbox" name="ObjectAddress" ng-model="vendors.ObjectAddress" required>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="col-sm-2 control-label no-padding-right requi">SĐT</label>
+                                                                    <div class="col-sm-10">
+                                                                        <input class="form-control textbox" name="Tel" ng-model="vendors.Tel" required>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="col-sm-2 control-label no-padding-right requi">Email</label>
+                                                                    <div class="col-sm-10">
+                                                                        <input class="form-control textbox" name="Email" ng-model="vendors.Email" required>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="col-sm-2 control-label no-padding-right requi">Áp dụng ưu đãi</label>
+                                                                    <div class="col-sm-10 ">
+                                                                        <select style="width:100%" id="colorselector" class="form-control" ng-model="vendors.ApplyIncentives">
+                                                                            <option value="1">
+                                                                                Theo nhóm nhà cung cấp
+                                                                            </option>
+                                                                            <option value="2">
+                                                                                Theo nhà cung cấp
+                                                                            </option>
+                                                                            <option value="3">
+                                                                                Không áp dụng
+                                                                            </option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6" style="padding-left:6%;">
+                                                                <div class="form-group">
+                                                                    <label class="col-sm-2 control-label no-padding-right">Nhóm đối tượng</label>
+                                                                    <div class="col-sm-10">
+                                                                        <!--<input type="text" class="form-control" name="ObjectCategoryID" ng-model="vendors.ObjectCategoryID">-->
+
+                                                                        <select class="form-control textbox" name="ObjectCategoryID" ng-model="vendors.ObjectCategoryID">
+                                                                            <option ng-repeat="obj in listObjectCategory" selected value="{{obj.Id}}">{{obj.Name}}</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="col-sm-2 control-label no-padding-right">Tài khoản ngân hàng</label>
+                                                                    <div class="col-sm-10">
+                                                                        <input class="form-control textbox" name="BankAccount" ng-model="vendors.BankAccount">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="col-sm-2 control-label no-padding-right">Tên ngân hàng</label>
+                                                                    <div class="col-sm-10">
+
+                                                                        <select class="form-control textbox" name="BankName" ng-model="vendors.BankName">
+
+                                                                            <option value="Agribank">AgriBank</option>
+                                                                            <option value="VietinBank">VietinBank</option>
+                                                                            <option value="BIDV">BIDV</option>
+                                                                            <option value="VIB">VIB</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="col-sm-2 control-label no-padding-right">Mã số thuế</label>
+                                                                    <div class="col-sm-10">
+                                                                        <input class="form-control textbox" name="TaxCode" ng-model="vendors.TaxCode">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="col-sm-2 control-label no-padding-right">Mô tả</label>
+                                                                    <div class="col-sm-10">
+                                                                        <textarea type="text" class="form-control textbox" rows="3" name="Description" ng-model="vendors.Description"></textarea>
+                                                                    </div>
+                                                                </div>
+                                                                <div id="2" class="colors" style="display:none">
+                                                                    <div class="form-group">
+                                                                        <label class="col-sm-2 control-label no-padding-right">Giá mặc định</label>
+                                                                        <div class="col-sm-10 ">
+                                                                            <select style="width:100%" id="e1" class="form-control" ng-model="vendors.PricePolicyDefault">
+
+                                                                                <option ng-repeat="p in listPricePolicy" value="{{p.PricePolicyID}}">
+                                                                                    {{p.PricePolicyName}}
+                                                                                </option>
+
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="col-sm-2 control-label no-padding-right">Thuế mặc định</label>
+                                                                        <div class="col-sm-10 advanced" style="display:flex">
+                                                                            <input type="number" class="number form-control" style="width: 100%; text-align: right;" ng-model="vendors.TaxRateDefault" min="0" max="100">
+                                                                            <input type="text" style="width: 13%; text-align: center;font-size:18px;" value="%" disabled>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="col-sm-2 control-label no-padding-right">Chiết khấu hàng hóa</label>
+                                                                        <div class="col-sm-10 advanced" style="display:flex">
+                                                                            <input type="number" class="number form-control" style="width: 100%; text-align: right;" ng-model="vendors.DiscountRateDefault" min="0" max="100">
+                                                                            <input type="text" style="width: 13%; text-align: center;font-size:18px;" value="%" disabled>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="col-sm-2 control-label no-padding-right">Phương thức thanh toán</label>
+                                                                        <div class="col-sm-10 advanced">
+                                                                            <select style="width:100%" id="e1" class="form-control" ng-model="vendors.PaymentMethodDefault">
+                                                                                <option value="1">
+                                                                                    Tiền mặt
+                                                                                </option>
+                                                                                <option value="2">
+                                                                                    Chuyển khoản
+                                                                                </option>
+                                                                                <option value="3">
+                                                                                    COD
+                                                                                </option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="col-sm-2 control-label no-padding-right">Kì hạn thanh toán</label>
+                                                                        <div class="col-sm-10 ">
+                                                                            <select style="width:100%" id="e1" class="form-control" ng-model="vendors.PaymentScheduleDefault">
+
+                                                                                <option ng-repeat="p in listPaymentSchedule" value="{{p.PaymentScheduleID}}">
+                                                                                    {{p.PaymentScheduleName}}
+                                                                                </option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="row" style="margin-top:10px;margin-left: 20px;">
+                                                                <div class="col-md-8">
+                                                                    <div class="form-group">
+                                                                        <div class="col-sm-offset-2 col-sm-10">
+                                                                            <div class="checkbox" style="margin-left:-100px;">
+                                                                                <label>
+                                                                                    <input class="checkbox-slider slider-icon colored-palegreen" name="Status" type="checkbox" ng-model="vendors.Status">
+
+                                                                                    <span class="text">  Kích hoạt</span>
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <a id="close" href="javascript:void(0)" class="btn btn-default purple" style=" padding: 3px 10px 1px; height: 32px; margin-right: 10px; float: right; color: #0d55a1 !important" data-dismiss="modal"><i class="typcn typcn-cancel"></i>Đóng</a>
+                                                    <button id="click" type="submit" class="btn btn-default purple" style="margin-right: 10px; float: right; color: #0d55a1 !important"><i class="glyphicon glyphicon-floppy-saved"></i>Lưu</button>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="row" style="margin: 0px 0px 0px">
+                                <div class="col-sm-3">
+                                    <span class="input-icon inverted">
+                                        <input type="text" class="form-control input-sm" style="height:34px;width:100%;" placeholder="Tìm kiếm hàng hóa ..." ng-click="search()" ng-model="searchText" ng-change="search()">
+                                        <i class="fa fa-search" style="background-color: inherit;color: black;"></i>
+                                    </span>
+                                    <div class="table-autocomplete col-md-8 col-xs-8 col-sm-8" style="position: absolute;top: 34px;left: -40px;z-index: 1001;">
+                                        <ul id="close_table_select" class="nnn" role="listbox" aria-activedescendant="ui-active-menuitem" style="z-index: 2147483647; display: {{dis}};width:368%;overflow:auto;overflow-x:hidden;max-height:275px;">
+
+                                            <li class="close_table_select" ng-repeat="item in filterList|filter:searchText" ng-click="chooseProduct(item.ID)"
+                                                style="float:left;width:100%;list-style: none; background-color: #fbfbe4;box-shadow: 3px 3px 6px 0px rgb(210, 210, 210);
+                                                border-bottom: 1px #e3e3e3 solid;"
+                                                role="menuitem">
+                                                <a href="javascript:void(0)" bind-event-click="checkclick()" tabindex="-1" class="ui-corner-all" style="font-size: 13px;">
+                                                    <div style="padding: 6px 0;float: left;width: 8%;text-align: center;">
+                                                        <div class="thumb">
+                                                            <img style="margin-left: 3px;border-radius: 3px;" alt="Ảnh" class="block s-none thumb-30" height="40" width="40" src="{{item.image1}}" title="Ảnh">
+                                                        </div>
+                                                    </div>
+                                                    <div class="search-product-content" style="padding: 6px; float:left;width:58%">
+                                                        <div class="search-product-content-name" style="margin-left: 10px;">
+                                                            <span>{{item.Name}}</span>
+                                                        </div>
+                                                        <div class="search-product-content-sku" style="color: #27b467;margin-left: 10px;">  {{item.SKU}}  </div>
+                                                    </div>
+                                                    <div class="search-product-content" style="width: 32%;float:left; text-align: center; padding-right: 2%;padding: 6px;">
+                                                        <div class="search-product-content-name">Giá nhập: {{item.PurchasePrice|currency:"":0}} VNĐ</div>
+                                                        <div class="search-product-content-sku" style="text-transform: none; ">
+                                                            Tồn kho: <span style="font-weight:bold;">{{item.quantity|currency:"":0}}</span>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <span class="input-icon icon-right">
+                                        <input type="text" disabled class="form-control" id="exampleInputEmail2" placeholder="Chi nhánh" style="width: 100%;" ng-model="branchName">
+                                    </span>
+                                </div>
+
+
+
+                                <div class="col-sm-6">
+                                    <div class="input-icon inverted dropdown">
+                                        <script>
+                                            function myFunction1() {
+                                                document.getElementById("advance_setting").disabled = true;
+                                            }
+                                        </script>
+                                        <div class="dropdown-toggle" data-toggle="dropdown" style="cursor:pointer;">
+                                            <input type="text" id="advance_setting" class="form-control input-sm dropdown-toggle" oninput="this.value = this.value.replace(/[^0-0.]/g, '').replace(/(\..*)\./g, '$1');"
+                                                   data-toggle="dropdown" style="height:34px;width:100%;cursor:pointer;padding-left: 30px;" placeholder="Cài đặt nâng cao" disabled />
+                                        </div>
+                                        <ul class="dropdown-menu" style="width:100%;padding-left: 6%;">
+                                            <li style="cursor:pointer;border-bottom: 1px solid #e4cbcb;padding-bottom: 2%;padding-top: 2%;"><b>Giá mặc định :</b> <span style="float:right;margin-right: 25%;">{{infoVendor.PricePolicyDefaultName}}</span></li>
+                                            <li style="cursor:pointer;border-bottom: 1px solid #e4cbcb;padding-bottom: 2%;padding-top: 2%;"><b>Thuế mặc định :</b> <span style="float:right;margin-right: 25%;">{{infoVendor.TaxRateDefault}} %</span></li>
+                                            <li style="cursor:pointer;border-bottom: 1px solid #e4cbcb;padding-bottom: 2%;padding-top: 2%;"><b>Chiết khấu mặc định :</b><span style="float:right;margin-right: 25%;">{{infoVendor.DiscountRateDefault}} %</span></li>
+                                            <li style="cursor:pointer;border-bottom: 1px solid #e4cbcb;padding-bottom: 2%;padding-top: 2%;"><b>Kỳ hạn thanh toán :</b><span style="float:right;margin-right: 25%;">{{infoVendor.PaymentScheduleDefaultName}}</span></li>
+                                            <li style="cursor:pointer;padding-bottom: 2%;padding-top: 2%;"><b>Phương thức thanh toán :</b><span style="float:right;margin-right: 25%;">{{infoVendor.PaymentMethodDefaultName}}</span></li>
+
+                                        </ul>
+
+                                        <i class="fa fa-gears" style="background-color: inherit;color: black;"></i>
+                                    </div>
+                                </div>
+                                <!--<div class="col-sm-3">
+                                    <span class="input-icon icon-right">
+                                        <input type="text" disabled class="form-control" id="exampleInputEmail2" placeholder="Chi nhánh" style="width: 100%;" ng-model="branchName">
+                                    </span>
+                                </div>-->
+                            </div>
+                            <br />
+                        </div>
+                        <div class="row" style="width:100%;margin-left:0px">
+                            <div class="table-responsive">
+                                <table class="table" style="width:100%">
+                                    <thead class="bordered-darkorange bg-themeprimary">
+                                        <tr>
+                                            <th>STT</th>
+                                            <th>
+                                                Mã SKU
+                                            </th>
+                                            <th style="width:18%">
+                                                Tên hàng hóa
+                                            </th>
+                                            <th style="width:7%">
+                                                Đơn vị
+                                            </th>
+                                            <th style="width:10%">
+                                                Số lượng
+                                            </th>
+                                            <th style="width:12%">
+                                                Đơn giá
+                                            </th>
+                                            <th style="width:10%">
+                                                Thuế(%)
+                                            </th>
+                                            <th style="width:10%">Chiết khấu</th>
+                                            <th style="width:12%; text-align:right">
+                                                Thành tiền
+                                            </th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="i in cart.list_selected">
+                                            <td>{{i.stt}}</td>
+                                            <td>{{i.SKU}}</td>
+                                            <td>{{i.Name}}</td>
+                                            <td>{{i.UnitName}}</td>
+                                            <td>
+                                                <div class="form-group" style="float: left;">
+                                                    <div class="controls">
+                                                        <input style="border-radius: 5px !important;height:25px" sapo-type="sapoNumber" min="1"
+                                                               type="number" class="form-control form-control-input-popup text-right number line_item_quantity valid"
+                                                               id="quantity" ng-model="i.quan" ng-change="update(i.stt)">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+
+                                                <div class="form-group" style="float: left;">
+                                                    <div class="controls">
+                                                        <input style="border-radius: 5px !important;width: 100% !important;height:25px" sapo-type="sapoNumber" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                                               class="form-control form-control-input-popup text-right number line_item_quantity valid"
+                                                               id="price" ng-change="update(i.stt)" ng-model="i.UnitPrice">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group" style="float: left;">
+                                                    <div class="controls">
+                                                        <input style="border-radius: 7px !important;width:85% ;height:25px" sapo-type="sapoNumber" min="0" max="100"
+                                                               type="number" class="form-control form-control-input-popup text-right number line_item_quantity valid"
+                                                               id="thue" ng-model="i.thue" ng-change="update(i.stt)">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group" style="float: left;">
+                                                    <div class="controls" ng-click="discount_item_Click(i.stt)" style="cursor:pointer;">
+                                                        <input style="cursor:pointer;border-radius: 7px !important;width: 90px;height:25px" sapo-type="sapoNumber" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                                               class="form-control form-control-input-popup text-right number line_item_quantity valid" disabled
+                                                               id="chietkhau" ng-model="i.chietkhau" ng-change="update(i.stt)">
+                                                    </div>
+                                                    <div class="popover undefined fade bottom in" id="popover_discount" style="top:{{(i.stt -1)*57 + 289}}px;margin-left: 64%;display:{{i.display_discount}}">
+                                                        <div class="arrow" style="left: 50%;"></div>
+                                                        <div class="popover-content">
+                                                            <div class="widget-body" style="box-shadow: none !important;background-color: inherit;">
+                                                                <div>
+                                                                    <form class="form-horizontal form-bordered ng-pristine ng-valid" role="form">
+                                                                        <div class="form-group" style="margin-top: -13px;margin-bottom: 5px;">
+                                                                            <label for="inputEmail3" class="col-sm-4 control-label no-padding-right">Lý do</label>
+                                                                            <div class="col-sm-8">
+                                                                                <input type="text" class="form-control" placeholder="Lý do chiết khấu ..." style="width: 150px !important;" ng-model="i.DiscountReason" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group" style="margin-bottom: 0px;">
+                                                                            <label for="inputPassword3" class="col-sm-4 control-label no-padding-right" style="margin-top: -8px;">Chiết khấu</label>
+                                                                            <div class="col-sm-8" style="margin-top: -8px;">
+                                                                                <input id="txt_discount_item" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                                                                       ng-model="i.txt_discount_item" ng-change="changeDiscount(i.stt)" class="form-control" style="width: 150px !important; text-align:right;" />
+                                                                            </div>
+
+                                                                            <!--<script src="../../../Assets/admin/js/autoNumeric.js"></script>-->
+                                                                            <div class="col-sm-4 col-sm-offset-4" style="float: right;padding-left: 26px;">
+                                                                                <label style="padding-top: 8px;">
+                                                                                    <input class="checkbox-slider toggle colored-blue" type="checkbox" ng-model="i.status_discount" ng-change="changeStatusDiscount(i.stt)"><span class="text"></span>
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group" style="margin-bottom: -15px;">
+                                                                            <div class="col-sm-offset-4 col-sm-4" style="margin-top: -9px;float: right;width: 112%;margin-right: -16px;">
+                                                                                <button style="width:100%" type="submit" class="btn btn-blue" ng-click="ApplyDiscount(i.stt)">Áp dụng</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td style="text-align:right">{{i.thanhtien|currency:"":0}} đ</td>
+                                            <td ng-click="del(i.stt)" style="cursor: pointer; width:10px;"><div class="fa-hover col-md-3 col-sm-4"><i class="fa fa-trash"></i></div></td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+
+                        <br />
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <span class="input-icon inverted">
+                                        <textarea class="form-control" id="textareaanimated" placeholder="Ghi chú: " style="width: 100%;height: 100px;" ng-model="InwardStock.Description"></textarea>
+                                    </span>
+                                    <div style="margin-top: 12px;    background-color: #fbfbfb !important;">
+                                        <input type="text" data-role="tagsinput" placeholder="Add tags" style="display: none;">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <ul style="list-style: none;display: grid;">
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <b>
+                                                        <span style="float:left">Chiết khấu cho đơn hàng:</span>
+                                                    </b>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <div class="form-group" style="float:right;margin-top: -8px;">
+                                                        <!--<div class="controls">
+                                                            <input style="border-radius: 7px !important;width:100%" placeholder="Nhập tiền chiết khấu ..." oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                                                   class="form-control form-control-input-popup text-right number line_item_quantity valid"
+                                                                   ng-model="InwardStock.DiscountForInvoice" ng-change="discountForInvoice()">
+                                                        </div>-->
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control form-control-input-popup text-right number line_item_quantity valid"
+                                                                   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                                                   style="text-align:right;" ng-model="InwardStock.DiscountForInvoice_txt" ng-change="discountForInvoice()" />
+                                                            <span class="input-group-btn">
+                                                                <button id="vnd" class="{{class_btn_vnd}}" type="button" style="font-size:14px;" ng-click="changeUnitDiscount_Click(1)"> đ </button>
+                                                                <button id="pt" class="{{class_btn_pt}}" type="button" style="font-size:14px;" ng-click="changeUnitDiscount_Click(2)"> % </button>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                           
+
+                                        </li>
+                                        <li>
+                                            <b>
+                                                <span style="float:left">Tổng số lượng nhập:</span>
+                                                <span style="float:right">{{InwardStock.TotalPurchaseQuantity}}</span>
+                                            </b>
+                                        </li>
+                                        <li>
+                                            <b>
+                                                <span style="float:left">Tổng tiền hàng:</span>
+                                                <span style="float:right">{{InwardStock.TotalAmount|currency:"":0}} đ</span>
+                                            </b>
+                                        </li>
+                                        <li>
+                                            <b>
+                                                <span style="float:left">Tổng tiền chiết khấu:</span>
+                                                <span style="float:right">{{InwardStock.TotalDiscountAmount|currency:"":0}} đ</span>
+                                            </b>
+                                        </li>
+                                        <li>
+                                            <b>
+                                                <span style="float:left">Tổng tiền thuế:</span>
+                                                <span style="float:right">{{InwardStock.TotalVATAmount|currency:"":0}} đ</span>
+                                            </b>
+                                        </li>
+
+                                        <li>
+                                            <b>
+                                                <span style="float:left">Tổng tiền thanh toán:</span>
+                                                <span style="float:right">{{InwardStock.TotalPaymentAmount|currency:"":0}} đ</span>
+                                            </b>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="wide">
+                        <div class="buttons-preview" style="background:#dddcdc">
+                            <!--<a ng-click="AddInwardStock()" class="btn btn-blue purple" style="float:left;color: white !important;"><i class="glyphicon glyphicon-floppy-saved"></i>Lưu</a>
+                            <a onclick="goBack()" class="btn btn-default purple" style="padding: 3px 10px 1px; height: 32px;margin-left:10px;float: left; color: white !important;background:#308a16"><i class="typcn typcn-cancel"></i> Hủy </a>-->
+
+                            <a class="btn btn-blue purple" ng-click="AddInwardStock()" style="margin-bottom: 6px;margin-top: 6px;margin-left: 77%;width: 100px;color: white !important;"><i class="glyphicon glyphicon-floppy-saved"></i> Lưu </a>
+
+                            <a onclick="goBack()" class="btn btn-default purple" href="javascript:void(0);" style="margin-bottom: 6px;margin-top: 6px;margin-left: 6px;width: 100px;color: white !important;background:#308a16"><i class="fa fa-mail-reply-all"></i> Trở về</a>
+                        </div>
+                    </div>
+                </div>
+                <!--////-->
+                <!--<div class="widget-body">-->
+                <!--</div>-->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="../../../Assets/admin/js/tagsinput/bootstrap-tagsinput.js"></script>

@@ -1,0 +1,110 @@
+﻿<!-- Page Breadcrumb -->
+<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+           <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)">Cài đặt</a>
+        </li>
+        <li class="active">Log hệ thống</li>
+    </ul>
+</div>
+<!-- /Page Breadcrumb -->
+<!-- Page Header -->
+<div class="page-header position-relative">
+   
+    <!--Header Buttons-->
+    <div class="header-buttons">
+       <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<!-- /Page Header -->
+<!-- Page Body -->
+<div class="page-body">
+    <!-- Your Content Goes Here -->
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+
+            <div class="widget-header ">
+                <span class="widget-caption">Log hệ thống</span>
+                <div class="widget-buttons">
+                    <a href="javascript:void(0)" data-toggle="maximize">
+                        <i class="fa fa-expand"></i>
+                    </a>
+                    <a href="javascript:void(0)" data-toggle="collapse">
+                        <i class="fa fa-minus"></i>
+                    </a>
+                    <a href="javascript:void(0)" data-toggle="dispose">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="widget-body">
+                <div class="form-group">
+
+
+                    <!--<a class="btn btn-default purple" ui-sref="pricePolicy_add" style="border-radius:5px;float:right;color:#5db2ff !important"><i class="fa fa-plus"></i> Thêm mới </a>
+
+                    <br />
+                    <br />-->
+                    <!--<a class="btn btn-default purple" ui-sref="vendor_add" style="border-radius:5px;margin-right:10px; float:right;color:#5db2ff !important"><i class="glyphicon glyphicon glyphicon-export"></i> Xuất file </a>
+                    <a class="btn btn-default purple" ui-sref="vendor_add" style="border-radius:5px;margin-right:10px; float:right;color:#5db2ff !important"><i class="glyphicon glyphicon glyphicon-import"></i> Nhập file </a>-->
+
+                </div>
+
+                <table class="table table-hover">
+                    <thead class="bordered-darkorange">
+                        <tr>
+                            <th>
+                                Nhân viên
+                            </th>
+                            <th>
+                               Chức năng
+                            </th>
+                            <th>
+                                Thao tác
+                            </th>
+
+                            <th>
+                                Nội dung
+                            </th>
+                            <th>
+                               Ngày thực hiện
+                            </th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr ng-repeat="price in listPricePolicy">
+                            <td>{{price.PricePolicyCode}}</td>
+                            <td>{{price.PricePolicyName}}</td>
+                            <td>{{price.Description}}</td>
+
+                            <td>{{price.Status}}</td>
+                            <td>{{price.CreateDate}}</td>
+                            
+                          
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- /Page Body -->

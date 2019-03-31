@@ -1,0 +1,397 @@
+﻿<!-- Page Breadcrumb -->
+<script type="text/javascript">
+    $(function () {
+        $('#colorselector').change(function () {
+            $('.colors').hide();
+            $('#' + $(this).val()).show();
+        });
+    });
+    $(document).ready(function () {
+        $("#clickHide1").click(function () {
+            $("#Hide1").toggel(100);
+        });
+        $("#clickHide2").click(function () {
+            $("#Hide2").toggel(100);
+        });
+        $("#clickHide3").click(function () {
+            $("#Hide3").toggel(100);
+        });
+    });
+</script>
+<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+           <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" ui-sref="customer">Khách hàng</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" ui-sref="customer">Danh sách khách hàng</a>
+        </li>
+        <li class="active">Danh sách khách hàng</li>
+    </ul>
+</div>
+<!-- /Page Breadcrumb -->
+<!-- Page Header -->
+<div class="page-header position-relative">
+    <div class="header-title">
+        <h1>
+            Danh sách khách hàng
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+       <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<!-- /Page Header -->
+<!-- Page Body -->
+
+<form class="form-horizontal" role="form" novalidate name="frmAddCustomer" ng-submit="AddCustomers()">
+
+
+    <div class="page-body">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 col-xs-12">
+                <div class="row">
+                    <div class="col-lg-6 col-sm-6 col-xs-12" style="width:100%">
+                        <div class="widget">
+                            <div class="widget-header bordered-top bordered-palegreen">
+                                <span style="font-weight: bold !important;" class="widget-caption">Thông tin chung</span>
+                                <div class="widget-buttons">
+                                    <a href="#" data-toggle="maximize">
+                                        <i class="fa fa-expand"></i>
+                                    </a>
+                                    <a  data-toggle="collapse" id="clickHide1">
+                                        <i class="fa fa-minus"></i>
+                                    </a>
+                                    <a href="#" data-toggle="dispose">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="widget-body" id="Hide1">
+                                <div id="horizontal-form">
+                                    <div class="row" style="margin-top:10px;margin-left: 20px;">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Mã khách hàng</label>
+                                                <div class="col-sm-10">
+                                                    <input style="width:100%" type="text" class="form-control" name="ObjectCode" ng-model="customers.ObjectCode">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Nhóm khách hàng </label>
+                                                <div class="col-sm-10">
+                                                    <select style="width:100%" class="form-control" name="ObjectCategoryID" ng-model="customers.ObjectCategoryID">
+                                                        <option ng-repeat="obj in listObjectCategory" selected value="{{obj.Id}}">{{obj.Name}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Số điện thoại<i style="color:red"> *</i> </label>
+                                                <div class="col-sm-10">
+                                                    <input style="width:100%" type="text" class="form-control" name="Tel" ng-model="customers.Tel" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Giới tính</label>
+                                                <div class="col-sm-10">
+                                                    <select style="width:100%" id="e1" class="form-control" ng-model="customers.Sex">
+                                                        <option value="Nam">
+                                                            Nam
+                                                        </option>
+                                                        <option value="Nữ">
+                                                            Nữ
+                                                        </option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Ngày sinh </label>
+                                                <div class="col-sm-10">
+                                                    <input style="width:100%" type="date" class="form-control" name="BirthdayDate" ng-model="customers.BirthdayDate">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Mã số thuế</label>
+                                                <div class="col-sm-10">
+                                                    <input style="width:100%" type="text" class="form-control" name="TaxCode" ng-model="customers.TaxCode">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Tên khách hàng <i style="color:red"> *</i></label>
+                                                <div class="col-sm-10">
+                                                    <input style="width:100%" type="text" class="form-control" name="ObjectName" ng-model="customers.ObjectName" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Email </label>
+                                                <div class="col-sm-10">
+                                                    <input style="width:100%" type="text" class="form-control" name="Email" ng-model="customers.Email" >
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;"> Tỉnh/Thành phố </label>
+                                                <div class="col-sm-10">
+                                                    <select style="width:100%" class="row1"  ng-model="customers.ObjectState" ng-change="selectDistrict()">
+                                                        <option>Lựa chọn</option>
+                                                        <option ng-repeat="District in listRegion" value="{{District.RegionID}}">{{District.RegionName}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;"> Quận/huyện</label>
+                                                <div class="col-sm-10">
+                                                    <select class="row2" style="width:100%"  ng-model="customers.ObjectDistrict"  ng-change="selectTown()">
+                                                        <option>Lựa chọn</option>
+                                                        <option ng-repeat="icon in listRegionaddress" value="{{icon.RegionID}}">{{icon.RegionName}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Phường/Xã</label>
+                                                <div class="col-sm-10">
+                                                    <select style="width:100%" class="now3"  ng-model="customers.ObjectWard">
+                                                        <option>Lựa chọn</option>
+                                                        <option ng-repeat="icon in listRegionTown" value="{{icon.RegionID}}">{{icon.RegionName}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;"> Địa chỉ </label>
+                                                <div class="col-sm-10">
+                                                    <input style="width:100%" type="text" class="form-control" name="Unit" ng-model="customers.ObjectAddress">
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 col-xs-12">
+                <div class="row" style="margin-top:-30px">
+                    <div class="col-lg-6 col-sm-6 col-xs-12" style="width:100%">
+                        <div class="widget">
+                            <div class="widget-header bordered-top bordered-palegreen">
+                                <span style="font-weight: bold !important;" class="widget-caption">Thông tin khác</span>
+                                <div class="widget-buttons">
+                                    <a href="#" data-toggle="maximize">
+                                        <i class="fa fa-expand"></i>
+                                    </a>
+                                    <a href="#" data-toggle="collapse" id="clickHide2">
+                                        <i class="fa fa-minus"></i>
+                                    </a>
+                                    <a href="#" data-toggle="dispose">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="widget-body" id="Hide2">
+                                <div class="row" style="margin-top:10px;margin-left: 20px;">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+
+                                            <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Nhân viên chăm sóc</label>
+                                            <div class="col-sm-10">
+                                                <select style="width:100%" class="form-control" name="CaringStaff" ng-model="customers.CaringStaff">
+                                                    <option ng-repeat="emp in listGetEmployee" selected value="{{emp.ObjectID}}">{{emp.ObjectName}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Mô tả </label>
+                                            <div class="col-sm-10">
+                                                <textarea style="width:100%" class="form-control" rows="3" placeholder="Mô tả" ng-model="customers.Description"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 col-xs-12">
+                <div class="row" style="margin-top:-30px">
+                    <div class="col-lg-6 col-sm-6 col-xs-12" style="width:100%">
+                        <div class="widget">
+                            <div class="widget-header bordered-top bordered-palegreen">
+                                <span style="font-weight: bold !important;" class="widget-caption">Cài đặt nâng cao</span>
+                                <div class="widget-buttons">
+                                    <a href="#" data-toggle="maximize">
+                                        <i class="fa fa-expand"></i>
+                                    </a>
+                                    <a href="#" data-toggle="collapse" id="clickHide3">
+                                        <i class="fa fa-minus"></i>
+                                    </a>
+                                    <a href="#" data-toggle="dispose">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="widget-body" id="Hide3">
+                                <div class="row" style="margin-top:10px;margin-left: 20px;">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+
+                                            <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Áp dụng ưu đãi</label>
+                                            <div class="col-sm-10">
+                                                <select style="width:100%" id="colorselector" class="form-control" ng-model="customers.ApplyIncentives">
+                                                    <option value="1">
+                                                        Theo nhóm khách hàng
+                                                    </option>
+                                                    <option value="2">
+                                                        Theo Khách hàng
+                                                    </option>
+                                                    <option value="3">
+                                                        Không áp dụng
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div id="2" class="colors" style="display:none">
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Giá mặc định</label>
+                                                <div class="col-sm-10">
+                                                    <select style="width:100%" id="e1" class="form-control" ng-model="customers.PricePolicyDefault">
+                                                        
+                                                        <option ng-repeat="p in listPricePolicy" value="{{p.PricePolicyID}}">
+                                                            {{p.PricePolicyName}}
+                                                        </option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Thuế mặc định</label>
+                                                <div class="col-sm-10" style="display:flex">
+                                                    <input type="number" class="number form-control" style="width: 100%; text-align: right;" ng-model="customers.TaxRateDefault" min="0" max="100">
+                                                    <input type="text" style="width: 13%; text-align: center;font-size:18px;" value="%" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Chiết khấu hàng hóa</label>
+                                                <div class="col-sm-10" style="display:flex">
+                                                    <input type="number" class="number form-control" style="width: 100%; text-align: right;" ng-model="customers.DiscountRateDefault" min="0" max="100">
+                                                    <input type="text" style="width: 13%; text-align: center;font-size:18px;" value="%" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Phương thức thanh toán</label>
+                                                <div class="col-sm-10">
+                                                    <select style="width:100%" id="e1" class="form-control" ng-model="customers.PaymentMethodDefault">
+                                                        <option value="1">
+                                                            Tiền mặt
+                                                        </option>
+                                                        <option value="2">
+                                                            Chuyển khoản
+                                                        </option>
+                                                        <option value="3">
+                                                            COD
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Kì hạn thanh toán</label>
+                                                <div class="col-sm-10">
+                                                    <select style="width:100%" id="e1" class="form-control" ng-model="customers.PaymentScheduleDefault">
+                                                        
+                                                        <option ng-repeat="p in listPaymentSchedule" value="{{p.PaymentScheduleID}}">
+                                                            {{p.PaymentScheduleName}}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 col-xs-12">
+                <div class="row" style="margin-top:-20px">
+                    <div class="col-lg-6 col-sm-6 col-xs-12" style="width:100%">
+                        <div class="widget">
+
+                            <div class="widget-body" style="border-left: 3px solid #2dc3e8;">
+                                <div id="horizontal-form">
+                                    <div class="row" style="margin-top:10px;margin-left: 20px;">
+                                        <div class="col-md-8">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input class="checkbox-slider toggle colored-blue ng-pristine ng-untouched ng-valid ng-not-empty" type="checkbox" name="Status" ng-model="customers.Status">
+                                                    <span class="text">&nbsp;&nbsp;Đang sử dụng</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <a ui-sref="customer" class="btn btn-default purple" style=" padding: 3px 10px 1px; height: 32px; margin-right: 10px; float: right; color: #0d55a1 !important" href="#!/items"><i class="typcn typcn-cancel"></i> Hủy </a>
+                                            <button ng-click="option()"  class="btn btn-default purple" style="margin-right: 10px; float: right; color: #0d55a1 !important"><i class="glyphicon glyphicon-floppy-save"></i>Lưu/Thêm</button>
+                                            <button type="submit" ng-click="option1()"  class="btn btn-default purple" style="margin-right: 10px; float: right; color: #0d55a1 !important"><i class="glyphicon glyphicon-floppy-saved"></i>Lưu</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+

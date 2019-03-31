@@ -1,0 +1,257 @@
+﻿<style type="text/css">
+    .modal-content {
+        width: 406px;
+        left: 22%;
+    }
+</style>
+
+<!-- Page Breadcrumb -->
+<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            Hàng hóa
+        </li>
+        <li class="active">Quy cách hàng hóa</li>
+    </ul>
+</div>
+<!-- /Page Breadcrumb -->
+<!-- Page Header -->
+<div class="page-header position-relative">
+    <div class="header-title">
+        <h1>
+            Danh sách sản phẩm
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+        <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<!-- /Page Header -->
+<!-- Page Body -->
+<div class="page-body">
+    <div style="display:none" id="show">
+
+    </div>
+    <!-- Your Content Goes Here -->
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+
+
+            <div class="widget-body">
+                <div class="form-group">
+                    <span class="input-icon inverted" style="width:35%">
+                        <input type="text" style="height:32px;padding-left:40px" ng-model="searchText" class="form-control input-sm" placeholder="Tìm kiếm hàng hóa">
+                        <i class="glyphicon glyphicon-search bg-blue"></i>
+                    </span>
+                    <a class="btn btn-default purple" style="margin-right: 10px; float: right; color: #0d55a1 !important"><i class="fa fa-download"></i> Nhập file </a>
+                    <a class="btn btn-default purple" ng-click="exportExcel()" style="margin-right: 10px; float: right; color: #0d55a1 !important"><i class="fa fa-upload"></i> Xuất file </a>
+                    <a class="btn btn-default purple" data-toggle="modal" data-target="#myModal" ng-click="InBarcode()" style="margin-right: 10px; float: right; color: #0d55a1 !important"><i class="fa fa-download"></i>In mã vạch</a>
+
+                </div>
+                <div class="table-responsive">
+
+                    <table class="table table-hover" style="width:100%">
+
+                        <thead class="bordered-darkorange bg-themeprimary ">
+                            <tr>
+                                <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="" ng-click="checkAll()" style="width: 27px;">
+                                    <label>
+                                        <input type="checkbox" id="select_all" ng-model="setall" />
+                                        <span class="text"></span>
+                                    </label>
+                                </th>
+                                <th>
+                                    Ảnh
+                                </th>
+                                <th>
+                                    Mã hàng hóa
+                                </th>
+                                <th>
+                                    Tên hàng hóa
+                                </th>
+                                <th style="text-align:center">
+                                    Đơn vị tính
+                                </th>
+                                <th style="text-align:center">
+                                    Trạng thái
+                                </th>
+                                <th style="text-align:center">
+                                    Ngày tạo
+                                </th>
+                                <th style="text-align:center">
+                                    Có thể bán
+                                </th>
+                                <th style="text-align:right;margin-right:5px">
+                                    Tùy chọn
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr dir-paginate="item in listItems| filter:searchText|orderBy:columnName:reverse| itemsPerPage:10">
+                                <td>
+                                    <label>
+                                        <input class="checkbox" type="checkbox" ng-model="item.CheckBox" name="check[]">
+                                        <span class="text"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <img style="height:50px;width:50px;border-radius: 5px;border: 1px solid #ece7e7;" src="{{item.image1}}" />
+                                </td>
+                                <td ui-sref="itemOption_edit({id:item.ID})">
+                                    <a>
+                                        {{item.SKU}}
+                                    </a>
+                                </td>
+                                <td>
+
+                                    {{item.Name}}
+
+                                </td>
+                                <td style="text-align:center">
+                                    {{item.Unit}}
+                                </td>
+                                <td style="text-align:center">
+                                    <i class="{{item.cs}}" data-original-title="" title=""></i>
+                                    {{item.tt}}
+
+
+                                </td>
+                                <td style="text-align:center">
+                                    {{item.CreateDate | date:'dd/MM/yyyy'}}
+                                </td>
+                                <td style="text-align:center">
+                                    {{item.quantity|currency:'':0}}
+                                </td>
+                                <td>
+                                    <button ng-click="deleteItems(item.ID,item.ItemID)" class="btn btn-default" style="float: right; width: 35px; height: 30px;margin-left:5px"><i class="fa fa-trash-o"></i></button>
+
+                                    <button ui-sref="itemOption_edit({id:item.ID})" class="btn btn-default" style="float:inherit; width: 35px; height: 30px; float: right; margin-left: 5px"><i class="fa fa-pencil-square"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <dir-pagination-controls max-size="5"
+                                             direction-links="true"
+                                             boundary-links="true">
+                    </dir-pagination-controls>
+                </div>
+                <div class="container">
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content" style="width:80% !important;left:0px !important ;">
+
+                                <div class="modal-body" style="overflow:auto;max-height:500px;overflow-x:hidden">
+                                    <table class="table table-hover" style="width:100%">
+
+                                        <thead class="bordered-darkorange bg-themeprimary ">
+                                            <tr>
+                                                <th style="text-align:center">
+                                                    Mã Barcode
+                                                </th>
+                                                <th>
+                                                    Mã hàng hóa
+                                                </th>
+                                                <th>
+                                                    Tên hàng hóa
+                                                </th>
+                                                <th style="text-align:right;margin-left:10px">
+                                                    Số Lượng
+                                                </th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr dir-paginate="item in listNew| itemsPerPage:10" style="background:white">
+                                                <td ui-sref="itemOption_edit({id:item.ID})" class="test" style="background:white">
+                                                    <div id="code" class="delete" style="width:50%;float:left;display:block;text-align:center;background: white;margin-bottom:5px;">
+                                                        <div class="row" style="display:{{ten}};font-size:12px;margin-left:-8px;margin-top:12px;font-weight: bold;"><i>{{item.NameNew}}</i></div>
+                                                        <div class="row" style="display:{{ma}};font-size:12px;margin-left:-8px;font-weight: bold;"><i>{{item.SKUNew}}</i></div>
+                                                        <div class="row" style="margin-left:-8px;font-weight: bold;"><i><angular-barcode ng-model="item.BarcodeNew" bc-options="bc" bc-class="barcode" bc-type="svg"></angular-barcode></i></div>
+                                                        <div class="row" style="display:{{gia}};font-size:12px;margin-left:-8px;margin-bottom:26px;font-weight: bold;"><i>Giá: {{item.SalePriceNew}}đ</i></div>
+                                                    </div>
+                                                </td>
+                                                <td ui-sref="itemOption_edit({id:item.ID})">
+                                                    <a>
+                                                        {{item.SKUNew}}
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    {{item.NameNew}}
+                                                </td>
+                                                <td style="text-align:right;width:10%">
+                                                 <input class="input-icon inverted" ng-model="item.ClosingQuantityNew" />
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="row">
+                                        <div class="col-lg-4 col-sm-4 col-xs-4">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input  ng-click="hienthi()" ng-model="status1" type="checkbox" class="colored-success">
+                                                    <span class="text">Ẩn tên</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-sm-4 col-xs-4">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input  ng-click="hienthi()" ng-model="status2" type="checkbox" class="colored-success">
+                                                    <span class="text">Ẩn giá</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-sm-4 col-xs-4">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input  ng-click="hienthi()" ng-model="status3" type="checkbox" class="colored-success">
+                                                    <span class="text">Ẩn mã hàng</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <form id="form1" style="display:none">
+                                        <div id="dvContents">
+                                            <div id="showIn">
+
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <button type="button" class="btn btn-default" ng-click="exportFile()" data-dismiss="modal">In mã vạch</button>
+                                    <button type="button" class="btn btn-default" ng-click="close()" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

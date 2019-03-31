@@ -1,0 +1,205 @@
+﻿<div class="page-breadcrumbs ng-scope">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" ui-sref="reportSales">Báo cáo</a>
+        </li>
+        <li class="active">Báo cáo bán hàng</li>
+    </ul>
+</div>
+<div class="page-header position-relative ng-scope">
+    <div class="header-title">
+        <h1>
+            Báo cáo thống kê đơn hàng
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+        <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<div class="page-body ng-scope">
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+
+
+            <div class="widget-body">
+                <div class="form-group">
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label> Chi nhánh : </label>
+                            <select style="width:100%" ng-model="branchid">
+                                <option ng-repeat="br in list_branch" value="{{br.BranchID}}">{{br.BranchName}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label>Từ ngày :</label>
+                            <input type="date" class="form-control ng-pristine ng-valid ng-empty ng-touched" id="inputEmail2" ng-model="start_date" style="width: 100%;">
+                        </div>
+                        <div class="col-md-3">
+                            <label> Đến ngày :</label>
+                            <input type="date" class="form-control ng-pristine ng-valid ng-empty ng-touched" id="inputEmail3" ng-model="end_date" style="width: 100%;">
+                        </div>
+                        <div class="col-md-3" style="margin-top: 20px;">
+
+                            <a class="btn btn-success" style="width:100%" ng-click="ViewReport()">Xem báo cáo</a>
+                        </div>
+                    </div>
+                    <br />
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span class="input-icon inverted">
+                                <input type="text" class="form-control input-sm" style="height:34px;width:100%;"
+                                       placeholder="Tìm kiếm theo đơn hàng, theo khách hàng, theo trạng thái, theo ngày tạo, ... "
+                                       ng-model="searchText" ng-change="search()">
+                                <i class="fa fa-search" style="background-color: inherit;color: black;"></i>
+                            </span>
+
+                        </div>
+
+                    </div>
+                    <br />
+
+                    <div class="table-responsive">
+
+                        <table class="table table-bordered tbl-report tbl-report--inventory-onhand border-th" cellspacing="0" cellpadding="0" style="width:2000px;">
+                            <thead>
+                                <tr role="row" style="background: #2dc3e8 !important;color:white">
+                                    <th><span class="text">STT</span></th>
+                                    <th><span class="text">Đơn hàng</span></th>
+                                    <th><span class="text">Ngày tạo</span></th>
+                                    <th><span class="text">Người tạo</span></th>
+                                    <th><span class="text">Mã khách hàng</span></th>
+                                    <th><span class="text">Khách hàng</span></th>
+                                    <th><span class="text" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Tổng số lượng hàng hóa trong đơn">Số lượng</span></th>
+                                    <th><span class="text" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Đơn giá hàng hóa * số lượng">Tiền hàng</span></th>
+                                    <th><span class="text" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Tổng thuế của đơn hàng">Thuế</span></th>
+                                    <th><span class="text" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Tổng chiết khấu của đơn hàng = chiết khấu line item + chiết khấu tổng đơn hàng">Chiết khấu</span></th>
+                                    <th><span class="text" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Tổng phí giao hàng khách hàng phải trả cho cửa hàng trong đơn hàng">Phí giao hàng</span></th>
+                                    <th><span class="text" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Tổng tiền khách phải trả trong mỗi đơn hàng">Doanh số</span></th>
+                                    <!--<th><span class="text">Ghi chú</span></th>-->
+                                    <!--<th><span class="text">Kênh</span></th>
+                                    <th><span class="text">Chi nhánh</span></th>-->
+                                    <!--<th><span class="text">Nhân viên<br> gán cho đơn</span></th>-->
+                                    <!--<th><span class="text">Ngày duyệt đơn</span></th>-->
+                                    <th><span class="text">Trạng thái đơn</span></th>
+                                    <th><span class="text">Trạng thái đóng gói</span></th>
+                                    <th><span class="text">Trạng thái xuất kho</span></th>
+                                    <th><span class="text">Trạng thái thanh toán</span></th>
+                                    <th><span class="text">Trạng thái trả hàng</span></th>
+                                    <!--<th><span class="text">Trạng thái <br>giao hàng</span></th>
+                                    <th><span class="text">Áp dụng <br>thuế</span></th>-->
+                                </tr>
+                                <tr role="row" style="background: #2dc3e8 !important;color:white">
+                                    <th>Tổng</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th style="text-align:center">{{SoLuong|currency:"":0}}</th>
+                                    <th style="text-align:right">{{TienHang|currency:"":0}} đ</th>
+                                    <th style="text-align:right">{{TienThue|currency:"":0}} đ</th>
+                                    <th style="text-align:right">{{TienChietKhau|currency:"":0}} đ</th>
+                                    <th style="text-align:right">{{PhiGiaoHang|currency:"":0}} đ</th>
+                                    <th style="text-align:right">{{DoanhSo|currency:"":0}} đ</th>
+                                    <th style="text-align:right"></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+
+                                    <!--<th></th>-->
+                                    <!--<th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>-->
+                                    <!--<th></th>
+                                    <th></th>
+                                    <th></th>-->
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr dir-paginate="i in listReport|filter:searchText| itemsPerPage:5">
+                                    <td>{{i.stt}}</td>
+                                    <td style="cursor:pointer;text-align:left; color:#337ab7;" ui-sref="saleOrder_Detail({id:i.VoucherID})">
+                                        <span class="icon-angle"></span>{{i.VoucherNo}}
+                                    </td>
+                                    <td>{{i.VoucherDate|date:'dd/MM/yyyy'}}</td>
+                                    <td style="text-align:left">{{i.CreatedBy}}</td>
+                                    <td style="text-align:left">{{i.ObjectCode}}</td>
+                                    <td style="text-align:left">{{i.ObjectName}}</td>
+                                    <td style="text-align:center">{{i.Quantity|currency:"":0}}</td>
+                                    <td style="text-align:right">{{i.TotalAmount|currency:"":0}} đ</td>
+                                    <td style="text-align:right">{{i.TotalVATAmount|currency:"":0}} đ</td>
+                                    <td style="text-align:right">{{i.DiscountAmount|currency:"":0}} đ</td>
+                                    <td style="text-align:right">{{i.ShippingAmount|currency:"":0}} đ</td>
+                                    <td style="text-align:right">{{i.Revenue|currency:"":0}} đ</td>
+                                    <!--<td style="text-align:left"><span class="count" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="">---</span></td>-->
+                                    <!--<td style="text-align:left">Pos</td>
+                                    <td style="text-align:left">Chi nhánh mặc định</td>-->
+                                    <!--<td style="text-align:left"></td>-->
+                                    <!--<td></td>-->
+                                    <td style="text-align:left">{{i.InvoiceStatus}}</td>
+                                    <td style="text-align:left">{{i.PackStatus}}</td>
+                                    <td style="text-align:left">{{i.ImportStatus}}</td>
+                                    <td style="text-align:left">{{i.PaymentStatus}}</td>
+                                    <td style="text-align:left">{{i.ReturnStatus}}</td>
+                                    <!--<td style="text-align:left"></td>
+                                    <td style="text-align:left">Giá đã bao gồm thuế</td>-->
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+                <div style="margin-top:3px ">
+                    <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" class="ng-isolate-scope">
+                        <ul class="pagination ng-scope" ng-if="1 < pages.length">
+                            <li ng-if="boundaryLinks" ng-class="{ disabled : pagination.current == 1 }" class="ng-scope disabled">
+                                <a href="" ng-click="setCurrent(1)">«</a>
+                            </li>
+                            <li ng-if="directionLinks" ng-class="{ disabled : pagination.current == 1 }" class="ng-scope disabled">
+                                <a href="" ng-click="setCurrent(pagination.current - 1)">‹</a>
+                            </li>
+                            <li ng-repeat="pageNumber in pages track by $index" ng-class="{ active : pagination.current == pageNumber, disabled : pageNumber == '...' }" class="ng-scope active">
+                                <a href="" ng-click="setCurrent(pageNumber)" class="ng-binding">1</a>
+                            </li>
+                            <li ng-repeat="pageNumber in pages track by $index" ng-class="{ active : pagination.current == pageNumber, disabled : pageNumber == '...' }" class="ng-scope">
+                                <a href="" ng-click="setCurrent(pageNumber)" class="ng-binding">2</a>
+                            </li>
+                            <li ng-if="directionLinks" ng-class="{ disabled : pagination.current == pagination.last }" class="ng-scope">
+                                <a href="" ng-click="setCurrent(pagination.current + 1)">›</a>
+                            </li>
+                            <li ng-if="boundaryLinks" ng-class="{ disabled : pagination.current == pagination.last }" class="ng-scope">
+                                <a href="" ng-click="setCurrent(pagination.last)">»</a>
+                            </li>
+                        </ul>
+                    </dir-pagination-controls>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+

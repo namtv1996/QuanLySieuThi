@@ -1,0 +1,221 @@
+﻿<!-- uiView: -->
+<link href="../../../Assets/admin/css/style2.css" rel="stylesheet" />
+
+<script type="text/javascript">
+    function myFunction() {
+        var x = document.getElementById("myTextarea").value;
+        document.getElementById("demo").innerHTML = x;
+    }
+</script>
+<div>
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+            </li>
+            <li>
+                <a ui-sref="pageSetting" href="javascript:void(0)">Cài đặt</a>
+            </li>
+
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Header -->
+    <div class="page-header position-relative mail-header">
+        <div class="header-title">
+            <h1>
+                Cài đặt
+            </h1>
+        </div>
+        <!--Header Buttons-->
+        <div class="header-buttons">
+            <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+                <i class="fa fa-arrows-h"></i>
+            </a>
+            <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+                <i class="glyphicon glyphicon-refresh"></i>
+            </a>
+            <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+                <i class="glyphicon glyphicon-fullscreen"></i>
+            </a>
+        </div>
+        <!--Header Buttons End-->
+    </div>
+    <!-- /Page Header -->
+    <!-- Page Body -->
+    <div class="page-body no-padding">
+        <div class="mail-container">
+            <div class="mail-header">
+                
+
+                <div class="draft">
+                    Cài đặt chung cho cửa hàng
+                </div>
+            </div>
+            <div class="mail-body">
+                <div>
+                    <div class="page-body ng-scope">
+                        <!-- Your Content Goes Here -->
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6" style="width:100%">
+
+
+                                <div class="widget-body">
+                                    <div class="form-group">
+                                            <div class="form-group">
+                                                <span class="input-icon inverted" style="width:35%;">
+                                                    <input type="text" style="height:32px;padding-left:40px" class="form-control input-sm ng-pristine ng-untouched ng-valid ng-empty" id="txtSearch" ng-model="filterExpression" class="form-control" placeholder="Nhập từ khóa...">
+                                                    <i class="glyphicon glyphicon-search bg-blue"></i>
+                                                </span>
+                                                <a class="btn btn-default purple" ui-sref="add_application_user" style="float: right; color: #0d55a1 !important" href="#!/items_add"><i class="fa fa-plus"></i> Thêm mới </a>
+                                            </div>
+                                            <div class="table-responsive">
+                                                <div class="col-md-12">
+                                                    <div class="box">
+                                                        <div class="box-body">
+                                                            <table class="table table-bordered">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Tên người dùng</th>
+                                                                        <th>Tài khoản</th>
+                                                                        <th>Email</th>
+                                                                        <th style="width:10%"></th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr ng-repeat="item in data | filter:filterExpression">
+                                                                        <td><a ui-sref="edit_application_user({id:item.Id})">{{item.FullName}}</a></td>
+                                                                        <td><a ui-sref="edit_application_user({id:item.Id})">{{item.UserName}}</a></td>
+                                                                        <td>{{item.Email}}</td>
+                                                                        <td>
+                                                                            <a ui-sref="edit_application_user({id:item.Id})" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+                                                                            <button class="btn btn-sm btn-danger" ng-click="deleteItem(item.Id)"><i class="fa fa-trash-o"></i></button>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <div ng-if="loading">
+                                                                <div class="col-xs-4"></div>
+                                                                <div class="col-xs-4">
+                                                                    <i class="fa fa-refresh fa-4x fa-spin"></i> <label class="label label-primary">Đang tải...</label>
+                                                                </div>
+                                                                <div class="col-xs-4"></div>
+                                                            </div>
+                                                        </div><!-- /.box-body -->
+                                                        <div class="box-footer clearfix">
+                                                            <custom-pager page="{{page}}" custom-path="{{customPath}}" pages-count="{{pagesCount}}" total-count="{{totalCount}}" search-func="search(page)"></custom-pager>
+                                                        </div>
+                                                    </div><!-- /.box -->
+                                                </div><!-- /.col -->
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="mail-sidebar">
+                <ul class="mail-menu">
+                    <li>
+                        <a ui-sref="pageSetting">
+                            <i class="fa fa-inbox"></i>
+                            Thông tin cửa hàng
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)" ui-sref="configurationStore">
+                            <i class="fa fa-gear"></i>
+                            Cấu hình cửa hàng
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" ui-sref="employee">
+                            <i class="fa fa-users"></i>
+                            Nhân viên
+                        </a>
+                    </li>
+
+                    <li>
+                        <a ui-sref="application_groups">
+                            <i class="fa fa-street-view"></i>
+                            Nhóm người dùng
+                        </a>
+                    </li>
+                    <li>
+                        <a ui-sref="application_users">
+                            <i class="fa fa-fax"></i>
+                            Danh sách người dùng
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)" ui-sref="printedForm">
+                            <i class="fa fa-print"></i>
+                            Mẫu in
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-calculator"></i>
+                            Thanh toán
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-truck"></i>
+                            Giao hàng
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-leanpub"></i>
+                            Nhật ký hệ thống
+                        </a>
+                    </li>
+
+                </ul>
+                <ul class="mail-menu">
+                    <li class="menu-title">
+                        <h6></h6>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                           
+
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)">
+                          
+
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)">
+                         
+
+                        </a>
+                    </li>
+                    <li class="divider">
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                          
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Body -->
+</div>

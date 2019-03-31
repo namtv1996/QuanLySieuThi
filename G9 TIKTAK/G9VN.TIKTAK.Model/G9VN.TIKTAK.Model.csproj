@@ -1,0 +1,524 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1EDC527A-269B-4BF5-B596-A75373680344}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>G9VN.TIKTAK.Model</RootNamespace>
+    <AssemblyName>G9VN.TIKTAK.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>G9VN.TIKTAK.Model.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>G9VN.TIKTAK.Model.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Extensions\ExtensisonUser.cs" />
+    <Compile Include="Migrations\201710240345186_test.cs" />
+    <Compile Include="Migrations\201710240345186_test.Designer.cs">
+      <DependentUpon>201710240345186_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710240433177_identity.cs" />
+    <Compile Include="Migrations\201710240433177_identity.Designer.cs">
+      <DependentUpon>201710240433177_identity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710250443140_addEmployeeInOrder.cs" />
+    <Compile Include="Migrations\201710250443140_addEmployeeInOrder.Designer.cs">
+      <DependentUpon>201710250443140_addEmployeeInOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711010238561_editApplicationUser.cs" />
+    <Compile Include="Migrations\201711010238561_editApplicationUser.Designer.cs">
+      <DependentUpon>201711010238561_editApplicationUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711040304427_addOriginalVoucherNo.cs" />
+    <Compile Include="Migrations\201711040304427_addOriginalVoucherNo.Designer.cs">
+      <DependentUpon>201711040304427_addOriginalVoucherNo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711080220388_xoaIdenttity.cs" />
+    <Compile Include="Migrations\201711080220388_xoaIdenttity.Designer.cs">
+      <DependentUpon>201711080220388_xoaIdenttity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711080247263_sale.cs" />
+    <Compile Include="Migrations\201711080247263_sale.Designer.cs">
+      <DependentUpon>201711080247263_sale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711140205571_edit_SaleInvoice.cs" />
+    <Compile Include="Migrations\201711140205571_edit_SaleInvoice.Designer.cs">
+      <DependentUpon>201711140205571_edit_SaleInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711140702252_createDB.cs" />
+    <Compile Include="Migrations\201711140702252_createDB.Designer.cs">
+      <DependentUpon>201711140702252_createDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711250139211_eidt_itemOption.cs" />
+    <Compile Include="Migrations\201711250139211_eidt_itemOption.Designer.cs">
+      <DependentUpon>201711250139211_eidt_itemOption.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711250459554_edit_itemOption1.cs" />
+    <Compile Include="Migrations\201711250459554_edit_itemOption1.Designer.cs">
+      <DependentUpon>201711250459554_edit_itemOption1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711290934227_addTable_attribute_attributeDetail.cs" />
+    <Compile Include="Migrations\201711290934227_addTable_attribute_attributeDetail.Designer.cs">
+      <DependentUpon>201711290934227_addTable_attribute_attributeDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711290942082_update_attribute.cs" />
+    <Compile Include="Migrations\201711290942082_update_attribute.Designer.cs">
+      <DependentUpon>201711290942082_update_attribute.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712010257583_editmodelPurchaseInvoice.cs" />
+    <Compile Include="Migrations\201712010257583_editmodelPurchaseInvoice.Designer.cs">
+      <DependentUpon>201712010257583_editmodelPurchaseInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712050349382_editFromItem.cs" />
+    <Compile Include="Migrations\201712050349382_editFromItem.Designer.cs">
+      <DependentUpon>201712050349382_editFromItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712150346548_edit_stock.cs" />
+    <Compile Include="Migrations\201712150346548_edit_stock.Designer.cs">
+      <DependentUpon>201712150346548_edit_stock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712150754421_Edit_stock2.cs" />
+    <Compile Include="Migrations\201712150754421_Edit_stock2.Designer.cs">
+      <DependentUpon>201712150754421_Edit_stock2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712151352452_fixloi.cs" />
+    <Compile Include="Migrations\201712151352452_fixloi.Designer.cs">
+      <DependentUpon>201712151352452_fixloi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712151412094_ObjectEdit.cs" />
+    <Compile Include="Migrations\201712151412094_ObjectEdit.Designer.cs">
+      <DependentUpon>201712151412094_ObjectEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712210457547_updatePurchaseInvoiceDetail-voucherIDnotnull.cs" />
+    <Compile Include="Migrations\201712210457547_updatePurchaseInvoiceDetail-voucherIDnotnull.Designer.cs">
+      <DependentUpon>201712210457547_updatePurchaseInvoiceDetail-voucherIDnotnull.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712210853429_editVouchertype.cs" />
+    <Compile Include="Migrations\201712210853429_editVouchertype.Designer.cs">
+      <DependentUpon>201712210853429_editVouchertype.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712210947375_addColumnBranchID.cs" />
+    <Compile Include="Migrations\201712210947375_addColumnBranchID.Designer.cs">
+      <DependentUpon>201712210947375_addColumnBranchID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712260458179_addRelationshipsItemOptionVSStock.cs" />
+    <Compile Include="Migrations\201712260458179_addRelationshipsItemOptionVSStock.Designer.cs">
+      <DependentUpon>201712260458179_addRelationshipsItemOptionVSStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801100233331_updateAdvancedSettingObject.cs" />
+    <Compile Include="Migrations\201801100233331_updateAdvancedSettingObject.Designer.cs">
+      <DependentUpon>201801100233331_updateAdvancedSettingObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801100351566_editPrintForm.cs" />
+    <Compile Include="Migrations\201801100351566_editPrintForm.Designer.cs">
+      <DependentUpon>201801100351566_editPrintForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802020328517_editstocktransferdetail.cs" />
+    <Compile Include="Migrations\201802020328517_editstocktransferdetail.Designer.cs">
+      <DependentUpon>201802020328517_editstocktransferdetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802020332169_editstocktransferdetailnull.cs" />
+    <Compile Include="Migrations\201802020332169_editstocktransferdetailnull.Designer.cs">
+      <DependentUpon>201802020332169_editstocktransferdetailnull.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802050624152_statusInStockTransfer.cs" />
+    <Compile Include="Migrations\201802050624152_statusInStockTransfer.Designer.cs">
+      <DependentUpon>201802050624152_statusInStockTransfer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802060420485_editPuchaseinvoice.cs" />
+    <Compile Include="Migrations\201802060420485_editPuchaseinvoice.Designer.cs">
+      <DependentUpon>201802060420485_editPuchaseinvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802070347034_edit_datatype_PurchaseInvoiceDetail.cs" />
+    <Compile Include="Migrations\201802070347034_edit_datatype_PurchaseInvoiceDetail.Designer.cs">
+      <DependentUpon>201802070347034_edit_datatype_PurchaseInvoiceDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802070822456_editstocktransferbranhid.cs" />
+    <Compile Include="Migrations\201802070822456_editstocktransferbranhid.Designer.cs">
+      <DependentUpon>201802070822456_editstocktransferbranhid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802090931259_rename_in_VoucherCheckDetail.cs" />
+    <Compile Include="Migrations\201802090931259_rename_in_VoucherCheckDetail.Designer.cs">
+      <DependentUpon>201802090931259_rename_in_VoucherCheckDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802090940006_setForeginkey_VoucherCheckDetail.cs" />
+    <Compile Include="Migrations\201802090940006_setForeginkey_VoucherCheckDetail.Designer.cs">
+      <DependentUpon>201802090940006_setForeginkey_VoucherCheckDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802260717171_editDataBaseStockTransfer.cs" />
+    <Compile Include="Migrations\201802260717171_editDataBaseStockTransfer.Designer.cs">
+      <DependentUpon>201802260717171_editDataBaseStockTransfer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803030135165_addComBoDetail.cs" />
+    <Compile Include="Migrations\201803030135165_addComBoDetail.Designer.cs">
+      <DependentUpon>201803030135165_addComBoDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803190905161_addSalesPromotion.cs" />
+    <Compile Include="Migrations\201803190905161_addSalesPromotion.Designer.cs">
+      <DependentUpon>201803190905161_addSalesPromotion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803210656556_editFromSalesPromotionAndDetail.cs" />
+    <Compile Include="Migrations\201803210656556_editFromSalesPromotionAndDetail.Designer.cs">
+      <DependentUpon>201803210656556_editFromSalesPromotionAndDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803260201290_add_Description_SaleInvoice_PurchaseInvoice.cs" />
+    <Compile Include="Migrations\201803260201290_add_Description_SaleInvoice_PurchaseInvoice.Designer.cs">
+      <DependentUpon>201803260201290_add_Description_SaleInvoice_PurchaseInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803300124426_edit_SalesPromotion_Detail.cs" />
+    <Compile Include="Migrations\201803300124426_edit_SalesPromotion_Detail.Designer.cs">
+      <DependentUpon>201803300124426_edit_SalesPromotion_Detail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803300454450_edit_SalesPromotion_Detail2.cs" />
+    <Compile Include="Migrations\201803300454450_edit_SalesPromotion_Detail2.Designer.cs">
+      <DependentUpon>201803300454450_edit_SalesPromotion_Detail2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803300708272_edit_SalesPromotion_Detail3.cs" />
+    <Compile Include="Migrations\201803300708272_edit_SalesPromotion_Detail3.Designer.cs">
+      <DependentUpon>201803300708272_edit_SalesPromotion_Detail3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804040240593_PrintForm_edit.cs" />
+    <Compile Include="Migrations\201804040240593_PrintForm_edit.Designer.cs">
+      <DependentUpon>201804040240593_PrintForm_edit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804040752051_add_QuantityItem_SalesPromotionDetai.cs" />
+    <Compile Include="Migrations\201804040752051_add_QuantityItem_SalesPromotionDetai.Designer.cs">
+      <DependentUpon>201804040752051_add_QuantityItem_SalesPromotionDetai.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804050224103_editpromotionlimitpromotion.cs" />
+    <Compile Include="Migrations\201804050224103_editpromotionlimitpromotion.Designer.cs">
+      <DependentUpon>201804050224103_editpromotionlimitpromotion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804050320592_addpromotiontype_salespromotiondetail.cs" />
+    <Compile Include="Migrations\201804050320592_addpromotiontype_salespromotiondetail.Designer.cs">
+      <DependentUpon>201804050320592_addpromotiontype_salespromotiondetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804050327373_editpromotiontype_salespromotiondetail.cs" />
+    <Compile Include="Migrations\201804050327373_editpromotiontype_salespromotiondetail.Designer.cs">
+      <DependentUpon>201804050327373_editpromotiontype_salespromotiondetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804090302321_edit_SaleInvoice1.cs" />
+    <Compile Include="Migrations\201804090302321_edit_SaleInvoice1.Designer.cs">
+      <DependentUpon>201804090302321_edit_SaleInvoice1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804090706271_promotionID_in_salesInvoice.cs" />
+    <Compile Include="Migrations\201804090706271_promotionID_in_salesInvoice.Designer.cs">
+      <DependentUpon>201804090706271_promotionID_in_salesInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804090953217_promotionID_in_salesInvoice1.cs" />
+    <Compile Include="Migrations\201804090953217_promotionID_in_salesInvoice1.Designer.cs">
+      <DependentUpon>201804090953217_promotionID_in_salesInvoice1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805030255011_addDebtInSaleInvoice.cs" />
+    <Compile Include="Migrations\201805030255011_addDebtInSaleInvoice.Designer.cs">
+      <DependentUpon>201805030255011_addDebtInSaleInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805101050130_addTablePartner.cs" />
+    <Compile Include="Migrations\201805101050130_addTablePartner.Designer.cs">
+      <DependentUpon>201805101050130_addTablePartner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805180230230_addColumn_DiscountReason_inPurchaseInvoice_SaleInvoice.cs" />
+    <Compile Include="Migrations\201805180230230_addColumn_DiscountReason_inPurchaseInvoice_SaleInvoice.Designer.cs">
+      <DependentUpon>201805180230230_addColumn_DiscountReason_inPurchaseInvoice_SaleInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Attribute.cs" />
+    <Compile Include="Models\AttributeDetail.cs" />
+    <Compile Include="Models\Bank.cs" />
+    <Compile Include="Models\BankTransfer.cs" />
+    <Compile Include="Models\BankTransferDetail.cs" />
+    <Compile Include="Models\Branch.cs" />
+    <Compile Include="Models\ComboDetail.cs" />
+    <Compile Include="Models\Error.cs" />
+    <Compile Include="Models\InvoiceType.cs" />
+    <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\ItemCategory.cs" />
+    <Compile Include="Models\ItemOption.cs" />
+    <Compile Include="Models\Object1.cs" />
+    <Compile Include="Models\ObjectCategory.cs" />
+    <Compile Include="Models\ObjectKind.cs" />
+    <Compile Include="Models\Partner.cs" />
+    <Compile Include="Models\PaymentSchedule.cs" />
+    <Compile Include="Models\PricePolicy.cs" />
+    <Compile Include="Models\PrintForm.cs" />
+    <Compile Include="Models\PublicInvoiceType.cs" />
+    <Compile Include="Models\PublicInvoiceTypeDetail.cs" />
+    <Compile Include="Models\PurchaseInvoice.cs" />
+    <Compile Include="Models\PurchaseInvoiceDetail.cs" />
+    <Compile Include="Models\Region.cs" />
+    <Compile Include="Models\SaleInvoice.cs" />
+    <Compile Include="Models\SaleInvoiceDetail.cs" />
+    <Compile Include="Models\SalesPromotion.cs" />
+    <Compile Include="Models\SalesPromotionDetail.cs" />
+    <Compile Include="Models\Stock.cs" />
+    <Compile Include="Models\StockTransfer.cs" />
+    <Compile Include="Models\StockTransferDetail.cs" />
+    <Compile Include="Models\StoreInfo.cs" />
+    <Compile Include="Models\SYSAuditingLog.cs" />
+    <Compile Include="Models\TIKTAKDbContext.cs" />
+    <Compile Include="Models\Transporter.cs" />
+    <Compile Include="Models\Unit.cs" />
+    <Compile Include="Models\VoucherCheck.cs" />
+    <Compile Include="Models\VoucherCheckDetail.cs" />
+    <Compile Include="Models\VoucherType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\G9VN.TIKTAK.Common\G9VN.TIKTAK.Common.csproj">
+      <Project>{492c16b3-2595-4990-a821-f6ba4789fbda}</Project>
+      <Name>G9VN.TIKTAK.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\G9VN.TIKTAK.SYSTEM\G9VN.TIKTAK.SYSTEM.csproj">
+      <Project>{217dc787-2984-4c8a-8b01-e2b25ea8c8f4}</Project>
+      <Name>G9VN.TIKTAK.SYSTEM</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201710240345186_test.resx">
+      <DependentUpon>201710240345186_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710240433177_identity.resx">
+      <DependentUpon>201710240433177_identity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710250443140_addEmployeeInOrder.resx">
+      <DependentUpon>201710250443140_addEmployeeInOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711010238561_editApplicationUser.resx">
+      <DependentUpon>201711010238561_editApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711040304427_addOriginalVoucherNo.resx">
+      <DependentUpon>201711040304427_addOriginalVoucherNo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711080220388_xoaIdenttity.resx">
+      <DependentUpon>201711080220388_xoaIdenttity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711080247263_sale.resx">
+      <DependentUpon>201711080247263_sale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711140205571_edit_SaleInvoice.resx">
+      <DependentUpon>201711140205571_edit_SaleInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711140702252_createDB.resx">
+      <DependentUpon>201711140702252_createDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711250139211_eidt_itemOption.resx">
+      <DependentUpon>201711250139211_eidt_itemOption.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711250459554_edit_itemOption1.resx">
+      <DependentUpon>201711250459554_edit_itemOption1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711290934227_addTable_attribute_attributeDetail.resx">
+      <DependentUpon>201711290934227_addTable_attribute_attributeDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711290942082_update_attribute.resx">
+      <DependentUpon>201711290942082_update_attribute.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712010257583_editmodelPurchaseInvoice.resx">
+      <DependentUpon>201712010257583_editmodelPurchaseInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712050349382_editFromItem.resx">
+      <DependentUpon>201712050349382_editFromItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712150346548_edit_stock.resx">
+      <DependentUpon>201712150346548_edit_stock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712150754421_Edit_stock2.resx">
+      <DependentUpon>201712150754421_Edit_stock2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712151352452_fixloi.resx">
+      <DependentUpon>201712151352452_fixloi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712151412094_ObjectEdit.resx">
+      <DependentUpon>201712151412094_ObjectEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712210457547_updatePurchaseInvoiceDetail-voucherIDnotnull.resx">
+      <DependentUpon>201712210457547_updatePurchaseInvoiceDetail-voucherIDnotnull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712210853429_editVouchertype.resx">
+      <DependentUpon>201712210853429_editVouchertype.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712210947375_addColumnBranchID.resx">
+      <DependentUpon>201712210947375_addColumnBranchID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712260458179_addRelationshipsItemOptionVSStock.resx">
+      <DependentUpon>201712260458179_addRelationshipsItemOptionVSStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801100233331_updateAdvancedSettingObject.resx">
+      <DependentUpon>201801100233331_updateAdvancedSettingObject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801100351566_editPrintForm.resx">
+      <DependentUpon>201801100351566_editPrintForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802020328517_editstocktransferdetail.resx">
+      <DependentUpon>201802020328517_editstocktransferdetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802020332169_editstocktransferdetailnull.resx">
+      <DependentUpon>201802020332169_editstocktransferdetailnull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802050624152_statusInStockTransfer.resx">
+      <DependentUpon>201802050624152_statusInStockTransfer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802060420485_editPuchaseinvoice.resx">
+      <DependentUpon>201802060420485_editPuchaseinvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802070347034_edit_datatype_PurchaseInvoiceDetail.resx">
+      <DependentUpon>201802070347034_edit_datatype_PurchaseInvoiceDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802070822456_editstocktransferbranhid.resx">
+      <DependentUpon>201802070822456_editstocktransferbranhid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802090931259_rename_in_VoucherCheckDetail.resx">
+      <DependentUpon>201802090931259_rename_in_VoucherCheckDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802090940006_setForeginkey_VoucherCheckDetail.resx">
+      <DependentUpon>201802090940006_setForeginkey_VoucherCheckDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802260717171_editDataBaseStockTransfer.resx">
+      <DependentUpon>201802260717171_editDataBaseStockTransfer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803030135165_addComBoDetail.resx">
+      <DependentUpon>201803030135165_addComBoDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803190905161_addSalesPromotion.resx">
+      <DependentUpon>201803190905161_addSalesPromotion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803210656556_editFromSalesPromotionAndDetail.resx">
+      <DependentUpon>201803210656556_editFromSalesPromotionAndDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803260201290_add_Description_SaleInvoice_PurchaseInvoice.resx">
+      <DependentUpon>201803260201290_add_Description_SaleInvoice_PurchaseInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803300124426_edit_SalesPromotion_Detail.resx">
+      <DependentUpon>201803300124426_edit_SalesPromotion_Detail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803300454450_edit_SalesPromotion_Detail2.resx">
+      <DependentUpon>201803300454450_edit_SalesPromotion_Detail2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803300708272_edit_SalesPromotion_Detail3.resx">
+      <DependentUpon>201803300708272_edit_SalesPromotion_Detail3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804040240593_PrintForm_edit.resx">
+      <DependentUpon>201804040240593_PrintForm_edit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804040752051_add_QuantityItem_SalesPromotionDetai.resx">
+      <DependentUpon>201804040752051_add_QuantityItem_SalesPromotionDetai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804050224103_editpromotionlimitpromotion.resx">
+      <DependentUpon>201804050224103_editpromotionlimitpromotion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804050320592_addpromotiontype_salespromotiondetail.resx">
+      <DependentUpon>201804050320592_addpromotiontype_salespromotiondetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804050327373_editpromotiontype_salespromotiondetail.resx">
+      <DependentUpon>201804050327373_editpromotiontype_salespromotiondetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804090302321_edit_SaleInvoice1.resx">
+      <DependentUpon>201804090302321_edit_SaleInvoice1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804090706271_promotionID_in_salesInvoice.resx">
+      <DependentUpon>201804090706271_promotionID_in_salesInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804090953217_promotionID_in_salesInvoice1.resx">
+      <DependentUpon>201804090953217_promotionID_in_salesInvoice1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805030255011_addDebtInSaleInvoice.resx">
+      <DependentUpon>201805030255011_addDebtInSaleInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805101050130_addTablePartner.resx">
+      <DependentUpon>201805101050130_addTablePartner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805180230230_addColumn_DiscountReason_inPurchaseInvoice_SaleInvoice.resx">
+      <DependentUpon>201805180230230_addColumn_DiscountReason_inPurchaseInvoice_SaleInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

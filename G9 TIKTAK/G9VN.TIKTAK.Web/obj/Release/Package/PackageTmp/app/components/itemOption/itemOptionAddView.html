@@ -1,0 +1,353 @@
+﻿<!-- Page Breadcrumb -->
+<style>
+    #q:hover {
+        background-color: #2dc3e8;
+    }
+</style>
+<script>
+    $("input[type='text']").click(function () {
+        $(this).select();
+    });
+ 
+</script>
+<script type="text/javascript">
+    var loadFile = function (event) {
+        var output = document.getElementById('showimg');
+        output.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script>
+<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+           <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" ui-sref="items">Hàng hóa</a>
+        </li>
+        <li>
+            <a ui-sref="itemOption" href="javascript:void(0)" >Quy cách hàng hóa</a>
+        </li>
+        
+    </ul>
+</div>
+<!-- /Page Breadcrumb -->
+<!-- Page Header --> 
+<div class="page-header position-relative">
+    <div class="header-title">
+        <h1>
+            Thêm quy cách hàng hóa
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons" id="element">
+       <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<!-- /Page Header -->
+<!-- Page Body -->
+<form class="form-horizontal" role="form" novalidate name="frmAddItemOption">
+
+    <div class="page-body">
+
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 col-xs-12">
+                <div class="row">
+                    <div class="col-lg-6 col-sm-6 col-xs-12" style="width:100%">
+                        <div class="widget">
+
+                            <div class="widget-body well bordered-top bordered-blueberry">
+                                <div id="horizontal-form" style="background:#ffffff;margin-top:10px">
+
+                                    <div class="row">
+                                        <div class="col-md-8" style="margin-left: 30px;">
+                                            <div class="form-group" style="margin-left:0px">
+                                                <label class="col-sm-2 control-label no-padding-right" style="width: 15.7%;">Tên Tùy chọn</label>
+                                                <div class="col-sm-10" style="width: 82.2%;">
+                                                    <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" style="width:100%" name="Name" data-ng-model="itemOption.Name">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label no-padding-right">Mã SKU</label>
+                                                    <div class="col-sm-10">
+                                                        <span class="input-icon icon-right">                                                          
+                                                            <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" 
+                                                                   style="width:100%;padding-left:10px;" name="SKU" data-ng-model="itemOption.SKU" ng-change="check()">
+                                                            <i class="fa fa-close" style="background-color: inherit;color: red;display:{{displayError}}"></i>
+                                                            <i class="fa fa-check" style="background-color: inherit;color: #7e3794;display:{{displaySuccess}}"></i>
+                                                        </span>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label no-padding-right">ĐV chuyển đổi</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" style="width:100%" name="UnitName" data-ng-model="itemOption.UnitName" ng-keyup="ChangeUnitconvert()">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+
+                                                    <label class="col-sm-2" style="margin-top:9px;">Khối lượng</label>
+                                                    <div class="col-sm-10" style="display: flex;">
+                                                        <input type="text" class="number form-control" style="width: 100%; text-align: right;" name="Weigh" ng-model="kl">
+                                                        <select ng-model="dv">
+                                                            <option value="kg">
+                                                                kg
+                                                            </option>
+                                                            <option value="g">
+                                                                g
+                                                            </option>
+                                                            <option value="l">
+                                                                l
+                                                            </option>
+                                                            <option value="ml">
+                                                                ml
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label no-padding-right">Giá bán buôn</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="number form-control ng-pristine ng-untouched ng-valid ng-not-empty" style="width: 100%; text-align: right" name="WholesalePrice" data-ng-model="itemOption.WholesalePrice">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group" style="pointer-events:{{readOnly}}">
+                                                    <label class="col-sm-2 control-label no-padding-right">Tồn kho tối thiểu</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="number form-control ng-pristine ng-untouched ng-valid ng-not-empty" style="width: 100%; text-align: right; background-color: rgb(251, 251, 251);" name="UnitConvertRate" data-ng-model="itemOption.MinimumInventory">
+                                                    </div>
+                                                </div>
+                                              
+                                                <div class="form-group row">
+                                                    <label class="col-sm-2 control-label no-padding-right" style="margin-top:9px;">Tồn kho ban đầu</label>
+                                                    <div class="col-sm-10">
+                                                        <div style="position:relative;width:100%;float:left;margin-right:10px" data-original-title="" title="">
+                                                            <select id="paymentmethodids" bind="paymentmethodids" class="form-control" datatype="dropdown" name="PaymentMethodIds" style="width: 100%; font-size: 12px; height: 32px; display: none;" styledropdown="width: 100%" value="121212"></select>
+                                                            <input class="form-control input-dropdown" select-type="name" data-toggle="dropdown" name="ClosingQuantity" ng-model="itemOption.ClosingQuantity" readonly="" style="cursor: text;width:100%;font-size:12px;" title="Tất cả">
+                                                            <ul class="dropdown-menu" select-value="0" data-type="dropdown" style="width: 100%;padding-top: 15px;">
+                                                                <li ng-repeat="item in branch" style="height:32px;padding-left:5px;padding-right:5px;">
+                                                                    <span style="padding-left:0px;padding-right:0px;" class="col-md-8">CN.  {{item.BranchName}}</span>
+                                                                    <input style="float:right;padding-left: 5px;padding-right:2px;" class="col-md-4" type="number" name="ClosingQuantity" ng-model="item.ClosingQuantity" ng-change="calculateClosingQuantity()" />
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label no-padding-right">Mã vạch</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" style="width:100%" name="Barcode" data-ng-model="itemOption.Barcode">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label no-padding-right">Tỷ lệ chuyển đổi</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="number form-control ng-pristine ng-untouched ng-valid ng-not-empty" style="width: 100%; text-align: right" name="UnitConvertRate" data-ng-model="itemOption.UnitConvertRate">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label no-padding-right">Giá nhập</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="number form-control ng-pristine ng-untouched ng-valid ng-not-empty" style="width: 100%; text-align: right" name="PurchasePrice" data-ng-model="itemOption.PurchasePrice">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label no-padding-right">Giá bán lẻ</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="number form-control ng-pristine ng-untouched ng-valid ng-not-empty" style="width: 100%; text-align: right" name="SalePrice" data-ng-model="itemOption.SalePrice">
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div class="form-group" style="pointer-events:{{readOnly}}">
+                                                    <label class="col-sm-2 control-label no-padding-right">Tồn kho tối đa</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="number form-control ng-pristine ng-untouched ng-valid ng-not-empty" style="width: 100%; text-align: right; background-color: rgb(251, 251, 251);" name="UnitConvertRate" data-ng-model="itemOption.MaximumInventory">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label no-padding-right"></label>
+                                                    <div class="col-sm-10">
+                                                        <label>
+                                                            <input type="checkbox" data-ng-model="itemOption.NotificationInventory" ng-click="notificationInventory()" class="ng-valid ng-dirty ng-valid-parse ng-touched ng-not-empty">
+                                                            <span style="padding-top: 6px;" class="text">Thông báo vượt định mức</span>
+                                                        </label>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>  
+                                        <div class="col-md-4" style="width: 30%;margin-top:10px">
+                                            <!--để ảnh trong này-->
+                                            <div>
+                                                <div class="col-md-6" style="width:100%">
+                                                    <img src="{{itemOption.Image1}}" style="width: 199px; height: 200px; border-radius: 22px; " id="showimg" />
+                                                </div>
+                                               
+                                            </div>
+                                            <span class="file-input btn btn-azure btn-file" style="margin-left: -215px;margin-top: 225px;border-radius:5px;">
+                                                Browse <input type="file" onchange="loadFile(event)" class="form-control" name="file" data-ak-file-model="itemOption.File" style="width:80%;border-right:none">
+                                            </span>
+                                             
+                                           
+
+                                        </div>
+                                        <div class="col-md-8" style="margin-left: 30px;padding-left: 30px;padding-right: 30px;">
+                                            <div class="panel-group accordion" id="accordions" style="border: 1px solid #2dc3e8;">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">
+                                                        <h4 class="panel-title">
+                                                            <a style="background-color: #ffffff;color: #2dc3e8;font-weight: 600;" class="accordion-toggle" data-toggle="collapse" data-parent="#accordions" data-target="#collapseOnes" aria-expanded="true">
+                                                                Thêm các thuộc tính (màu sắc, kích thước,...)
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapseOnes" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+                                                        <div class="panel-body border-red" style="background-color: white;border-left: 0px;">
+                                                            <table class="table table-hover" style="border:0px;">
+                                                                <thead class="bordered-darkorange">
+                                                                    <tr>
+                                                                        <th style="width:30%;">
+                                                                            Thuộc tính
+                                                                        </th>
+                                                                        <th style="width:30%;">
+                                                                            Giá trị
+                                                                        </th>
+                                                                        <th>
+
+                                                                        </th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr ng-repeat="item in listAttribute">
+                                                                        <td>
+                                                                            <input style="width:100%" type="text" class="form-control ng-pristine ng-valid ng-empty ng-touched" ng-model="item.name" ng-keyup="searchAttribute(item.name)" ng-focus="focusInput(item)" ng-blur="focusOutInput(item)">
+                                                                            <div id="selectAttribute" style="overflow:auto;overflow-x:hidden;max-height:184px; background: white;position: absolute;z-index: 12;width: 23.4%;display:{{item.display}};border: 1px solid #2dc3e8;border-top: none;">
+                                                                                <a ng-click="addNewAttribute(item.name)" style="text-decoration: none;cursor:pointer;">
+                                                                                    <span id="q" style="{{dp1}};background-color: wheat !important;"><i class="fa fa-plus-square"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.name}}</span>
+                                                                                </a>
+                                                                                <div id="q" class="force" ng-click="" ng-repeat="item1 in listAttributeView" style="cursor:pointer;">
+                                                                                    <a ng-click="chooseAttribute(item1,item)" style=" text-decoration: none;">
+                                                                                        <ul style="height: 29px;padding: 3px 39px 0px;margin-bottom: 0px;">
+                                                                                            <li style="list-style:none">
+                                                                                                <div>
+                                                                                                    <span>{{item1.Name}}</span>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                        </ul>
+                                                                                    </a>
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input style="width:100%" type="text" class="form-control ng-pristine ng-valid ng-empty ng-touched" ng-model="item.value">
+                                                                        </td>
+                                                                        <td ng-click="" style="cursor: pointer;">
+                                                                            <div class="fa-hover col-md-3 col-sm-4"><i ng-click="deleteAttribute(item.index)" class="fa fa-trash"></i></div>
+                                                                        </td>
+
+                                                                    </tr>
+
+                                                                </tbody>
+                                                            </table>
+                                                            <a ng-click="addAttribute()" class="btn btn-default purple" style="color: #0d55a1 !important;margin-left: 8px; "><i class="fa fa-plus"></i> Thêm thuộc tính </a>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div>
+                                        <div style="padding-top: 25px;border-top: 1px dashed #a6a6a6; text-align: center; display: block;background-color: #ffffff;" id="no-prd" data-original-title="" title="">
+                                            <div class="row">
+                                                <div class="col-sm-6" style="width: 68.8%;">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label no-padding-right" style="margin-left: 45px;width: 15%;">Mô tả</label>
+                                                        <div class="col-sm-10" style="width: 78%;">
+                                                            <textarea class="form-control" id="textareaanimated" placeholder="Mô tả" name="Description" data-ng-model="itemOption.Description" style="width: 100%;height: 148px;"></textarea>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-6 col-xs-12" style="width:100%;margin-top: -20px;">
+                        <div class="widget">
+
+                            <div class="widget-body" style="border-left: 3px solid #2dc3e8;">
+                                <div id="horizontal-form">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input class="checkbox-slider toggle colored-blue ng-pristine ng-untouched ng-valid ng-not-empty" type="checkbox" name="Status" data-ng-model="itemOption.Status">
+                                                    <span class="text">&nbsp;&nbsp;Đang sử dụng</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <a onclick="goBack()" class="btn btn-default purple" style="padding: 3px 10px 1px; height: 32px;margin-left:10px;float: right; color: #0d55a1 !important"><i class="typcn typcn-cancel"></i> Hủy </a>
+                                            <button ng-click="AddItemOption(itemOption)" class="btn btn-default purple" style="float:right;color: #0d55a1 !important;margin-left: 10px;"><i class="glyphicon glyphicon-floppy-saved"></i>Lưu</button>
+                                            <button ng-click="AddItemOption2(itemOption)" class="btn btn-default purple" style="float:right;color: #0d55a1 !important;margin-left: 10px;"><i class="glyphicon glyphicon-floppy-saved"></i>Lưu/Thêm</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+    $("input[type='text']").click(function () {
+        $(this).select();
+    });
+    $('input.number').keyup(function (event) {
+
+        // skip for arrow keys
+        if (event.which >= 37 && event.which <= 40) return;
+
+        // format number
+        $(this).val(function (index, value) {
+            return value
+            .replace(/\D/g, "")
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            ;
+        });
+
+    });
+</script>

@@ -1,0 +1,165 @@
+﻿<div class="page-breadcrumbs ng-scope">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+           <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" ui-sref="reportSales">Báo cáo</a>
+        </li>
+        <li class="active">Báo cáo bán hàng</li>
+    </ul>
+</div>
+<div class="page-header position-relative ng-scope">
+    <div class="header-title">
+        <h1>
+            Báo cáo bán hàng theo khách hàng
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+        <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<div class="page-body ng-scope">
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+
+
+            <div class="widget-body">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label> Chi nhánh</label>
+                            <select class="form-control ng-pristine ng-valid ng-empty ng-touched ng-untouched" id="inputEmail1" ng-model="branchid" style="width: 100%;">
+                                <option ng-repeat="branch in list_branch" value="{{branch.BranchID}}">{{branch.BranchName}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label> Từ ngày : </label>
+                            <input type="date" class="form-control ng-pristine ng-valid ng-empty ng-touched ng-untouched" id="inputEmail2" ng-model="start_date" style="width: 100%;">
+
+                        </div>
+                        <div class="col-md-3">
+                            <label> Đến ngày : </label>
+                            <input type="date" class="form-control ng-pristine ng-valid ng-empty ng-touched ng-untouched" id="inputEmail3" ng-model="end_date" style="width: 100%;">
+                        </div>
+                        <div class="col-md-3">
+                            <label></label>
+                            <a class="btn btn-success" style="width:100%" ng-click="ViewReport()">Xem báo cáo</a>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row" style="width:100%;margin-left:0px">
+                        <div class="table-responsive">
+                            <table class="table table-bordered tbl-report tbl-report--inventory-onhand border-th" cellspacing="0" cellpadding="0" style="width:100%">
+                                <thead>
+                                    <tr role="row" style="background: #2dc3e8 !important;color:white">
+                                        <th><span class="text">STT</span></th>
+                                        <th><span class="text">Mã khách hàng</span></th>
+                                        <th><span class="text">Khách hàng</span></th>
+                                        <th><span class="text">Tiền hàng</span></th>
+                                        <th><span class="text">Tiền thuế</span></th>
+                                        <th><span class="text">Tiền chiết khấu</span></th>
+                                        <!--<th><span class="text">Phí giao hàng</span></th>-->
+                                        <th><span class="text">Doanh thu</span></th>
+                                        <th><span class="text">Đã thu</span></th>
+                                        <!--<th><span class="text">Chuyển khoản</span></th>
+                                        <th><span class="text">COD</span></th>
+                                        <th><span class="text">Quẹt thẻ</span></th>-->
+                                    </tr>
+                                    <tr role="row">
+                                        <th>Tổng</th>
+                                        <th></th>
+                                        <th></th>
+                                        <th style="text-align: right">{{TienHang|currency:"":0}} ₫</th>
+                                        <th style="text-align: right">{{TienThue|currency:"":0}} ₫</th>
+                                        <th style="text-align: right">{{TienChietKhau|currency:"":0}} ₫</th>
+                                        <!--<th style="text-align: right">0 ₫</th>-->
+                                        <th style="text-align: right">{{DoanhThu|currency:"":0}} ₫</th>
+                                        <th style="text-align: right">
+                                            {{TienMat|currency:"":0}} ₫
+                                        </th>
+                                        <!--<th style="text-align: right">
+                                            0₫
+                                        </th>
+                                        <th style="text-align: right">
+                                            0₫
+                                        </th>
+                                        <th style="text-align: right">
+                                            0₫
+                                        </th>-->
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                           
+                                    <tr dir-paginate="i in listReport| itemsPerPage:10">
+                                        <td>{{i.stt}}</td>
+                                        <td style="text-align: left" class="link" onclick="linkcustomer(1564368)">{{i.ObjectCode}}</td>
+                                        <td style="text-align: left">{{i.ObjectName}}</td>
+                                        <td style="text-align: right">{{i.totalAmount|currency:"":0}}</td>
+                                        <td style="text-align: right">{{i.totalVATAmount|currency:"":0}}</td>
+                                        <td style="text-align: right">{{i.discountAmount|currency:"":0}}</td>
+                                        <!--<td style="text-align: right">0</td>-->
+                                        <td style="text-align: right">{{i.doanhthu|currency:"":0}}</td>
+                                        <td style="text-align: right">
+                                            {{i.totalPayingCustomer|currency:"":0}}
+                                        </td>
+                                        <!--<td style="text-align: right">
+                                            0
+                                        </td>
+                                        <td style="text-align: right">
+                                            0
+                                        </td>
+                                        <td style="text-align: right">
+                                            0
+                                        </td>-->
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top:3px ">
+                    <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" class="ng-isolate-scope">
+                        <ul class="pagination ng-scope" ng-if="1 < pages.length">
+                            <li ng-if="boundaryLinks" ng-class="{ disabled : pagination.current == 1 }" class="ng-scope disabled">
+                                <a href="" ng-click="setCurrent(1)">«</a>
+                            </li>
+                            <li ng-if="directionLinks" ng-class="{ disabled : pagination.current == 1 }" class="ng-scope disabled">
+                                <a href="" ng-click="setCurrent(pagination.current - 1)">‹</a>
+                            </li>
+                            <li ng-repeat="pageNumber in pages track by $index" ng-class="{ active : pagination.current == pageNumber, disabled : pageNumber == '...' }" class="ng-scope active">
+                                <a href="" ng-click="setCurrent(pageNumber)" class="ng-binding">1</a>
+                            </li>
+                            <li ng-repeat="pageNumber in pages track by $index" ng-class="{ active : pagination.current == pageNumber, disabled : pageNumber == '...' }" class="ng-scope">
+                                <a href="" ng-click="setCurrent(pageNumber)" class="ng-binding">2</a>
+                            </li>
+                            <li ng-if="directionLinks" ng-class="{ disabled : pagination.current == pagination.last }" class="ng-scope">
+                                <a href="" ng-click="setCurrent(pagination.current + 1)">›</a>
+                            </li>
+                            <li ng-if="boundaryLinks" ng-class="{ disabled : pagination.current == pagination.last }" class="ng-scope">
+                                <a href="" ng-click="setCurrent(pagination.last)">»</a>
+                            </li>
+                        </ul>
+                    </dir-pagination-controls>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+

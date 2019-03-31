@@ -1,0 +1,124 @@
+﻿  <!--thao tác trên đơn hàng-->
+<div class="row" style="margin-bottom: -14px;">
+    <div class="col-lg-12 col-sm-12 col-xs-12" style="margin-left:4px;padding-right: 20px;">
+        <div class="panel-group accordion" id="accordions" style="border:none;margin-bottom: 0px;">
+            <!--ĐÓNG GÓI VÀ XUẤT KHO-->
+            <div class="panel panel-default">
+                <div class="panel-heading" style="background-color: #ffffff;">
+                    <h4 class="row-title before-blue" style="width: 100%;border: none;margin: 4px 0px;padding:0px !important">
+                        <a style="border:none" class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordions" data-target="#collapseOnes123" aria-expanded="false">
+                            <h5 style="color: black;margin: 0px;"><i class="{{display.icon1}}" style="color: #1cb467;"></i><strong>   Đóng gói và xuất kho</strong></h5>
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseOnes123" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+                    <div class="panel-body border-red" style="overflow: auto;max-height: 200px;border-top: none">
+                        <div class="col-xs-12 col-sm-12 col-md-12" style="display:{{display.dis2}}">
+
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-md-4 no-padding-right">Phương thức</label>
+                                <div class="col-sm-8 col-md-8">
+                                    <select {{method_of_receipt}} style="width:100%">
+                                        <option value="1">Nhận tại của hàng</option>
+                                        <option value="2">Giao hàng</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-md-4 no-padding-right">{{display.title}}</label>
+                                <div class="col-sm-8 col-md-8" style="display:{{display.dis7}}">
+                                    <a class="btn btn-success" ng-click="Revise('dong_goi')" style="margin-right: 5px; "> <i class="fa fa-forward" style="display:initial !important;" aria-hidden="true" data-original-title="" title=""></i>Toàn bộ</a>
+                                    <a class="btn" ng-click="Revise('dong_goi')">Một phần</a>
+                                </div>
+                                <div class="col-sm-8 col-md-8" style="display:{{display.dis8}}">
+                                    <a class="btn btn-success" ng-click="Revise('xuat_kho')" style="margin-right: 5px; "> <i class="fa fa-forward" style="display:initial !important;" aria-hidden="true" data-original-title="" title=""></i>Toàn bộ</a>
+                                    <a class="btn" ng-click="Revise('xuat_kho')">Một phần</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--THANH TOÁN-->
+            <div class="panel panel-default">
+                <div class="panel-heading" style="background-color: #ffffff;">
+                    <h4 class="row-title before-blue" style="width: 100%;border: none;margin: 4px 0px;padding:0px;">
+                        <a style="border:none" class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordions" aria-expanded="false" data-target="#collapseTwos">
+                            <h5 style="color: black;margin: 0px;"><i class="{{display.icon2}}" style="color: #1cb467;"></i><strong>  Thanh toán</strong></h5>
+
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseTwos" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+                    <div class="panel-body border-red" style="overflow: auto;max-height: 200px;border-top: none">
+                        <div class="col-xs-12 col-sm-12 col-md-12" style="display:{{display.dis3}}">
+                            <div class="{{style}}" style="border-right: 1px solid #dcdee2;">
+                                <p style="border-left: 1px solid #dcdee2;margin: 0;padding: 5px 6px 10px 15px;">
+                                    Khách hàng phải trả: <span class="right" bind="lostPaymentInOrder()" style="float: right;">{{Infopay.customerpay|currency:"":0}} đ</span>
+                                </p>
+                                <p style="border-left: 1px solid #dcdee2;margin: 0;padding: 17px 6px 6px 15px">
+                                    Tiền đã thu: <span class="right" bind="totalAmountPaymentStr()" style="float: right;">{{Infopay.customerpaid|currency:"":0}}  đ</span>
+                                </p>
+                                <div ng-repeat="receipt in list_receipt|orderBy:'VoucherNo':false" class="order-menu-screen__right-scoll_payment-content-paymentitem order-menu-screen__right-paddingcommon w100 fl" style="border-top: 1px solid #dcdee2;border-left: 1px solid #ddd; padding-top: 5px; padding-bottom: 5px; ">
+                                    <div class="popover-on-click item-menu-right" style="width: 100%;width: 24px;height: 24px;line-height: 18px;margin-right: 4px;transform: translateY(0);border: 3px solid #fff;margin-left: -13px;border-radius: 100%;background: #c0c9d0;padding-left: 5px;float: left;">
+                                        {{$index+1}}
+                                    </div>
+                                    <div class="order-menu-screen__right-scoll_payment-content-paymentitem_code fl text-overflow-hiden " data-toggle="tooltip " data-placement="top " style="margin-top: 3px;">
+                                        <span class="lefft">{{receipt.method_of_payment}}</span><span style="float: right;margin-right: 6px; " bind="formatMoney(prepayments[0].amount,getCurrency()) ">{{receipt.TotalAmountOC|currency:"":0}}   đ</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4" style="display:{{display.dis10}};">
+                                <div class="form-group row ">
+                                    <label class="col-sm-4 col-md-4 no-padding-right" style="margin-top: 7px;">Phương thức</label>
+                                    <div class="col-sm-8 col-md-8 ">
+                                        <select ng-model="method_of_payment" style="width:100% ">
+                                            <option value="tien-mat">Tiền mặt</option>
+                                            <option value="chuyen-khoan">Chuyển khoản</option>
+                                            <option value="cod">COD</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row ">
+                                    <label class="col-sm-4 col-md-4 no-padding-right " style="margin-top: 10px;">Tiền khách trả</label>
+                                    <div class="col-sm-8 col-md-8 ">
+                                        <input type="text" class="form-control ng-pristine ng-valid ng-empty ng-touched " style="width: 100%; " ng-model="Infopay.txt_customerpay" ng-change="customerpay_calculate()">
+
+                                    </div>
+                                </div><div class="form-group row ">
+                                    <label class="col-sm-4 col-md-4 no-padding-right "></label>
+                                    <div class="col-sm-8 col-md-8 ">
+                                        <a ng-click="Revise('thanh_toan')" class="btn btn-success " style="margin-top: 5px;"> Thanh toán</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--TRẢ HÀNG-->
+            <div class="panel panel-default">
+                <div class="panel-heading" style="background-color:#ffffff;">
+                    <h4 class="row-title before-blue" style="width: 100%;border:none;margin: 4px 0px;padding:0px;">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordions" data-target="#collapseThrees" aria-expanded="false" style="border:none">
+                            <h5 style="color: black;margin: 0px;"><i class="{{display.icon3}}" style="color: #1cb467;"></i><strong>   Trả hàng</strong></h5>
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseThrees" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+                    <div class="panel-body border-gold" style="overflow: auto;max-height: 200px;border-top: none">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+
+                            <div class="form-group row">
+                                <div class="col-sm-4 col-md-4 no-padding-right">
+                                    <a class="btn btn-warning" style="display:{{display.dis5}}" ui-sref="saleOrdersReturns({id:saleOrders.VoucherID})"> Trả hàng</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

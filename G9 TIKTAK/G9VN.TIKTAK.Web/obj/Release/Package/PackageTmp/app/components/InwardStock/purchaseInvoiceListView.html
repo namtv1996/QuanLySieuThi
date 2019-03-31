@@ -1,0 +1,150 @@
+﻿<!-- Page Breadcrumb -->
+<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+           <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" ui-sref="items">Hàng hóa</a>
+        </li>
+        <li class="active">Hóa đơn</li>
+    </ul>
+</div>
+<!-- /Page Breadcrumb -->
+<!-- Page Header -->
+<div class="page-header position-relative">
+    <div class="header-title">
+        <h1>
+            Hóa đơn nhập hàng
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+       <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<!-- /Page Header -->
+<!-- Page Body -->
+<div class="page-body">
+    <!-- Your Content Goes Here -->
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+
+
+            <div class="widget-body">
+                <div class="form-group">
+                    <span class="input-icon inverted" style="width:35%;">
+                        <input type="text" style="height:32px;padding-left:40px" class="form-control input-sm" placeholder="Tìm kiếm ">
+                        <i class="glyphicon glyphicon-search bg-blue"></i>
+                    </span>
+
+                    <!--<a class="btn btn-default purple" ui-sref="saleOrder_add" style="float: right; color: #0d55a1 !important; "><i class="fa fa-plus"></i> Thêm mới </a>
+                    <a class="btn btn-default purple" ui-sref="saleOrder_add" style="margin-right: 10px; float: right; color: #0d55a1 !important"><i class="fa fa-download"></i> Nhập file </a>
+                    <a class="btn btn-default purple" ui-sref="saleOrder_add" style="margin-right: 10px; float: right; color: #0d55a1 !important"><i class="fa fa-upload"></i> Xuất file </a>-->
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover" style="width:100%">
+                        <thead class="bordered-darkorange bg-themeprimary">
+                            <tr>
+                                <th>
+                                    Mã hóa đơn
+                                </th>
+                                <th>
+                                    Chứng từ gốc
+                                </th>
+                                <th>
+                                    Nhà cung cấp
+                                </th>
+                                <th>
+                                    Kho nhập
+                                </th>
+
+                                <th>
+                                    Thanh toán
+                                </th>
+                                <th>
+                                    Ngày hẹn giao
+                                </th>
+
+                                <th>
+                                    Tổng tiền
+                                </th>
+                                <th>
+
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr dir-paginate="inward in listInvoice| itemsPerPage:10">
+                                <td ui-sref="purchaseInvDetail({id:inward.VoucherID})" style="cursor:pointer; color:#337ab7;">
+                                    {{inward.INVoucherNo}}
+                                </td>
+                                <td ui-sref="inwardStockDetails({id:inward.InwardStockID})" style="cursor:pointer;">
+
+                                    {{inward.OriginalVoucherNo}}
+
+                                </td>
+                                <td>
+                                    {{inward.VendorName}}
+                                </td>
+                                <td>
+                                    {{inward.BranchName}}
+                                </td>
+                                <td>
+                                    <i class="{{inward.tt}}" style="margin-left:30px;"></i>
+                                </td>
+                                <td>
+                                    {{inward.DeliveryDate|date:'dd/MM/yyyy'}}
+                                </td>
+                                <td>
+                                    {{inward.TotalPaymentAmount|currency:"":0}} <span>đ</span>
+                                </td>
+                                <td>
+                                    <a ng-click="deleteInvoice(inward.VoucherID)" class="{{inward.btn}}" style=" width: 35px; height: 30px;"><i class="{{inward.icon}}"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div style="margin-top:3px ">
+                    <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" class="ng-isolate-scope">
+                        <ul class="pagination ng-scope" ng-if="1 < pages.length">
+                            <li ng-if="boundaryLinks" ng-class="{ disabled : pagination.current == 1 }" class="ng-scope disabled">
+                                <a href="" ng-click="setCurrent(1)">«</a>
+                            </li>
+                            <li ng-if="directionLinks" ng-class="{ disabled : pagination.current == 1 }" class="ng-scope disabled">
+                                <a href="" ng-click="setCurrent(pagination.current - 1)">‹</a>
+                            </li>
+                            <li ng-repeat="pageNumber in pages track by $index" ng-class="{ active : pagination.current == pageNumber, disabled : pageNumber == '...' }" class="ng-scope active">
+                                <a href="" ng-click="setCurrent(pageNumber)" class="ng-binding">1</a>
+                            </li>
+                            <li ng-repeat="pageNumber in pages track by $index" ng-class="{ active : pagination.current == pageNumber, disabled : pageNumber == '...' }" class="ng-scope">
+                                <a href="" ng-click="setCurrent(pageNumber)" class="ng-binding">2</a>
+                            </li>
+                            <li ng-if="directionLinks" ng-class="{ disabled : pagination.current == pagination.last }" class="ng-scope">
+                                <a href="" ng-click="setCurrent(pagination.current + 1)">›</a>
+                            </li>
+                            <li ng-if="boundaryLinks" ng-class="{ disabled : pagination.current == pagination.last }" class="ng-scope">
+                                <a href="" ng-click="setCurrent(pagination.last)">»</a>
+                            </li>
+                        </ul>
+                    </dir-pagination-controls>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- /Page Body -->

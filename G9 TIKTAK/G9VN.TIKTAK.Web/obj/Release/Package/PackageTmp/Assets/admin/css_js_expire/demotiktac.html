@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<!-- saved from url=(0024)http://localhost/tiktac/ -->
+<html lang="vi" class="js">
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <link rel="stylesheet" id="beetech-style-css" href="./demotiktac_files/stylece14.css" type="text/css" media="all">
+   <link rel="stylesheet" id="beetech-responsive-css" href="./demotiktac_files/responsiveae9e.css" type="text/css" media="all">
+   <link rel="stylesheet" id="manhtruong-style-css" href="./demotiktac_files/style.css" type="text/css" media="all">
+   <link rel="stylesheet" id="manhtruong-style-bootstrap" href="./demotiktac_files/bootstrap.css" type="text/css" media="all">
+   <link rel="stylesheet" id="manhtruong-style-font-awesome" href="./demotiktac_files/font-awesome.min.css" type="text/css" media="all">
+   <script src="./demotiktac_files/jquery-1.11.0.min.js.tải xuống" type="text/javascript"></script>
+   <link rel="stylesheet" type="text/css" href="./demotiktac_files/style-elegant-modal.css">
+   <link rel="stylesheet" href="./demotiktac_files/style(1).css">
+<body class="home page-template-default page page-id-9 no-sidebar" style="">
+<div id="page" class="site">
+   <div id="fb-root"></div>
+   <script>(function(d, s, id) {
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) return;
+       js = d.createElement(s); js.id = id;
+       js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.11';
+       fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));</script>
+   <div class="bt-whole-header">
+      <div id="masthead-sticky-wrapper" class="sticky-wrapper" style="height: 63px;">
+         <header id="masthead" class="site-header" role="banner" style="">
+            <div class="bt-wrapper">
+               <div class="bt-header-wrapper clearfix">
+                  <div class="site-branding">
+                     <div class="site-title-wrapper">
+                        <p class="site-title"><a href="http://localhost/tiktac" rel="home">Tiktac</a></p>
+                     </div>
+                     <!-- .site-title-wrapper -->
+                  </div>
+                  <!-- .site-branding -->
+                  <nav id="site-navigation" class="main-navigation bt-nav bt-parallax-menu" role="navigation">
+                     <div class="nav-wrapper">
+                        <div id="toggle" class="nav-toggle">
+                           <span class="one"> </span>
+                           <span class="two"> </span>
+                           <span class="three"> </span>
+                        </div>
+                        <div class="nav-toggle" style="right: 65px;background: none;padding: 0;width: 50px !important;">
+                           <a href="http://dangky.tiktac.vn/Account/Register"><button class="btn-modal-dk1 htbt1" aria-haspopup="true"></button></a>
+                           <button class="btn-modal htbt1" aria-haspopup="true"></button>
+                        </div>
+                        <div class="menu-main-menu-container">
+                           <ul id="primary-parallax-menu" class="menu parallax-menu">
+                              <li id="menu-item-2204" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-9 current_page_item menu-item-2204 bt-menu-tab"><a href="http://tiktac.vn/">Trang chủ</a></li>
+                              <li id="menu-item-2203" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2203 bt-menu-tab"><a href="http://tiktac.vn/tinh-nang/">Tính năng</a></li>
+                              <li id="menu-item-2244" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2244 bt-menu-tab"><a href="http://tiktac.vn/bang-gia/">Bảng giá</a></li>
+                              <li id="menu-item-2217" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2217 bt-menu-tab"><a href="http://tiktac.vn/category/bi-quyet-kinh-doanh/">Tin tức</a></li>
+                              <li id="menu-item-2245" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2245 bt-menu-tab"><a href="http://tiktac.vn/lien-he/">Liên hệ</a></li>
+                           </ul>
+                        </div>
+                     </div>
+                     <!-- .nav-wrapper -->
+                     <a href="http://dangky.tiktac.vn/Account/Register"><button class="btn-modal-dk1 htbt2" aria-haspopup="true"></button></a>
+                     <button class="btn-modal htbt2" aria-haspopup="true"></button>
+                  </nav>
+                  <!-- Modal Box -->
+                  <div class="mask" role="dialog"></div>
+                  <div class="elegant-modal" role="alert">
+                     <div class="cont_login">
+                        <div class="cont_info_log_sign_up">
+                           <div class="col_md_login">
+                              <div class="cont_ba_opcitiy">
+                                 <!--h2>LOGIN</h2>
+                                    <!--p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p-->
+                                 <button class="btn_login" onclick="cambiar_login()">Nhập tên cửa hàng</button>
+                              </div>
+                           </div>
+                           <div class="col_md_sign_up">
+                              <div class="cont_ba_opcitiy">
+                                 <!--h2>SIGN UP</h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p-->
+                                 <button class="btn_sign_up" onclick="cambiar_sign_up()">Quên tên cửa hàng?</button>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="cont_back_info">
+                           <div class="cont_img_back_grey">
+                              <img src="./demotiktac_files/U7Fc1sy5SCUDIu4tlJY3_NY_by_PhilippHenzler_philmotion.de.jpg" alt="">
+                           </div>
+                        </div>
+                        <div class="cont_forms cont_forms_active_login">
+                           <div class="cont_img_back_">
+                              <img src="./demotiktac_files/U7Fc1sy5SCUDIu4tlJY3_NY_by_PhilippHenzler_philmotion.de.jpg" alt="">
+                           </div>
+                           <div class="cont_form_login" style="opacity: 1; display: block;">
+                              <!--a href="#" onclick="ocultar_login_sign_up()" ><i class="material-icons">&#xE5C4;</i></a-->
+                              <h2>Nhập tên cửa hàng</h2>
+                              <p style="margin-top: 20px;">Nhập tên cửa hàng của bạn</p>
+                              <div class="trangchu-nhaptench">
+                                 <input type="text" id="nhapcuahang" placeholder="Tên cửa hàng">
+                                 <span>.tiktac.vn</span>
+                              </div>
+                              <a href="http://localhost/tiktac/" id="gui123">
+                                 <button disabled="" class="btn_login" id="nhapcuahangdi" onclick="cambiar_login()">Vào cửa hàng</button>
+                              </a>
+                              <button class="btn_sign_up nutan" onclick="cambiar_sign_up()">Quên tên cửa hàng?</button>
+                              <script>
+                                  $( document ).ready(function() {
+
+                                  });
+                                  $( document ).ready(function() {
+                                      $('input').keyup(function(){
+
+                                          if(($('#nhapcuahang').val().length > 0) && $("#nhapcuahang").val($.trim($("#nhapcuahang").val())).val()!="" ){
+                                              $("#nhapcuahangdi").prop('disabled', false);
+                                              $("#nhapcuahang").on("keyup",function(e){
+                                                  if(e. keyCode === 13){
+                                                      var address = $('#gui123').attr('href');
+                                                      window.location = address;
+                                                  }
+
+                                                  $('#gui123').attr("href","http://"+$(this).val()+ ".tiktac.vn");
+                                              })
+                                          }
+
+                                          else{
+                                              $("#nhapcuahangdi").prop('disabled', true);
+                                          }
+                                      });
+                                      0  });
+                              </script>
+                           </div>
+                           <div class="cont_form_sign_up">
+                              <!--a href="#" onclick="ocultar_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a-->
+                              <h2>Quên tên cửa hàng?</h2>
+                              <p style="margin-top: 20px;">Nhập email của bạn</p>
+                              <div class="trangchu-nhaptench">
+                                 <input type="text" placeholder="Email" name="chatwith" id="chatwith">
+                              </div>
+                              <button class="btn_sign_up endthischat" name="endthischat" id="endthischat" onclick="setuserlogout()">Tìm cửa hàng</button>
+                              <div id="results"></div>
+                              <button class="btn_login nutan" onclick="cambiar_login()">Nhập tên cửa hàng</button>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!-- .bt-header-wrapper-->
+            </div>
+            <!-- .bt-wrapper -->
+         </header>
+      </div>
+      <!-- #masthead -->
+   </div>
+   <!-- .bt-whole-header -->
+   <div class="bt-wrapper">
+      <div class="col-md-12 content-noidung">
+         <div class="col-md-6 content-noidung-anh"><img src="images/img34.png" width="100%"></div>
+         <div class="col-md-6">
+            <div class="noidung-thongbao">
+               <div class="noidung-thongbao-tieude"><h1>Xin lỗi, cửa hàng của bạn đã hết hạn sử dụng</h1></div>
+               <div class="noidung-thongbao-tieude">Vui lòng đăng ký hoặc liên hệ với Tiktac để gia hạn dịch vụ</div>
+               <div class="col-md-12 form-dangky-giahan">
+                  <form class="form-horizontal">
+                     <div class="form-group">
+                        <label class="control-label col-xs-3">Cửa hàng</label>
+                        <div class="col-xs-9">
+                           <input type="text" class="form-control" placeholder="Cửa hàng">
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <label class="control-label col-xs-3">Tên khách hàng</label>
+                        <div class="col-xs-9">
+                           <input type="text" class="form-control" placeholder="Tên khách hàng">
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <label class="control-label col-xs-3">Số điện thoại</label>
+                        <div class="col-xs-9">
+                           <input type="text" class="form-control" placeholder="Số điện thoại">
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <div class="col-xs-12">
+                           <button type="submit" class="btn btn-primary">GỬI</button>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="footer-tren">
+      <div class="bt-wrapper">
+         <div class="col-md-12">
+            <div class="col-md-8">
+                  <div class="col-md-12">
+                     <div class="col-md-4 khoibao-footer">
+                        <h2>Tiktac</h2>
+                        <div class="khoi-footer1">
+                           <a href="#">Khách hàng</a>
+                           <a href="#">Báo giá</a>
+                           <a href="#">Tính năng</a>
+                           <a href="#">Hướng dẫn sử dụng</a>
+                        </div>
+                     </div>
+                     <div class="col-md-4 khoibao-footer">
+                        <h2>Trợ giúp</h2>
+                        <div class="khoi-footer1">
+                           <a href="#">Hướng dẫn thanh toán</a>
+                           <a href="#">Tài liệu tham khảo</a>
+                           <a href="#">Hướng dẫn đăng nhập</a>
+                           <a href="#">Liên hệ</a>
+                        </div>
+                     </div>
+                     <div class="col-md-4 khoibao-footer">
+                        <h2>Tin tức</h2>
+                        <div class="khoi-footer1">
+                           <a href="#">Bí quyết kinh doanh</a>
+                           <a href="#">Bài học thành công</a>
+                           <a href="#">Cung hoàng đạo</a>
+                           <a href="#">Tin tức tiktac</a>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-md-12">
+                     <div id="shortcode-widget-41" class="widget shortcode_widget">
+                        <h2 class="widgettitle">Trụ sở</h2>
+                        <div class="textwidget"><div class="truso">
+                           <div class="truso-nd">
+                              <div class="truso-nd1">
+                                 <i class="fa fa-map-marker" aria-hidden="true"></i>
+                              </div>
+                              <div class="truso-nd2">
+                                 Tầng 6 tòa nhà NXB Tài Nguyên - Môi Trường &amp; Bản Đồ Việt Nam <br>
+                                 Số 14 - Đường Pháo Đài Láng - Q.Đống Đa - Hà Nội
+                              </div>
+                           </div>
+                           <div class="truso-nd">
+                              <div class="truso-nd1">
+                                 <i class="fa fa-phone" aria-hidden="true"></i>
+                              </div>
+                              <div class="truso-nd2">
+                                 024 6262 1177
+                              </div>
+                           </div>
+                        </div>
+                        </div>
+                     </div>
+                  </div>
+            </div>
+            <div class="col-md-4 khoi-footer-facebook">
+               <h2>Kết nối với chúng tôi qua facebook</h2>
+               <div class="khoi-footer-khungbaofacebook">
+                  <div class="fb-page"
+                       data-href="https://www.facebook.com/tiktac.vn/"
+                       data-width="500"
+                       data-hide-cover="false"
+                       data-show-facepile="true"></div>
+               </div>
+            </div>
+         </div>
+
+      </div>
+   </div>
+   <div class="footer-duoi">
+      <div class="bt-wrapper">
+         <div class="col-md-12">
+            <p class="enigma_footer_copyright_info wl_rtl">
+               Copyright © 2017 | Designed by <a style="margin-left: 5px;" target="_blank" rel="nofollow" href="http://g9vietnam.com.vn/"> G9 VIỆT NAM</a></p>
+
+         </div>
+      </div>
+   </div>
+</div>
+
+<script type="text/javascript" src="./demotiktac_files/parallax.min1159.js.tải xuống"></script>
+<script type="text/javascript" src="./demotiktac_files/custom-scriptsce14.js.tải xuống"></script>
+<script src="./demotiktac_files/script-elegant-modal.js.tải xuống"></script>
+</body>
+</html>

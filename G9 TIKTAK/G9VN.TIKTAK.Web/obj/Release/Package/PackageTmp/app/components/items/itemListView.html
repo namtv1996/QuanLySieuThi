@@ -1,0 +1,230 @@
+﻿<style type="text/css">
+   
+     .empty-success{
+    text-align: left;
+    margin: 0 auto;
+    width: 82%;
+    
+}
+
+     .nhappile{
+             border: 1px dashed #adafad;
+    width: 82%;
+    margin: 0 auto;
+    margin-top: 25px;
+     }
+</style>
+
+<!-- Page Breadcrumb -->
+<style>
+    @media (min-width: 600px) {
+        .autoSize {
+            width: 0px !important;
+        }
+
+        .autoSize1 {
+            width: 22% !important;
+        }
+    }
+</style>
+
+<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" ui-sref="items">Hàng hóa</a>
+        </li>
+        <li class="active">Danh sách sản phẩm</li>
+    </ul>
+</div>
+<!-- /Page Breadcrumb -->
+<!-- Page Header -->
+<div class="page-header position-relative">
+    <div class="header-title">
+        <h1>
+            Danh sách sản phẩm
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+        <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<!-- /Page Header -->
+<!-- Page Body -->
+<div class="page-body">
+    <!-- Your Content Goes Here -->
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+
+
+            <div class="widget-body">
+                <div class="form-group">
+                    <span class="input-icon inverted" style="width:35%;">
+                        <input type="text" style="height:32px;padding-left:40px" class="form-control input-sm" placeholder="Tìm kiếm hàng hóa" ng-model="searchText">
+                        <i class="glyphicon glyphicon-search bg-blue"></i>
+                    </span>
+
+                    <a class="btn btn-default purple" ui-sref="items_add" style="float: right; color: #0d55a1 !important"><i class="fa fa-plus"></i> Thêm mới </a>
+                    <a class="btn btn-default purple" data-toggle="modal" data-target="#myModal" style="margin-right: 10px; float: right; color: #0d55a1 !important"><i class="fa fa-download"></i> Nhập file </a>
+                    <!--<a class="btn btn-default purple" ui-sref="items_add" style="margin-right: 10px; float: right; color: #0d55a1 !important"><i class="fa fa-upload"></i> Xuất file </a>-->
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover" style="width:100%">
+                        <thead class="bordered-darkorange bg-themeprimary" style="cursor:pointer">
+                            <tr>
+                                <th class="autoSize" style="text-align: center; width: 20px;">
+                                    Ảnh
+                                </th>
+                                <th class="autoSize" ng-click="orderByTag('Name')" style="width: 25%;">
+                                    <span><i class={{clas}}></i></span>       Tên hàng
+                                </th>
+                                <th>
+                                    Loại hàng hóa
+                                </th>
+
+                                <th style="text-align:center;padding-right: 30px;" ng-click="orderByTag('tt')">
+                                    Trạng thái
+                                </th>
+                                <th style="text-align:center" ng-click="orderByTag('CreateBy')">
+                                    Tạo bởi
+                                </th>
+                                <th style="text-align:center" ng-click="orderByTag('CreateDate')">
+                                    Ngày tạo
+                                </th>
+                                <th style="text-align: right;padding-right: 18px;">
+                                    Tùy chọn
+                                </th>
+                                <!--<th style="text-align:right" ng-click="orderByTag('Status')">Tùy chọn</th>-->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr dir-paginate="item in listItems | filter:searchText|orderBy:columnName:reverse| itemsPerPage:10">
+                                <th ui-sref="items_view({id:item.ItemID})" style="width: 10%;">
+                                    <img alt="anh item" class="anhs" style="height: 65px;width: 65px;border: 1px solid rgba(33, 32, 32, 0.38);border-radius: 9px;margin: 0px 10px 0px;" src="{{item.Image}}" />
+                                </th>
+                                <td ui-sref="items_view({id:item.ItemID})">
+                                    <a href="javascript:void(0)" style="color:black">
+                                        {{item.Name}}
+                                    </a>
+                                </td>
+                                <td ui-sref="items_view({id:item.ItemID})">
+                                    {{item.Category}}
+                                </td>
+                                <td class="autoSize1" style="text-align: left;padding-left: 15px;width: 16%;" ui-sref="items_view({id:item.ItemID})">
+                                    <p><i class="{{item.cs}}" data-original-title="" title=""></i>{{item.tt}}</p>
+                                    <p style="color:#777">{{item.Quantity}} Tùy chọn hàng hóa</p>
+                                </td>
+                                <td style="text-align:center" ui-sref="items_view({id:item.ItemID})">
+                                    {{item.CreateBy}}
+                                </td>
+
+                                <td style="text-align:center" ui-sref="items_view({id:item.ItemID})">
+                                    {{item.CreateDate | date:'dd/MM/yyyy'}}
+                                </td>
+                                <td>
+                                    <button ng-click="deleteItems(item.ItemID)" class="btn btn-default" style="float: right; width: 35px; height: 30px;margin-left:5px"><i class="fa fa-trash-o"></i></button>
+                                    <button ui-sref="items_edit({id:item.ItemID})" class="btn btn-default" style="float:inherit; width: 35px; height: 30px; float: right; margin-left: 5px"><i class="fa fa-pencil-square"></i></button>
+                                </td>
+
+                                <!--<td >
+                                    <div style="float:right" class="col-xs-4">
+                                        <label>
+                                            <input ng-click="stopDeal(item.ItemID,item.Status)" class="checkbox-slider toggle colored-blue" type="checkbox" ng-model="item.Status">
+                                            <span class="text"></span>
+                                        </label>
+                                    </div>
+                                </td>-->
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div>
+                    <dir-pagination-controls max-size="5"
+                                             direction-links="true"
+                                             boundary-links="true">
+
+                    </dir-pagination-controls>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- /Page Body -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content" style="width: 700px !important;left: 10% !important;width: 406px;left: 22%;">
+
+
+            <div class="upload modal-body" style="padding: 0px !important;">
+                <div class="upload-files">
+                    <header>
+                        <button type="button" class="close" style="padding:10px" data-dismiss="modal">×</button>
+
+                        <p>
+                            <i class="fa fa-cloud-upload" style="font-size: 40px;" aria-hidden="true"></i>
+                            <span class="up">Nhập file </span>
+                            <span class="load"> hàng hóa</span>
+                        </p>
+
+                    </header>
+                    <div class="body" id="drop">
+                        <div class="empty-success">
+                            <div>
+                                Chú ý:
+                            </div>
+                            <div id="empty-success__text">
+                                - Mã sản phẩm phải là duy nhất đối với các sản phẩm độc lập và các phiên bản sản phẩm.
+                            </div>
+                            <div id="empty-success__text">
+                                - Chuyển đổi file nhập dưới dạng .XLS trước khi tải dữ liệu.
+                            </div>
+                            <div id="empty-success__text">
+                                -  Tải file mẫu sản phẩm <a href="/Content/file/Mau-nhap-file-hanghoa.xlsx" style="color:#0088ff">tại đây</a>
+                            </div>
+                            <div id="empty-success__text">
+                                - File nhập có dung lượng tối đa là 3MB và 5000 bản ghi.
+                            </div>
+                        </div>
+                        <div class="nhappile">
+                            <i style="margin:10px;font-size: 35px;" class="fa fa-file-text-o pointer-none" aria-hidden="true"><span style="font-size: 18px;margin-left: 25px;color: #897e94;">Kéo thả vào để tải lên</span></i>
+                        </div>
+                        <p class="pointer-none">Hoặc  bạn có thể <a href="" id="triggerFile">Click tải lên</a> để nhập file</p>
+                        <input type="file" name="file" onchange="angular.element(this).scope().loadFile(this.files)" multiple="multiple" />
+                    </div>
+                    <footer>
+                        <div class="divider">
+                            <span style="font-size:20px"><AR>FILES</AR></span>
+                        </div>
+                        <div class="list-files">
+                            <!--   template   -->
+                        </div>
+                        <button class="importar" data-dismiss="modal" ng-click="handleFile()">XÁC NHẬN TẢI LÊN</button>
+
+                    </footer>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+        </div>
+    </div>
+
+</div>

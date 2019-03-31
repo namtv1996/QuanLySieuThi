@@ -1,0 +1,224 @@
+﻿<!-- Page Breadcrumb -->
+
+<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+           <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" ui-sref="customer">Khách hàng</a>
+        </li>
+        <li>
+            Nhóm khách hàng
+        </li>
+    </ul>
+</div>
+<!-- /Page Breadcrumb -->
+<!-- Page Header -->
+<div class="page-header position-relative">
+    <div class="header-title">
+        <h1>
+            Chi tiết nhóm khách hàng
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+       <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<!-- /Page Header -->
+<!-- Page Body -->
+<div class="page-body">
+    <form class="form-horizontal" role="form" novalidate name="frmAddVendors" ng-submit="UpdateCustomerCategory()">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 col-xs-12">
+                <div class="row">
+                    <div class="col-lg-6 col-sm-6 col-xs-12" style="width:100%">
+                        <div class="widget">
+                            <div class="widget-header bordered-top bordered-palegreen">
+                                <span style="font-weight: bold !important;" class="widget-caption">Thông tin chung</span>
+                            </div>
+                            <div class="widget-body">
+                                <div id="horizontal-form">
+                                    <style>
+                                        .requi::after {
+                                            content: "*";
+                                            color: #f00;
+                                            margin: 0 .2em;
+                                        }
+
+                                        .textbox {
+                                            width: 100%;
+                                        }
+                                    </style>
+                                    <div class="row" style="width:100%;">
+                                        <div class="col-md-6" style="padding-left:4.5%;">
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label no-padding-right requi">Tên nhóm</label>
+                                                <div class="col-sm-10">
+                                                    <input class="form-control textbox" name="ObjectName" ng-model="customerCategory.Name" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label no-padding-right">Ngày tạo</label>
+                                                <div class="col-sm-10">
+                                                    <input class="form-control textbox" type="date" disabled name="CreateDate" ng-model="customerCategory.CreateDate">
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-md-6" style="padding-left:6%;">
+
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label no-padding-right">Mô tả</label>
+                                                <div class="col-sm-10" style="width: 80%;margin-left: -60px;">
+                                                    <textarea type="text" class="form-control textbox" rows="4" name="Description" ng-model="customerCategory.Description"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 col-xs-12">
+                <div class="row" style="margin-top:-30px">
+                    <div class="col-lg-6 col-sm-6 col-xs-12" style="width:100%">
+                        <div class="widget">
+                            <div class="widget-header bordered-top bordered-palegreen">
+                                <span style="font-weight: bold !important;" class="widget-caption">Cài đặt nâng cao</span>
+                            </div>
+                            <div class="widget-body">
+                                <style>
+                                    .advanced {
+                                        padding-left: 35px;
+                                    }
+                                </style>
+                                <div class="row" style="margin-top:10px;margin-left: 20px;">
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Giá mặc định</label>
+                                            <div class="col-sm-10 advanced">
+                                                <select style="width:100%" id="e1" class="form-control" ng-model="customerCategory.PricePolicyDefault">
+
+                                                    <option ng-repeat="p in listPP" value="{{p.PricePolicyID}}">
+                                                        {{p.PricePolicyName}}
+                                                    </option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top:20px">
+                                            <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Thuế mặc định</label>
+                                            <div class="col-sm-10 advanced" style="display:flex">
+                                                <input type="number" class="number form-control" style="width: 100%; text-align: right;" ng-model="customerCategory.TaxRateDefault" min="0" max="100">
+                                                <input type="text" style="width: 13%; text-align: center;font-size:18px;" value="%" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top:20px">
+                                            <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Chiết khấu hàng hóa</label>
+                                            <div class="col-sm-10 advanced" style="display:flex">
+                                                <input type="number" class="number form-control" style="width: 100%; text-align: right;" ng-model="customerCategory.DiscountRateDefault" min="0" max="100">
+                                                <input type="text" style="width: 13%; text-align: center;font-size:18px;" value="%" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="colors">
+
+                                            <div class="row" style="margin-left:0px;">
+                                                <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Phương thức thanh toán</label>
+                                                <div class="col-sm-10 advanced">
+                                                    <select style="width:100%" id="e1" class="form-control" ng-model="customerCategory.PaymentMethodDefault">
+                                                        <option value="1">
+                                                            Tiền mặt
+                                                        </option>
+                                                        <option value="2">
+                                                            Chuyển khoản
+                                                        </option>
+                                                        <option value="3">
+                                                            COD
+                                                        </option>
+                                                    </select>
+                                                </div>
+
+
+                                            </div>
+                                            <div class="row" style="margin-left:0px;margin-top:20px">
+                                                <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Kì hạn thanh toán</label>
+                                                <div class="col-sm-10 advanced">
+                                                    <select style="width:100%" id="e1" class="form-control" ng-model="customerCategory.PaymentScheduleDefault">
+
+                                                        <option ng-repeat="p in listPaymentSchedule" value="{{p.PaymentScheduleID}}">
+                                                            {{p.PaymentScheduleName}}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 col-xs-12">
+                <div class="row" style="margin-top:-20px">
+                    <div class="col-lg-6 col-sm-6 col-xs-12" style="width:100%">
+                        <div class="widget">
+
+                            <div class="widget-body" style="border-left: 3px solid #2dc3e8;">
+                                <div id="horizontal-form">
+                                    <div class="row" style="margin-top:10px;margin-left: 20px;">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <div class="col-sm-offset-2 col-sm-10">
+                                                    <div class="checkbox" style="margin-left:-120px;">
+                                                        <label>
+                                                            <input class="checkbox-slider slider-icon colored-palegreen" name="Status" type="checkbox" ng-model="customerCategory.Status">
+
+                                                            <span class="text">  Kích hoạt</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4" style="padding-right: 36px;">
+                                            <a ui-sref="customerCategory" class="btn btn-default purple" style=" padding: 3px 10px 1px; height: 32px; margin-right: 10px; float: right; color: #0d55a1 !important" href="#!/items"><i class="typcn typcn-cancel"></i> Trở về </a>
+                                            <button type="submit" class="btn btn-default purple" style="margin-right: 10px; float: right; color: #0d55a1 !important"><i class="glyphicon glyphicon-floppy-saved"></i>Lưu</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

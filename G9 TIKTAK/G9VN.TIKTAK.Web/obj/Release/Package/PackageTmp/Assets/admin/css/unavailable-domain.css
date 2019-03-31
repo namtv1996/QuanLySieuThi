@@ -1,0 +1,128 @@
+
+html, body{
+	height:100%;
+	margin:0;
+}
+.toantrang {
+    background: url('../img/plant.png') no-repeat;
+    /* Full height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 7px 0 0;
+}
+
+.container {
+    color: #444f61;
+    margin: 0 auto;
+    /*padding: 155px 0 0px 0;*/
+    text-align: center;
+    width: 600px;
+	padding-top:100px;
+}
+
+    .container.server {
+        padding: 145px 0 50px 0;
+        width: 700px;
+    }
+
+.btn-registration {
+    display: inline-block;
+    background-color: #2dc3e8;
+    color: white;
+    font-weight:bold;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 15px 85px;
+    border-radius: 5px;
+    font-size: 16px;
+    margin: 15px 0;
+    -webkit-transition: all 150ms ease;
+    -moz-transition: all 150ms ease;
+    transition: all 150ms ease;
+    -webkit-transition-property: background-color border-color color;
+    -moz-transition-property: background-color border-color color;
+    transition-property: background-color border-color color;
+    -webkit-user-select: none;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+    white-space: nowrap;
+}
+
+    .btn-registration:before {
+        content: "";
+        border-radius: 5px;
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #2dc3e8;
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        -webkit-transform-origin: 50%;
+        transform-origin: 50%;
+        -webkit-transition-property: transform;
+        transition-property: transform;
+        -webkit-transition-duration: 0.5s;
+        transition-duration: 0.5s;
+        -webkit-transition-timing-function: ease-out;
+        transition-timing-function: ease-out;
+    }
+
+    .btn-registration:hover, .btn-registration:focus, .btn-registration:active {
+        color: white;
+        text-decoration: none;
+    }
+
+        .btn-registration:hover:before, .btn-registration:focus:before, .btn-registration:active:before {
+            -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+        }
+
+    .btn-registration:hover {
+        background-color: transparent;
+        text-decoration: none;
+    }
+
+.caption {
+    display: block;
+    font-size: 20px;
+    letter-spacing: 0.1em;
+}
+
+hr {
+    border-bottom: solid thin #dddddd;
+    border-top: none;
+    margin: 26px 0 22px 0;
+}
+
+.footer {
+        margin-top: 5px;
+    font-size: 14px;
+}
+
+
+@media (max-width: 601px){
+	.container {
+		width:100%;
+	}
+}
+    /*.footer span:first-child {
+        margin-right: 25px;
+    }*/

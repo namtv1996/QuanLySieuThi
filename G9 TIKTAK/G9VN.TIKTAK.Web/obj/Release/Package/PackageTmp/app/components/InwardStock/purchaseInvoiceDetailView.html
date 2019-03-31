@@ -1,0 +1,229 @@
+﻿<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" ui-sref="items">Hàng hóa</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" ui-sref="purchaseInv">Hóa đơn</a>
+        </li>
+      
+    </ul>
+</div>
+<div class="page-header position-relative">
+    <div class="header-title">
+        <h1>
+
+            <small>
+
+                Chi tiết hóa đơn nhập
+            </small>
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+        <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<br />
+<div class="col-lg-6 col-sm-6 col-xs-12" style="width:100%">
+    <div class="well bordered-top bordered-blueberry">
+
+
+        <div class="row">
+            <div class="col-md-4" style="width:30%">
+                <div class="buttons-preview" style="display: -webkit-box">
+                    <div class="order-menu-screen__left-customer_name-icon fl" data-original-title="" title="">
+                        <a style="font-size: 20px; font-weight: 800; text-decoration: none; ">{{invoice.INVoucherNo}} </a>
+                        <span style="font-weight:500; font-size:15px ;" class="status-circle" data-original-title="" title="">
+                            <i class="{{invoice.cs}}" data-original-title="" title=""></i>
+                            {{invoice.tt}}
+
+                        </span>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label> <i class="fa fa-truck" style="font-size:25px"></i><label>&nbsp;&nbsp;&nbsp;&nbsp;Nhà cung cấp {{invoice.VendorName}}</label></label>
+            </div>
+            <div class="col-md-4" style="float:right">
+                <div class="buttons-preview">
+
+                    <a ui-sref="purchaseInv" class="btn btn-info" style=" margin-bottom: 6px; margin-top: 6px; margin-left: 6px; float:right"><i class=""></i>Trở về</a>
+                    <a ng-click="deleteVoucher(inwardStock.VoucherID)" class="btn btn-info" style=" margin-bottom: 6px; margin-top: 6px; margin-left: 6px; float:right"><i class="fa fa-trash-o"></i>Xóa</a>
+
+                    <a ng-click="ThanhToan(invoice.VoucherID)" class="btn btn-info" style=" margin-bottom: 6px; margin-top: 6px; margin-left: 6px; float:right"><i class="fa fa-money"></i>Thanh toán</a>
+                    
+
+                </div>
+            </div>
+
+
+        </div>
+        <hr class="wide">
+
+        <div class="row" style="border: 1px solid rgba(128, 128, 128, 0.32);width: 100%;margin-left: 0px; padding-top:5px;">
+
+            <div class="col-md-4" style="border-right:1px solid rgba(128, 128, 128, 0.32);width:31%;">
+
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-6 control-label no-padding-right">Ngày tạo</label>
+                    <div class="col-sm-6">
+                        <label for="inputEmail3" class="col-sm-2 control-label no-padding-right ng-binding" style="width:100%">{{invoice.CreatedDate|date:'dd/MM/yyyy'}}</label>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-6 control-label no-padding-right">Ngày hoàn thành</label>
+                    <div class="col-sm-6">
+                        <label for="inputEmail3" class="col-sm-2 control-label no-padding-right ng-binding" style="width:100%">{{invoice.INVoucherDate|date:'dd/MM/yyyy'}}</label>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-6 control-label no-padding-right">Chứng từ gốc</label>
+                    <div class="col-sm-6">
+                        <label for="inputEmail3" class="col-sm-2 control-label no-padding-right ng-binding" style="width:100%"><a ui-sref="inwardStockDetails({id:invoice.InwardStockID})">{{invoice.OriginalVoucherNo}}</a></label>
+
+                    </div>
+                </div>
+                
+
+            </div>
+            <div class="col-md-4" style="width:40%;">
+                
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label no-padding-right" style="width:15%;">Địa chỉ</label>
+                    <div class="col-sm-10" style="width:85%;">
+                        <label for="inputEmail3" class="col-sm-2 control-label no-padding-right ng-binding" style="width:100%">{{invoice.VendorAddress}}</label>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label no-padding-right" style="width:15%;">Email</label>
+                    <div class="col-sm-10" style="width:85%;">
+                        <label for="inputEmail3" class="col-sm-2 control-label no-padding-right ng-binding" style="width:100%">{{invoice.Email}}</label>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label no-padding-right" style="width:15%;">SĐT</label>
+                    <div class="col-sm-10" style="width:85%;">
+                        <label for="inputEmail3" class="col-sm-2 control-label no-padding-right ng-binding" style="width:100%">{{invoice.VendorTel}}</label>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-4" style="border-left:1px solid rgba(128, 128, 128, 0.32);margin-bottom:20px;width:29%;">
+
+                <div class="form-group">
+
+                    <label for="inputEmail3" class="col-sm-2 control-label no-padding-right"><b>Số lượng: </b></label>
+                    <div class="col-sm-10">
+                        <label for="inputEmail3" class="col-sm-2 control-label no-padding-right ng-binding" style="width:100%"><b>{{invoice.TotalPurchaseQuantity|currency:"":0}} </b>sp</label>
+
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+
+                    <label for="inputEmail3" class="col-sm-2 control-label no-padding-right"><b>Thanh toán: </b></label>
+                    <div class="col-sm-10">
+                        <label for="inputEmail3" class="col-sm-2 control-label no-padding-right ng-binding" style="width:100%"><b>{{invoice.TotalPaymentAmount|currency:"":0}} </b>đ</label>
+
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+        <br />     
+        <hr class="wide">
+        <div class="table-responsive">
+            <table class="table table-hover" style="width:100%">
+                <thead class="bordered-darkorange bg-themeprimary">
+                    <tr>
+                        <th>
+                            Mã SKU
+                        </th>
+                        <th>
+                            Tên hàng hóa
+                        </th>
+                        <th>
+                            Số lượng
+                        </th>
+                        <th>
+                            Đơn giá
+                        </th>
+                        <th>
+                            Thuế(%)
+                        </th>
+                        <th>
+                            Chiết khấu
+                        </th>
+                        <th style="text-align:right">
+                            Thành tiền
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr ng-repeat="inward in listInvoiceDetail">
+                        <td>{{inward.SKU_Code}}</td>
+                        <td>{{inward.ItemName}}</td>
+                        <td>{{inward.Quantity|currency:"":0}}</td>
+                        <td>{{inward.UnitPrice|currency:"":0}}</td>
+                        <td>{{inward.VATRate|currency:"":0}}</td>
+                        <td>{{inward.DiscountAmount|currency:"":0}}</td>
+                        <td style="text-align:right">
+                            {{inward.Amount|currency:"":0}} <span>đ</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <hr class="wide">
+        <div style="padding-top: 25px;border-top: 1px dashed #a6a6a6; text-align: center; display: block;background-color: #fbfbfb;" id="no-prd" data-original-title="" title="">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <span class="input-icon inverted">
+                            <textarea class="form-control" id="textareaanimated" placeholder="Ghi chú: " style="width: 100%;height: 100px;"></textarea>
+                        </span>
+                        <div style="margin-top: 12px;    background-color: #fbfbfb !important;">
+                            <input type="text" data-role="tagsinput" placeholder="Add tags" style="display: none;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <ul style="list-style: none;display: none;width:90%">
+
+                            
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../../../Assets/admin/js/tagsinput/bootstrap-tagsinput.js"></script>

@@ -1,0 +1,216 @@
+﻿
+<div class="page-breadcrumbs ng-scope">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+           <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" ui-sref="reportStock">Báo cáo</a>
+        </li>
+        <li class="active">Báo cáo kho</li>
+    </ul>
+</div>
+<div class="page-header position-relative ng-scope">
+    <div class="header-title">
+        <h1>
+            Sổ kho
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+        <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<div class="page-body ng-scope">
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+
+
+            <div class="widget-body">
+                <div class="form-group">
+                   
+                   
+                    <div class="row" style="background: #c1dbf3;width: 100%;margin-left: 0px;">
+                        <div class="row" style="height: 30px;"></div>
+                        <div class="col-lg-6 col-sm-6 col-xs-12">
+                            <div class="databox databox-lg radius-bordered databox-shadowed databox-graded">
+                                <div class="databox-left bg-palegreen">
+                                    <div class="databox-piechart">
+                                        <div data-toggle="easypiechart" class="easyPieChart" data-barcolor="#fff" data-linecap="butt" data-percent="50" data-animate="500" data-linewidth="3" data-size="60" data-trackcolor="#aadc95" style="width: 60px; height: 60px; line-height: 60px;"><i class="fa fa-code-fork"></i><canvas width="60" height="60"></canvas></div>
+                                    </div>
+                                </div>
+                                <div class="databox-right">
+                                    <span class="databox-number" style="color:green;font-size:14px">SL nhập kho: {{SoLuongNhap|currency:"":0}}</span>
+                                    <div class="databox-text darkgray">Giá trị: {{GiaTriNhap|currency:"":0}} đ</div>
+                                    <div class="databox-stat bg-palegreen radius-bordered">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-6 col-xs-12">
+                            <div class="databox databox-lg radius-bordered databox-shadowed databox-graded">
+                                <div class="databox-left bg-palegreen">
+                                    <div class="databox-piechart">
+                                        <div data-toggle="easypiechart" class="easyPieChart" data-barcolor="#fff" data-linecap="butt" data-percent="50" data-animate="500" data-linewidth="3" data-size="60" data-trackcolor="#aadc95" style="width: 60px; height: 60px; line-height: 60px;"><i class="fa fa-dollar"></i><canvas width="60" height="60"></canvas></div>
+                                    </div>
+                                </div>
+                                <div class="databox-right">
+                                    <span class="databox-number" style="color: green;font-size:14px">SL xuất kho: {{SoLuongXuat|currency:"":0}}</span>
+                                    <div class="databox-text darkgray">Giá trị: {{GiaTriXuat|currency:"":0}} đ</div>
+                                    <div class="databox-stat bg-palegreen radius-bordered">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<div class="col-lg-4 col-sm-6 col-xs-12">
+                            <div class="databox databox-lg radius-bordered databox-shadowed databox-graded">
+                                <div class="databox-left bg-palegreen">
+                                    <div class="databox-piechart">
+                                        <div data-toggle="easypiechart" class="easyPieChart" data-barcolor="#fff" data-linecap="butt" data-percent="50" data-animate="500" data-linewidth="3" data-size="60" data-trackcolor="#aadc95" style="width: 60px; height: 60px; line-height: 60px;"><i class="fa fa-server"></i><canvas width="60" height="60"></canvas></div>
+                                    </div>
+                                </div>
+                                <div class="databox-right">
+                                    <span class="databox-number green">SL tồn kho:</span>
+                                    <div class="databox-text darkgray">Giá trị:  đ</div>
+                                    <div class="databox-stat bg-palegreen radius-bordered">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>-->
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label> Chi nhánh : </label>
+                            <select style="width:100%" ng-model="branchid">
+                                <option ng-repeat="br in list_branch" value="{{br.BranchID}}">{{br.BranchName}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label>Từ ngày :</label>
+                            <input type="date" class="form-control ng-pristine ng-valid ng-empty ng-touched" id="inputEmail2" ng-model="start_date" style="width: 100%;">
+                        </div>
+                        <div class="col-md-3">
+                            <label> Đến ngày :</label>
+                            <input type="date" class="form-control ng-pristine ng-valid ng-empty ng-touched" id="inputEmail3" ng-model="end_date" style="width: 100%;">
+                        </div>
+                        <div class="col-md-3" style="margin-top: 20px;">
+
+                            <a class="btn btn-success" style="width:100%" ng-click="ViewReport()">Xem báo cáo</a>
+                        </div>
+                    </div>
+                    <br />
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span class="input-icon inverted">
+                                <input type="text" class="form-control input-sm" style="height:34px;width:100%;"
+                                       placeholder="Tìm kiếm theo chứng từ, theo hàng hóa, ... "
+                                       ng-model="searchText">
+                                <i class="fa fa-search" style="background-color: inherit;color: black;"></i>
+                            </span>
+
+                        </div>
+
+                    </div>
+                   
+                    <br />
+                    <div class="table-responsive">
+                        
+                        <table style="width:100%" class="table table-bordered tbl-report tbl-report--inventory-onhand border-th" cellspacing="0" cellpadding="0" id="parent-variant">
+                            <thead>
+                                <tr role="row" style="background: #2dc3e8 !important;color:white">
+                                    <th rowspan="2"><span class="text">STT</span></th>
+                                    <th rowspan="2"><span class="text">Ngày ghi nhận</span></th>
+                                    <th rowspan="2"><span class="text">Nguồn</span></th>
+                                    <th rowspan="2"><span class="text">Mã chứng từ</span></th>
+                                    <th rowspan="2"><span class="text">Tùy chọn hàng hóa</span></th>
+                                    <th rowspan="2"><span class="text">SKU</span></th>
+                                    <th colspan="2" style="text-align:center;">Nhập kho</th>
+                                    <th colspan="2" style="text-align:center;">Xuất kho</th>
+                                    <!--<th colspan="2"><span class="text">Tồn kho</span></th>
+                                    <th rowspan="2"><span class="text">Kho hàng</span></th>-->
+                                </tr>
+                                <tr role="row" style="background: #2dc3e8 !important;color:white">
+                                    <th style="text-align:center;">Số lượng</th>
+                                    <th style="text-align:center;">Giá trị</th>
+                                    <th style="text-align:center;">Số lượng</th>
+                                    <th style="text-align:center;">Giá trị</th>
+                                    <!--<th style="text-align:center;">SL</th>
+                                    <th style="text-align:center;">Giá trị</th>-->
+                                </tr>
+
+                            </thead>
+                            <tbody>
+                                <tr dir-paginate="i in listReport|filter:searchText| itemsPerPage:10">
+                                    <td>{{i.stt}}</td>
+                                    <td>{{i.VoucherDate|date:'dd/MM/yyyy'}}</td>
+                                    <td style="text-align:left">{{i.Source}}</td>
+                                    <td style="text-align: left">
+
+                                        {{i.VoucherNo}}
+                                    </td>
+                                    <td style="text-align:left">{{i.Name}}</td>
+                                    <td style="text-align: left">
+                                       {{i.SKU}}
+                                    </td>
+
+                                    <td style="text-align: center;font-weight:{{i.font3}}">{{i.ImportQuantity|currency:"":0}}</td>
+                                    <td style="text-align:right;font-weight:{{i.font3}}">{{i.ImportAmount|currency:"":0}}</td>
+                                    <td style="text-align: center;font-weight:{{i.font2}}">{{i.ExportQuantity|currency:"":0}}</td>
+                                    <td style="text-align:right;font-weight:{{i.font2}}">{{i.ExportAmount|currency:"":0}}</td>
+                                    <!--<td></td>-->
+                                    <!--<td style="text-align:right"></td>
+                                    <td style="text-align:left">Chi nhánh mặc định</td>-->
+                                </tr>
+                                                                               
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+
+                <div style="margin-top:3px ">
+                    <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" class="ng-isolate-scope">
+                        <ul class="pagination ng-scope" ng-if="1 < pages.length">
+                            <li ng-if="boundaryLinks" ng-class="{ disabled : pagination.current == 1 }" class="ng-scope disabled">
+                                <a href="" ng-click="setCurrent(1)">«</a>
+                            </li>
+                            <li ng-if="directionLinks" ng-class="{ disabled : pagination.current == 1 }" class="ng-scope disabled">
+                                <a href="" ng-click="setCurrent(pagination.current - 1)">‹</a>
+                            </li>
+                            <li ng-repeat="pageNumber in pages track by $index" ng-class="{ active : pagination.current == pageNumber, disabled : pageNumber == '...' }" class="ng-scope active">
+                                <a href="" ng-click="setCurrent(pageNumber)" class="ng-binding">1</a>
+                            </li>
+                            <li ng-repeat="pageNumber in pages track by $index" ng-class="{ active : pagination.current == pageNumber, disabled : pageNumber == '...' }" class="ng-scope">
+                                <a href="" ng-click="setCurrent(pageNumber)" class="ng-binding">2</a>
+                            </li>
+                            <li ng-if="directionLinks" ng-class="{ disabled : pagination.current == pagination.last }" class="ng-scope">
+                                <a href="" ng-click="setCurrent(pagination.current + 1)">›</a>
+                            </li>
+                            <li ng-if="boundaryLinks" ng-class="{ disabled : pagination.current == pagination.last }" class="ng-scope">
+                                <a href="" ng-click="setCurrent(pagination.last)">»</a>
+                            </li>
+                        </ul>
+                    </dir-pagination-controls>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+

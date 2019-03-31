@@ -1,0 +1,506 @@
+﻿<script>
+    function goBack() {
+        window.history.back();
+    };
+    function reLoad() {
+        location.reload(true)
+    };
+    var loadFile = function (event) {
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+    };
+    function show() {
+      
+                var element = document.documentElement;
+                if (!$('body')
+                    .hasClass("full-screen")) {
+
+                    $('body')
+                        .addClass("full-screen");
+                    $('#fullscreen-toggler')
+                        .addClass("active");
+                    if (element.requestFullscreen) {
+                        element.requestFullscreen();
+                    } else if (element.mozRequestFullScreen) {
+                        element.mozRequestFullScreen();
+                    } else if (element.webkitRequestFullscreen) {
+                        element.webkitRequestFullscreen();
+                    } else if (element.msRequestFullscreen) {
+                        element.msRequestFullscreen();
+                    }
+
+                } else {
+
+                    $('body')
+                        .removeClass("full-screen");
+                    $('#fullscreen-toggler')
+                        .removeClass("active");
+
+                    if (document.exitFullscreen) {
+                        document.exitFullscreen();
+                    } else if (document.mozCancelFullScreen) {
+                        document.mozCancelFullScreen();
+                    } else if (document.webkitExitFullscreen) {
+                        document.webkitExitFullscreen();
+                    }
+
+                };
+    }
+// End -->
+    function addSize() { 
+        $("#sidebar").toggleClass("hide");
+        $(".sidebar-toggler").toggleClass("active");
+        return false;
+    };
+  </script>
+
+
+<link href="../../../Assets/admin/css/base.css" rel="stylesheet" />
+<!-- Navbar -->
+
+<div class="navbar">
+   
+    <div class="navbar-inner">
+        <div class="navbar-container">
+            <!-- Navbar Barnd -->
+            <div class="navbar-header pull-left">
+                <a href="javascript:void(0)" ui-sref="home" class="navbar-brand">
+                    <small>
+                        <img src="../../../Assets/admin/img/Logo Tiktac-08.png"  />
+                    </small>
+                </a>
+            </div>
+
+            <!-- /Navbar Barnd -->
+            <div id="showone" style="color:white;width: 60%;height: 30px;padding: 11px;margin-left: 16%;border-radius: 0px 0px 52px 52px;display:{{show}};">
+                <marquee direction="left"><i class="fa fa-bullhorn" style="font-size:25px;"></i>     Bạn còn lại <i style="font-size:18px"> {{showdateend}} </i>ngày để sử dụng Tiktac của chúng tôi! </marquee>
+            </div>
+            <!-- Sidebar Collapse -->
+            <div class="sidebar-collapse" id="sidebar-collapse">
+                <i class="collapse-icon fa fa-server"></i>
+            </div>
+            <!-- /Sidebar Collapse -->
+            <!-- Account Area and Settings --->
+            <div class="navbar-header pull-right">
+                <script>
+                    function dis() {
+                        document.getElementById("chatbar1").style.display = "block";
+                        document.getElementById("a1").style.display = "block";
+                        document.getElementById("a2").style.display = "none";
+                    };
+                    function dis2() {
+                        document.getElementById("chatbar1").style.display = "none";
+                        document.getElementById("a1").style.display = "none";
+                        document.getElementById("a2").style.display = "block";
+                    };
+                   
+                </script>
+                <style>
+                    #a2::-webkit-scrollbar-track {
+                        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+                        background-color: #F5F5F5;
+                    }
+
+                    #a2::-webkit-scrollbar {
+                        width: 3px;
+                        background-color: #F5F5F5;
+                    }
+
+                    #a2::-webkit-scrollbar-thumb {
+                        background-color: #0ae;
+                        background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(.5, rgba(255, 255, 255, .2)), color-stop(.5, transparent), to(transparent));
+                    }
+
+                    #chatbar1::-webkit-scrollbar-track {
+                        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+                        background-color: #F5F5F5;
+                    }
+
+                    #chatbar1::-webkit-scrollbar {
+                        width: 3px;
+                        background-color: #F5F5F5;
+                    }
+
+                    #chatbar1::-webkit-scrollbar-thumb {
+                        background-color: #0ae;
+                        background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(.5, rgba(255, 255, 255, .2)), color-stop(.5, transparent), to(transparent));
+                    }
+
+
+                </style>
+                <div class="navbar-account">
+                    <ul class="account-area">
+                        <li>
+                            <a class="dropdown-toggle" title="Bán hàng POS" ui-sref="posOrder" target="_blank">
+                                <i class="icon menu-icon fa fa-desktop"></i>
+                            </a>
+                            <!--Tasks Dropdown-->
+                            <!--/Tasks Dropdown-->
+                        </li>
+                    <!--tinh năng dang ft-->
+                        <li>
+                            <a class="{{class_wavein}}" data-toggle="dropdown" title="Thông báo từ Tiktac" href="javascript:void(0)" ng-click="Notifi_Click()">
+                                <i class="icon fa fa-globe" style="font-size: 22px;"></i>
+                                <span class="badge" style="display:{{dis_notifi}}">{{quan_notifi}}</span>
+                            </a>
+                        
+                            <ul id="a2" class="pull-right dropdown-menu dropdown-arrow dropdown-messages" style="overflow:auto;overflow-x:hidden;max-height:235px;padding-top: 0;margin-top: 0;">
+                                <li ng-repeat="notifi in list_Notifi" style="height: 55px;padding-top:17px;background-color:{{notifi.Status != 1?'#e5e5e5':'#ffffff'}};cursor:pointer;" 
+                                    onclick="dis()" ng-click="Notifi_Content_Click(notifi.stt)">
+                                    
+                                    
+                                        <img src="../../../Assets/admin/img/logotiktac.png" class="message-avatar" alt="Divyia Austin" style="max-width: 27px;margin-top: -2px;">
+                                        <div class="message">                                                                                       
+                                            <span class="message-body" style="font-size: 13px;">
+                                               {{notifi.Contents}}
+                                            </span>
+                                        </div>
+                                  
+                                </li>
+                            </ul>
+                            <div id="chatbar1" class="page-chatbar" style="overflow:auto;overflow-x:hidden;max-height:290px;top: 100%;padding-top: 0;left: -500%;background-color: white;">
+                             
+                                <div id="a1" class="chatbar-messages">
+                                    <div class="messages-contact" style="height:41px;">
+                                      
+                                        <div class="contact-info">
+                                           
+                                            <div class="back" style="margin-top: -4px;">
+                                                <i class="fa fa-arrow-circle-left" onclick="dis2()"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto;">
+                                        <ul class="messages-list" style="overflow: hidden; width: auto;">
+                                            <li class="message">
+                                               
+                                                <div class="message-body" style="background-color: #2dc3e8;position: initial;margin-right: 0%;">
+                                                   <p style="word-wrap: break-word;">{{Content_detail}}</p> 
+                                                </div>
+                                            </li>
+                                           </ul>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                           
+                          
+                        </li>
+                    
+                        <li>
+                            <a class="login-area dropdown-toggle" data-toggle="dropdown">
+                                <div class="avatar" title="View your public profile">
+                                    <img src="{{authentication.avatar}}">
+                                </div>
+                                <section>
+                                    <h2><span class="profile"><span class="ng-binding">{{authentication.fullName}}</span></span></h2>
+                                </section>
+                            </a>
+                            <!--Login Area Dropdown-->
+                            <ul class="pull-right dropdown-menu dropdown-arrow dropdown-login-area">
+
+                                <!--Avatar Area-->
+                                <li>
+                                    <div class="avatar-area">
+                                        <img src="{{authentication.avatar}}" class="avatar">
+                                        <a href="javascript:void(0)" class="caption"  ui-sref="changepassword">Thay đổi ảnh</a>
+                                    </div>
+                                </li>
+                                <!--Avatar Area-->
+                                <li class="edit">
+                                
+                                    <a href="javascript:void(0)" ui-sref="changepassword" class="pull-left">Thông tin tài khoản</a>
+                                </li>
+                                <!--Theme Selector Area-->
+                                <li class="theme-area">
+                                    <ul class="colorpicker" id="skin-changer">
+                                        <li><a class="colorpick-btn" href="javascript:void(0)" style="background-color:#5DB2FF;" rel="Assets/admin/css/skins/blue.min.css"></a></li>
+                                        <li><a class="colorpick-btn" href="javascript:void(0)" style="background-color:#2dc3e8;" rel="Assets/admin/css/skins/azure.min.css"></a></li>
+                                        <li><a class="colorpick-btn" href="javascript:void(0)" style="background-color:#03B3B2;" rel="Assets/admin/css/skins/teal.min.css"></a></li>
+                                        <li><a class="colorpick-btn" href="javascript:void(0)" style="background-color:#53a93f;" rel="Assets/admin/css/skins/green.min.css"></a></li>
+                                        <li><a class="colorpick-btn" href="javascript:void(0)" style="background-color:#FF8F32;" rel="Assets/admin/css/skins/orange.min.css"></a></li>
+                                        <li><a class="colorpick-btn" href="javascript:void(0)" style="background-color:#cc324b;" rel="Assets/admin/css/skins/pink.min.css"></a></li>
+                                        <li><a class="colorpick-btn" href="javascript:void(0)" style="background-color:#e75b8d;" rel="Assets/admin/css/skins/darkred.min.css"></a></li>
+                                        <li><a class="colorpick-btn" href="javascript:void(0)" style="background-color:#8C0095;" rel="Assets/admin/css/skins/purple.min.css"></a></li>
+                                        <li><a class="colorpick-btn" href="javascript:void(0)" style="background-color:#0072C6;" rel="Assets/admin/css/skins/darkblue.min.css"></a></li>
+                                        <li><a class="colorpick-btn" href="javascript:void(0)" style="background-color:#585858;" rel="Assets/admin/css/skins/gray.min.css"></a></li>
+                                        <li><a class="colorpick-btn" href="javascript:void(0)" style="background-color:#ffce55;" rel="Assets/admin/css/skins/black.min.css"></a></li>
+                                        <li><a class="colorpick-btn" href="javascript:void(0)" style="background-color:#001940;" rel="Assets/admin/css/skins/deepblue.min.css"></a></li>
+                                    </ul>
+                                </li>
+                                <!--/Theme Selector Area-->
+                                <li class="dropdown-footer">
+                                    <a href="javascript:void(0)">
+                                        Đăng xuất
+                                    </a>
+                                </li>
+                            </ul>
+                            <!--/Login Area Dropdown-->
+                        </li>
+                        <!-- /Account Area -->
+                        <!--Note: notice that setting div must start right after account area list.
+                        no space must be between these elements-->
+                        <!-- Settings -->
+                    </ul>
+                    <div class="setting">
+                        <a title="Đăng xuất" href="javascript:void(0)" ng-click="logOut()">
+                            <i class="icon fa fa-sign-out"></i>
+                        </a>
+                    </div>
+
+                   
+                    <!-- Settings -->
+                </div>
+            </div>
+
+            <!-- /Account Area and Settings -->
+        </div>
+    </div>
+</div>
+<!-- /Navbar -->
+<!-- Main Container -->
+<div class="main-container container-fluid">
+    <!-- Page Container -->
+    <div class="page-container">
+        <!-- Page Sidebar -->
+        <div class="page-sidebar " id="sidebar">
+            <!-- Page Sidebar Header-->
+            <div class="sidebar-header-wrapper">
+                <input type="text" />
+                <i class="searchicon fa fa-search"></i>
+                <div class="searchhelper">Tìm kiếm danh mục</div>
+            </div>
+            <!-- /Page Sidebar Header -->
+            <!-- Sidebar Menu -->
+            <ul class="nav sidebar-menu">
+                <!--Dashboard-->
+                <li class="active">
+                    <a ui-sref="home">
+                        <i class="menu-icon glyphicon glyphicon-home" style="color: #2dc3e8"></i>
+                        <span class="menu-text"> Tổng quan </span>
+                    </a>
+                </li>
+                <!--Databoxes-->
+                <li>
+                    <a href="javascript:void(0)" class="menu-dropdown">
+                        <i class="menu-icon glyphicon glyphicon-inbox" style="color: #2dc3e8"></i>
+                        <span class="menu-text"> Đơn hàng </span>
+
+                        <i class="menu-expand"></i>
+                    </a>
+
+                    <ul class="submenu">
+                        <li>
+                            <a ui-sref="saleOrder_add">
+                                <span class="menu-text">Tạo đơn hàng</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a ui-sref="saleOrder">
+                                <span class="menu-text">Danh sách đơn hàng</span>
+                            </a>
+                        </li>                     
+                        <li>
+                            <a ui-sref="saleReturn">
+                                <span class="menu-text">Hàng bán trả lại</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a ui-sref="deliveryOrder">
+                                <span class="menu-text">Giao hàng</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a ui-sref="transporter">
+                                <span class="menu-text">Đối tác vận chuyển</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a ui-sref="posOrder" target="_blank">
+                        <i class="menu-icon fa fa-desktop" style="color: #2dc3e8"></i>
+                        <span class="menu-text">Bán hàng</span>
+                    </a>
+                </li>
+                <!--Widgets-->
+                <li>
+                    <a href="javascript:void(0)" class="menu-dropdown">
+                        <i class="menu-icon fa fa-cubes" style="color: #2dc3e8"></i>
+                        <span class="menu-text">  Hàng hóa  </span>
+
+                        <i class="menu-expand"></i>
+                    </a>
+
+                    <ul class="submenu">
+                        <li>
+                            <a ui-sref="items">
+                                <span class="menu-text">Danh sách hàng hóa</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a ui-sref="itemOption">
+                                <span class="menu-text">Quy cách hàng hóa</span>
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a ui-sref="inwardStock">
+                                <span class="menu-text">Nhập hàng</span>
+                            </a>
+                        </li>
+                       
+                        <li>
+                            <a ui-sref="purchaseReturn">
+                                <span class="menu-text">Trả hàng mua</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a ui-sref="purchaseInv">
+                                <span class="menu-text">Hóa đơn</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a ui-sref="adjustment">
+                                <span class="menu-text">Kiểm hàng </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a ui-sref="itemTransfer">
+                                <span class="menu-text">Chuyển hàng</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a ui-sref="vendor">
+                                <span class="menu-text">Nhà cung cấp </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a ui-sref="vendorCategory">
+                                <span class="menu-text">Nhóm nhà cung cấp</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" class="menu-dropdown">
+                        <i class="menu-icon fa fa-group" style="color: #2dc3e8"></i>
+                        <span class="menu-text"> Khách hàng </span>
+
+                        <i class="menu-expand"></i>
+                    </a>
+
+                    <ul class="submenu">
+                        <li>
+                            <a ui-sref="customer">
+                                <span class="menu-text">Khách hàng</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a ui-sref="customerCategory">
+                                <span class="menu-text"> Nhóm khách hàng</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+                <!--UI Elements-->
+                <li>
+                    <a href="javascript:void(0)" class="menu-dropdown">
+                        <i class="menu-icon fa fa-book" style="color: #2dc3e8"></i>
+                        <span class="menu-text">Kế toán</span>
+                        <i class="menu-expand"></i>
+                    </a>
+
+                    <ul class="submenu">
+                        <li>
+                            <a ui-sref="receipt">
+                                <span class="menu-text">Phiếu thu</span>
+                            </a>
+                        </li>
+                        <!--<li>
+                            <a ui-sref="receipttype">
+                                <span class="menu-text">Loại phiếu thu</span>
+                            </a>
+                        </li>-->
+                        <li>
+                            <a ui-sref="cashPayment">
+                                <span class="menu-text">Phiếu chi</span>
+                            </a>
+                        </li>
+                        <!--<li>
+                            <a ui-sref="cashPaymentType">
+                                <span class="menu-text">Loại phiếu chi</span>
+                            </a>
+                        </li>-->
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" class="menu-dropdown">
+                        <i class="menu-icon fa fa-area-chart" style="color: #2dc3e8"></i>
+                        <span class="menu-text">  Báo cáo  </span>
+
+                        <i class="menu-expand"></i>
+                    </a>
+
+                    <ul class="submenu">
+                        <li>
+                            <a ui-sref="reportSales">
+                                <span class="menu-text">Báo cáo bán hàng </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a ui-sref="reportStock">
+                                <span class="menu-text">Báo cáo kho</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a ui-sref="reportFinance">
+                                <span class="menu-text">Báo cáo tài chính</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a ui-sref="salesPromotions_menu">
+                        <!--ui-sref="salesPromotions"-->
+                        <i class="menu-icon fa fa-cart-plus" style="color: #2dc3e8"></i>
+                        <span class="menu-text">Khuyến mại </span>
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="appmenu">
+                        <!--ui-sref="salesPromotions"-->
+                        <i class="menu-icon glyphicon glyphicon-link" style="color: #2dc3e8"></i>
+                        <span class="menu-text">Ứng dụng </span>
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="pageSetting" class="menu-dropdown">
+                        <i class="menu-icon fa fa-cogs themesecondary" style="color: #2dc3e8"></i>
+                        <span class="menu-text">
+                            Cài đặt
+                        </span>
+                    </a>
+                </li>
+            </ul>
+            <!-- /Sidebar Menu -->
+        </div>
+        <!-- /Page Sidebar -->
+        <!-- Chat Bar -->
+       
+        <!-- /Chat Bar -->
+        <!-- Page Content -->
+        <div class="page-content">
+            <!--@*render view*@-->
+            <div ui-view></div>
+        </div>
+        <!-- /Page Content -->
+    </div>
+    <!-- /Page Container -->
+</div>
+<!--Beyond Scripts-->
+<script src="Assets/admin/js/beyond.min.js"></script>

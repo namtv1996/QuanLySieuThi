@@ -1,0 +1,1385 @@
+﻿<form id="form1" style="display:none">
+    <div id="dvContents" style="border: 1px dotted black; padding: 5px; width: 100% ;">
+        <div id="demo">
+
+        </div>
+        <footer style="page-break-after: always">.</footer>
+    </div>
+</form>
+<link href="../../../Assets/admin/css/posstyle.css" rel="stylesheet" />
+<link href="../../../Assets/admin/css/style2.css" rel="stylesheet" />
+
+<link href="../../../Assets/admin/css/base.css" rel="stylesheet" />
+<script>
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+</script>
+<script type="text/javascript">
+    $("input[type='text']").click(function () {
+        $(this).select();
+    });
+    $("input[type='number']").click(function () {
+        $(this).select();
+    });
+</script>
+<style type="text/css">
+    #HOVER:hover {
+        background: #2dc3e8;
+    }
+
+    #bthover:hover {
+        background: #2dc3e8
+    }
+
+    .scrollbar11 {
+        width: 31.5%;
+        overflow: auto;
+        position: fixed;
+        max-height: 541px;
+        overflow-x: hidden;
+    }
+
+    .force-overflow1 {
+        min-height: 450px;
+    }
+
+
+
+
+    #sty::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        background-color: #F5F5F5;
+    }
+
+    #sty::-webkit-scrollbar {
+        width: 5px;
+        background-color: #F5F5F5;
+    }
+
+    #sty::-webkit-scrollbar-thumb {
+        background-color: #0ae;
+        background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(.5, rgba(255, 255, 255, .2)), color-stop(.5, transparent), to(transparent));
+    }
+</style>
+<style>
+    input[type=checkbox].checkbox-slider ~ .text:before {     
+        content: "VNĐ       %"; 
+        
+    }
+
+   
+</style>
+
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="navbar-container">
+            <!-- Navbar Barnd -->
+            <div class="navbar-header pull-left">
+                <a href="javascript:void(0)" class="navbar-brand" ui-sref="home">
+                    <small>
+                        <img src="../../../Assets/admin/img/Logo Tiktac-08.png" style="height: 60px !important;width: 169px !important;margin-top: -10px !important;" />
+                    </small>
+                </a>
+            </div>
+            <div class="navbar-header pull-right">
+                <div class="navbar-account">
+                    <div class="setting">
+                        <a id="btn-setting" title="Setting" href="javascript:void(0)" ui-sref="home">
+                            <i class="icon fa fa-home"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="main-container container-fluid">
+    <div class="main-container container-fluid col-md-12">
+        <div class="col-md-4 hienthisanpham-ban">
+            <div class="row" style="height:100%">
+                <div class="well with-header with-footer" style="height:100%;background-color:white">
+                    <div class="header " style="border-bottom:2px solid #2dc3e8">
+                        <div class="form-group" style="margin-bottom:5px;display: -webkit-box;margin-left: 10px;">
+                            <div><button style="margin-right:6px ;color:white" class="btn bg-themeprimary" ng-click="getItems()"> Tất cả</button></div>
+                            <div>
+                                <div class="dropdown">
+                                    <button style="color:white" onclick="myFunction()" class="btn bg-themeprimary">Bộ lọc  <i class="fa fa-caret-down"></i></button>
+                                    <div id="myDropdown" class="dropdown-content" style="border-radius:5px;overflow:auto;overflow-x:hidden;max-height:155px;">
+                                        <button id="bthover" class="btn btn-default" style="width:100%; border:0;border-bottom:1px solid #d5d5d5;" onclick="myFunction()" ng-repeat="list in listItemCategory" ng-click="getItemOptionByItemCategory(list.Id)">
+                                            {{list.ItemCategoryName}}
+                                        </button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row scrollbar11" id="sty">
+                        <div class="force-overflow1">
+                            <div class="col-sm-6 col-xs-12 col-md-4 banhang-sanpham" ng-repeat="item in listItems|filter:key" ng-click="getByID(item)" style="text-align:center;padding-left: 0px;padding-right: 0px;">
+                                <img class="anhs" src="{{item.image1}}" style="margin-left: 0px;margin-top: 0px;border: 1px solid rgba(6, 6, 6, 0.34);width: 120px;height: 120px;">
+                                <label style="font-size:13px;margin-top: -10px;">
+                                    <span class="gh" data-toggle="tooltip" data-placement="left" title="{{item.Name}}">
+                                        <label>{{item.NameCut}}</label>
+                                    </span>
+                                    <br />
+                                    <span>Mã :{{item.SKU}}</span>
+                                </label>
+                                <br />
+                                <label style="font-size:12px">
+                                    Giá :{{item.saleprice|currency:'':0}} <span style="border-left:1px solid #34c5e9; padding-left: 2px;"> SL :{{item.quantity}}</span>
+                                </label>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 thongtinbanhang-left">
+            <div class="col-md-12 thongtinbanhang-left-top">
+                <section class="tabst">
+                    <input id="tab-1" type="radio" ng-click="chooseTab(0)" name="radio-set" class="tab-selector-1" checked="checked" style="left: {{lf[0]}};height: 30px;width: 100px;display:{{dp[0]}}">
+                    <label for="tab-1" class="tab-label-1" style="font-weight:normal;text-transform:none ;width:113px;display:{{dp[0]}};{{stype[0]}}">Hóa đơn 1</label>
+
+                    <input id="tab-2" type="radio" ng-click="chooseTab(1)" name="radio-set" class="tab-selector-2" style="left: {{lf[1]}};height: 30px;width: 100px;display:{{dp[1]}}">
+                    <label for="tab-2" class="tab-label-2" style="font-weight: normal; text-transform: none; width: 113px;display:{{dp[1]}};{{stype[1]}}">
+                        Hóa đơn 2
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-times" ng-click="closeTab(1)" style="position: absolute;z-index: 8;margin-top: -26px;padding-left: 80px;display:{{dp2[1]}}"></i>
+                        </a>
+                    </label>
+
+                    <input id="tab-3" type="radio" ng-click="chooseTab(2)" name="radio-set" class="tab-selector-3" style="left: {{lf[2]}};height: 30px;width: 100px;display:{{dp[2]}}">
+                    <label for="tab-3" class="tab-label-3" style="font-weight: normal; text-transform: none; width: 113px;display:{{dp[2]}};{{stype[2]}}">
+                        Hóa đơn 3
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-times" ng-click="closeTab(2)" style="position: absolute;z-index: 8;margin-top: -26px;padding-left: 80px;display:{{dp2[2]}}"></i>
+                        </a>
+                    </label>
+
+                    <input id="tab-4" type="radio" ng-click="chooseTab(3)" name="radio-set" class="tab-selector-4" style="left: {{lf[3]}};height: 30px;width: 100px;display:{{dp[3]}}">
+                    <label for="tab-4" class="tab-label-4" style="font-weight: normal; text-transform: none; width: 113px;display:{{dp[3]}};{{stype[3]}}">
+                        Hóa đơn 4
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-times" ng-click="closeTab(3)" style="position: absolute;z-index: 8;margin-top: -26px;padding-left: 80px;display:{{dp2[3]}}"></i>
+                        </a>
+                    </label>
+
+                    <input id="tab-5" type="radio" ng-click="chooseTab(4)" name="radio-set" class="tab-selector-5" style="left: {{lf[4]}};height: 30px;width: 100px;display:{{dp[4]}}">
+                    <label for="tab-5" class="tab-label-5" style="font-weight: normal; text-transform: none; width: 113px;display:{{dp[4]}};{{stype[4]}}">
+                        Hóa đơn 5
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-times" ng-click="closeTab(4)" style="position: absolute;z-index: 8;margin-top: -26px;padding-left: 80px;display:{{dp2[4]}}"></i>
+                        </a>
+                    </label>
+
+                    <input id="tab-6" type="radio" ng-click="chooseTab(5)" name="radio-set" class="tab-selector-6" style="left: {{lf[5]}};height: 30px;width: 100px;display:{{dp[5]}}">
+                    <label for="tab-6" class="tab-label-6" style="font-weight: normal; text-transform: none; width: 113px;display:{{dp[5]}};{{stype[5]}}">
+                        Hóa đơn 6
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-times" ng-click="closeTab(5)" style="position: absolute;z-index: 8;margin-top: -26px;padding-left: 80px; display:{{dp2[5]}}"></i>
+                        </a>
+                    </label>
+                    <a href="javascript:void(0)"><i class="fa fa-plus" ng-click="addTab()" style="float: left;margin-top: 12px;margin-left: 15px;color: #3898cb;"></i></a>
+
+                    <div class="clear-shadow"></div>
+
+                    <div class="content">
+                        <div id="rs1" class="content-1 inva" style="display:{{dp2[0]}}">
+                            <div id="home9" class="tab-pane active ">
+                                <br />
+                                <div class="form-title" style="padding:0px 0;margin-bottom:2px;">
+                                    <input style="padding-left: 11px;border-radius: 3px !important;margin-bottom:5px;width: 99%;height:30px;margin-left: 5px;" type="text" placeholder="Mã vạch, Mã barcode, Mã sản phẩm" ng-change="TimKiem()" ng-model="key">
+                                </div>
+                                <table id="cvtext" class="table table-hover" style="margin-top:5px;margin: 0px 0px 0px;border: none;width: 100%;">
+                                    <thead class="bordered-darkorange bg-themeprimary" style="color:white">
+                                        <tr>
+                                            <th class="hoadon-stt">
+                                                STT
+                                            </th>
+                                            <th class="hoadon-mahang" id="mh">
+                                                Mã hàng
+                                            </th>
+                                            <th class="hoadon-tenhanghoa" id="ten">
+                                                Tên hàng hóa
+                                            </th>
+                                            <th class="hoadon-soluong" id="sl">
+                                                Số lượng
+                                            </th>
+                                            <th class="hoadon-dongia">
+                                                Đơn giá
+                                            </th>
+                                            <th class="hoadon-chietkhau">
+                                                Chiết khấu
+                                            </th>
+                                            <th class="hoadon-thue">
+                                                Thuế (%)
+                                            </th>
+                                            <th class="hoadon-thanhtien">
+                                                Thành tiền
+                                            </th>
+                                            <th class="hoadon-xoa">
+
+                                            </th>
+
+                                        </tr>
+                                    </thead>
+                                </table>
+                                <div class="scrollbar" id="style-5"> <!--style="height: 250px !important;"-->
+                                    <div class="force-overflow">
+                                        <div class="form-group has-feedback" style="height: 200px;margin-right: 0px;">
+                                            <table id="cvtext" style="border: none; width: 100%;margin: 0px 0px 0px;" class="table table-hover">
+                                                <tbody>
+                                                    <tr style="text-align:center" ng-repeat="item in shoppingCart[0].lsItem">
+                                                        <td class="hoadon-stt-ct">{{item.stt}}</td>
+                                                        <td class="hoadon-mahang-ct">{{item.SKU}}</td>
+                                                        <td class="hoadon-tenhanghoa-ct" id="tenz">{{item.Name}}</td>
+                                                        <td class="hoadon-soluong-ct">
+                                                            <input id="lb" type="number" class="btn" style="border-radius: 5px !important; color: #03b3b2; width: 100%; margin-right: 6px; height: 25px; text-align: right;" ng-model="item.quan" ng-change="TinhToan(item.stt)" />
+                                                        </td>
+                                                        <td class="hoadon-dongia-ct">
+                                                            <input type="text" id="lb" class="btn" style="border-radius:5px;color: #03b3b2;width: 100%;margin-right: 6px;height: 25px;text-align: right;" 
+                                                                   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" ng-model="item.unit_price" ng-change="TinhToan(item.stt)">
+                                                        </td>
+                                                        <td class="hoadon-chietkhau-ct">
+                                                            <div ng-click="discount_item_Click(item.stt)" style="cursor:pointer;">
+                                                                <input type="text" id="lb" class="btn" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" disabled
+                                                                       style="border-radius:5px;color: #03b3b2;width: 100%;margin-right: 6px;height: 25px;text-align: right;cursor:pointer;" ng-model="item.chietkhau" ng-change="TinhToan(item.stt)" />
+                                                            </div>
+                                                            <div class="popover undefined fade bottom in" id="popover_discount" style="top:{{(item.stt -1)*42 + 33}}px;margin-left: 50%;display:{{item.display_discount}}">
+                                                                <div class="arrow" style="left: 50%;"></div>
+                                                                <div class="popover-content">
+                                                                    <div class="row" style="display:flex">
+                                                                        <label style="text-align:left" for="inputEmail3" class="col-md-2 control-label no-padding-right">Lý do</label>
+                                                                        <div class="col-md-12">
+                                                                            <input type="text" class="form-control" placeholder="Lý do chiết khấu ..." style="width: 114%;border-radius:0px !important" ng-model="item.DiscountReason" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row" style="display:flex;margin-top: 5px;">
+                                                                        <label style="text-align:left" for="inputPassword3" class="col-sm-2 control-label no-padding-right">Chiết khấu</label>
+                                                                        <div class="col-sm-12">
+                                                                            <input id="txt_discount_item" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                                                                   ng-model="item.txt_discount_item" ng-change="changeDiscount_txt(item.stt)" class="form-control" style="width: 114%; text-align:right;border-radius:0px !important;padding-right: 10px;" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row" style="float: right;">
+                                                                        <label style="float:right">
+                                                                            <input class="checkbox-slider toggle colored-blue" type="checkbox" ng-model="item.status_discount" ng-change="changeStatusDiscount(item.stt)">
+                                                                            <span class="text" style="float:right;margin-top:5px;"></span>
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div>
+                                                                            <div style="width:90%;margin:0 auto;">
+                                                                                <button style="width:100%" type="submit" class="btn btn-blue" ng-click="ApplyDiscount(item.stt)">Áp dụng</button>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>                                                  
+                                                        </td>
+                                                        <td class="hoadon-thue-ct">
+                                                            <input type="text" id="lb" class="btn" style="border-radius:5px;color: #03b3b2;width: 100%;margin-right: 6px;height: 25px;text-align: right;" ng-model="item.thue" ng-change="TinhToan(item.stt)">
+
+                                                        </td>
+                                                        <td class="hoadon-thanhtien-ct">
+                                                            {{item.thanhtien|currency:'':0}}đ
+                                                        </td>
+                                                        <td class="hoadon-xoa-ct">
+                                                            <i class="fa fa-trash-o" style="cursor: pointer" ng-click="del(item.stt)">
+                                                            </i>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div id="rs2" class="content-2 inva" style="display:{{dp2[1]}}">
+                            <div id="home9" class="tab-pane active ">
+                                <br />
+                                <div class="form-title" style="padding:0px 0;margin-bottom:2px;">
+                                    <input style="padding-left: 11px;border-radius: 3px !important;margin-bottom:5px;width: 99%;height:30px;margin-left: 5px;" type="text" placeholder="Mã vạch , Mã bacode ,Mã sản phẩm" ng-change="TimKiem()" ng-model="key">
+                                </div>
+                                <table id="cvtext" class="table table-hover" style="margin-top:5px;margin: 0px 0px 0px;border: none;width: 100%;">
+                                    <thead class="bordered-darkorange bg-themeprimary" style="color:white">
+                                        <tr>
+                                            <th class="hoadon-stt">
+                                                STT
+                                            </th>
+                                            <th class="hoadon-mahang" id="mh">
+                                                Mã hàng
+                                            </th>
+                                            <th class="hoadon-tenhanghoa" id="ten">
+                                                Tên hàng hóa
+                                            </th>
+                                            <th class="hoadon-soluong" id="sl">
+                                                Số lượng
+                                            </th>
+                                            <th class="hoadon-dongia">
+                                                Đơn giá
+                                            </th>
+                                            <th class="hoadon-chietkhau">
+                                                Chiết khấu
+                                            </th>
+                                            <th class="hoadon-thue">
+                                                Thuế (%)
+                                            </th>
+                                            <th class="hoadon-thanhtien">
+                                                Thành tiền
+                                            </th>
+                                            <th class="hoadon-xoa">
+
+                                            </th>
+
+                                        </tr>
+                                    </thead>
+                                </table>
+                                <div class="scrollbar" id="style-5"> <!--style="height: 250px !important;"-->
+                                    <div class="force-overflow">
+                                        <div class="form-group has-feedback" style="height: 200px;margin-right: 0px;">
+                                            <table id="cvtext" style="border: none; width: 100%;margin: 0px 0px 0px;" class="table table-hover">
+                                                <tbody>
+                                                    <tr style="text-align:center" ng-repeat="item in shoppingCart[1].lsItem">
+                                                        <td class="hoadon-stt-ct">{{item.stt}}</td>
+                                                        <td class="hoadon-mahang-ct">{{item.SKU}}</td>
+                                                        <td class="hoadon-tenhanghoa-ct" id="tenz">{{item.Name}}</td>
+                                                        <td class="hoadon-soluong-ct">
+                                                            <input id="lb" type="number" class="btn" value="1" style="border-radius: 5px !important; color: #03b3b2; width: 100%; margin-right: 6px; height: 25px; text-align: right;" ng-model="item.quan" ng-change="TinhToan(item.stt)" />
+                                                        </td>
+                                                        <td class="hoadon-dongia-ct">
+                                                            <input type="text" id="lb" class="btn" style="border-radius:5px;color: #03b3b2;width: 100%;margin-right: 6px;height: 25px;text-align: right;" value="{{item.unit_price|currency:'':0}}">
+                                                        </td>
+                                                        <td class="hoadon-chietkhau-ct">
+                                                            <div ng-click="discount_item_Click(item.stt)" style="cursor:pointer;">
+                                                                <input type="text" id="lb" class="btn" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" disabled
+                                                                       style="border-radius:5px;color: #03b3b2;width: 100%;margin-right: 6px;height: 25px;text-align: right;cursor:pointer;" ng-model="item.chietkhau" ng-change="TinhToan(item.stt)" />
+                                                            </div>
+                                                            <div class="popover undefined fade bottom in" id="popover_discount" style="top:{{(item.stt -1)*42 + 33}}px;margin-left: 50%;display:{{item.display_discount}}">
+                                                                <div class="arrow" style="left: 50%;"></div>
+                                                                <div class="popover-content">
+                                                                    <div class="row" style="display:flex">
+                                                                        <label style="text-align:left" for="inputEmail3" class="col-md-2 control-label no-padding-right">Lý do</label>
+                                                                        <div class="col-md-12">
+                                                                            <input type="text" class="form-control" placeholder="Lý do chiết khấu ..." style="width: 114%;border-radius:0px !important" ng-model="item.DiscountReason" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row" style="display:flex;margin-top: 5px;">
+                                                                        <label style="text-align:left" for="inputPassword3" class="col-sm-2 control-label no-padding-right">Chiết khấu</label>
+                                                                        <div class="col-sm-12">
+                                                                            <input id="txt_discount_item" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                                                                   ng-model="item.txt_discount_item" ng-change="changeDiscount_txt(item.stt)" class="form-control" style="width: 114%; text-align:right;border-radius:0px !important;padding-right: 10px;" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row" style="float: right;">
+                                                                        <label style="float:right">
+                                                                            <input class="checkbox-slider toggle colored-blue" type="checkbox" ng-model="item.status_discount" ng-change="changeStatusDiscount(item.stt)">
+                                                                            <span class="text" style="float:right;margin-top:5px;"></span>
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div>
+                                                                            <div style="width:90%;margin:0 auto;">
+                                                                                <button style="width:100%" type="submit" class="btn btn-blue" ng-click="ApplyDiscount(item.stt)">Áp dụng</button>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="hoadon-thue-ct">
+                                                            <input type="text" id="lb" class="btn" style="border-radius:5px;color: #03b3b2;width: 100%;margin-right: 6px;height: 25px;text-align: right;" ng-model="item.thue" ng-change="TinhToan(item.stt)">
+
+                                                        </td>
+                                                        <td class="hoadon-thanhtien-ct">
+                                                            {{item.thanhtien|currency:'':0}}đ
+                                                        </td>
+                                                        <td class="hoadon-xoa-ct">
+                                                            <i class="fa fa-trash-o" style="cursor: pointer" ng-click="del(item.stt)">
+                                                            </i>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="rs3" class="content-3 inva" style="display:{{dp2[2]}}">
+                            <div id="home9" class="tab-pane active ">
+                                <br />
+                                <div class="form-title" style="padding:0px 0;margin-bottom:2px;">
+                                    <input style="padding-left: 11px;border-radius: 3px !important;margin-bottom:5px;width: 99%;height:30px;margin-left: 5px;" type="text" placeholder="Mã vạch , Mã bacode ,Mã sản phẩm" ng-change="TimKiem()" ng-model="key">
+                                </div>
+                                <table id="cvtext" class="table table-hover" style="margin-top:5px;margin: 0px 0px 0px;border: none;width: 100%;">
+                                    <thead class="bordered-darkorange bg-themeprimary" style="color:white">
+                                        <tr>
+                                            <th class="hoadon-stt">
+                                                STT
+                                            </th>
+                                            <th class="hoadon-mahang" id="mh">
+                                                Mã hàng
+                                            </th>
+                                            <th class="hoadon-tenhanghoa" id="ten">
+                                                Tên hàng hóa
+                                            </th>
+                                            <th class="hoadon-soluong" id="sl">
+                                                Số lượng
+                                            </th>
+                                            <th class="hoadon-dongia">
+                                                Đơn giá
+                                            </th>
+                                            <th class="hoadon-chietkhau">
+                                                Chiết khấu
+                                            </th>
+                                            <th class="hoadon-thue">
+                                                Thuế (%)
+                                            </th>
+                                            <th class="hoadon-thanhtien">
+                                                Thành tiền
+                                            </th>
+                                            <th class="hoadon-xoa">
+
+                                            </th>
+
+                                        </tr>
+                                    </thead>
+                                </table>
+                                <div class="scrollbar" id="style-5"> <!--style="height: 250px !important;"-->
+                                    <div class="force-overflow">
+                                        <div class="form-group has-feedback" style="height: 200px;margin-right: 0px;">
+                                            <table id="cvtext" style="border: none; width: 100%;margin: 0px 0px 0px;" class="table table-hover">
+                                                <tbody>
+                                                    <tr style="text-align:center" ng-repeat="item in shoppingCart[2].lsItem">
+                                                        <td class="hoadon-stt-ct">{{item.stt}}</td>
+                                                        <td class="hoadon-mahang-ct">{{item.SKU}}</td>
+                                                        <td class="hoadon-tenhanghoa-ct" id="tenz">{{item.Name}}</td>
+                                                        <td class="hoadon-soluong-ct">
+                                                            <input id="lb" type="number" class="btn" value="1" style="border-radius: 5px !important; color: #03b3b2; width: 100%; margin-right: 6px; height: 25px; text-align: right;" ng-model="item.quan" ng-change="TinhToan(item.stt)" />
+                                                        </td>
+                                                        <td class="hoadon-dongia-ct">
+                                                            <input type="text" id="lb" class="btn" style="border-radius:5px;color: #03b3b2;width: 100%;margin-right: 6px;height: 25px;text-align: right;" value="{{item.unit_price|currency:'':0}}">
+                                                        </td>
+                                                        <td class="hoadon-chietkhau-ct">
+                                                            <div ng-click="discount_item_Click(item.stt)" style="cursor:pointer;">
+                                                                <input type="text" id="lb" class="btn" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" disabled
+                                                                       style="border-radius:5px;color: #03b3b2;width: 100%;margin-right: 6px;height: 25px;text-align: right;cursor:pointer;" ng-model="item.chietkhau" ng-change="TinhToan(item.stt)" />
+                                                            </div>
+                                                            <div class="popover undefined fade bottom in" id="popover_discount" style="top:{{(item.stt -1)*42 + 33}}px;margin-left: 50%;display:{{item.display_discount}}">
+                                                                <div class="arrow" style="left: 50%;"></div>
+                                                                <div class="popover-content">
+                                                                    <div class="row" style="display:flex">
+                                                                        <label style="text-align:left" for="inputEmail3" class="col-md-2 control-label no-padding-right">Lý do</label>
+                                                                        <div class="col-md-12">
+                                                                            <input type="text" class="form-control" placeholder="Lý do chiết khấu ..." style="width: 114%;border-radius:0px !important" ng-model="item.DiscountReason" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row" style="display:flex;margin-top: 5px;">
+                                                                        <label style="text-align:left" for="inputPassword3" class="col-sm-2 control-label no-padding-right">Chiết khấu</label>
+                                                                        <div class="col-sm-12">
+                                                                            <input id="txt_discount_item" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                                                                   ng-model="item.txt_discount_item" ng-change="changeDiscount_txt(item.stt)" class="form-control" style="width: 114%; text-align:right;border-radius:0px !important;padding-right: 10px;" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row" style="float: right;">
+                                                                        <label style="float:right">
+                                                                            <input class="checkbox-slider toggle colored-blue" type="checkbox" ng-model="item.status_discount" ng-change="changeStatusDiscount(item.stt)">
+                                                                            <span class="text" style="float:right;margin-top:5px;"></span>
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div>
+                                                                            <div style="width:90%;margin:0 auto;">
+                                                                                <button style="width:100%" type="submit" class="btn btn-blue" ng-click="ApplyDiscount(item.stt)">Áp dụng</button>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="hoadon-thue-ct">
+                                                            <input type="text" id="lb" class="btn" style="border-radius:5px;color: #03b3b2;width: 100%;margin-right: 6px;height: 25px;text-align: right;" ng-model="item.thue" ng-change="TinhToan(item.stt)">
+
+                                                        </td>
+                                                        <td class="hoadon-thanhtien-ct">
+                                                            {{item.thanhtien|currency:'':0}}đ
+                                                        </td>
+                                                        <td class="hoadon-xoa-ct">
+                                                            <i class="fa fa-trash-o" style="cursor: pointer" ng-click="del(item.stt)">
+                                                            </i>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="rs4" class="content-4 inva" style="display:{{dp2[3]}}">
+                            <div id="home9" class="tab-pane active ">
+                                <br />
+                                <div class="form-title" style="padding:0px 0;margin-bottom:2px;">
+                                    <input style="padding-left: 11px;border-radius: 3px !important;margin-bottom:5px;width: 99%;height:30px;margin-left: 5px;" type="text" placeholder="Mã vạch , Mã bacode ,Mã sản phẩm" ng-change="TimKiem()" ng-model="key">
+                                </div>
+                                <table id="cvtext" class="table table-hover" style="margin-top:5px;margin: 0px 0px 0px;border: none;width: 100%;">
+                                    <thead class="bordered-darkorange bg-themeprimary" style="color:white">
+                                        <tr>
+                                            <th class="hoadon-stt">
+                                                STT
+                                            </th>
+                                            <th class="hoadon-mahang" id="mh">
+                                                Mã hàng
+                                            </th>
+                                            <th class="hoadon-tenhanghoa" id="ten">
+                                                Tên hàng hóa
+                                            </th>
+                                            <th class="hoadon-soluong" id="sl">
+                                                Số lượng
+                                            </th>
+                                            <th class="hoadon-dongia">
+                                                Đơn giá
+                                            </th>
+                                            <th class="hoadon-chietkhau">
+                                                Chiết khấu
+                                            </th>
+                                            <th class="hoadon-thue">
+                                                Thuế (%)
+                                            </th>
+                                            <th class="hoadon-thanhtien">
+                                                Thành tiền
+                                            </th>
+                                            <th class="hoadon-xoa">
+
+                                            </th>
+
+                                        </tr>
+                                    </thead>
+                                </table>
+                                <div class="scrollbar" id="style-5"> <!--style="height: 250px !important;"-->
+                                    <div class="force-overflow">
+                                        <div class="form-group has-feedback" style="height: 200px;margin-right: 0px;">
+                                            <table id="cvtext" style="border: none; width: 100%;margin: 0px 0px 0px;" class="table table-hover">
+                                                <tbody>
+                                                    <tr style="text-align:center" ng-repeat="item in shoppingCart[3].lsItem">
+                                                        <td class="hoadon-stt-ct">{{item.stt}}</td>
+                                                        <td class="hoadon-mahang-ct">{{item.SKU}}</td>
+                                                        <td class="hoadon-tenhanghoa-ct" id="tenz">{{item.Name}}</td>
+                                                        <td class="hoadon-soluong-ct">
+                                                            <input id="lb" type="number" class="btn" value="1" style="border-radius: 5px !important; color: #03b3b2; width: 100%; margin-right: 6px; height: 25px; text-align: right;" ng-model="item.quan" ng-change="TinhToan(item.stt)" />
+                                                        </td>
+                                                        <td class="hoadon-dongia-ct">
+                                                            <input type="text" id="lb" class="btn" style="border-radius:5px;color: #03b3b2;width: 100%;margin-right: 6px;height: 25px;text-align: right;" value="{{item.unit_price|currency:'':0}}">
+                                                        </td>
+                                                        <td class="hoadon-chietkhau-ct">
+                                                            <div ng-click="discount_item_Click(item.stt)" style="cursor:pointer;">
+                                                                <input type="text" id="lb" class="btn" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" disabled
+                                                                       style="border-radius:5px;color: #03b3b2;width: 100%;margin-right: 6px;height: 25px;text-align: right;cursor:pointer;" ng-model="item.chietkhau" ng-change="TinhToan(item.stt)" />
+                                                            </div>
+                                                            <div class="popover undefined fade bottom in" id="popover_discount" style="top:{{(item.stt -1)*42 + 33}}px;margin-left: 50%;display:{{item.display_discount}}">
+                                                                <div class="arrow" style="left: 50%;"></div>
+                                                                <div class="popover-content">
+                                                                    <div class="row" style="display:flex">
+                                                                        <label style="text-align:left" for="inputEmail3" class="col-md-2 control-label no-padding-right">Lý do</label>
+                                                                        <div class="col-md-12">
+                                                                            <input type="text" class="form-control" placeholder="Lý do chiết khấu ..." style="width: 114%;border-radius:0px !important" ng-model="item.DiscountReason" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row" style="display:flex;margin-top: 5px;">
+                                                                        <label style="text-align:left" for="inputPassword3" class="col-sm-2 control-label no-padding-right">Chiết khấu</label>
+                                                                        <div class="col-sm-12">
+                                                                            <input id="txt_discount_item" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                                                                   ng-model="item.txt_discount_item" ng-change="changeDiscount_txt(item.stt)" class="form-control" style="width: 114%; text-align:right;border-radius:0px !important;padding-right: 10px;" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row" style="float: right;">
+                                                                        <label style="float:right">
+                                                                            <input class="checkbox-slider toggle colored-blue" type="checkbox" ng-model="item.status_discount" ng-change="changeStatusDiscount(item.stt)">
+                                                                            <span class="text" style="float:right;margin-top:5px;"></span>
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div>
+                                                                            <div style="width:90%;margin:0 auto;">
+                                                                                <button style="width:100%" type="submit" class="btn btn-blue" ng-click="ApplyDiscount(item.stt)">Áp dụng</button>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="hoadon-thue-ct">
+                                                            <input type="text" id="lb" class="btn" style="border-radius:5px;color: #03b3b2;width: 100%;margin-right: 6px;height: 25px;text-align: right;" ng-model="item.thue" ng-change="TinhToan(item.stt)">
+
+                                                        </td>
+                                                        <td class="hoadon-thanhtien-ct">
+                                                            {{item.thanhtien|currency:'':0}}đ
+                                                        </td>
+                                                        <td class="hoadon-xoa-ct">
+                                                            <i class="fa fa-trash-o" style="cursor: pointer" ng-click="del(item.stt)">
+                                                            </i>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="rs5" class="content-5 inva" style="display:{{dp2[4]}}">
+                            <div id="home9" class="tab-pane active ">
+                                <br />
+                                <div class="form-title" style="padding:0px 0;margin-bottom:2px;">
+                                    <input style="padding-left: 11px;border-radius: 3px !important;margin-bottom:5px;width: 99%;height:30px;margin-left: 5px;" type="text" placeholder="Mã vạch , Mã bacode ,Mã sản phẩm" ng-change="TimKiem()" ng-model="key">
+                                </div>
+                                <table id="cvtext" class="table table-hover" style="margin-top:5px;margin: 0px 0px 0px;border: none;width: 100%;">
+                                    <thead class="bordered-darkorange bg-themeprimary" style="color:white">
+                                        <tr>
+                                            <th class="hoadon-stt">
+                                                STT
+                                            </th>
+                                            <th class="hoadon-mahang" id="mh">
+                                                Mã hàng
+                                            </th>
+                                            <th class="hoadon-tenhanghoa" id="ten">
+                                                Tên hàng hóa
+                                            </th>
+                                            <th class="hoadon-soluong" id="sl">
+                                                Số lượng
+                                            </th>
+                                            <th class="hoadon-dongia">
+                                                Đơn giá
+                                            </th>
+                                            <th class="hoadon-chietkhau">
+                                                Chiết khấu
+                                            </th>
+                                            <th class="hoadon-thue">
+                                                Thuế (%)
+                                            </th>
+                                            <th class="hoadon-thanhtien">
+                                                Thành tiền
+                                            </th>
+                                            <th class="hoadon-xoa">
+
+                                            </th>
+
+                                        </tr>
+                                    </thead>
+                                </table>
+                                <div class="scrollbar" id="style-5"> <!--style="height: 250px !important;"-->
+                                    <div class="force-overflow">
+                                        <div class="form-group has-feedback" style="height: 200px;margin-right: 0px;">
+                                            <table id="cvtext" style="border: none; width: 100%;margin: 0px 0px 0px;" class="table table-hover">
+                                                <tbody>
+                                                    <tr style="text-align:center" ng-repeat="item in shoppingCart[4].lsItem">
+                                                        <td class="hoadon-stt-ct">{{item.stt}}</td>
+                                                        <td class="hoadon-mahang-ct">{{item.SKU}}</td>
+                                                        <td class="hoadon-tenhanghoa-ct" id="tenz">{{item.Name}}</td>
+                                                        <td class="hoadon-soluong-ct">
+                                                            <input id="lb" type="number" class="btn" value="1" style="border-radius: 5px !important; color: #03b3b2; width: 100%; margin-right: 6px; height: 25px; text-align: right;" ng-model="item.quan" ng-change="TinhToan(item.stt)" />
+                                                        </td>
+                                                        <td class="hoadon-dongia-ct">
+                                                            <input type="text" id="lb" class="btn" style="border-radius:5px;color: #03b3b2;width: 100%;margin-right: 6px;height: 25px;text-align: right;" value="{{item.unit_price|currency:'':0}}">
+                                                        </td>
+                                                        <td class="hoadon-chietkhau-ct">
+                                                            <div ng-click="discount_item_Click(item.stt)" style="cursor:pointer;">
+                                                                <input type="text" id="lb" class="btn" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" disabled
+                                                                       style="border-radius:5px;color: #03b3b2;width: 100%;margin-right: 6px;height: 25px;text-align: right;cursor:pointer;" ng-model="item.chietkhau" ng-change="TinhToan(item.stt)" />
+                                                            </div>
+                                                            <div class="popover undefined fade bottom in" id="popover_discount" style="top:{{(item.stt -1)*42 + 33}}px;margin-left: 50%;display:{{item.display_discount}}">
+                                                                <div class="arrow" style="left: 50%;"></div>
+                                                                <div class="popover-content">
+                                                                    <div class="row" style="display:flex">
+                                                                        <label style="text-align:left" for="inputEmail3" class="col-md-2 control-label no-padding-right">Lý do</label>
+                                                                        <div class="col-md-12">
+                                                                            <input type="text" class="form-control" placeholder="Lý do chiết khấu ..." style="width: 114%;border-radius:0px !important" ng-model="item.DiscountReason" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row" style="display:flex;margin-top: 5px;">
+                                                                        <label style="text-align:left" for="inputPassword3" class="col-sm-2 control-label no-padding-right">Chiết khấu</label>
+                                                                        <div class="col-sm-12">
+                                                                            <input id="txt_discount_item" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                                                                   ng-model="item.txt_discount_item" ng-change="changeDiscount_txt(item.stt)" class="form-control" style="width: 114%; text-align:right;border-radius:0px !important;padding-right: 10px;" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row" style="float: right;">
+                                                                        <label style="float:right">
+                                                                            <input class="checkbox-slider toggle colored-blue" type="checkbox" ng-model="item.status_discount" ng-change="changeStatusDiscount(item.stt)">
+                                                                            <span class="text" style="float:right;margin-top:5px;"></span>
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div>
+                                                                            <div style="width:90%;margin:0 auto;">
+                                                                                <button style="width:100%" type="submit" class="btn btn-blue" ng-click="ApplyDiscount(item.stt)">Áp dụng</button>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="hoadon-thue-ct">
+                                                            <input type="text" id="lb" class="btn" style="border-radius:5px;color: #03b3b2;width: 100%;margin-right: 6px;height: 25px;text-align: right;" ng-model="item.thue" ng-change="TinhToan(item.stt)">
+
+                                                        </td>
+                                                        <td class="hoadon-thanhtien-ct">
+                                                            {{item.thanhtien|currency:'':0}}đ
+                                                        </td>
+                                                        <td class="hoadon-xoa-ct">
+                                                            <i class="fa fa-trash-o" style="cursor: pointer" ng-click="del(item.stt)">
+                                                            </i>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="rs6" class="content-6 inva" style="display:{{dp2[5]}}">
+                            <div id="home9" class="tab-pane active ">
+                                <br />
+                                <div class="form-title" style="padding:0px 0;margin-bottom:2px;">
+                                    <input style="padding-left: 11px;border-radius: 3px !important;margin-bottom:5px;width: 99%;height:30px;margin-left: 5px;" type="text" placeholder="Mã vạch , Mã bacode ,Mã sản phẩm" ng-change="TimKiem()" ng-model="key">
+                                </div>
+                                <table id="cvtext" class="table table-hover" style="margin-top:5px;margin: 0px 0px 0px;border: none;width: 100%;">
+                                    <thead class="bordered-darkorange bg-themeprimary" style="color:white">
+                                        <tr>
+                                            <th class="hoadon-stt">
+                                                STT
+                                            </th>
+                                            <th class="hoadon-mahang" id="mh">
+                                                Mã hàng
+                                            </th>
+                                            <th class="hoadon-tenhanghoa" id="ten">
+                                                Tên hàng hóa
+                                            </th>
+                                            <th class="hoadon-soluong" id="sl">
+                                                Số lượng
+                                            </th>
+                                            <th class="hoadon-dongia">
+                                                Đơn giá
+                                            </th>
+                                            <th class="hoadon-chietkhau">
+                                                Chiết khấu
+                                            </th>
+                                            <th class="hoadon-thue">
+                                                Thuế (%)
+                                            </th>
+                                            <th class="hoadon-thanhtien">
+                                                Thành tiền
+                                            </th>
+                                            <th class="hoadon-xoa">
+
+                                            </th>
+
+                                        </tr>
+                                    </thead>
+                                </table>
+                                <div class="scrollbar" id="style-5"> <!--style="height: 250px !important;"-->
+                                    <div class="force-overflow">
+                                        <div class="form-group has-feedback" style="height: 200px;margin-right: 0px;">
+                                            <table id="cvtext" style="border: none; width: 100%;margin: 0px 0px 0px;" class="table table-hover">
+                                                <tbody>
+                                                    <tr style="text-align:center" ng-repeat="item in shoppingCart[5].lsItem">
+                                                        <td class="hoadon-stt-ct">{{item.stt}}</td>
+                                                        <td class="hoadon-mahang-ct">{{item.SKU}}</td>
+                                                        <td class="hoadon-tenhanghoa-ct" id="tenz">{{item.Name}}</td>
+                                                        <td class="hoadon-soluong-ct">
+                                                            <input id="lb" type="number" class="btn" value="1" style="border-radius: 5px !important; color: #03b3b2; width: 100%; margin-right: 6px; height: 25px; text-align: right;" ng-model="item.quan" ng-change="TinhToan(item.stt)" />
+                                                        </td>
+                                                        <td class="hoadon-dongia-ct">
+                                                            <input type="text" id="lb" class="btn" style="border-radius:5px;color: #03b3b2;width: 100%;margin-right: 6px;height: 25px;text-align: right;" value="{{item.unit_price|currency:'':0}}">
+                                                        </td>
+                                                        <td class="hoadon-chietkhau-ct">
+                                                            <div ng-click="discount_item_Click(item.stt)" style="cursor:pointer;">
+                                                                <input type="text" id="lb" class="btn" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" disabled
+                                                                       style="border-radius:5px;color: #03b3b2;width: 100%;margin-right: 6px;height: 25px;text-align: right;cursor:pointer;" ng-model="item.chietkhau" ng-change="TinhToan(item.stt)" />
+                                                            </div>
+                                                            <div class="popover undefined fade bottom in" id="popover_discount" style="top:{{(item.stt -1)*42 + 33}}px;margin-left: 50%;display:{{item.display_discount}}">
+                                                                <div class="arrow" style="left: 50%;"></div>
+                                                                <div class="popover-content">
+                                                                    <div class="row" style="display:flex">
+                                                                        <label style="text-align:left" for="inputEmail3" class="col-md-2 control-label no-padding-right">Lý do</label>
+                                                                        <div class="col-md-12">
+                                                                            <input type="text" class="form-control" placeholder="Lý do chiết khấu ..." style="width: 114%;border-radius:0px !important" ng-model="item.DiscountReason" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row" style="display:flex;margin-top: 5px;">
+                                                                        <label style="text-align:left" for="inputPassword3" class="col-sm-2 control-label no-padding-right">Chiết khấu</label>
+                                                                        <div class="col-sm-12">
+                                                                            <input id="txt_discount_item" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                                                                   ng-model="item.txt_discount_item" ng-change="changeDiscount_txt(item.stt)" class="form-control" style="width: 114%; text-align:right;border-radius:0px !important;padding-right: 10px;" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row" style="float: right;">
+                                                                        <label style="float:right">
+                                                                            <input class="checkbox-slider toggle colored-blue" type="checkbox" ng-model="item.status_discount" ng-change="changeStatusDiscount(item.stt)">
+                                                                            <span class="text" style="float:right;margin-top:5px;"></span>
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div>
+                                                                            <div style="width:90%;margin:0 auto;">
+                                                                                <button style="width:100%" type="submit" class="btn btn-blue" ng-click="ApplyDiscount(item.stt)">Áp dụng</button>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="hoadon-thue-ct">
+                                                            <input type="text" id="lb" class="btn" style="border-radius:5px;color: #03b3b2;width: 100%;margin-right: 6px;height: 25px;text-align: right;" ng-model="item.thue" ng-change="TinhToan(item.stt)">
+
+                                                        </td>
+                                                        <td class="hoadon-thanhtien-ct">
+                                                            {{item.thanhtien|currency:'':0}}đ
+                                                        </td>
+                                                        <td class="hoadon-xoa-ct">
+                                                            <i class="fa fa-trash-o" style="cursor: pointer" ng-click="del(item.stt)">
+                                                            </i>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      
+                    </div>
+                </section>
+
+            </div>
+            <div class="col-md-12 thongtinbanhang-left-botton">
+                <div class="col-md-4 banhang-khachhang" style="margin-bottom: 5px;background:#ffffff">
+                    <div class="row bg-themeprimary" style="height: 26px;border-right: 4px solid #eeeeee;">
+                        <label style="color:white;margin: 5px 17px 0px;font-weight: bold;">
+                            Khách hàng
+                        </label>
+                        <a href="javascript:void(0)" style="float:  right;margin-right:  18px;margin-top:  7px;color: white;">
+                            <i class="fa fa-plus" data-toggle="modal" data-target="#myModal"></i>
+                        </a>
+
+                    </div>
+                    <div class="row" style="margin-right: -11px;border: 1px solid #2dc3e8;z-index:2">
+                        
+                        <div class="scrollbar1" id="t" style="margin-left:5px">
+                            <div id="HOVER" class="force" ng-repeat="item in listCustomer1" style="background-color: #ddd;">
+                                <a href="javascript:void(0)" ng-click="ChooseCustomer(item.ObjectID)" style=" text-decoration: none;">
+                                    <ul style="padding-left: 2px;">
+                                        <li style="list-style:none">
+                                            <div style="padding: 9px 0px 0px;">
+                                                <span style="float:left;"> {{item.ObjectName}} </span>
+                                                <span style="float:right;"> {{item.Tel}} </span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row banhang-khachhang-chitiet">
+                        <div class="form-group" style="margin-top: 10px;margin-bottom:0px">
+                            <label style="margin-left:10px;margin-bottom:10px" id="lb" class="control-label">Khách hàng :</label>
+                            <input id="inputz" style="width: 60% !important; float: right;padding-right:10px; margin-right: 5px; color: #2dc3e8; border-radius: 3px !important; text-align:right" type="text" 
+                                   placeholder="Tìm kiếm khách hàng" ng-click="search()" ng-change="search()" ng-model="searchText" class="ng-dirty ng-valid-parse ng-empty">
+
+                        </div>
+
+                        <div class="form-group" style="margin-top: 10px; margin-right: 5px; margin-bottom: 0px">
+                            <label style="margin-left:10px;margin-bottom:10px" id="lb" class="control-label">Điện thoại :</label>
+                            <label style="float:right" id="lb" class="control-label">{{shoppingCart[tab].customer.Tel}}</label>
+                        </div>
+                        <div class="form-group" style="margin-bottom: 5px; margin-right: 5px; margin-bottom: 0px;margin-top:5px">
+                            <label style="margin-left:10px;margin-bottom:10px" id="lb" class="control-label">Địa chỉ:</label>
+                            <label style="float:right" id="lb" class="control-label">{{shoppingCart[tab].customer.ObjectAddress}}</label>
+                        </div>
+                        <div class="form-group" style="margin-bottom: 0px; margin-right: 5px;margin-top:5px;cursor:pointer;" ng-click="DisplayDebt()">
+
+                            <div class="popover undefined fade top in" id="popover907639" style="top: 120px;display:{{shoppingCart[tab].customer.displayDebt}};left: 10px; height: 40px;padding: 8px;background-color: #eee;">
+                                <label>Thanh toán tiền thừa vào công nợ ? </label>
+                                <label style="margin-left:10px;">
+                                    <input type="checkbox" ng-model="shoppingCart[tab].customer.selectDebt" ng-click="UpdateDebt()">
+                                    <span class="text"></span>
+                                </label>
+                            </div>
+
+                            <label style="margin-left:10px;margin-bottom:10px;cursor:pointer;" id="lb" class="control-label">Công nợ:</label>
+                            <label style="float:right ;font-weight:bold;cursor:pointer;" id="lb" class="control-label">{{shoppingCart[tab].customer.debt_demo|currency:'':0}} đ</label>
+
+                        </div>
+
+                        <div style="color: #228ca7;width:100%;cursor:pointer;display:{{disAdvance}}" ng-click="AdvanceSettingClick()">
+                            <div class="popover undefined fade top in" id="popover907639" style="top:10px;display:{{displayAdvance1}};left: 10px; height: 180px;padding: 8px;background-color: #eee;width:100%;">
+                                <div style="width:100%;border-bottom: 1px solid white;height:20%;margin-bottom: 4px;">
+                                    <label><b>Giá mặc định : </b></label>
+                                    <label style="margin-right:10px;float:right;">
+                                        {{shoppingCart[tab].customer.PricePolicyDefaultName}}
+                                    </label>
+                                </div>
+                                <div style="width:100%;border-bottom: 1px solid white;height:20%;margin-bottom: 4px;">
+                                    <label><b>Thuế mặc định : </b></label>
+                                    <label style="margin-right:10px;float:right;">
+                                        {{shoppingCart[tab].customer.TaxRateDefault}} %
+                                    </label>
+                                </div>
+                                <div style="width:100%;border-bottom: 1px solid white;height:20%;margin-bottom: 4px;">
+                                    <label><b>Chiết khấu mặc định : </b></label>
+                                    <label style="margin-right:10px;float:right;">
+                                        {{shoppingCart[tab].customer.DiscountRateDefault}} %
+                                    </label>
+                                </div>
+                                <div style="width:100%;border-bottom: 1px solid white;height:20%;margin-bottom: 4px;">
+                                    <label><b>Kỳ hạn thanh toán : </b></label>
+                                    <label style="margin-right:10px;float:right;">
+                                        {{shoppingCart[tab].customer.PaymentScheduleDefaultName}}
+                                    </label>
+                                </div>
+                                <div style="width:100%;">
+                                    <label><b>Phương thức thanh toán : </b></label>
+                                    <label style="margin-right:10px;float:right;height:20%;">
+                                        {{shoppingCart[tab].customer.PaymentMethodDefaultName}}
+                                    </label>
+                                </div>
+                            </div>
+
+                            <i class="fa fa-cog" style="margin-left: 10px;"></i><label style="margin-left:6px;cursor:pointer;"> Cài đặt nâng cao</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 container-fluid banhang-thanhtoan" style="margin-bottom: 5px;background:#ffffff;display:{{dis}}">
+                    <div class="bg-themeprimary row" style="height: 28px;">
+                        <label style="color:white;margin: 5px 17px 0px;font-weight: bold;">
+                            Thanh toán
+                        </label>
+                        <i style="width: 33px; padding-left: 6px; border-radius: 2px; float: right; right: 15px; top: 5px; background: #085079; font-size: 20px; color: white; cursor: pointer" title="khuyến mại" class="tooltip1 icon glyphicon fa fa-cart-arrow-down" ng-click="showPromotion(1)"></i>
+
+                    </div>
+                    <div class="row banhang-thanhtoan-chitiet" style="border: 1px solid #2dc3e8;">
+                        <div class="col-md-6" style="margin-top:8px;margin-bottom: 8px;border-right: 1px solid #2dc3e8;">
+                            <div class="form-group" style="margin-right: 5px;">
+                                <label id="lb" class="control-label">Tổng tiền :</label>
+                                <label style="float:right" id="lb" class="control-label">{{saleOrders.TotalAmountOC|currency:'':0}} đ</label>
+                            </div>
+                            <div class="form-group" style="margin-right: 5px;">
+                                <label id="lb" class="control-label">VAT:</label>
+                                <label style=" float:right" id="lb" class="control-label">{{saleOrders.TotalVATAmountOC|currency:'':0}} đ</label>
+                            </div>
+                            <div class="form-group" style="margin-top:5px;width: 165%;">
+                                <label id="lb" class="control-label">C/K :</label>
+                                <input type="text" id="lb" ng-model="saleOrders.DiscountAmountOC" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                       ng-change="TinhTong2()" class="btn x1" style="border-radius: 5px !important; color: #03b3b2; width: 20%; margin-right: 6px; height: 25px;text-align: right;">
+                                <label style="background: none;border-radius: 8px;display:{{vnd}}">
+                                    <input style="border-color: #53a93f; color: #53a93f; " id="pt1" name="form-field-radio" type="radio" checked="checked" ng-click="ChooseVND()">
+                                    <span class="text" style="color:#000">đ</span>
+                                </label>
+                                <label style="margin-left: 10px;background: none;border-radius: 8px;display:{{pt}}">
+                                    <input name="form-field-radio" type="radio" id="pt2" class="colored-success" ng-click="Choose()">
+                                    <span class="text" style="color:#000">%  </span>
+                                </label>
+
+                            </div>
+                            <div class="form-group" style=" margin-right: 5px;">
+                                <label id="lb" class="control-label">Tổng tiền chiết khấu:</label>
+                                <label style="float:right" id="lb" class="control-label">{{saleOrders.TotalDiscountAmountOC|currency:'':0}} đ</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group" style="margin-bottom: 5px; margin-top: 8px">
+                                <label id="lb" class="control-label">Tổng tiền thanh toán :</label>
+                                <label style="float:right ;font-weight:bold" id="lb" class="control-label">{{TongThanhToan|currency:'':0}} đ</label>
+                            </div>
+                            <div class="form-group" style="margin-top:12px">
+                                <label id="lb" class="control-label">Tiền khách đưa :</label>
+                                <input type="text" id="lb" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                       ng-model="TienKhachDua" ng-change="TienTraLai()" class="btn btnz " style="text-align: right; border-radius: 5px !important; color: #03b3b2; width: 55%; height: 25px; float: right">
+                            </div>
+                            <div class="form-group">
+                                <label id="lb" class="control-label">Trả lại khách :</label>
+                                <label style="float:right ;font-weight:bold" id="lb" class="control-label">{{TraLaiKhach_demo|currency:'':0}} đ</label>
+                            </div>
+                            <div class="form-group">
+                                <a id="lb" href="javascript:void(0)" class="btn btz" style="float:left;border-radius:5px;color: #ffffff;width: 29%;height: 30px;text-align:center;padding: 5px;background: #c73151;" ng-click="clear()">Hủy</a>
+                                <a id="lb" href="javascript:void(0)" class="btn" style="float:left;border-radius:5px;color: #ffffff;width: 29%;margin-right: 6px;height: 30px;text-align:center;padding: 5px;background: #2dc3e8;margin-left:6px" ng-click="AddSaleOrders1()">Lưu</a>
+                                <a href="javascript:void(0)" class="btn" style="font-size: 14px; text-align: center; border-radius: 5px; color: white; width: 29%; margin-right: 6px; height: 30px; text-align: center; padding: 5px; background: #53a93f;" ng-click="AddSaleOrders()">Lưu/In</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 container-fluid banhang-thanhtoan" style="margin-bottom: 5px;background:#ffffff;display:none;display:{{dis1}}">
+                    <div class="bg-themeprimary row" style="height: 28px;">
+                        <label style="color:white;margin: 5px 17px 0px;font-weight: bold;">
+                            Khuyến mại / Mở rộng
+                        </label>
+                        <i style="width: 33px; padding-left: 6px; border-radius: 2px; float: right; right: 15px; top: 5px; background: #085079; font-size: 20px; color: white; cursor: pointer" title="khuyến mại" class="tooltip1 icon glyphicon fa fa-arrow-circle-o-left" ng-click="showPromotion(2)"></i>
+
+                    </div>
+                    <div class="row banhang-thanhtoan-chitiet" style="border: 1px solid #2dc3e8;">
+                        <div class="col-md-6" style="margin-top:8px;margin-bottom: 8px;border-right: 1px solid #2dc3e8;height: 160px;">
+                            <div class="form-group" style="margin-right: 5px;max-height: 150px;overflow:  auto;overflow-x:  hidden;">
+                                <div ng-repeat="i in listNew" class="alert alert-success fade in" style="margin-bottom: 5px; display: none; display:{{disPr}}">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="radio" style="margin-top: 0px !important;margin-bottom: 0px !important;">
+                                                <label>
+                                                    <input name="form-field-radio" type="radio" class="colored-blueberry" ng-click="CalculatePromotion(i.Expirydate,i.VoucherTypeDetail,i.PromotionValue,i.VoucherID,i.VoucherType)">
+                                                    <span class="text"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-10" style="margin-top: -10px; margin-bottom: -10px;">
+                                            <strong title="{{i.VoucherType1}}">{{i.PromotionName}}</strong><br />
+                                            <span style="color:red;font-size:11px">{{i.VoucherType1}}</span>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="alert alert-info fade in" style="display:none;display:{{disPr1}}">
+                                    <button class="close" data-dismiss="alert">
+                                        ×
+                                    </button>
+                                    <i class="fa-fw fa fa-info"></i>
+                                    <strong>  Ồ Không !</strong> Đơn hàng không đủ điều kiện khuyến mại.
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group" style="margin-bottom: 5px; margin-top: 8px">
+                                <label id="lb" class="control-label">Thuế</label>
+                                <select disabled style="text-align: right; border-radius: 5px !important; color: #03b3b2; width: 55%; height: 25px; float: right; padding: 0px 15px !important" class="control-label">
+                                    <option>Chưa bao gồm thuế</option>
+                                    <option>Đã bao gồm thuế</option>
+                                </select>
+                            </div>
+                            <div class="form-group" style="margin-top:12px">
+                                <label id="lb" class="control-label">Bảng giá</label>
+                                <select disabled style="text-align: right; border-radius: 5px !important; color: #03b3b2; width: 55%; height: 25px; float: right; padding: 0px 15px !important" class="control-label">
+                                    <option>Giá bán lẻ</option>
+                                    <option>Giá bán sỉ</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label id="lb" class="control-label">Người bán</label>
+                                <input disabled id="inputz" style="width: 55% !important;float: right;padding-right:50px;/* margin-right: 5px; */color: #2dc3e8;border-radius: 3px !important;text-align:right;" type="text" ng-model="authentication.fullName" class="ng-dirty ng-valid-parse ng-empty ng-pristine ng-valid ng-touched">
+                            </div>
+                            <div class="form-group">
+                                <label id="lb" class="control-label">Ghi chú</label>
+                                <textarea style="text-align: right; border-radius: 5px !important; color: #03b3b2; width: 55%; height: 55px; float: right;" class="control-label"> </textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog" style="width:80% !important;margin-left:0px !important">
+        <form class="form-horizontal" role="form" novalidate name="frmAddCustomer" ng-submit="AddCustomers()" style="margin-left: 285px;">
+            <div class="row">
+                <div class="col-lg-12 col-sm-12 col-xs-12">
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-6 col-xs-12" style="width:100%">
+                            <div class="widget">
+                                <div class="widget-header bordered-top bordered-palegreen">
+                                    <span style="font-weight: bold !important;" class="widget-caption">Thông tin chung</span>
+                                </div>
+                                <div class="widget-body">
+                                    <div id="horizontal-form">
+                                        <div class="row" style="margin-top:10px;margin-left: 20px;">
+                                            <div class="col-md-6">
+
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Mã khách hàng</label>
+                                                    <div class="col-sm-10">
+                                                        <input style="width:100%" type="text" class="form-control" name="ObjectCode" ng-model="customers.ObjectCode">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Nhóm khách hàng</label>
+                                                    <div class="col-sm-10">
+                                                        <select style="width:100%" class="form-control" name="ObjectCategoryID" ng-model="customers.ObjectCategoryID">
+                                                            <option ng-repeat="obj in listObjectCategory" selected value="{{obj.Id}}">{{obj.Name}}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Số điện thoại<i style="color:red"> *</i> </label>
+                                                    <div class="col-sm-10">
+                                                        <input style="width:100%" type="text" class="form-control" name="Tel" ng-model="customers.Tel" required>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Giới tính</label>
+                                                    <div class="col-sm-10">
+                                                        <select style="width:100%" id="e1" class="form-control" ng-model="customers.Sex">
+                                                            <option value="Nam">
+                                                                Nam
+                                                            </option>
+                                                            <option value="Nữ">
+                                                                Nữ
+                                                            </option>
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Ngày sinh</label>
+                                                    <div class="col-sm-10">
+                                                        <input style="width:100%" type="date" class="form-control" name="BirthdayDate" ng-model="customers.BirthdayDate">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Mã số thuế</label>
+                                                    <div class="col-sm-10">
+                                                        <input style="width:100%" type="text" class="form-control" name="TaxCode" ng-model="customers.TaxCode">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Tên khách hàng <i style="color:red"> *</i></label>
+                                                    <div class="col-sm-10">
+                                                        <input style="width:100%" type="text" class="form-control" name="ObjectName" ng-model="customers.ObjectName" required>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Email</label>
+                                                    <div class="col-sm-10">
+                                                        <input style="width:100%" type="text" class="form-control" name="Email" ng-model="customers.Email">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;"> Địa chỉ</label>
+                                                    <div class="col-sm-10">
+                                                        <input style="width:100%" type="text" class="form-control" name="Unit" ng-model="customers.ObjectAddress">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Phường/Xã</label>
+                                                    <div class="col-sm-10">
+                                                        <input style="width:100%" type="text" class="form-control" ng-model="customers.ObjectAddress">
+                                                    </div>
+                                                </div>
+
+
+
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-sm-12 col-xs-12">
+                    <div class="row" style="margin-top:-30px">
+                        <div class="col-lg-6 col-sm-6 col-xs-12" style="width:100%">
+                            <div class="widget">
+                                <div class="widget-header bordered-top bordered-palegreen">
+                                    <span style="font-weight: bold !important;" class="widget-caption">Thông tin khác</span>
+                                </div>
+                                <div class="widget-body">
+                                    <div class="row" style="margin-top:10px;margin-left: 20px;">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+
+                                                <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Nhân viên chăm sóc</label>
+                                                <div class="col-sm-10">
+                                                    <select style="width:100%" class="form-control" name="CaringStaff" ng-model="customers.CaringStaff">
+                                                        <option ng-repeat="emp in listGetEmployee" selected value="{{emp.ObjectID}}">{{emp.ObjectName}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Mô tả </label>
+                                                <div class="col-sm-10">
+                                                    <textarea style="width:100%" class="form-control" rows="3" placeholder="Mô tả" ng-model="customers.Description"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-sm-12 col-xs-12">
+                    <div class="row" style="margin-top:-30px">
+                        <div class="col-lg-6 col-sm-6 col-xs-12" style="width:100%">
+                            <div class="widget">
+                                <div class="widget-header bordered-top bordered-palegreen">
+                                    <span style="font-weight: bold !important;" class="widget-caption">Cài đặt nâng cao</span>
+                                </div>
+                                <div class="widget-body">
+                                    <div class="row" style="margin-top:10px;margin-left: 20px;">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+
+                                                <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Áp dụng ưu đãi</label>
+                                                <div class="col-sm-10">
+                                                    <select style="width:100%" id="colorselector" class="form-control">
+                                                        <option value="AL">
+                                                            Theo nhóm khách hàng
+                                                        </option>
+                                                        <option value="AK">
+                                                            Theo Khách hàng
+                                                        </option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div id="AK" class="colors" style="display:none">
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Giá mặc định</label>
+                                                    <div class="col-sm-10">
+                                                        <select style="width:100%" id="e1" class="form-control">
+                                                            <option value="AL">
+                                                                Alabama
+                                                            </option>
+                                                            <option value="AK">
+                                                                Alaska
+                                                            </option>
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Thuế mặc định</label>
+                                                    <div class="col-sm-10">
+                                                        <select style="width:100%" id="e1" class="form-control">
+                                                            <option value="AL">
+                                                                Alabama
+                                                            </option>
+                                                            <option value="AK">
+                                                                Alaska
+                                                            </option>
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Chiết khấu hàng hóa</label>
+                                                    <div class="col-sm-10">
+                                                        <select style="width:100%" id="e1" class="form-control">
+                                                            <option value="AL">
+                                                                Alabama
+                                                            </option>
+                                                            <option value="AK">
+                                                                Alaska
+                                                            </option>
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Phương thức thanh toán</label>
+                                                    <div class="col-sm-10">
+                                                        <select style="width:100%" id="e1" class="form-control">
+                                                            <option value="AL">
+                                                                Alabama
+                                                            </option>
+                                                            <option value="AK">
+                                                                Alaska
+                                                            </option>
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Kì hạn thanh toán</label>
+                                                    <div class="col-sm-10">
+                                                        <select style="width:100%" id="e1" class="form-control">
+                                                            <option value="AL">
+                                                                Alabama
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-sm-12 col-xs-12">
+                    <div class="row" style="margin-top:-20px">
+                        <div class="col-lg-6 col-sm-6 col-xs-12" style="width:100%">
+                            <div class="widget">
+
+                                <div class="widget-body" style="border-left: 3px solid #2dc3e8;">
+                                    <div id="horizontal-form">
+                                        <div class="row" style="margin-top:10px;margin-left: 20px;">
+                                            <div class="col-md-8">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input class="checkbox-slider toggle colored-blue ng-pristine ng-untouched ng-valid ng-not-empty" type="checkbox" name="Status" ng-model="customers.Status">
+                                                        <span class="text">&nbsp;&nbsp;Đang sử dụng</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <a class="btn btn-default purple" style=" padding: 3px 10px 1px; height: 32px; margin-right: 10px; float: right; color: #0d55a1 !important" data-dismiss="modal"><i class="typcn typcn-cancel"></i> Đóng </a>
+                                                <button type="submit" class="btn btn-default purple" style="margin-right: 10px; float: right; color: #0d55a1 !important"><i class="glyphicon glyphicon-floppy-saved"></i>Lưu</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{217DC787-2984-4C8A-8B01-E2B25EA8C8F4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>G9VN.TIKTAK.SYSTEM</RootNamespace>
+    <AssemblyName>G9VN.TIKTAK.SYSTEM</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>G9VN.TIKTAK.SYSTEM.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>G9VN.TIKTAK.SYSTEM.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Migrations\201711100431351_createDB.cs" />
+    <Compile Include="Migrations\201711100431351_createDB.Designer.cs">
+      <DependentUpon>201711100431351_createDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711100443071_edit.cs" />
+    <Compile Include="Migrations\201711100443071_edit.Designer.cs">
+      <DependentUpon>201711100443071_edit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711101009272_edit1.cs" />
+    <Compile Include="Migrations\201711101009272_edit1.Designer.cs">
+      <DependentUpon>201711101009272_edit1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711150646526_editNameTable.cs" />
+    <Compile Include="Migrations\201711150646526_editNameTable.Designer.cs">
+      <DependentUpon>201711150646526_editNameTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711150716096_groupUser.cs" />
+    <Compile Include="Migrations\201711150716096_groupUser.Designer.cs">
+      <DependentUpon>201711150716096_groupUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711180422291_Avatar.cs" />
+    <Compile Include="Migrations\201711180422291_Avatar.Designer.cs">
+      <DependentUpon>201711180422291_Avatar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711250240204_edit_appGroups.cs" />
+    <Compile Include="Migrations\201711250240204_edit_appGroups.Designer.cs">
+      <DependentUpon>201711250240204_edit_appGroups.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711290411549_Add_VersionToStore.cs" />
+    <Compile Include="Migrations\201711290411549_Add_VersionToStore.Designer.cs">
+      <DependentUpon>201711290411549_Add_VersionToStore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801020308389_addColumnBranchIDToTheApplicationUser.cs" />
+    <Compile Include="Migrations\201801020308389_addColumnBranchIDToTheApplicationUser.Designer.cs">
+      <DependentUpon>201801020308389_addColumnBranchIDToTheApplicationUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801090718577_test.cs" />
+    <Compile Include="Migrations\201801090731196_test2.cs" />
+    <Compile Include="Migrations\201803010247010_editApplicationRole.cs" />
+    <Compile Include="Migrations\201803010247010_editApplicationRole.Designer.cs">
+      <DependentUpon>201803010247010_editApplicationRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803050333332_addTable_ConfigurationStore.cs" />
+    <Compile Include="Migrations\201803050333332_addTable_ConfigurationStore.Designer.cs">
+      <DependentUpon>201803050333332_addTable_ConfigurationStore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803220426569_editConfigStore.cs" />
+    <Compile Include="Migrations\201803220426569_editConfigStore.Designer.cs">
+      <DependentUpon>201803220426569_editConfigStore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803220455561_edit_ConfigurationStore.cs" />
+    <Compile Include="Migrations\201803220455561_edit_ConfigurationStore.Designer.cs">
+      <DependentUpon>201803220455561_edit_ConfigurationStore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803220642370_delete_ForegnKey_ConfigurationStore.cs" />
+    <Compile Include="Migrations\201803220642370_delete_ForegnKey_ConfigurationStore.Designer.cs">
+      <DependentUpon>201803220642370_delete_ForegnKey_ConfigurationStore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804030452347_editManagerStore.cs" />
+    <Compile Include="Migrations\201804030452347_editManagerStore.Designer.cs">
+      <DependentUpon>201804030452347_editManagerStore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805100234151_add_table_Notification.cs" />
+    <Compile Include="Migrations\201805100234151_add_table_Notification.Designer.cs">
+      <DependentUpon>201805100234151_add_table_Notification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805100804082_update_database_System.cs" />
+    <Compile Include="Migrations\201805100804082_update_database_System.Designer.cs">
+      <DependentUpon>201805100804082_update_database_System.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805100824261_sua_Notifications.cs" />
+    <Compile Include="Migrations\201805100824261_sua_Notifications.Designer.cs">
+      <DependentUpon>201805100824261_sua_Notifications.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ApplicationGroup.cs" />
+    <Compile Include="Models\ApplicationRole.cs" />
+    <Compile Include="Models\ApplicationRoleGroup.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\ApplicationUserGroup.cs" />
+    <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\ConfigurationStore.cs" />
+    <Compile Include="Models\ManageStore.cs" />
+    <Compile Include="Models\Notifications.cs" />
+    <Compile Include="Models\RefreshToken.cs" />
+    <Compile Include="Models\TIKTAK_SYSTEM_DbContext.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\G9VN.TIKTAK.Common\G9VN.TIKTAK.Common.csproj">
+      <Project>{492c16b3-2595-4990-a821-f6ba4789fbda}</Project>
+      <Name>G9VN.TIKTAK.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201711100431351_createDB.resx">
+      <DependentUpon>201711100431351_createDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711100443071_edit.resx">
+      <DependentUpon>201711100443071_edit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711101009272_edit1.resx">
+      <DependentUpon>201711101009272_edit1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711150646526_editNameTable.resx">
+      <DependentUpon>201711150646526_editNameTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711150716096_groupUser.resx">
+      <DependentUpon>201711150716096_groupUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711180422291_Avatar.resx">
+      <DependentUpon>201711180422291_Avatar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711250240204_edit_appGroups.resx">
+      <DependentUpon>201711250240204_edit_appGroups.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711290411549_Add_VersionToStore.resx">
+      <DependentUpon>201711290411549_Add_VersionToStore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801020308389_addColumnBranchIDToTheApplicationUser.resx">
+      <DependentUpon>201801020308389_addColumnBranchIDToTheApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803010247010_editApplicationRole.resx">
+      <DependentUpon>201803010247010_editApplicationRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803050333332_addTable_ConfigurationStore.resx">
+      <DependentUpon>201803050333332_addTable_ConfigurationStore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803220426569_editConfigStore.resx">
+      <DependentUpon>201803220426569_editConfigStore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803220455561_edit_ConfigurationStore.resx">
+      <DependentUpon>201803220455561_edit_ConfigurationStore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803220642370_delete_ForegnKey_ConfigurationStore.resx">
+      <DependentUpon>201803220642370_delete_ForegnKey_ConfigurationStore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804030452347_editManagerStore.resx">
+      <DependentUpon>201804030452347_editManagerStore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805100234151_add_table_Notification.resx">
+      <DependentUpon>201805100234151_add_table_Notification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805100804082_update_database_System.resx">
+      <DependentUpon>201805100804082_update_database_System.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805100824261_sua_Notifications.resx">
+      <DependentUpon>201805100824261_sua_Notifications.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

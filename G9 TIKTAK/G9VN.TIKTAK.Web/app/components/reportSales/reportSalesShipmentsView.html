@@ -1,0 +1,588 @@
+﻿<div class="page-breadcrumbs ng-scope">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+           <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" ui-sref="items">Hàng hóa</a>
+        </li>
+        <li class="active">Danh sách sản phẩm</li>
+    </ul>
+</div>
+<div class="page-header position-relative ng-scope">
+    <div class="header-title">
+        <h1>
+            Danh sách sản phẩm
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+        <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<div class="page-body ng-scope">
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+
+
+            <div class="widget-body">
+                <div class="form-group">
+
+                    <div class="content-right-product container-report__main" style="padding-bottom:15px">
+                        <form class="form-inline report-filter" role="form" id="form-report" style="display: inline-block;padding-bottom: 15px;" novalidate="novalidate">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label class="label-report">Chọn ngày</label>
+                                        <span class="hide-native-select">
+                                            <select style="width:100%">
+                                                <option selected="selected" value="packed"></option>
+                                                <option value="fulfilled">Ngày xuất kho</option>
+                                                <option value="received">Ngày giao hàng</option>
+                                                <option value="cancelled">Ngày hủy giao</option>
+                                            </select>
+                                        </span>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="label-report">Chọn ngày</label>
+                                    <input type="date" class="form-control ng-pristine ng-valid ng-empty ng-touched ng-untouched" id="inputEmail3" ng-model="saleOrders.VoucherDate" style="width: 100%;">
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="label-report">Chọn chi nhánh</label>
+                                    <select style="width:100%">
+                                        <option selected="selected" value="packed"></option>
+                                        <option value="fulfilled">Chi nhanh MD</option>
+                                    </select>
+
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="label-report">Khách hàng</label>
+                                    <input class="form-control search-customer customer-name ui-autocomplete-input" style="width: 100%">
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="label-report">Lọc theo trạng thái</label>
+                                    <select style="width: 100%">
+                                        <option value="fulfilled">Chi nhanh MD</option>
+                                        <option value="packed">Chờ giao hàng</option>
+                                        <option value="fulfilled">Đang giao hàng</option>
+                                        <option value="cancelling">Đã hủy - Chờ nhận</option>
+                                        <option value="cancelled">Đã hủy - Đã nhận</option>
+                                        <option value="received">Đã giao hàng</option>
+
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="label-report">Chọn để </label>
+                                    <button class="btn btn-default" style="width:100%">Xem báo cáo</button>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-2">
+                                        <label class="label-report">Chọn nhân viên</label>
+                                        <select style="width:100%">
+                                            <option selected="selected" value="account_packed">Nhân viên đóng gói</option>
+                                            <option value="account_fulfilled">Nhân viên xuất kho</option>
+                                            <option value="account_received">Nhân viên giao hàng</option>
+                                            <option value="account_cancelled">Nhân viên hủy giao</option>
+                                        </select>
+
+                                </div>
+                                <div class="col-md-2">
+                                        <label class="label-report">Nhân viên</label>
+                                        <input type="text" class="form-control ng-pristine ng-valid ng-empty ng-touched"  placeholder="Chọn khách hàng" style="width: 100%;">
+                                </div>
+                                <div class="col-md-2">
+                                        <label class="label-report">Lọc theo tùy chọn HH</label>
+                                        <input class="form-control search-variant variant-name ui-autocomplete-input" style="width:100%">
+                                </div>
+                                <div class="col-md-2">
+                                        <label class="label-report">Lọc theo phương thức</label>
+                                        <select class="form-control" datatype="dropdown" name="TypeShipment" style="width: 100%;">
+                                            <option value="full">Tất cả</option>
+                                            <option value="pickup">Nhận tại cửa hàng</option>
+                                            <option value="courier">Dịch vụ giao hàng</option>
+                                        </select>
+                                    </div>
+                                <div class="col-md-4">
+                                        <label class="label-report">Lọc theo đối tác vận chuyển</label>
+                                    <input type="text" class="form-control ng-pristine ng-valid ng-empty ng-touched" placeholder="Chọn khách hàng" style="width: 100%;">
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="label-report">Lọc theo tỉnh thành</label>
+                                        <select  class="form-control" style="width:100%">
+                                            <option selected="selected" value="0">Tỉnh/Thành phố</option>
+                                            <option value="1">Hà Nội</option>
+                                            <option value="2">TP Hồ Chí Minh</option>
+                                            <option value="3">An Giang</option>
+                                            <option value="4">Bà Rịa-Vũng Tàu</option>
+                                            <option value="5">Bắc Giang</option>
+                                            <option value="6">Bắc Kạn</option>
+                                            <option value="7">Bạc Liêu</option>
+                                            <option value="8">Bắc Ninh</option>
+                                            <option value="9">Bến Tre</option>
+                                            <option value="10">Bình Dương</option>
+                                            <option value="11">Bình Định</option>
+                                            <option value="12">Bình Phước</option>
+                                            <option value="13">Bình Thuận</option>
+                                            <option value="14">Cà Mau</option>
+                                            <option value="15">Cao Bằng</option>
+                                            <option value="16">Cần Thơ</option>
+                                            <option value="17">Đà Nẵng</option>
+                                            <option value="18">Đắk Lắk</option>
+                                            <option value="19">Đắk Nông</option>
+                                            <option value="20">Điện Biên</option>
+                                            <option value="21">Đồng Nai</option>
+                                            <option value="22">Đồng Tháp</option>
+                                            <option value="23">Gia Lai</option>
+                                            <option value="24">Hà Giang</option>
+                                            <option value="25">Hà Nam</option>
+                                            <option value="26">Hà Tĩnh</option>
+                                            <option value="27">Hải Dương</option>
+                                            <option value="28">Hải Phòng</option>
+                                            <option value="29">Hậu Giang</option>
+                                            <option value="30">Hòa Bình</option>
+                                            <option value="31">Hưng Yên</option>
+                                            <option value="32">Khánh Hoà</option>
+                                            <option value="33">Kiên Giang</option>
+                                            <option value="34">Kon Tum</option>
+                                            <option value="35">Lai Châu</option>
+                                            <option value="36">Lâm Đồng</option>
+                                            <option value="37">Lạng Sơn</option>
+                                            <option value="38">Lào Cai</option>
+                                            <option value="39">Long An</option>
+                                            <option value="40">Nam Định</option>
+                                            <option value="41">Nghệ An</option>
+                                            <option value="42">Ninh Bình</option>
+                                            <option value="43">Ninh Thuận</option>
+                                            <option value="44">Phú Thọ</option>
+                                            <option value="45">Phú Yên</option>
+                                            <option value="46">Quảng Bình</option>
+                                            <option value="47">Quảng Nam</option>
+                                            <option value="48">Quảng Ngãi</option>
+                                            <option value="49">Quảng Ninh</option>
+                                            <option value="50">Quảng Trị</option>
+                                            <option value="51">Sóc Trăng</option>
+                                            <option value="52">Sơn La</option>
+                                            <option value="53">Tây Ninh</option>
+                                            <option value="54">Thái Bình</option>
+                                            <option value="55">Thái Nguyên</option>
+                                            <option value="56">Thanh Hoá</option>
+                                            <option value="57">Thừa Thiên-Huế</option>
+                                            <option value="58">Tiền Giang</option>
+                                            <option value="59">Trà Vinh</option>
+                                            <option value="60">Tuyên Quang</option>
+                                            <option value="61">Vĩnh Long</option>
+                                            <option value="62">Vĩnh Phúc</option>
+                                            <option value="63">Yên Bái</option>
+                                        </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="label-report">Lọc theo  quận huyện</label>
+                                        <select id="district" bind="district_id" class="form-control"style="width:100%" >
+                                            <option selected="selected" value="0">Quận/Huyện</option>
+                                        </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="label-report">Tìm theo mã gói hàng</label>
+                                    <input class="form-control" name="FulfillmentCode" style="width:100%" placeholder="Mã gói hàng, mã giao hàng">
+                                </div>
+                                </div>
+                        </form>
+                        <div class="table-responsive">
+                            <table class="table table-bordered tbl-report tbl-report--inventory-onhand border-th" cellspacing="0" cellpadding="0">
+                                <thead>
+                                    <tr role="row" class="active">
+                                        <th><span class="text">STT</span></th>
+                                        <th><span class="text">Mã gói hàng</span></th>
+                                        <th><span class="text">Mã giao <br> hàng</span></th>
+                                        <th><span class="text">Khách hàng</span></th>
+                                        <th><span class="text" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Phí vận chuyển khách phải trả cho cửa hàng theo từng gói hàng">Phí vận chuyển<br> khách phải trả</span></th>
+                                        <th><span class="text" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Phí giao hàng mà cửa hàng phải trả cho đối tác">Phí trả đối tác</span></th>
+                                        <th><span class="text" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Tổng khách phải trả trong mỗi gói hàng">Tổng tiền gói<br> hàng</span></th>
+                                        <th><span class="text" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Số tiền nhờ đối tác thu hộ trong mỗi gói hàng">Tổng tiền COD</span></th>
+                                        <th><span>Số lượng <br> hàng</span></th>
+                                        <th><span class="text">Đối tác<br>vận chuyển</span></th>
+                                        <th><span class="text">Nhân viên<br> đóng gói</span></th>
+                                        <th><span class="text">Nhân viên<br> xuất kho</span></th>
+                                        <th><span class="text">Nhân viên<br> giao hàng</span></th>
+                                        <th><span class="text">Nhân viên<br> hủy giao</span></th>
+                                        <th><span class="text">Chi nhánh</span></th>
+                                        <th><span class="text">Phương thức</span></th>
+                                        <th><span class="text">Trạng thái giao<br> hàng</span></th>
+                                        <th><span class="text">Trạng thái đối<br> soát</span></th>
+                                        <th><span class="text">Ngày đóng gói</span></th>
+                                        <th><span class="text">Ngày xuất kho</span></th>
+                                        <th><span class="text">Ngày giao hàng</span></th>
+                                        <th><span class="text">Ngày hủy giao</span></th>
+                                    </tr>
+                                    <tr>
+                                        <th>Tổng</th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th style="text-align:right">0</th>
+                                        <th style="text-align:right">0</th>
+                                        <th style="text-align:right">7,437,000</th>
+                                        <th style="text-align:right">0</th>
+                                        <th style="text-align:right">23</th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td bind-event-click="openDrillDown(this,'13499526')" style="cursor:pointer;text-align:left"><span class="icon-angle">+</span>FU19101717</td>
+                                        <td>-</td>
+                                        <td style="text-align:left">Khách vãng lai</td>
+                                        <td style="text-align:right">0</td>
+                                        <td style="text-align:right">0</td>
+                                        <td style="text-align:right">500,000</td>
+                                        <td style="text-align:right">0</td>
+                                        <td style="text-align:right">1</td>
+                                        <td>--</td>
+                                        <td style="text-align:left">Lê Huy Hoàng</td>
+                                        <td style="text-align:left">Lê Huy Hoàng</td>
+                                        <td style="text-align:left">Lê Huy Hoàng</td>
+                                        <td>--</td>
+                                        <td style="text-align:left">Chi nhánh mặc định</td>
+                                        <td style="text-align:left">Nhận tại cửa hàng</td>
+                                        <td style="text-align:left">Đã giao hàng</td>
+                                        <td style="text-align:left">-</td>
+                                        <td>19/10/2017</td>
+                                        <td>19/10/2017</td>
+                                        <td>19/10/2017</td>
+                                        <td>-</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>3</td>
+                                        <td bind-event-click="openDrillDown(this,'13489499')" style="cursor:pointer;text-align:left"><span class="icon-angle">+</span>FU19101715</td>
+                                        <td>-</td>
+                                        <td style="text-align:left">Khách vãng lai</td>
+                                        <td style="text-align:right">0</td>
+                                        <td style="text-align:right">0</td>
+                                        <td style="text-align:right">277,000</td>
+                                        <td style="text-align:right">0</td>
+                                        <td style="text-align:right">1</td>
+                                        <td>--</td>
+                                        <td style="text-align:left">Lê Huy Hoàng</td>
+                                        <td style="text-align:left">Lê Huy Hoàng</td>
+                                        <td style="text-align:left">Lê Huy Hoàng</td>
+                                        <td>--</td>
+                                        <td style="text-align:left">Chi nhánh mặc định</td>
+                                        <td style="text-align:left">Nhận tại cửa hàng</td>
+                                        <td style="text-align:left">Đã giao hàng</td>
+                                        <td style="text-align:left">-</td>
+                                        <td>17/10/2017</td>
+                                        <td>19/10/2017</td>
+                                        <td>19/10/2017</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr style="display:none" class="backgroud-td 13489499">
+                                        <td colspan="100%" id="13489499" style="padding:0px !important" class="clone-td">
+
+
+                                            <div class="background-item">
+                                                <button class="btn btn-blank btn-drilldown" style="float:left;margin: 5px 0 0 15px;">Danh sách hàng hóa</button>
+                                                <div class="col-lg-12 background-item" style="position:relative">
+                                                    <table class="table-item" style="background-color:white;margin-bottom:5px;width:50%">
+                                                        <thead>
+                                                            <tr role="row">
+                                                                <th style="text-align:center;width:10%"><span class="text">STT</span></th>
+                                                                <th style="width:15%;text-align:left"><span class="text">Mã hàng hóa</span></th>
+                                                                <th style="text-align:center;text-align:left"><span class="text">Tên hàng hóa</span></th>
+                                                                <th style="text-align:center;width:10%"><span class="text">Số lượng</span></th>
+                                                                <th style="text-align:right;width:15%"><span class="text">Đơn giá</span></th>
+                                                                <th style="text-align:right;width:15%"><span class="text">Thuế</span></th>
+                                                                <th style="text-align:right;width:15%"><span class="text">Chiết khấu</span></th>
+                                                            </tr>
+
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="text-align:center">1</td>
+                                                                <td class="link" style="text-align:left;cursor:pointer">
+                                                                    <a class="link" style="color:#333" href="/admin/products/1719267/variants/2350621" target="_blank">
+                                                                        SID50074
+                                                                    </a>
+                                                                </td>
+                                                                <td style="text-align:left">Áo khoác cổ tim phong cách tripal SID50074 - Freesize</td>
+                                                                <td style="text-align:center">1</td>
+                                                                <td style="text-align:right">277,000</td>
+                                                                <td style="text-align:right">0</td>
+                                                                <td style="text-align:right">0</td>
+
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                </div>
+
+
+                                            </div>
+
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td bind-event-click="openDrillDown(this,'13489497')" style="cursor:pointer;text-align:left"><span class="icon-angle">+</span>FU19101714</td>
+                                        <td>-</td>
+                                        <td style="text-align:left">Chị Hoàng Thu Hảo</td>
+                                        <td style="text-align:right">0</td>
+                                        <td style="text-align:right">0</td>
+                                        <td style="text-align:right">277,000</td>
+                                        <td style="text-align:right">0</td>
+                                        <td style="text-align:right">1</td>
+                                        <td>--</td>
+                                        <td style="text-align:left">Lê Huy Hoàng</td>
+                                        <td style="text-align:left">Lê Huy Hoàng</td>
+                                        <td style="text-align:left">Lê Huy Hoàng</td>
+                                        <td>--</td>
+                                        <td style="text-align:left">Chi nhánh mặc định</td>
+                                        <td style="text-align:left">Nhận tại cửa hàng</td>
+                                        <td style="text-align:left">Đã giao hàng</td>
+                                        <td style="text-align:left">-</td>
+                                        <td>18/10/2017</td>
+                                        <td>19/10/2017</td>
+                                        <td>19/10/2017</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr style="display:none" class="backgroud-td 13489497">
+                                        <td colspan="100%" id="13489497" style="padding:0px !important" class="clone-td">
+
+
+                                            <div class="background-item">
+                                                <button class="btn btn-blank btn-drilldown" style="float:left;margin: 5px 0 0 15px;">Danh sách hàng hóa</button>
+                                                <div class="col-lg-12 background-item" style="position:relative">
+                                                    <table class="table-item" style="background-color:white;margin-bottom:5px;width:50%">
+                                                        <thead>
+                                                            <tr role="row">
+                                                                <th style="text-align:center;width:10%"><span class="text">STT</span></th>
+                                                                <th style="width:15%;text-align:left"><span class="text">Mã hàng hóa</span></th>
+                                                                <th style="text-align:center;text-align:left"><span class="text">Tên hàng hóa</span></th>
+                                                                <th style="text-align:center;width:10%"><span class="text">Số lượng</span></th>
+                                                                <th style="text-align:right;width:15%"><span class="text">Đơn giá</span></th>
+                                                                <th style="text-align:right;width:15%"><span class="text">Thuế</span></th>
+                                                                <th style="text-align:right;width:15%"><span class="text">Chiết khấu</span></th>
+                                                            </tr>
+
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="text-align:center">1</td>
+                                                                <td class="link" style="text-align:left;cursor:pointer">
+                                                                    <a class="link" style="color:#333" href="/admin/products/1719267/variants/2350621" target="_blank">
+                                                                        SID50074
+                                                                    </a>
+                                                                </td>
+                                                                <td style="text-align:left">Áo khoác cổ tim phong cách tripal SID50074 - Freesize</td>
+                                                                <td style="text-align:center">1</td>
+                                                                <td style="text-align:right">277,000</td>
+                                                                <td style="text-align:right">0</td>
+                                                                <td style="text-align:right">0</td>
+
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                </div>
+
+
+                                            </div>
+
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td bind-event-click="openDrillDown(this,'13489495')" style="cursor:pointer;text-align:left"><span class="icon-angle">+</span>FU19101713</td>
+                                        <td>-</td>
+                                        <td style="text-align:left">Chi Oanh</td>
+                                        <td style="text-align:right">0</td>
+                                        <td style="text-align:right">0</td>
+                                        <td style="text-align:right">375,000</td>
+                                        <td style="text-align:right">0</td>
+                                        <td style="text-align:right">1</td>
+                                        <td>--</td>
+                                        <td style="text-align:left">Lê Huy Hoàng</td>
+                                        <td style="text-align:left">Lê Huy Hoàng</td>
+                                        <td style="text-align:left">Lê Huy Hoàng</td>
+                                        <td>--</td>
+                                        <td style="text-align:left">Chi nhánh mặc định</td>
+                                        <td style="text-align:left">Nhận tại cửa hàng</td>
+                                        <td style="text-align:left">Đã giao hàng</td>
+                                        <td style="text-align:left">-</td>
+                                        <td>18/10/2017</td>
+                                        <td>19/10/2017</td>
+                                        <td>19/10/2017</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr style="display:none" class="backgroud-td 13489495">
+                                        <td colspan="100%" id="13489495" style="padding:0px !important" class="clone-td">
+
+
+                                            <div class="background-item">
+                                                <button class="btn btn-blank btn-drilldown" style="float:left;margin: 5px 0 0 15px;">Danh sách hàng hóa</button>
+                                                <div class="col-lg-12 background-item" style="position:relative">
+                                                    <table class="table-item" style="background-color:white;margin-bottom:5px;width:50%">
+                                                        <thead>
+                                                            <tr role="row">
+                                                                <th style="text-align:center;width:10%"><span class="text">STT</span></th>
+                                                                <th style="width:15%;text-align:left"><span class="text">Mã hàng hóa</span></th>
+                                                                <th style="text-align:center;text-align:left"><span class="text">Tên hàng hóa</span></th>
+                                                                <th style="text-align:center;width:10%"><span class="text">Số lượng</span></th>
+                                                                <th style="text-align:right;width:15%"><span class="text">Đơn giá</span></th>
+                                                                <th style="text-align:right;width:15%"><span class="text">Thuế</span></th>
+                                                                <th style="text-align:right;width:15%"><span class="text">Chiết khấu</span></th>
+                                                            </tr>
+
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="text-align:center">1</td>
+                                                                <td class="link" style="text-align:left;cursor:pointer">
+                                                                    <a class="link" style="color:#333" href="/admin/products/1719268/variants/2350622" target="_blank">
+                                                                        SID6373
+                                                                    </a>
+                                                                </td>
+                                                                <td style="text-align:left">Áo vest nữ viền túi sang trọng SID6373 - Đen</td>
+                                                                <td style="text-align:center">1</td>
+                                                                <td style="text-align:right">375,000</td>
+                                                                <td style="text-align:right">0</td>
+                                                                <td style="text-align:right">0</td>
+
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                </div>
+
+
+                                            </div>
+
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td bind-event-click="openDrillDown(this,'13489493')" style="cursor:pointer;text-align:left"><span class="icon-angle">+</span>FU19101712</td>
+                                        <td>-</td>
+                                        <td style="text-align:left">Anh Quyền</td>
+                                        <td style="text-align:right">0</td>
+                                        <td style="text-align:right">0</td>
+                                        <td style="text-align:right">135,000</td>
+                                        <td style="text-align:right">0</td>
+                                        <td style="text-align:right">1</td>
+                                        <td>--</td>
+                                        <td style="text-align:left">Lê Huy Hoàng</td>
+                                        <td style="text-align:left">Lê Huy Hoàng</td>
+                                        <td style="text-align:left">Lê Huy Hoàng</td>
+                                        <td>--</td>
+                                        <td style="text-align:left">Chi nhánh mặc định</td>
+                                        <td style="text-align:left">Nhận tại cửa hàng</td>
+                                        <td style="text-align:left">Đã giao hàng</td>
+                                        <td style="text-align:left">-</td>
+                                        <td>17/10/2017</td>
+                                        <td>19/10/2017</td>
+                                        <td>19/10/2017</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr style="display:none" class="backgroud-td 13489493">
+                                        <td colspan="100%" id="13489493" style="padding:0px !important" class="clone-td">
+
+
+                                            <div class="background-item">
+                                                <button class="btn btn-blank btn-drilldown" style="float:left;margin: 5px 0 0 15px;">Danh sách hàng hóa</button>
+                                                <div class="col-lg-12 background-item" style="position:relative">
+                                                    <table class="table-item" style="background-color:white;margin-bottom:5px;width:50%">
+                                                        <thead>
+                                                            <tr role="row">
+                                                                <th style="text-align:center;width:10%"><span class="text">STT</span></th>
+                                                                <th style="width:15%;text-align:left"><span class="text">Mã hàng hóa</span></th>
+                                                                <th style="text-align:center;text-align:left"><span class="text">Tên hàng hóa</span></th>
+                                                                <th style="text-align:center;width:10%"><span class="text">Số lượng</span></th>
+                                                                <th style="text-align:right;width:15%"><span class="text">Đơn giá</span></th>
+                                                                <th style="text-align:right;width:15%"><span class="text">Thuế</span></th>
+                                                                <th style="text-align:right;width:15%"><span class="text">Chiết khấu</span></th>
+                                                            </tr>
+
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="text-align:center">1</td>
+                                                                <td class="link" style="text-align:left;cursor:pointer">
+                                                                    <a class="link" style="color:#333" href="/admin/products/1719266/variants/2350620" target="_blank">
+                                                                        SID62366
+                                                                    </a>
+                                                                </td>
+                                                                <td style="text-align:left">Áo khoác phối sọc cá tính SID62366 - Freesize</td>
+                                                                <td style="text-align:center">1</td>
+                                                                <td style="text-align:right">135,000</td>
+                                                                <td style="text-align:right">0</td>
+                                                                <td style="text-align:right">0</td>
+
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                </div>
+
+
+                                            </div>
+
+
+                                        </td>
+                                    </tr>
+
+
+
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div style="margin-left:  82.4%;margin-top:3px ">
+                    <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" class="ng-isolate-scope"><!-- ngIf: 1 < pages.length --></dir-pagination-controls>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+

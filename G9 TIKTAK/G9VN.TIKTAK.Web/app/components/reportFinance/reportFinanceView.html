@@ -1,0 +1,118 @@
+﻿<style>
+    .text-head {
+        color: #0b5998;
+        font-weight: bold;
+    }
+
+    .image {
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .text-report:hover {
+        box-shadow: 1px 0 10px 1px rgba(0, 0, 0, .3);
+    }
+</style>
+<div class="page-breadcrumbs ng-scope">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a style="text-decoration: none;" href="javascript:void(0)">Trang chủ</a>
+        </li>
+        <li>
+            <a style="text-decoration: none;" href="javascript:void(0)">Báo cáo</a>
+        </li>
+ 
+    </ul>
+</div>
+<div class="page-header position-relative ng-scope">
+    <div class="header-title">
+        <h1>Báo cáo tài chính</h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+        <a style="text-decoration: none;" class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a style="text-decoration: none;" class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a style="text-decoration: none;" class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<div class="page-body ng-scope">
+    <!-- Your Content Goes Here -->
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+            <div class="row">
+                <div class="col-lg-6 col-sm-6 col-xs-12">
+                    <div class="well with-header">
+                        <div class="header bordered-darkorange">Chọn báo cáo</div>
+                        <div class="alert alert-warning fade in" style="cursor:pointer;" ui-sref="reportsProfit">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <img width="60" height="60" src="../../../Assets/admin/img/icon60x60/Bao cao lai lo.png" />
+
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="text-head">Báo cáo lãi lỗ</div>
+                                    <div style="color:black">Hiển thị chi phí và lãi lỗ của cửa hàng.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-warning fade in" style="cursor:pointer;" ui-sref="reportVouchers">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <img width="60" height="60" src="../../../Assets/admin/img/icon60x60/So quy.png" />
+
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="text-head">Sổ quỹ</div>
+                                    <div style="color:black">Quản lý luồng tiền của cửa hàng.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-6 col-sm-6 col-xs-12">
+                    <div class="well with-header">
+                        <div class="header bordered-blueberry">♦</div>
+                        <div class="alert alert-warning fade in radius-bordered alert-shadowed" style="cursor:pointer;" ui-sref="reportDebtsCustomers">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <img width="60" height="60" src="../../../Assets/admin/img/icon60x60/Bao cao cong no phai thu.png" />
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="text-head">Báo cáo công nợ phải thu</div>
+                                    <div style="color:black">Theo dõi công nợ phải thu tổng hợp của khách hàng.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-warning fade in radius-bordered alert-shadowed" style="cursor:pointer;" ui-sref="reportDebtsSuppliers">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <img width="60" height="60" src="../../../Assets/admin/img/icon60x60/Bao cao cong no phai tra.png" />
+
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="text-head">Báo cáo công nợ phải trả</div>
+                                    <div style="color:black">Theo dõi công nợ phải trả tổng hợp cho nhà cung cấp.</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>

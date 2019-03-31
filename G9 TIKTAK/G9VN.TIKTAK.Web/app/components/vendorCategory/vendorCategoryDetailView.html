@@ -1,0 +1,123 @@
+﻿<!-- Page Breadcrumb -->
+<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+           <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" ui-sref="items">Hàng hóa</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" ui-sref="vendorCategory">Danh sách nhóm nhà cung cấp</a>
+        </li>
+        <li class="active">Danh sách sản phẩm</li>
+    </ul>
+</div>
+<!-- /Page Breadcrumb -->
+<!-- Page Header -->
+<div class="page-header position-relative">
+    <div class="header-title">
+        <h1>
+            Danh sách sản phẩm
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+       <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<!-- /Page Header -->
+<!-- Page Body -->
+<div class="page-body">
+    <!-- Your Content Goes Here -->
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+
+            <div class="widget-header ">
+                <span class="widget-caption">Danh sách hàng hóa</span>
+                <div class="widget-buttons">
+                    <a href="javascript:void(0)" data-toggle="maximize">
+                        <i class="fa fa-expand"></i>
+                    </a>
+                    <a href="javascript:void(0)" data-toggle="collapse">
+                        <i class="fa fa-minus"></i>
+                    </a>
+                    <a href="javascript:void(0)" data-toggle="dispose">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="widget-body">
+                <div class="form-group">
+                    <span class="input-icon inverted" style="width:35%">
+                        <input type="text" style="height:32px;" class="form-control input-sm" placeholder="Tìm kiếm hàng hóa">
+                        <i class="glyphicon glyphicon-search bg-blue"></i>
+                    </span>
+
+                    <a class="btn btn-default purple" ui-sref="items_add" style="float: right; color: #0d55a1 !important"><i class="fa fa-plus"></i> Thêm mới </a>
+                    <a class="btn btn-default purple" ui-sref="items_add" style="margin-right: 10px; float: right; color: #0d55a1 !important"><i class="fa fa-download"></i> Nhập file </a>
+                    <a class="btn btn-default purple" ui-sref="items_add" style="margin-right: 10px; float: right; color: #0d55a1 !important"><i class="fa fa-upload"></i> Xuất file </a>
+                </div>
+
+
+                <table class="table table-hover">
+                    <thead class="bordered-darkorange">
+                        <tr>
+                            <th>
+                                Tên hàng hóa
+                            </th>
+                            <th>
+                                Đơn vị tính
+                            </th>
+                            <th>
+                                Trạng thái
+                            </th>
+                            <th>
+                                Ngày tạo
+                            </th>
+                            <!--<th>
+                                Cập nhật
+                            </th>-->
+                        </tr>
+                    </thead>
+                    <tbody ng-init="count=0">
+                        <tr ng-repeat="item in listItems">
+                            <td>
+                                <a ui-sref="items_edit({id:item.ItemID})" style="color:black">
+                                    {{item.Name}}
+                                </a>
+                            </td>
+                            <td>
+                                {{item.Unit}}
+                            </td>
+                            <td>
+                                <span class="status-circle" data-original-title="" title=""><i class="available" data-original-title="" title=""></i>Ðang giao dịch</span>
+                            </td>
+                            <td>
+                                {{item.CreateDate | date:'dd/MM/yyyy'}}
+                            </td>
+                            <td>
+                                <button class="btn btn-default" style="border:0;color:blue;"><i class="fa fa-pencil-square"></i></button>
+                                <button ng-click="deleteItems(item.ItemID)" class="btn btn-default" style="border:0;color:red;"><i class="fa fa-trash-o"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- /Page Body -->

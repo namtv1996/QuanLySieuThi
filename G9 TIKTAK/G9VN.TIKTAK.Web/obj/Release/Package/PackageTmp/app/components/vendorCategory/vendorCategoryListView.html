@@ -1,0 +1,105 @@
+﻿<!-- Page Breadcrumb -->
+
+<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+           <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" ui-sref="items">Hàng hóa</a>
+        </li>
+       
+        <li class="active">Nhóm nhà cung cấp</li>
+    </ul>
+</div>
+<!-- /Page Breadcrumb -->
+<!-- Page Header -->
+<div class="page-header position-relative">
+    <div class="header-title">
+        <h1>
+            Nhóm nhà cung cấp
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+       <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<!-- /Page Header -->
+<!-- Page Body -->
+<div class="page-body">
+    <!-- Your Content Goes Here -->
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+
+
+            <div class="widget-body">
+                <div class="form-group">
+                    <span class="input-icon inverted" style="width:35%;">
+                        <input type="text" style="height:32px;padding-left:40px" class="form-control input-sm" placeholder="Tìm kiếm " ng-model="searchText" ng-keyup="search()">
+                        <i class="glyphicon glyphicon-search bg-blue"></i>
+                    </span>
+                    <a class="btn btn-default purple" ui-sref="vendorCategory_add" style="float: right; color: #0d55a1 !important"><i class="fa fa-plus"></i> Thêm mới </a>
+                </div>
+
+                <table class="table table-hover" style="width:100%">
+                    <thead class="bordered-darkorange bg-themeprimary">
+                        <tr>
+                            <th>
+                                Tên nhóm
+                            </th>
+                            <th>
+                                Mô tả
+                            </th>
+
+                            <th>
+                                Trạng thái
+                            </th>
+                            
+                            <th>
+                                Ngày tạo
+                            </th>
+                            <th style="text-align:right;padding-right: 18px;">Tùy chọn</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="listVC in filterList">
+                            <td ui-sref="vendorCategory_edit({id:listVC.Id})" style="cursor:pointer;color:#338fd0;">
+                                {{listVC.Name}}
+                            </td>
+                            <td> {{listVC.Description}} </td>
+
+                            <td>
+                                <i class="{{listVC.cs}}" data-original-title="" title=""></i>
+                                {{listVC.tt}}
+                            </td>
+                            
+                            <td> {{listVC.CreateDate|date:'dd/MM/yyyy'}} </td>
+                            <td>
+                                <button ng-click="deleteVendorCategory(listVC.Id)" class="btn btn-default" style="float:right; width: 35px; height: 30px;margin-left:2px;"><i class="fa fa-trash-o"></i></button>
+                                <!--<button ui-sref="vendorCategory_edit({id:listVC.Id})" class="btn btn-default" style="float:right; width: 35px; height: 30px;"><i class="fa fa-pencil-square"></i></button>-->
+                               
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- /Page Body -->

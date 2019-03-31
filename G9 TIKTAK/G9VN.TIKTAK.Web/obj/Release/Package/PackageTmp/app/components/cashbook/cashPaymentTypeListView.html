@@ -1,0 +1,106 @@
+﻿<!-- Page Breadcrumb -->
+<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+           <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" ui-sref="receipt">Kế toán</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" ui-sref="cashPaymentType">Kế toán</a>
+        </li>
+        <li class="active">Danh sách loại phiếu chi</li>
+    </ul>
+</div>
+<!-- /Page Breadcrumb -->
+<!-- Page Header -->
+<div class="page-header position-relative">
+    <!--<div class="header-title">
+        <h1>
+            Danh sách sản phẩm
+        </h1>
+    </div>-->
+    <!--Header Buttons-->
+    <div class="header-buttons">
+       <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<!-- /Page Header -->
+<!-- Page Body -->
+<div class="page-body">
+    <!-- Your Content Goes Here -->
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+
+
+            <div class="widget-body">
+                <div class="form-group">
+                    <span class="input-icon inverted" style="width:35%;">
+                        <input type="text" style="height:32px;padding-left:40px" class="form-control input-sm" placeholder="Tìm kiếm "  >
+                        <i class="glyphicon glyphicon-search bg-blue"></i>
+                    </span>
+
+                    <a class="btn btn-default purple" ui-sref="cashpaymenttype_add" style="float: right; color: #0d55a1 !important"><i class="fa fa-plus"></i> Thêm mới </a>
+
+                </div>
+
+
+                <table class="table table-hover" style="width:100%">
+                    <thead class="bordered-darkorange bg-themeprimary">
+                        <tr>
+                            <th>
+                                Mã phiếu
+                            </th>
+                            <th>
+                                Tên Phiếu
+                            </th>
+                            <th>
+                                Ghi chú
+                            </th>
+
+
+                            <!--<th>
+                Cập nhật
+            </th>-->
+                        </tr>
+                    </thead>
+                    <tbody ng-init="count=0">
+                        <tr>
+                            <td>PT0010</td>
+                            <td>Chi phí sản xuất</td>
+                            <td>--</td>
+
+                        </tr>
+                        <tr>
+                            <td>PT0011</td>
+                            <td>Chi phí sinh hoạt</td>
+                            <td>--</td>
+
+                        <tr>
+                            <td>PT0012</td>
+                            <td>Chi phí khác</td>
+                            <td>--</td>
+
+                        </tr>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- /Page Body -->

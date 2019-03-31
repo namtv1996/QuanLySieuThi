@@ -1,0 +1,113 @@
+﻿
+
+
+<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+           <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)">Chuyển hàng</a>
+        </li>
+        <li class="active">Danh sách chuyển hàng
+    </ul>
+</div>
+<div class="page-header position-relative">
+    <div class="header-title">
+        <h1>
+            Danh sách chuyển hàng
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+       <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<div class="page-body ng-scope">
+    <!-- Your Content Goes Here -->
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+
+
+            <div class="widget-body">
+                <div class="form-group">
+                    <span class="input-icon inverted" style="width:35%;">
+                        <input type="text" style="height:32px;padding-left:40px" class="form-control input-sm ng-pristine ng-untouched ng-valid ng-empty" placeholder="Tìm kiếm " ng-model="searchText">
+                        <i class="glyphicon glyphicon-search bg-blue"></i>
+                    </span>
+
+                    <a class="btn btn-default purple"  style="float: right; color: #0d55a1 !important" ui-sref="itemTransfer_add"><i class="fa fa-plus"></i> Thêm mới </a>
+                    <a class="btn btn-default purple" style="margin-right: 10px; float: right; color: #0d55a1 !important; "><i class="fa fa-download"></i> Nhập file </a>
+                    <a class="btn btn-default purple" style="margin-right: 10px; float: right; color: #0d55a1 !important; "><i class="fa fa-upload"></i> Xuất file </a>
+                </div>
+                <div class="row" style="width:100%;margin-top: 15px;margin-left: 0px;">
+                    
+                    <div class="table-responsive">
+                        <table class="table table-hover" style="margin-top: 10px;width:100%">
+                            <thead class="bordered-darkorange bg-themeprimary ">
+                                <tr>
+                                    <th>
+                                        Mã đơn
+                                    </th>
+                                    <th>
+                                        Người tạo
+                                    </th>
+                                    <th>
+                                        Chi nhánh chuyển
+                                    </th>
+                                    <th>
+                                        Chi nhánh nhận
+                                    </th>
+                                   
+                                    <th>
+                                        Ngày tạo phiếu
+                                    </th>
+
+                                    <th>
+                                        Ngày hẹn chuyển/Nhận
+                                    </th>
+                                    <th>
+                                        Trạng thái
+                                    </th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="i in ListItemTransfer">
+                                    <td ui-sref="stockTransferDetail({id:i.VoucherID})">
+                                        <a ui-sref="stockTransferDetail({id:i.VoucherID})">
+                                            {{i.ma}}
+                                        </a>
+                                    </td>
+                                    <td>{{i.nguoitao}}</td>
+                                    <td>{{i.cnChuyen}}</td>
+                                    <td>{{i.cnNhan}}</td>
+                                    <td>{{i.ngaychuyen|date:'dd/MM/yyyy'}}</td>
+                                    <td>{{i.ngaynhan|date:'dd/MM/yyyy'}}</td>
+                                    <td>
+                                        <i class="{{i.cs}}" data-original-title="" title=""></i>
+                                        {{i.tt}}
+
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

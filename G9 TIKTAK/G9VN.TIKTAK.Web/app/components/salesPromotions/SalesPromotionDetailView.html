@@ -1,0 +1,203 @@
+﻿<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)">Khuyến mại</a>
+        </li>
+        <li class="active">Chi tiết khuyến mại
+    </ul>
+</div>
+<div class="page-header position-relative">
+    <div class="header-title">
+        <h1>
+            Chi tiết khuyến mại
+        </h1>
+    </div>
+    <div class="header-buttons">
+        <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+</div>
+<div class="page-body">
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+            <div class="widget-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label style="font-weight:bold;font-size:17px;" class="ng-binding">{{SalesPromotion.PromotionName}}</label>
+                        <span class="status-circle ng-binding" data-original-title="" title=""><i class="{{cs}}" data-original-title="" title=""></i>{{tt}}</span>
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-lg-6 col-sm-6 col-xs-12">
+                                <div class="well bordered-top bordered-warning">
+                                    <div class="row" style="border-bottom: 1px solid #bbb3b3;padding-bottom: 7px;">
+                                        <div class="col-md-6">
+                                            Thời gian Kết thúc
+                                        </div>
+                                        <div class="col-md-6" style="float:right;color:red">
+                                            {{Expirydate|date:'dd/MM/yyyy'}}
+                                        </div>
+                                    </div>
+                                    <div class="row" style="border-bottom: 1px solid #bbb3b3;padding-bottom: 7px;">
+                                        <div class="col-md-6">
+                                            Số lượng còn lại
+                                        </div>
+                                        <div class="col-md-6" style="float:right">
+                                            {{SalesPromotion.ApplyQuantity}}
+                                        </div>
+                                    </div>
+                                    <div class="row" style="padding-bottom: 7px;">
+                                        <div class="col-md-6">
+                                            Tổng giá trị
+                                        </div>
+                                        <div class="col-md-6" style="float:right">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-sm-6 col-xs-12">
+                                <div class="well bordered-top bordered-warning">
+                                    <div class="row" style="border-bottom: 1px solid #bbb3b3;padding-bottom: 7px;">
+                                        <div class="col-md-6">
+                                            Mã cương trình
+                                        </div>
+                                        <div class="col-md-6" style="float:right;color:#0094ff">
+                                            {{SalesPromotion.VoucherNo}}
+                                        </div>
+                                    </div>
+                                    <div class="row" style="border-bottom: 1px solid #bbb3b3;padding-bottom: 7px;">
+                                        <div class="col-md-6">
+                                            Phương thức
+                                        </div>
+                                        <div class="col-md-6" style="float:right">
+                                            {{VoucherType}}
+                                        </div>
+                                    </div>
+                                    <div class="row" style="padding-bottom: 7px;">
+                                        <div class="col-md-6">
+                                            Mô tả
+                                        </div>
+                                        <div class="col-md-6" style="float:right">
+                                            <span title="{{SalesPromotion.Description}}">{{Description}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       <div class="row">
+                           <div style="width:32%;margin:0 auto">
+                               <span>Sản phẩm áp dụng và các điều kiện</span>
+                           </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-lg-12 col-sm-12 col-xs-12">
+                                <div style="margin: 0 auto;width: 10%;display:{{displayimg}}; display:none">
+                                    <img style="margin:  0 auto; width: 90px;" src="../../../Assets/admin/img/icon60x60/Bao cao cong no phai tra.png" />
+                                </div>
+                                <div class="table-responsive" style="display:{{display}}; display:none ">
+                                    <table class="table table-hover" style="width:100%">
+                                        <thead class="bordered-darkorange bg-themeprimary" style="cursor:pointer">
+                                            <tr>
+                                                <th>
+                                                    Mã đơn hàng
+                                                </th>
+                                                <th>
+                                                    Ngày duyệt đơn
+                                                </th>
+
+                                                <th>
+                                                   Tổng giá trị chiết khấu
+                                                </th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                           
+                                            <tr  class="ng-scope" ng-repeat="item in saleOrder">
+                                                <td>
+                                                    <a href="javascript:void(0)" style="color:black" class="ng-binding">
+                                                      {{item.VoucherNo}}
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                   {{item.VoucherDate|date:'dd/MM/yyyy'}}
+                                                </td>
+                                                <td>
+                                                    {{item.TotalDiscountAmountOC|currency:"":0}} đ
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <div class="widget flat radius-bordered">
+                            <div class="widget-body" style="background: #ededed;">
+                                <div id="registration-form">
+                                    <form role="form">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <a href="javascript:void(0);" ng-click="changestt(1)" style="width:100%;display:none;display:{{dis}}" class="btn btn-success">Kích hoạt</a>
+                                                <a href="javascript:void(0);" ng-click="changestt(2)" style="width:100%;display:none;display:{{dis1}}" class="btn btn-error">Tạm ngừng</a>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <a href="javascript:void(0);" ng-click="deletel()" style="width:100%" class="btn btn-warning">Xóa</a>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <a href="javascript:void(0);" style="width:100%" class="btn btn-info">sửa</a>
+                                            </div>
+
+                                        </div>
+                                        <hr />
+                                        <div class="form-title">
+                                            Thời gian áp dụng
+                                        </div>
+                                        <div class="form-group">
+                                            <span>Từ ngày</span>
+                                            <input type="date" style="float:right" ng-model="CreateDate">
+                                        </div>
+                                        <div class="form-group">
+                                            <span>Đến ngày</span>
+                                            <input type="date" style="float:right" ng-model="Expirydate">
+                                        </div>
+                                        <div class="form-title">
+                                            Cửa hàng áp dụng
+                                        </div>
+
+                                        <div class="form-group">
+                                            <select style="width:100%">
+                                                <option class="ng-binding ng-scope" selected>Toàn bộ cửa hàng</option>
+                                            </select>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+

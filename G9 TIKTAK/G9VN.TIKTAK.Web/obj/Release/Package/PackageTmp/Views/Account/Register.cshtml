@@ -1,0 +1,212 @@
+﻿@model G9VN.TIKTAK.Web.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/Layouts.cshtml";
+}
+<div class="container" style="display:none;width:  100%;height:  5000px;position:  fixed;background: #6d636370;z-index:  10;">
+    <!-- Modal content-->
+    <div class="modal-content" style="width:  50%;margin: 0 auto;margin-top: 100px;">
+
+        <div class="modal-body" style="text-align:  center;">
+            <div id="check">
+                <img width="150" height="150" src="~/Assets/admin/img/svg-search.gif" />
+
+                <p>
+                    <span> Đang kiêm tra thông tin của bạn</span><br />
+                    <span>Xin vui lòng đợi trong giấy lát !</span><br />
+                    <progress value="0" max="10" id="progressBar"></progress>
+                </p>
+
+            </div>
+            <div id="create">
+                <img src="~/Assets/admin/img/gears.gif" />
+                <p>
+                    <span> Chúng tôi đang tiến hàng khởi tạo cửa hàng của bạn </span><br />
+                    <span>Xin vui lòng đợi trong giấy lát !</span>
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<div class="form-dk">
+    <div class="form-dk-content">
+
+        <div class="container register quick-register">
+            <div class="col-sm-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 no-padding">
+                <div class="">
+                    <div class="col-md-12 quick-register-form">
+                        @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken();
+                            @Html.ValidationSummary(false, "", new { @class = "error", @id = "showerror" })
+
+                            <form id="form" style="position:relative">
+                                <div class="form-group errors">
+                                    <div class="container-fluid-md notifications">
+                                        <div class="ajax-notification">
+                                            <span class="ajax-notification-message">
+                                            </span>
+                                            <a class="close-notification" onclick="Sapo.Flash.hide()"></a>
+                                        </div>
+                                    </div>
+                                    <ul id="tb" style="display:none"></ul>
+                                </div>
+                                <div class="text-center col-sm-12" style="margin-bottom:20px">
+                                    <h3> Đăng ký miễn phí</h3>
+
+                                </div>
+
+                                <div>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-6 col-md-6 fullname form-group">
+                                            <input class="form-control form-input" data-val="true" data-val-length="Tên không dài quá 100 ký tự" data-val-length-max="100" data-val-required="Nhập vào tên của bạn" id="FullName" name="FullName" placeholder="Họ tên" type="text" value="" required="">
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-6 PhoneNo form-group">
+                                            <input class="form-control form-input" data-val="true" data-val-length="Số điện thoại phải từ 10 đến 13 ký tự" data-val-length-max="15" data-val-length-min="8" data-val-phone="Số điện thoại không đúng định dạng" data-val-required="Nhập vào số điện thoại" id="PhoneNo" name="PhoneNumber" pattern="\d*" placeholder="Số điện thoại" type="text" value="" required="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-6 col-md-6 fullname form-group">
+                                            <select class="form-control form-input" data-val="true" data-val-number="The field IndustryId must be a number." data-val-required="Thành phố." id="IndustryId" name="Address" required>
+                                                <option value="">--- Thành phố ---</option>
+                                                <option value="Hà Nội">Hà Nội</option>
+                                                <option value="TP Hồ Chí Minh">TP Hồ Chí Minh</option>
+                                                <option value="An Giang">An Giang</option>
+                                                <option value="Bà Rịa-Vũng Tàu">Bà Rịa-Vũng Tàu</option>
+                                                <option value="Bắc Giang">Bắc Giang</option>
+                                                <option value="Bắc Kạn">Bắc Kạn</option>
+                                                <option value="Bạc Liêu">Bạc Liêu</option>
+                                                <option value="Bắc Ninh">Bắc Ninh</option>
+                                                <option value="Bến Tre">Bến Tre</option>
+                                                <option value="Bình Dương">Bình Dương</option>
+                                                <option value="Bình Định">Bình Định</option>
+                                                <option value="Bình Phước">Bình Phước</option>
+                                                <option value="Bình Thuận">Bình Thuận</option>
+                                                <option value="Cà Mau">Cà Mau</option>
+                                                <option value="Cao Bằng">Cao Bằng</option>
+                                                <option value="Cần Thơ">Cần Thơ</option>
+                                                <option value="Đà Nẵng">Đà Nẵng</option>
+                                                <option value="Đắk Lắk">Đắk Lắk</option>
+                                                <option value="Đắk Nông">Đắk Nông</option>
+                                                <option value="Điện Biên">Điện Biên</option>
+                                                <option value="Đồng Nai">Đồng Nai</option>
+                                                <option value="Đồng Tháp">Đồng Tháp</option>
+                                                <option value="Gia Lai">Gia Lai</option>
+                                                <option value="Hà Giang">Hà Giang</option>
+                                                <option value="Hà Nam">Hà Nam</option>
+                                                <option value="Hà Tĩnh">Hà Tĩnh</option>
+                                                <option value="Hải Dương">Hải Dương</option>
+                                                <option value="Hải Phòng">Hải Phòng</option>
+                                                <option value="Hậu Giang">Hậu Giang</option>
+                                                <option value="Hòa Bình">Hòa Bình</option>
+                                                <option value="Hưng Yên">Hưng Yên</option>
+                                                <option value="Khánh Hoà">Khánh Hoà</option>
+                                                <option value="Kiên Giang">Kiên Giang</option>
+                                                <option value="Kon Tum">Kon Tum</option>
+                                                <option value="Lai Châu">Lai Châu</option>
+                                                <option value="Lâm Đồng">Lâm Đồng</option>
+                                                <option value="Lạng Sơn">Lạng Sơn</option>
+                                                <option value="Lào Cai">Lào Cai</option>
+                                                <option value="Long An">Long An</option>
+                                                <option value="Nam Định">Nam Định</option>
+                                                <option value="Nghệ An">Nghệ An</option>
+                                                <option value="Ninh Bình">Ninh Bình</option>
+                                                <option value="Ninh Thuận">Ninh Thuận</option>
+                                                <option value="Phú Thọ">Phú Thọ</option>
+                                                <option value="Phú Yên">Phú Yên</option>
+                                                <option value="Quảng Bình">Quảng Bình</option>
+                                                <option value="Quảng Nam">Quảng Nam</option>
+                                                <option value="Quảng Ngãi">Quảng Ngãi</option>
+                                                <option value="Quảng Ninh">Quảng Ninh</option>
+                                                <option value="Quảng Trị">Quảng Trị</option>
+                                                <option value="Sóc Trăng">Sóc Trăng</option>
+                                                <option value="Sơn La">Sơn La</option>
+                                                <option value="Tây Ninh">Tây Ninh</option>
+                                                <option value="Thái Bình">Thái Bình</option>
+                                                <option value="Thái Nguyên">Thái Nguyên</option>
+                                                <option value="Thanh Hoá">Thanh Hoá</option>
+                                                <option value="Thừa Thiên-Huế">Thừa Thiên-Huế</option>
+                                                <option value="Tiền Giang">Tiền Giang</option>
+                                                <option value="Trà Vinh">Trà Vinh</option>
+                                                <option value="Tuyên Quang">Tuyên Quang</option>
+                                                <option value="Vĩnh Long">Vĩnh Long</option>
+                                                <option value="Vĩnh Phúc">Vĩnh Phúc</option>
+                                                <option value="Yên Bái">Yên Bái</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-6 PhoneNo form-group">
+                                            <input class="form-control form-input" data-val="true" data-val-email="Email không đúng định dạng" data-val-required="Nhập vào địa chỉ email" id="Email" name="Email" placeholder="Email" type="email" value="" required="">
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-12 PhoneNo form-group">
+                                            <select class="form-control form-input" data-val="true" data-val-number="The field IndustryId must be a number." data-val-required="Bạn chưa chọn lĩnh vực kinh doanh." id="IndustryId" name="Business" required>
+                                                <option value="">--- Lĩnh vực kinh doanh ---</option>
+                                                <option value="Thời trang">Thời trang</option>
+                                                <option value="Mỹ phẩm">Mỹ phẩm</option>
+                                                <option value="Siêu thị mini">Siêu thị mini</option>
+                                                <option value="Vật liệu xây dựng">Vật liệu xây dựng</option>
+                                                <option value="Mẹ và Bé">Mẹ và Bé</option>
+                                                <option value="Cửa hàng tạp hóa">Cửa hàng tạp hóa</option>
+                                                <option value="Xe Máy - Linh kiện">Xe Máy - Linh kiện</option>
+                                                <option value="Sách và văn phòng phẩm">Sách và văn phòng phẩm</option>
+                                                <option value="Nhà thuốc">Nhà thuốc</option>
+                                                <option value="Nông sản và thực phẩm">Nông sản và thực phẩm</option>
+                                                <option value="Hoa và quà tặng">Hoa và quà tặng</option>
+                                                <option value="Lĩnh vực khác">Lĩnh vực khác</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-12 PhoneNo form-group">
+                                            <div class="input-group">
+                                                <input class="form-control form-input" data-val="true" data-val-length="Tên cửa hàng không dài quá 22 ký tự" data-val-length-max="22" data-val-required="Nhập vào tên cửa hàng của bạn" id="TenantName" name="StoreName" placeholder="Tên cửa hàng" type="text" value="" pattern=".{5,22}" required title="Mật khẩu yêu cầu từ 5 đến 22 kí tự">
+                                                <div class="input-group-btn">
+                                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">tiktac.vn</button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-6 col-md-6 fullname form-group">
+                                            <input class="form-control form-input" data-val="true" data-val-length="Tài khoản dài từ 6 đến 100 ký tự" data-val-length-min="6" data-val-length-max="100" data-val-required="Nhập vào user" id="Username" name="UserName" placeholder="Tài khoản" type="text" value="" required="">
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-6 PhoneNo form-group">
+                                            <input class="form-control form-input" data-val="true" data-val-length="Mật khẩu dài từ 6 đến 64 ký tự" data-val-length-max="64" data-val-length-min="6" data-val-required="Nhập vào mật khẩu của bạn" id="Password" name="Password" value="" placeholder="Mật khẩu" type="password" pattern=".{6,50}" required title="Mật khẩu yêu cầu từ 6 đến 10 kí tự">
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <div class="form-checkbox checkbox-confirm">
+                                                <div class="checkbox-five">
+                                                    <input class="big-checkbox" id="cbIsConfirm" name="IsConfirm" type="checkbox" checked="checked" required="">
+                                                    <label class="checkbox-tick" for="cbIsConfirm"></label>
+                                                </div>
+                                                <label for="cbIsConfirm" class="checkbox-label">Tôi đồng ý với quy định sử dụng &amp; chính sách bảo mật của G9 việt nam</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-center padding-md-top">
+                                    <div class="row">
+                                        <button id="bt" style="box-shadow:none" class="btn-create event-Free-Trial-form-submit" type="submit">Đăng ký dùng thử</button>
+                                    </div>
+                                </div>
+                            </form>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img width="100%" src="~/Assets/client/img/anhslide21.png" />
+    </div>
+
+</div>

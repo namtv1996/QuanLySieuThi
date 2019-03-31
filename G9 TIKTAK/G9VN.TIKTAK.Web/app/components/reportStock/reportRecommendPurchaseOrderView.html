@@ -1,0 +1,135 @@
+﻿<div class="page-breadcrumbs ng-scope">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+           <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" ui-sref="items">Hàng hóa</a>
+        </li>
+        <li class="active">Danh sách sản phẩm</li>
+    </ul>
+</div>
+<div class="page-header position-relative ng-scope">
+    <div class="header-title">
+        <h1>
+            Danh sách sản phẩm
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+        <a class="sidebar-toggler" href="#">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="#">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="#">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<div class="page-body ng-scope">
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+            <div class="widget-body">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label> Chi nhánh</label>
+                            <select style="width:100%">
+                                <option value="Nhận tại cửa hàng">Nhận tại cửa hàng</option>
+                                <option value="Shipper Văn Hải">Shipper Văn Hải</option>
+                                <option value="Shipper Đức Cảnh">Shipper Đức Cảnh</option>
+                                <option value="Shipper Tạ Nam">Shipper Tạ Nam</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label> Chi nhánh</label>
+                            <input type="date" class="form-control ng-pristine ng-valid ng-empty ng-touched ng-untouched" id="inputEmail3" ng-model="saleOrders.VoucherDate" style="width: 100%;">
+                        </div>
+                        <div class="col-md-3">
+                            <label> Chi nhánh</label>
+                            <input type="date" class="form-control ng-pristine ng-valid ng-empty ng-touched ng-untouched" id="inputEmail3" ng-model="saleOrders.VoucherDate" style="width: 100%;">
+                        </div>
+                        <div class="col-md-3">
+                            <label>Chọn tất cả các mục để</label>
+                            <a class="btn btn-success" style="width:100%">Xem báo cáo</a>
+                        </div>
+                    </div>
+                    <hr />
+
+                    <div class="row" style="width:100%;margin-left:0px">
+                        <div class="table-responsive">
+                            <table class="table table-bordered tbl-report tbl-report--inventory-onhand border-th table-recommend-purchase-order" cellspacing="0" cellpadding="0">
+                                <thead>
+                                    <tr role="row" class="active">
+                                        <th rowspan="2" style="width: 3%; " class="center-align">
+                                            <span><input type="checkbox" class="js-no-dirty all-bulk-action" bind-event-change="addOrRemoveAllBulkActionItems(this)"></span>
+                                            <div class="bulk-actions btn-group recommend-purchase-order-bulk-actions hide" all-items="0" items-page="20" total-records="0" style="width: 1269px;">
+                                                <a class="btn btn-default sapo-submit" data-toggle="dropdown">
+                                                    Chọn thao tác
+                                                    <span class="selection-count bulk-action-items-count" selected-bulk-action-items="0">
+                                                        (<span class="display-bulk-action-items-count"></span> hàng hóa)
+                                                    </span>
+                                                    <span class="caret"></span>
+                                                </a>
+
+                                                <ul class="dropdown-menu arrow-style" role="menu">
+                                                    <li>
+                                                        <a href="javascript:void(0)" bind-event-click="showListPurchaseOrderDraft(this)">
+                                                            Nhập hàng
+                                                        </a>
+                                                    </li>
+                                                </ul>
+
+                                                <span class="bulk-select-all">
+                                                    <p class="bulk-action-all-selector">
+                                                        <span class="bulk-action-all"></span>
+                                                        <a class="multipage-selected-all hide" href="javascript:void(0);" bind-event-click="addBulkActionAll()">Chọn tất cả đơn hàng</a>
+                                                        <a class="clear-multipage-selection hide" href="javascript:void(0);" bind-event-click="removeBulkActionAll()">Bỏ chọn</a>
+                                                    </p>
+                                                </span>
+                                            </div>
+                                        </th>
+                                        <th rowspan="2">Mã Sku</th>
+                                        <th rowspan="2">Hàng hóa</th>
+                                        <th rowspan="2">Định mức tối thiểu</th>
+                                        <th rowspan="2">Tồn hiện tại</th>
+                                        <th rowspan="2">Tiêu thụ trung bình</th>
+                                        <th rowspan="2">Cần nhập</th>
+                                        <th colspan="2">Nhà cung cấp giá tốt nhất</th>
+                                        <th colspan="2">Nhà cung cấp xem xét thứ 2</th>
+                                        <th colspan="2">Nhà cung cấp xem xét thứ 3</th>
+                                    </tr>
+                                    <tr role="row" class="active" bind-show="showTableRow2()">
+                                        <th>Tên NCC</th>
+                                        <th>Đơn giá</th>
+                                        <th>Tên NCC</th>
+                                        <th>Đơn giá</th>
+                                        <th>Tên NCC</th>
+                                        <th>Đơn giá</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+
+
+                            </table>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div style="margin-left:  82.4%;margin-top:3px ">
+                    <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" class="ng-isolate-scope"><!-- ngIf: 1 < pages.length --></dir-pagination-controls>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+

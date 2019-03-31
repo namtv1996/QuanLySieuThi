@@ -1,0 +1,301 @@
+﻿<div class="page-breadcrumbs ng-scope">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            Báo cáo
+        </li>
+        <li class="active">Báo cáo kho</li>
+    </ul>
+</div>
+<div class="page-header position-relative ng-scope">
+    <div class="header-title">
+        <h1>
+            Báo cáo xuất nhập tồn
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+        <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<div class="page-body ng-scope">
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+            <div class="widget-body">
+                <div class="form-group">
+                    <div class="row" style="width: 100%;margin-left: 0px;">
+                   
+
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label for="email">Chi nhánh :</label>
+                                        <div class="form-group">
+
+                                            <select ng-model="BranchID" style="width:100%;" styledropdown="font-size:12px" styleinput="font-size:12px" tabindex="-1" aria-hidden="true">
+                                                <option ng-repeat="item in branch" value="{{item.BranchID}}">{{item.BranchName}}</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label> Từ ngày :</label>
+                                        <input type="date" class="form-control ng-pristine ng-valid ng-empty ng-touched ng-untouched" id="inputEmail3" ng-model="date1" style="width: 100%;">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label> Đến ngày :</label>
+                                        <input type="date" class="form-control ng-pristine ng-valid ng-empty ng-touched ng-untouched" id="inputEmail3" ng-model="date2" style="width: 100%;">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label></label>
+                                        <a class="btn btn-success" style="width:100%" ng-click="ViewReport()">Xem báo cáo</a>
+                                    </div>
+                                </div>              
+
+                                <div class="row" style="margin-bottom: 20px;">
+                                    <div class="col-md-3">
+                                        <label>Tìm kiếm :</label>
+                                        <input type="text" class="form-control ng-pristine ng-valid ng-empty ng-touched" placeholder="Nhập mã, tên,..." style="width: 100%;" ng-model="searchText">
+                                    </div>
+                                </div>
+                        <div class="col-md-3 summary" data-original-title="" title="" style="margin-bottom: 10px;border: 1px solid #d5d5d5;">
+                            <div class="col-md-6" style="border-right: 1px solid #f5f5f5;height: 80px;padding-top:13px;">
+                                <div>Số lượng tồn kho đầu kỳ</div>
+                                <div><strong>{{totalA1|currency:"":0}}</strong></div>
+                            </div>
+                            <div class="col-md-6" style="padding-top:13px" data-original-title="" title="">
+                                <div data-original-title="" title="">Giá trị tồn kho đầu kỳ</div>
+                                <div data-toggle="tooltip" data-placement="bottom" title="" data-original-title="154,200,000">{{totalA2|currency:"":0}}</div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 summary" data-original-title="" title="" style="margin-bottom: 10px;border: 1px solid #d5d5d5;">
+                            <div class="col-md-6" style="border-right: 1px solid #f5f5f5;height: 80px;padding-top:13px;">
+                                <div>Số lượng nhập trong kỳ</div>
+                                <div>{{totalA3_7|currency:"":0}}</div>
+                            </div>
+                            <div class="col-md-6" style="padding-top:13px" data-original-title="" title="">
+                                <div data-original-title="" title="">Giá trị tăng</div>
+                                <div data-toggle="tooltip" data-placement="bottom" title="" data-original-title="154,200,000">{{totalValueA3_7|currency:"":0}}</div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 summary" data-original-title="" title="" style="margin-bottom: 10px;border: 1px solid #d5d5d5;">
+                            <div class="col-md-6" style="border-right: 1px solid #f5f5f5;height: 80px;padding-top:13px;">
+                                <div>Số lượng xuất trong kỳ</div>
+                                <div>{{totalA8_11|currency:"":0}}</div>
+                            </div>
+                            <div class="col-md-6" style="padding-top:13px" data-original-title="" title="">
+                                <div data-original-title="" title="">Giá trị giảm</div>
+                                <div data-toggle="tooltip" data-placement="bottom" title="" data-original-title="154,200,000">{{totalValueA8_11|currency:"":0}}</div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 summary" data-original-title="" title="" style="margin-bottom: 10px;border: 1px solid #d5d5d5;">
+                            <div class="col-md-6" style="border-right: 1px solid #f5f5f5;height: 80px;padding-top:13px;">
+                                <div>Số lượng tồn kho cuối kỳ</div>
+                                <div>{{totalA14|currency:"":0}}</div>
+                            </div>
+                            <div class="col-md-6" style="padding-top:13px" data-original-title="" title="">
+                                <div data-original-title="" title="">Giá trị tồn kho cuối kỳ</div>
+                                <div data-toggle="tooltip" data-placement="bottom" title="" data-original-title="154,200,000">{{totalA15|currency:"":0}}</div>
+                            </div>
+                        </div>
+                                <div class="row" style="padding-right: 15px;margin-top: 15px;">
+                                    <div class="col-md-3">
+                                        <a href="javascript:void(0)" style="margin-right:  18px;margin-top:  7px;" data-toggle="modal" data-target="#myModal">
+                                            Chú giải
+                                        </a>
+                                    </div>
+
+                                </div>
+                                <div class="row" style="width:100%;margin-left:0px">
+                                    <div class="table-responsive" style="margin-bottom: 15px;">
+                                        <table class="table table-bordered tbl-report tbl-report--inventory-onhand border-th" cellspacing="0" cellpadding="0" style="width:2000px;">
+                                            <thead>
+                                                <tr role="row" style="background: #2dc3e8 !important;color:white">
+                                                    <th rowspan="2">STT</th>
+                                                    <th rowspan="2">SKU</th>
+                                                    <th rowspan="2">Tùy chọn hàng hóa</th>
+                                                    <th colspan="2" style="text-align:center;">Tồn kho đầu kỳ</th>
+                                                    <th colspan="5" style="text-align:center;">Nhập trong kỳ</th>
+                                                    <th colspan="4" style="text-align:center;">Xuất trong kỳ</th>
+                                                    <th colspan="2" style="text-align:center;">Giá trị</th>
+                                                    <th colspan="2" style="text-align:center;">Tồn kho cuối kỳ</th>
+                                                </tr>
+                                                <tr role="row" style="background: #2dc3e8 !important;color:white">
+                                                    <th style="text-align:center;">Số lượng</th>
+                                                    <th style="text-align:center;">Giá trị<br> tồn</th>
+                                                    <th style="text-align:center;">Số lượng<br> nhập</th>
+                                                    <th style="text-align:center;">Số lượng <br> kiểm kê tăng</th>
+                                                    <th style="text-align:center;">Số lượng <br> nhận từ kho khác</th>
+                                                    <th style="text-align:center;">Số lượng <br> hàng trả lại</th>
+                                                    <th style="text-align:center;">Số lượng <br> hàng hủy giao</th>
+
+                                                    <th style="text-align:center;">Số lượng<br> bán ra</th>
+                                                    <th style="text-align:center;">Số lượng<br> trả NCC</th>
+                                                    <th style="text-align:center;">Số lượng<br> chuyển kho</th>
+                                                    <th style="text-align:center;">Số lượng<br> kiểm kê giảm</th>
+                                                    <th style="text-align:center;">Giá trị<br> tăng</th>
+                                                    <th style="text-align:center;">Giá trị <br> giảm</th>
+                                                    <th style="text-align:center;">Số lượng</th>
+                                                    <th style="text-align:center;">Giá trị</th>
+                                                </tr>
+
+                                            </thead>
+                                            <tbody>
+                                                <tr dir-paginate="item in report|filter:searchText|itemsPerPage:5">
+                                                    <td>{{$index+1}}</td>
+                                                    <td style="text-align:left">{{item.SKU}}</td>
+                                                    <td style="text-align:left">{{item.Name}}</td>
+                                                    <td>{{item.a1|currency:"":0}}</td>
+                                                    <td style="text-align:right">{{item.a2|currency:"":0}}</td>
+                                                    <td>{{item.a3|currency:"":0}}</td>
+                                                    <td>{{item.a4|currency:"":0}}</td>
+                                                    <td>{{item.a5|currency:"":0}}</td>
+                                                    <td>{{item.a6|currency:"":0}}</td>
+                                                    <td>{{item.a7|currency:"":0}}</td>
+
+                                                    <td>{{item.a8|currency:"":0}}</td>
+                                                    <td>{{item.a9|currency:"":0}}</td>
+                                                    <td>{{item.a10|currency:"":0}}</td>
+                                                    <td>{{item.a11|currency:"":0}}</td>
+                                                    <td style="text-align:right">{{item.a12|currency:"":0}}</td>
+                                                    <td style="text-align:right">{{item.a13|currency:"":0}}</td>
+                                                    <td style="text-align:right">{{item.a14|currency:"":0}}</td>
+                                                    <td style="text-align:right">{{item.a15|currency:"":0}}</td>
+                                                </tr>
+                                             
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                    <div>
+                                        <dir-pagination-controls max-size="5"
+                                                                 direction-links="true"
+                                                                 boundary-links="true">
+                                        </dir-pagination-controls>
+                                    </div>
+                                </div>
+                            </div>
+
+                          
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog" style="width:80% !important;margin-left:245px !important;margin-top:43px;">
+                    <div class="modal-content">
+                        <div class="modal-header" style="background-color:#2dc3e8;font-size:18px;text-align:center;">
+                            <button aria-hidden="true" data-dismiss="modal" class="close" type="button"></button>
+                            <span class="ui-dialog-title" id="ui-dialog-title-1">
+                                Bảng giải thích dữ liệu trong báo cáo
+                            </span>
+
+                        </div>
+
+                        <div class="modal-body-report product-option-edit pull-center" style="overflow: auto; height: 522px;">
+                            <div id="table-height" class="bulk-action-context">
+                                <table class="table table-bordered tbl-report tbl-report--inventory-onhand border-th" id="parent-variant" style="width:100%;">
+                                    <thead>
+                                        <tr>
+
+                                            <th style="width:20%;text-align:center">Trường dữ liệu</th>
+                                            <th style="width: 20%;text-align:center; border-right: 1px solid #dcdee2 !important;">Chi tiết</th>
+                                            <th style="width: 60%;text-align:center">Giải thích</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="tbody-scoler">
+                                        <tr>
+                                            <td>Số lượng tồn đầu kì</td>
+                                            <td style=" border-right 1px solid #dcdee2 !important;"></td>
+                                            <td>Số lượng tồn đầu kì = Số lượng tồn cuối kì của kì trước</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Giá trị tồn đầu kì</td>
+                                            <td style=" border-right 1px solid #dcdee2 !important;"></td>
+                                            <td>Giá trị tồn đầu kì = Giá trị tồn cuối kì của kì trước</td>
+                                        </tr>
+                                        <tr>
+                                            <td rowspan="4">Số lượng nhập trong kì</td>
+                                            <td style=" border-right 1px solid #dcdee2 !important;">Số lượng nhập</td>
+                                            <td>Số lượng hàng hóa nhập kho qua phiếu nhập theo thời gian chọn lên báo cáo</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Số lượng kiểm kê tăng</td>
+                                            <td>Số lượng hàng hoá tăng khi kiểm hàng (số lượng tồn thực tế &gt; số lượng tồn trong hệ thống) theo thời gian chọn lên báo cáo</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Số lượng nhận từ kho khác</td>
+                                            <td>Số lượng hàng hoá chuyển hàng theo thời gian chọn lên báo cáo</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Số lượng hàng trả lại</td>
+                                            <td>Số lượng hàng hóa khách trả hàng theo thời gian chọn lên báo cáo</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Giá trị nhập trong kì</td>
+                                            <td style=" border-right 1px solid #dcdee2 !important;"></td>
+                                            <td>
+                                                (Số lượng nhập * giá nhập) + ( số lượng kiểm kê tăng*giá nhập) + (số lượng nhận từ kho khác * giá nhập) + (số lượng hàng trả lại * giá vốn hàng bán (gần nhất tại thời điểm trả hàng))
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td rowspan="4">Số lượng xuất trong kì</td>
+                                            <td style=" border-right 1px solid #dcdee2 !important;">Số lượng xuất</td>
+                                            <td>Số lượng hàng hoá xuất khỏi kho theo tiêu chí chọn lên báo cáo</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Số lượng trả nhà cung cấp</td>
+                                            <td>Số lượng hàng hoá trả NCC theo tiêu chí chọn lên báo cáo</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Số lượng chuyển kho</td>
+                                            <td>Số lượng hàng hoá khi chuyển hàng cho kho khác theo tiêu chí chọn lên báo cáo</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Số lượng kiểm kê giảm</td>
+                                            <td>Số lượng hàng hoá giảm khi kiểm hàng (số lượng tồn thực tế &lt; số lượng tồn trong hệ thống) theo tiêu chí chọn lên báo cáo</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Giá trị xuất trong kì</td>
+                                            <td style="border-right 1px solid #dcdee2 !important;"></td>
+                                            <td>(Số lượng xuất  * giá vốn hàng bán) + (số lượng kiểm kê giảm * giá vốn hàng bán) + (số lượng chuyển kho * giá vốn hàng bán) + (số lượng trả nhà cung cấp * giá nhập)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Số lượng tồn kho cuối kì</td>
+                                            <td style="border-right 1px solid #dcdee2 !important;"></td>
+                                            <td>Tổng số lượng nhập trong kì - tổng số lượng xuất trong kì</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Giá trị tồn kho cuối kì</td>
+                                            <td style="border-right 1px solid #dcdee2 !important;"></td>
+                                            <td>Tổng giá trị nhập trong kì - tổng giá trị xuất trong kì</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="modal-footer-report" style="text-align:left;color:#666666;padding:8px">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+

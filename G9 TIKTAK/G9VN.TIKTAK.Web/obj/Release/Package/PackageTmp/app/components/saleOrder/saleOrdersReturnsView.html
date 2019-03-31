@@ -1,0 +1,168 @@
+﻿<div class="page-breadcrumbs ng-scope">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+           <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" ui-sref="saleOrder">đơn hàng</a>
+        </li>
+        <li class="active">Danh sách đơn hàng</li>
+    </ul>
+</div>
+
+<div class="page-header position-relative ng-scope">
+    <div class="header-title">
+        <h1>
+            Danh sách đơn hàng
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+       <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<div class="page-body ng-scope">
+    <!-- Your Content Goes Here -->
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+            <div class="widget-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label style="font-weight:bold" class="ng-binding"> {{customer.ObjectName}}</label>
+                        <span class="status-circle ng-binding" data-original-title="" title=""><i class="{{display.icon}}" data-original-title="" title=""></i>{{state.title}}</span>
+                        <!--<label>{{state.title}}</label>-->
+                    </div>
+
+                    <div class="col-md-4">
+                        <label> <i class="fa fa-truck" style="font-size:25px"></i><label>&nbsp;&nbsp;&nbsp;&nbsp;Chi nhánh mặc định</label></label>
+                    </div>
+                    <div class="col-md-4" style="display:{{display.dis9}}">
+                        <a ng-disabled="display.act" class="btn btn-default purple" ng-click="Revise('huy_don')" style="margin-right: 10px; float: right; color: #0d55a1 !important"><i class="fa fa-remove"></i>Hủy</a>
+                        <a class="btn btn-default purple" ui-sref="items_add" style="margin-right: 10px; float: right; color: #0d55a1 !important" href="#!/items_add"><i class="fa fa-print"></i>In</a>
+                        <a class="btn btn-default purple" style="margin-right: 10px; float: right; color: #0d55a1 !important" ui-sref="saleOrder_Edit({id:saleOrders.VoucherID})"><i class="fa fa-cog"></i>Sửa</a>
+                    </div>
+                </div>
+                <hr />
+                <div class="row" style="width:100%;margin-left:0px">
+                    <div class="col-md-3">
+                        <label class="label-report">Chọn nơi đến</label>
+                        <select class="form-control" datatype="dropdown" name="TypeShipment" style="width: 100%;">
+                            <option value="full">Tất cả</option>
+                            <option value="pickup">Nhận tại cửa hàng</option>
+                            <option value="courier">Dịch vụ giao hàng</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="label-report">Chọn ngày</label>
+                        <input type="date" class="form-control ng-pristine ng-valid ng-empty ng-touched ng-untouched" id="inputEmail3" ng-model="saleOrders.VoucherDate" style="width: 100%;">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="label-report">Tham chiếu</label>
+                        <input type="text" class="form-control ng-pristine ng-valid ng-empty ng-touched" placeholder="Chọn khách hàng" style="width: 100%;">
+
+                    </div>
+                    <div class="col-md-3">
+                        <label class="label-report">Liên hệ</label>
+                        <select class="form-control" datatype="dropdown" name="TypeShipment" style="width: 100%;">
+                            <option value="full">Tất cả</option>
+                            <option value="pickup">Nhận tại cửa hàng</option>
+                            <option value="courier">Dịch vụ giao hàng</option>
+                        </select>
+                    </div>
+
+                </div>
+                <hr />
+                <div class="row" style="width: 100%;margin-left: 0px;">
+                    <table class="table table-hover" style="width:100%">
+                        <thead class="bordered-darkorange bg-themeprimary ">
+                            <tr>
+                                <th>STT</th>
+                                <th>
+                                    Mã
+                                </th>
+                                <th style="text-align:center">
+                                    Tên hàng hóa
+                                </th>
+                                <th style="text-align:center">
+                                    Số lượng
+                                </th>
+                                <th style="text-align:center">
+                                    Đơn giá
+                                </th>
+
+                                <th style="text-align:center;">
+                                    Thanh tiền
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in listview">
+                                <tb>{{i.stt}}</tb>
+                                <td><img style="height:50px;width:50px" src="{{item.Image1}}" /></td>
+                                <td>
+                                    <a style="color:black">
+                                        {{item.SKU}}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{item.Name}}
+                                </td>
+                                <td style="text-align:center">
+                                    <i></i>
+                                    {{item.Quantity}}
+
+
+                                </td>
+                                <td style="text-align:center">
+                                    <i></i>
+                                    {{item.UnitPrice|currency:'':0}}đ
+
+
+                                </td>
+
+                                <td style="text-align:center">
+                                    <i></i>
+                                    {{item.money_amount|currency:'':0}}đ
+
+
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-sm-6 col-xs-12" style="width:100%;margin-top:10px">
+            <div class="widget">
+
+                <div class="widget-body" style="border-left: 3px solid #2dc3e8;">
+                    <div id="horizontal-form">
+                        <div class="row" style="margin-top:10px;margin-left: 20px;">
+                            <div class="col-md-8" style="margin-bottom:13px">
+                            </div>
+                            <div class="col-lg-4">
+                                <a ui-sref="items" class="btn btn-default purple" style=" padding: 3px 10px 1px; height: 32px; margin-right: 10px; float: right; color: #0d55a1 !important" href="#!/items"><i class="typcn typcn-cancel"></i> Hủy </a>
+                                <button type="button" ng-click="savesaleOrdersReturns()" class="btn btn-default purple" style="margin-right: 10px; float: right; color: #0d55a1 !important"><i class="glyphicon glyphicon-floppy-save"></i>Thêm</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

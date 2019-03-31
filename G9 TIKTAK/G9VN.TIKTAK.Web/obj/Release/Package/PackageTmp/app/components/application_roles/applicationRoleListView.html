@@ -1,0 +1,123 @@
+﻿  <!-- Content Header (Page header) -->
+<div class="page-breadcrumbs ng-scope">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+           <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a ui-sref="pageSetting" href="javascript:void(0)">Cài đặt</a>
+        </li>
+        <li>
+            <a ui-sref="application_roles" href="javascript:void(0)">Danh mục quyền</a>
+        </li>
+        <li class="active">Danh sách mục quyền</li>
+    </ul>
+</div>
+<div class="page-header position-relative ng-scope">
+    <div class="header-title">
+        <h1>
+            Danh mục quyền
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+       <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<div class="page-body no-padding">
+    <div class="mail-container">
+        <div class="mail-header" style="margin-left:0px !important ;margin-top:1px">
+            <ul class="header-buttons">
+                <li>
+                    <a title="Cài đặt chung" ui-sref="pageSetting" class="tooltip-primary" data-toggle="tooltip" data-original-title="Send"><i class="fa fa-bank"></i> </a>
+                </li>
+                <li>
+                    <a title="Nhóm người dùng" ui-sref="application_groups" class="tooltip-primary" data-toggle="tooltip" data-original-title="Attach"><i class="fa fa-list-alt"></i></a>
+                </li>
+                <li>
+                    <a  style="border-color: #0db9be;"  title="Danh mục quyền" ui-sref="application_roles" class="tooltip-primary" data-toggle="tooltip" data-original-title="Cancel"><i class="fa fa-th"  style="color: #0db9be;" ></i></a>
+                </li>
+                <li>
+                    <a title="Danh sách người dùng" ui-sref="application_users" class="tooltip-primary" data-toggle="tooltip" data-original-title="Draft"><i class="fa fa-users"></i></a>
+                </li>
+            </ul>
+
+
+            <div class="draft">
+               Danh mục cài đặt
+            </div>
+        </div>
+        <div class="mail-body" style="margin-left:10px">
+            <div style="margin-top: 15px;width: 100%;">
+                <div style="height:1400px">
+                        <div class="col-xs-12 col-md-6" style="width:100%">
+
+
+                            <div class="widget-body">
+
+                                <div class="table-responsive">
+                                    <!-- Default box -->
+
+                                    <div class="box-body">
+                                        <div>
+                                            <div class="col-md-6">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" ng-model="keyword" placeholder="Từ khóa">
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-default" type="button" ng-click="search()">Tìm kiếm</button>
+                                                    </span>
+                                                </div><!-- /input-group -->
+                                            </div>
+                                            <div class="col-md-6">
+                                                <button class="btn btn-success" ui-sref="add_application_role">Thêm mới</button>
+                                                <button class="btn btn-danger" ng-click="deleteMultiple()" id="btnDelete" disabled>Xóa</button>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div>
+                                            <div class="col-md-12">
+                                                <table class="table table-bordered">
+                                                    <tr>
+                                                        <th style="width:30%">Tên quyền</th>
+                                                        <th style="width: 50%">Mô tả</th>
+                                                        <th style="width: 20%">Thao tác</th>
+                                                    </tr>
+                                                    <tr ng-repeat="item in data">
+                                                        <td><a ui-sref="edit_application_role({id:item.Id})">{{item.Name}}</a></td>
+                                                        <td>
+                                                            {{item.Description}}
+                                                        </td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-primary" ui-sref="edit_application_role({id:item.Id})"><i class="fa fa-pencil"></i></button>
+                                                            <button class="btn  btn-sm btn-danger" ng-click="deleteItem(item.Id)"><i class="fa fa-trash"></i></button>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div><!-- /.box-body -->
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Main content -->

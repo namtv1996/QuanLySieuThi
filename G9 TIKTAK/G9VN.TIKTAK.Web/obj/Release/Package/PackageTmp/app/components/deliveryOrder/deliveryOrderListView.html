@@ -1,0 +1,149 @@
+﻿<!-- Page Breadcrumb -->
+<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+           <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)">Đơn hàng</a>
+        </li>
+        <li class="active">Giao hàng</li>
+    </ul>
+</div>
+<!-- /Page Breadcrumb -->
+<!-- Page Header -->
+<div class="page-header position-relative">
+    <div class="header-title">
+        <h1>
+            Danh sách đơn giao hàng
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+       <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<!-- /Page Header -->
+<!-- Page Body -->
+<div class="page-body">
+    <!-- Your Content Goes Here -->
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+
+
+            <div class="widget-body">
+                <div class="form-group">
+                    <span class="input-icon inverted" style="width:35%;">
+                        <input type="text" style="height:32px;padding-left:40px" class="form-control input-sm" placeholder="Tìm kiếm ... " ng-model="searchText">
+                        <i class="glyphicon glyphicon-search bg-blue"></i>
+                    </span>
+
+                    <!--<a class="btn btn-default purple" ui-sref="items_add" style="float: right; color: #0d55a1 !important; "><i class="fa fa-plus"></i> Thêm mới </a>-->
+                    <a class="btn btn-default purple" style="margin-right: 10px; float: right; color: #0d55a1 !important; "><i class="fa fa-download"></i> Nhập file </a>
+                    <a class="btn btn-default purple" style="margin-right: 10px; float: right; color: #0d55a1 !important; "><i class="fa fa-upload"></i> Xuất file </a>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover" style="width:100%">
+                        <thead class=" bg-themeprimary bg-themeprimary">
+                            <tr>
+                                <th>
+                                    Đơn giao hàng
+                                </th>
+                                <th>
+                                    Gói hàng
+                                </th>
+                                <th>
+                                    Đơn hàng
+                                </th>
+                                <!--<th>
+                                    Khách hàng
+                                </th>-->
+                                <th>
+                                    Vận chuyển
+                                </th>
+                                <th>
+                                    Ngày chứng từ
+                                </th>
+                                <th>
+                                    Trạng thái
+                                </th>     
+                                <th>
+                                    Giao hàng
+                                </th> 
+                                <th>
+                                    Thanh toán
+                                </th> 
+                                <th style="text-align:right;">
+                                    Tiền COD
+                                </th>
+                                <th style="text-align:right;">
+                                    Phí giao hàng
+                                </th>
+                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr dir-paginate="delivery in listDeliveryOrder|filter:searchText| itemsPerPage:10">
+                                <td ui-sref="deliveryOrder_detail({id:delivery.VoucherID})" style="cursor:pointer;color:#338fd0;">
+                                    {{delivery.VoucherNo}}
+                                </td>
+                                <td> {{delivery.PackageVoucherNo}} </td>
+                                
+
+                                <td>
+                                    {{delivery.SaleOrderVoucherNo}}
+                                </td>
+                                <!--<td>
+                                   
+                                </td>-->
+                                <td>
+                                    {{delivery.TransporterName}}
+                                </td>
+                                <td>
+                                    {{delivery.VoucherDate|date:'dd/MM/yyyy'}}
+                                </td>
+                                <td>
+                                    <i class="{{delivery.cs}}" data-original-title="" title=""></i>
+                                    {{delivery.tt}}
+                                </td>
+                                <td style="color: #2dc3e8;font-size:15px;text-align:center;">
+                                    <i class="{{delivery.icon_delivery}}"></i>
+                                </td>
+                                <td style="color: #2dc3e8;font-size:15px;text-align:center;">
+                                    <i class="{{delivery.icon_payment}}"></i>
+                                </td>
+                                <td style="text-align:right;">
+                                    {{delivery.TotalAmount|currency:"":0}} đ
+                                </td>
+                                <td style="text-align:right;">
+                                    {{delivery.ShippingAmount|currency:"":0}} đ
+                                </td>
+                                                              
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div>
+                    <dir-pagination-controls max-size="5"
+                                             direction-links="true"
+                                             boundary-links="true">
+                    </dir-pagination-controls>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- /Page Body -->

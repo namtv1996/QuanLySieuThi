@@ -1,0 +1,141 @@
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\MVCTool.exe.config
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\MVCTool.exe
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\MVCTool.pdb
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\MVCTool.xml
+D:\Develop\AccountingManager\MVCTool\MVCTool\obj\Release\MVCTool.frmMain.resources
+D:\Develop\AccountingManager\MVCTool\MVCTool\obj\Release\MVCTool.Resources.resources
+D:\Develop\AccountingManager\MVCTool\MVCTool\obj\Release\MVCTool.vbproj.GenerateResource.Cache
+D:\Develop\AccountingManager\MVCTool\MVCTool\obj\Release\MVCTool.exe.licenses
+D:\Develop\AccountingManager\MVCTool\MVCTool\obj\Release\MVCTool.exe
+D:\Develop\AccountingManager\MVCTool\MVCTool\obj\Release\MVCTool.xml
+D:\Develop\AccountingManager\MVCTool\MVCTool\obj\Release\MVCTool.pdb
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\DevExpress.Data.v12.2.dll
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\DevExpress.Printing.v12.2.Core.dll
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\DevExpress.XtraEditors.v12.2.dll
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\DevExpress.XtraGrid.v12.2.dll
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\DevExpress.XtraLayout.v12.2.dll
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\DevExpress.XtraPrinting.v12.2.dll
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\DevExpress.Data.v12.2.xml
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\DevExpress.Printing.v12.2.Core.xml
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\DevExpress.XtraEditors.v12.2.xml
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\DevExpress.XtraPrinting.v12.2.xml
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\DevExpress.XtraGrid.v12.2.xml
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\DevExpress.XtraLayout.v12.2.xml
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\de\DevExpress.Data.v12.2.resources.dll
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\es\DevExpress.Data.v12.2.resources.dll
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\ja\DevExpress.Data.v12.2.resources.dll
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\ru\DevExpress.Data.v12.2.resources.dll
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\de\DevExpress.Printing.v12.2.Core.resources.dll
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\es\DevExpress.Printing.v12.2.Core.resources.dll
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\ja\DevExpress.Printing.v12.2.Core.resources.dll
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\ru\DevExpress.Printing.v12.2.Core.resources.dll
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\de\DevExpress.XtraEditors.v12.2.resources.dll
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\es\DevExpress.XtraEditors.v12.2.resources.dll
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\ja\DevExpress.XtraEditors.v12.2.resources.dll
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\ru\DevExpress.XtraEditors.v12.2.resources.dll
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\de\DevExpress.XtraPrinting.v12.2.resources.dll
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\es\DevExpress.XtraPrinting.v12.2.resources.dll
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\ja\DevExpress.XtraPrinting.v12.2.resources.dll
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\ru\DevExpress.XtraPrinting.v12.2.resources.dll
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\de\DevExpress.XtraGrid.v12.2.resources.dll
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\es\DevExpress.XtraGrid.v12.2.resources.dll
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\ja\DevExpress.XtraGrid.v12.2.resources.dll
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\ru\DevExpress.XtraGrid.v12.2.resources.dll
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\de\DevExpress.XtraLayout.v12.2.resources.dll
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\es\DevExpress.XtraLayout.v12.2.resources.dll
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\ja\DevExpress.XtraLayout.v12.2.resources.dll
+D:\Develop\AccountingManager\MVCTool\MVCTool\bin\Release\ru\DevExpress.XtraLayout.v12.2.resources.dll
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\MVCTool.exe.config
+D:\Develop\G9Cafe\MVCTool\MVCTool\obj\Release\MVCTool.exe
+D:\Develop\G9Cafe\MVCTool\MVCTool\obj\Release\MVCTool.xml
+D:\Develop\G9Cafe\MVCTool\MVCTool\obj\Release\MVCTool.pdb
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\MVCTool.exe
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\MVCTool.pdb
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\MVCTool.xml
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\DevExpress.Data.v14.2.dll
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\DevExpress.Printing.v14.2.Core.dll
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\DevExpress.XtraEditors.v14.2.dll
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\DevExpress.XtraGrid.v14.2.dll
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\DevExpress.XtraLayout.v14.2.dll
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\DevExpress.XtraPrinting.v14.2.dll
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\DevExpress.Data.v14.2.xml
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\DevExpress.Printing.v14.2.Core.xml
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\DevExpress.XtraEditors.v14.2.xml
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\DevExpress.XtraPrinting.v14.2.xml
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\DevExpress.XtraGrid.v14.2.xml
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\DevExpress.XtraLayout.v14.2.xml
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\de\DevExpress.Data.v14.2.resources.dll
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\es\DevExpress.Data.v14.2.resources.dll
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\ja\DevExpress.Data.v14.2.resources.dll
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\ru\DevExpress.Data.v14.2.resources.dll
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\de\DevExpress.Printing.v14.2.Core.resources.dll
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\es\DevExpress.Printing.v14.2.Core.resources.dll
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\ja\DevExpress.Printing.v14.2.Core.resources.dll
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\ru\DevExpress.Printing.v14.2.Core.resources.dll
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\de\DevExpress.XtraEditors.v14.2.resources.dll
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\es\DevExpress.XtraEditors.v14.2.resources.dll
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\ja\DevExpress.XtraEditors.v14.2.resources.dll
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\ru\DevExpress.XtraEditors.v14.2.resources.dll
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\de\DevExpress.XtraPrinting.v14.2.resources.dll
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\es\DevExpress.XtraPrinting.v14.2.resources.dll
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\ja\DevExpress.XtraPrinting.v14.2.resources.dll
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\ru\DevExpress.XtraPrinting.v14.2.resources.dll
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\de\DevExpress.XtraGrid.v14.2.resources.dll
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\es\DevExpress.XtraGrid.v14.2.resources.dll
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\ja\DevExpress.XtraGrid.v14.2.resources.dll
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\ru\DevExpress.XtraGrid.v14.2.resources.dll
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\de\DevExpress.XtraLayout.v14.2.resources.dll
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\es\DevExpress.XtraLayout.v14.2.resources.dll
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\ja\DevExpress.XtraLayout.v14.2.resources.dll
+D:\Develop\G9Cafe\MVCTool\MVCTool\bin\Release\ru\DevExpress.XtraLayout.v14.2.resources.dll
+D:\Develop\G9Cafe\MVCTool\MVCTool\obj\Release\MVCTool.frmMain.resources
+D:\Develop\G9Cafe\MVCTool\MVCTool\obj\Release\MVCTool.Resources.resources
+D:\Develop\G9Cafe\MVCTool\MVCTool\obj\Release\MVCTool.vbproj.GenerateResource.Cache
+D:\Develop\G9Cafe\MVCTool\MVCTool\obj\Release\MVCTool.exe.licenses
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\MVCTool.exe.config
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\obj\Release\MVCTool.exe
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\obj\Release\MVCTool.xml
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\obj\Release\MVCTool.pdb
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\MVCTool.exe
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\MVCTool.pdb
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\MVCTool.xml
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\DevExpress.Data.v14.2.dll
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\DevExpress.Printing.v14.2.Core.dll
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\DevExpress.XtraEditors.v14.2.dll
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\DevExpress.XtraGrid.v14.2.dll
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\DevExpress.XtraLayout.v14.2.dll
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\DevExpress.XtraPrinting.v14.2.dll
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\DevExpress.Data.v14.2.xml
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\DevExpress.Printing.v14.2.Core.xml
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\DevExpress.XtraEditors.v14.2.xml
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\DevExpress.XtraPrinting.v14.2.xml
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\DevExpress.XtraGrid.v14.2.xml
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\DevExpress.XtraLayout.v14.2.xml
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\de\DevExpress.Data.v14.2.resources.dll
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\es\DevExpress.Data.v14.2.resources.dll
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\ja\DevExpress.Data.v14.2.resources.dll
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\ru\DevExpress.Data.v14.2.resources.dll
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\de\DevExpress.Printing.v14.2.Core.resources.dll
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\es\DevExpress.Printing.v14.2.Core.resources.dll
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\ja\DevExpress.Printing.v14.2.Core.resources.dll
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\ru\DevExpress.Printing.v14.2.Core.resources.dll
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\de\DevExpress.XtraEditors.v14.2.resources.dll
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\es\DevExpress.XtraEditors.v14.2.resources.dll
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\ja\DevExpress.XtraEditors.v14.2.resources.dll
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\ru\DevExpress.XtraEditors.v14.2.resources.dll
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\de\DevExpress.XtraPrinting.v14.2.resources.dll
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\es\DevExpress.XtraPrinting.v14.2.resources.dll
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\ja\DevExpress.XtraPrinting.v14.2.resources.dll
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\ru\DevExpress.XtraPrinting.v14.2.resources.dll
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\de\DevExpress.XtraGrid.v14.2.resources.dll
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\es\DevExpress.XtraGrid.v14.2.resources.dll
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\ja\DevExpress.XtraGrid.v14.2.resources.dll
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\ru\DevExpress.XtraGrid.v14.2.resources.dll
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\de\DevExpress.XtraLayout.v14.2.resources.dll
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\es\DevExpress.XtraLayout.v14.2.resources.dll
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\ja\DevExpress.XtraLayout.v14.2.resources.dll
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\bin\Release\ru\DevExpress.XtraLayout.v14.2.resources.dll
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\obj\Release\MVCTool.frmMain.resources
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\obj\Release\MVCTool.Resources.resources
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\obj\Release\MVCTool.vbproj.GenerateResource.Cache
+D:\Develop\G9 TIKTAK\MVCTool\MVCTool\obj\Release\MVCTool.exe.licenses

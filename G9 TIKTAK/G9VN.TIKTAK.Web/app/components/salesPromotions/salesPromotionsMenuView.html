@@ -1,0 +1,129 @@
+﻿<style>
+    .wizard_horizontal ul.wizard_steps {
+        display: table;
+        list-style: none;
+        position: relative;
+        width: 100%;
+        margin: 0 0 20px;
+    }
+</style>
+<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)">KHuyến mại</a>
+        </li>
+        <li class="active">Giới thiệu ứng dụng khuyến mại
+    </ul>
+</div>
+<div class="page-header position-relative">
+    <div class="header-title">
+        <h1>
+            Khuyến mại
+            <small>
+                <i class="fa fa-angle-right"></i>
+               Giới thiệu
+            </small>
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+        <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<div class="page-body">
+    <!-- Your Content Goes Here -->
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+            <div class="widget-body">
+                <div class="row" style="width:100%;margin-left:0px;margin-right:0px">
+                    <a ui-sref="salesPromotions_menu"><h5 class="row-title"><i class="fa fa-tags blue"></i>Tổng quan</h5></a>
+                    <a ui-sref="salesPromotions_list"><h5 class="row-title before-darkorange" style="margin-left:10px"><i class="fa fa-list-alt darkorange"></i>Danh sách khuyến mại</h5></a>
+                    <div class="btn-group" style="margin-top: -5px; cursor: pointer;">
+                        <a  data-toggle="dropdown" aria-expanded="false"> <h5 class="row-title before-success" style="margin-left:10px"><i class="glyphicon glyphicon-arrow-right success"></i>Thêm mới</h5></a>
+                        <ul class="dropdown-menu dropdown-azure">
+                            <li>
+                                <a href="javascript:void(0);" ui-sref="salesPromotions_add">Chiết khấu theo tổng đơn hàng</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="javascript:void(0);" ui-sref="salesPromotionsItem_Add">Chiếu khấu theo từng hàng hóa</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+                <br />
+                <div class="row" style="width:100%;margin-left:0px;margin-right:0px">
+                    <div class="widget-header"  style="background: #52a27a !important;">
+                        <span class="widget-caption" style="color:white !important;">Khuyến mại chiết khấu</span>
+                        <div class="widget-buttons">
+                        </div><!--Widget Buttons-->
+                    </div><!--Widget Header-->
+                    <div class="widget-body" style="background: #68d49d !important; color: white; ">
+                    <div class="row"style="width:100%;margin-left:0px;margin-right:0px">
+                        <div class="col-md-2">
+                            <img src="../../../Assets/admin/css/img/icon/172080.png" style="width:70%" />
+                        </div>
+                        <div class="col-md-10">
+                            <p style="text-align: justify">Tạo các chương trình khuyến mại giảm giá áp dụng cho tổng đơn hàng, theo từng sản phẩm, danh mục hay từng đối tượng khách hàng một cách linh hoạt . (VD: Mua 2 sản phẩm giảm 5%, giảm giá 10,000 VNĐ cho mỗi sản phẩm khi mua 5 sản phẩm trở lên, mua từ 5-10 sản phẩm giá sẽ giảm 20,000đ cho mỗi sản phẩm...).</p>
+                        </div>
+                    </div>
+                    </div><!--Widget Body-->
+                </div>
+               <br />
+                <div class="row" style="width:100%;margin-left:0px;margin-right:0px">
+                    <div class="widget-header" style="background: #5db2ff; color: white">
+                        <span class="widget-caption" style="color:white !important;">Khuyến mại tặng sản phẩm</span>
+                        <div class="widget-buttons">
+                        </div><!--Widget Buttons-->
+                    </div><!--Widget Header-->
+                    <div class="widget-body" style="background: #66b9ce; color: white">
+                        <div class="row" style="width:100%;margin-left:0px;margin-right:0px">
+                            <div class="col-md-2">
+                                <img src="../../../Assets/admin/css/img/icon/08%20tang%20qua.png" style="width:70%" />
+                            </div>
+                            <div class="col-md-10">
+                                <p style="text-align: justify">Tạo các chương trình khuyến mại tặng một hoặc nhiều sản phẩm nhằm gia tăng số lượng sản phẩm trong đơn hàng . (VD: Mua sản phẩm X tặng sản phẩm Y, mua sản phẩm X, nếu mua thêm thêm sản phẩm Y thì được giảm 50% sản phẩm Y, Mua 2 tặng 1...).</p>
+                            </div>
+                        </div>
+                        
+                    </div><!--Widget Body-->
+                </div>
+                <br />
+                <div class="row" style="width:100%;margin-left:0px;margin-right:0px">
+                    <div class="widget-header" style="background: #57B9AC;color:white">
+                        <span class="widget-caption" style="color:white !important;">Khuyến mại theo mã Coupon</span>
+                        <div class="widget-buttons">
+                        </div><!--Widget Buttons-->
+                    </div><!--Widget Header-->
+                    <div class="widget-body " style="background: #73cec5; color: white; ">
+                        <div class="row" style="width:100%;margin-left:0px;margin-right:0px">
+                            <div class="col-md-2">
+                                <div style="margin:0 auto">
+                                    <img src="../../../Assets/admin/css/img/icon/icon-coupon-copy.png" style="width:70%" />
+                                </div>
+                            </div>
+                            <div class="col-md-10">
+                                <p style="text-align: justify">Tạo và quản lý khuyến mại theo mã,  áp dụng cho từng nhóm khách hàng cụ thể. Cửa hàng có thể áp dụng mã này với các hình thức khuyến mại khác nhau như chiết khấu, tặng sản phẩm và giới hạn số mã và quản lý số mã được phát ra dễ dàng.</p>
+                            </div>
+                        </div>
+                    </div><!--Widget Body-->
+                </div>  
+            </div>
+        </div>
+
+    </div>
+</div>

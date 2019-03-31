@@ -1,0 +1,420 @@
+﻿<!-- Page Breadcrumb -->
+
+<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+           <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" ui-sref="customer">Khách hàng</a>
+        </li>
+        <li class="active">Danh sách khách hàng</li>
+    </ul>
+</div>
+<!-- /Page Breadcrumb -->
+<!-- Page Header -->
+<div class="page-header position-relative">
+    <div class="header-title">
+        <h1>
+            Danh sách khách hàng
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+       <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<!-- /Page Header -->
+<!-- Page Body -->
+<div class="page-body">
+    <!-- Your Content Goes Here -->
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+
+            <div class="widget-header ">
+                <span class="widget-caption">Danh sách khách hàng</span>
+                <div class="widget-buttons">
+                    <a href="javascript:void(0)" data-toggle="maximize">
+                        <i class="fa fa-expand"></i>
+                    </a>
+                    <a href="javascript:void(0)" data-toggle="collapse">
+                        <i class="fa fa-minus"></i>
+                    </a>
+                    <a href="javascript:void(0)" data-toggle="dispose">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="widget-body">
+                <div class="form-group">
+                    <span class="input-icon inverted" style="width:35%">
+                        <input type="text" style="height:32px;" class="form-control input-sm" placeholder="Tìm kiếm hàng hóa">
+                        <i class="glyphicon glyphicon-search bg-blue"></i>
+                    </span>
+
+                    <a class="btn btn-default purple" ui-sref="customer_add" style="float: right; color: #0d55a1 !important"><i class="fa fa-plus"></i> Thêm mới </a>
+                </div>
+                <div class="col-lg-6 col-sm-6 col-xs-12">
+                    <div class="tabbable">
+                        <ul class="nav nav-tabs" id="myTab">
+                            <li class="active">
+                                <a data-toggle="tab" href="#home" aria-expanded="true">
+                                    Home
+                                </a>
+                            </li>
+
+                            <li class="tab-red">
+                                <a data-toggle="tab" href="#profile" aria-expanded="false">
+                                    Profile
+                                </a>
+                            </li>
+
+                            <li class="dropdown">
+                                <a data-toggle="dropdown" class="dropdown-toggle" href="javascript:void(0)" aria-expanded="false">
+                                    Dropdown
+                                    <b class="caret"></b>
+                                </a>
+
+                                <ul class="dropdown-menu dropdown-blue">
+                                    <li>
+                                        <a data-toggle="tab" href="#dropdown1">@fat</a>
+                                    </li>
+
+                                    <li>
+                                        <a data-toggle="tab" href="#dropdown2">@mdo</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div id="home" class="tab-pane active">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead class="bordered-darkorange">
+                                            <tr>
+                                                <th>
+                                                    Mã khác hàng
+                                                </th>
+                                                <th>
+                                                    Tên Khách hàng
+                                                </th>
+                                                <th>
+                                                    Nhóm khách hàng
+                                                </th>
+                                                <th>
+                                                    Email
+                                                </th>
+                                                <th>
+                                                    Số Điên thoại
+                                                </th>
+                                                <th style="text-align:center">
+                                                    Trạng thái
+                                                </th>
+                                                <!--<th>
+                        Cập nhật
+                    </th>-->
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td> NV01 </td>
+                                                <td> Steve </td>
+                                                <td> Jobs </td>
+                                                <td> steve </td>
+                                                <td> 016785488778 </td>
+                                                <td style="text-align:center">
+                                                    <span class="status-circle" data-original-title="" title=""><i class="available"></i>Đang giao dịch</span>
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td> NV02 </td>
+                                                <td> Bill </td>
+                                                <td> Gates </td>
+                                                <td> billy </td>
+                                                <td> 016785488778 </td>
+                                                <td style="text-align:center">
+                                                    <span class="status-circle" data-original-title="" title=""><i class="available"></i>Đang giao dịch</span>
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td> NV03 </td>
+                                                <td> Mark </td>
+                                                <td> Zuckerberg </td>
+                                                <td> markz </td>
+                                                <td> 016785488778 </td>
+                                                <td style="text-align:center">
+                                                    <span class="status-circle" data-original-title="" title=""><i class="available"></i>Đang giao dịch</span>
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td> NV04 </td>
+                                                <td> Marissa </td>
+                                                <td> Mayer </td>
+                                                <td> marim </td>
+                                                <td> 016785488778 </td>
+                                                <td style="text-align:center">
+                                                    <span class="status-circle" data-original-title="" title=""><i class="available"></i>Đang giao dịch</span>
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    </div>
+
+                                </div>
+
+                            <div id="profile" class="tab-pane">
+                                <table class="table table-hover">
+                                    <thead class="bordered-darkorange">
+                                        <tr>
+                                            <th>
+                                                Mã khác hàng
+                                            </th>
+                                            <th>
+                                                Tên Khách hàng
+                                            </th>
+                                            <th>
+                                                Nhóm khách hàng
+                                            </th>
+                                            <th>
+                                                Email
+                                            </th>
+                                            <th>
+                                                Số Điên thoại
+                                            </th>
+                                            <th style="text-align:center">
+                                                Trạng thái
+                                            </th>
+                                            <!--<th>
+                    Cập nhật
+                </th>-->
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td> NV01 </td>
+                                            <td> Steve </td>
+                                            <td> Jobs </td>
+                                            <td> steve </td>
+                                            <td> 016785488778 </td>
+                                            <td style="text-align:center">
+                                                <span class="status-circle" data-original-title="" title=""><i class="available"></i>Đang giao dịch</span>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td> NV02 </td>
+                                            <td> Bill </td>
+                                            <td> Gates </td>
+                                            <td> billy </td>
+                                            <td> 016785488778 </td>
+                                            <td style="text-align:center">
+                                                <span class="status-circle" data-original-title="" title=""><i class="available"></i>Đang giao dịch</span>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td> NV03 </td>
+                                            <td> Mark </td>
+                                            <td> Zuckerberg </td>
+                                            <td> markz </td>
+                                            <td> 016785488778 </td>
+                                            <td style="text-align:center">
+                                                <span class="status-circle" data-original-title="" title=""><i class="available"></i>Đang giao dịch</span>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td> NV04 </td>
+                                            <td> Marissa </td>
+                                            <td> Mayer </td>
+                                            <td> marim </td>
+                                            <td> 016785488778 </td>
+                                            <td style="text-align:center">
+                                                <span class="status-circle" data-original-title="" title=""><i class="available"></i>Đang giao dịch</span>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>                            </div>
+
+                            <div id="dropdown1" class="tab-pane">
+                                <table class="table table-hover">
+                                    <thead class="bordered-darkorange">
+                                        <tr>
+                                            <th>
+                                                Mã khác hàng
+                                            </th>
+                                            <th>
+                                                Tên Khách hàng
+                                            </th>
+                                            <th>
+                                                Nhóm khách hàng
+                                            </th>
+                                            <th>
+                                                Email
+                                            </th>
+                                            <th>
+                                                Số Điên thoại
+                                            </th>
+                                            <th style="text-align:center">
+                                                Trạng thái
+                                            </th>
+                                            <!--<th>
+                    Cập nhật
+                </th>-->
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td> NV01 </td>
+                                            <td> Steve </td>
+                                            <td> Jobs </td>
+                                            <td> steve </td>
+                                            <td> 016785488778 </td>
+                                            <td style="text-align:center">
+                                                <span class="status-circle" data-original-title="" title=""><i class="available"></i>Đang giao dịch</span>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td> NV02 </td>
+                                            <td> Bill </td>
+                                            <td> Gates </td>
+                                            <td> billy </td>
+                                            <td> 016785488778 </td>
+                                            <td style="text-align:center">
+                                                <span class="status-circle" data-original-title="" title=""><i class="available"></i>Đang giao dịch</span>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td> NV03 </td>
+                                            <td> Mark </td>
+                                            <td> Zuckerberg </td>
+                                            <td> markz </td>
+                                            <td> 016785488778 </td>
+                                            <td style="text-align:center">
+                                                <span class="status-circle" data-original-title="" title=""><i class="available"></i>Đang giao dịch</span>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td> NV04 </td>
+                                            <td> Marissa </td>
+                                            <td> Mayer </td>
+                                            <td> marim </td>
+                                            <td> 016785488778 </td>
+                                            <td style="text-align:center">
+                                                <span class="status-circle" data-original-title="" title=""><i class="available"></i>Đang giao dịch</span>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div id="dropdown2" class="tab-pane">
+                                <table class="table table-hover">
+                                    <thead class="bordered-darkorange">
+                                        <tr>
+                                            <th>
+                                                Mã khác hàng
+                                            </th>
+                                            <th>
+                                                Tên Khách hàng
+                                            </th>
+                                            <th>
+                                                Nhóm khách hàng
+                                            </th>
+                                            <th>
+                                                Email
+                                            </th>
+                                            <th>
+                                                Số Điên thoại
+                                            </th>
+                                            <th style="text-align:center">
+                                                Trạng thái
+                                            </th>
+                                            <!--<th>
+                    Cập nhật
+                </th>-->
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td> NV01 </td>
+                                            <td> Steve </td>
+                                            <td> Jobs </td>
+                                            <td> steve </td>
+                                            <td> 016785488778 </td>
+                                            <td style="text-align:center">
+                                                <span class="status-circle" data-original-title="" title=""><i class="available"></i>Đang giao dịch</span>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td> NV02 </td>
+                                            <td> Bill </td>
+                                            <td> Gates </td>
+                                            <td> billy </td>
+                                            <td> 016785488778 </td>
+                                            <td style="text-align:center">
+                                                <span class="status-circle" data-original-title="" title=""><i class="available"></i>Đang giao dịch</span>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td> NV03 </td>
+                                            <td> Mark </td>
+                                            <td> Zuckerberg </td>
+                                            <td> markz </td>
+                                            <td> 016785488778 </td>
+                                            <td style="text-align:center">
+                                                <span class="status-circle" data-original-title="" title=""><i class="available"></i>Đang giao dịch</span>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td> NV04 </td>
+                                            <td> Marissa </td>
+                                            <td> Mayer </td>
+                                            <td> marim </td>
+                                            <td> 016785488778 </td>
+                                            <td style="text-align:center">
+                                                <span class="status-circle" data-original-title="" title=""><i class="available"></i>Đang giao dịch</span>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="horizontal-space"></div>
+
+                </div>
+
+                
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- /Page Body -->

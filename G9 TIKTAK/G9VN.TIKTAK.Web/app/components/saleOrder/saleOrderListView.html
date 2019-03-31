@@ -1,0 +1,158 @@
+﻿<!-- Page Breadcrumb -->
+<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+           <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" ui-sref="saleOrder">Đơn hàng</a>
+        </li>
+        <li class="active">Danh sách đơn hàng</li>
+    </ul>
+</div>
+<!-- /Page Breadcrumb -->
+<!-- Page Header -->
+<div class="page-header position-relative">
+    <div class="header-title">
+        <h1>
+            Danh sách đơn hàng
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+       <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<!-- /Page Header -->
+<!-- Page Body -->
+<div class="page-body">
+    <!-- Your Content Goes Here -->
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+
+
+            <div class="widget-body">
+                <div class="form-group row">
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <span class="input-icon inverted" >
+                            <input type="text" style="height:32px;padding-left:40px" class="form-control input-sm" placeholder="Tìm kiếm " ng-model="search">
+                            <i class="glyphicon glyphicon-search bg-blue"></i>
+                        </span>
+                    </div>
+                    <div class="col-md-8 col-sm-8 col-xs-8">
+                        <a class="btn btn-default purple" ui-sref="saleOrder_add" style="float: right; color: #0d55a1 !important; "><i class="fa fa-plus"></i> Thêm mới </a>
+                        <a class="btn btn-default purple" ng-click="importData()" style="margin-right: 10px; float: right; color: #0d55a1 !important"><i class="fa fa-download"></i> Nhập file </a>
+                        <a class="btn btn-default purple" ng-click="exportData()" style="margin-right: 10px; float: right; color: #0d55a1 !important"><i class="fa fa-upload"></i> Xuất file </a>
+                    </div>
+                </div>
+                <div style="height: 18px;border-bottom: 1px solid #2dc3e8;background-color: white;margin-bottom: 20px;">
+                    <div style="padding-top: 5px;width: 400px;background: white;">
+                        <label>
+                            <input name="form-field-radio" type="radio" class="colored-blue" ng-click="getSaleOrder0()">
+                            <span class="text">Tất cả&nbsp;-</span>
+                        </label>
+                        <label>
+                            <input name="form-field-radio" type="radio" class="colored-blue" ng-click="getSaleOrder1()">
+                            <span class="text"> Đơn hàng đặt hàng&nbsp;-</span>
+                        </label>
+                        <label>
+                            <input name="form-field-radio" type="radio" class="colored-blue" ng-click="getSaleOrder2()">
+                            <span class="text"> Đơn hàng bán trực tiếp&nbsp;-</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover" style="width:100%;margin-bottom: 5px;">
+                        <thead class="bordered-darkorange bg-themeprimary">
+                            <tr style="cursor:pointer;">
+                                <th ng-click="orderByTag('VoucherNo')" style="width:11%;">
+                                    <span><i class={{clas1}}></i></span>    Mã đơn hàng
+                                </th>
+                                <th ng-click="orderByTag('ObjName')" style="width:14%;">
+                                    <span><i class={{clas2}}></i></span> Khách hàng
+                                </th>
+                                <th ng-click="orderByTag('VoucherDate')" style="width: 8%;">
+                                    <span><i class={{clas3}}></i></span>Ngày tạo
+                                </th>
+                                <th ng-click="orderByTag('StatusID')" style="width: 15%;">
+                                    <span><i class={{clas4}}></i></span>  Trạng thái
+                                </th>
+                                <th style="width:7%;">
+                                    Đóng gói
+                                </th>
+                                <th style="width:7%;">
+                                    Xuất kho
+                                </th>
+                                <th style="width:9%;">
+                                    Thanh toán
+                                </th>
+                                <th style="width:7%;">
+                                    Trả hàng
+                                </th>
+                                <th style="width:10%;" ng-click="orderByTag('TotalAmountOC')">
+                                    <span><i class={{clas5}}></i></span>  Tổng tiền
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr dir-paginate="saleOrder in listSaleOrder|orderBy:columnname:reverse| itemsPerPage:10|filter:search">
+                                <td>
+                                    <a style="color:black" ui-sref="saleOrder_Detail({id:saleOrder.VoucherID})">
+                                        {{saleOrder.VoucherNo}}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{saleOrder.ObjName}}
+                                </td>
+                                <td>
+                                    {{saleOrder.InvDate| date:'dd/MM/yyyy'}}
+                                </td>
+                                <td>
+                                    <span class="status-circle" data-original-title="" title=""><i class="{{saleOrder.icon}}" data-original-title="" title=""></i>{{saleOrder.cl5}}</span>
+                                </td>
+                                <td style="color: #2dc3e8;font-size:15px;padding-left:30px;">
+                                    <i class="{{saleOrder.cl1}}"></i>
+                                </td>
+                                <td style="color: #2dc3e8;font-size:15px;padding-left:30px;">
+                                    <i class="{{saleOrder.cl2}}"></i>
+                                </td>
+                                <td style="color: #2dc3e8; font-size: 15px;padding-left:30px;">
+                                    <i class="{{saleOrder.cl3}}"></i>
+                                </td>
+                                <td style="color: #2dc3e8; font-size: 15px;padding-left:30px;">
+                                    <i class="{{saleOrder.cl4}}"></i>
+                                </td>
+                                <td>
+                                    {{saleOrder.TotalAmountOC|currency:'':0}} đ
+                                </td>
+                                
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div>
+                        <dir-pagination-controls max-size="5"
+                                                 direction-links="true"
+                                                 boundary-links="true">
+                        </dir-pagination-controls>
+                    </div>
+                   
+                </div>
+                   
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<!-- /Page Body -->

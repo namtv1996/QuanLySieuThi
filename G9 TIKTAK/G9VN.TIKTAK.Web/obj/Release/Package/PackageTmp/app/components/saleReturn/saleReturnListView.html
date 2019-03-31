@@ -1,0 +1,146 @@
+﻿<!-- Page Breadcrumb -->
+<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" ui-sref="saleOrder">Đơn hàng</a>
+        </li>
+        <li class="active">Hàng bán trả lại</li>
+    </ul>
+</div>
+<!-- /Page Breadcrumb -->
+<!-- Page Header -->
+<div class="page-header position-relative">
+    <div class="header-title">
+        <h1>
+            Danh sách đơn trả hàng của khách hàng
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+        <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<!-- /Page Header -->
+<!-- Page Body -->
+<div class="page-body">
+    <!-- Your Content Goes Here -->
+    <div class="row">
+        <div class="col-lg-6 col-sm-6 col-xs-12" style="width:100%">
+
+            <div class="tabbable">
+
+
+                <div class="tab-content">
+                    <div id="home" class="tab-pane in active">
+                        <div class="table-responsive">
+                            <table class="table table-hover" style="width:100%">
+                                <thead class="bordered-darkorange bg-themeprimary">
+                                    <tr>
+                                        <th>
+                                            Mã đơn trả hàng
+                                        </th>
+                                        <th>
+                                            Chứng từ gốc
+                                        </th>
+
+                                        <th>
+                                            Khách hàng
+                                        </th>
+
+                                        <th>
+                                            Nhận hàng
+                                        </th>
+                                        <th>
+                                            Hoàn tiền
+                                        </th>
+                                        <th>
+                                            Ngày trả
+                                        </th>
+                                        <th style="text-align:right;">
+                                            Tổng tiền
+                                        </th>
+                                        
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+
+                                    <tr dir-paginate="saleReturn in listSaleReturn| itemsPerPage:10">
+
+                                        <td ui-sref="saleReturn_detail({id:saleReturn.VoucherID})" style="cursor:pointer; color:#337ab7;">
+                                            {{saleReturn.VoucherNo}}
+                                        </td>
+                                        <td>{{saleReturn.OriginalVoucherNo}}</td>
+
+                                        <td>{{saleReturn.CustomerName}}</td>
+                                        <td>
+                                            <i class="{{saleReturn.import}}" data-original-title="" title=""></i>
+                                            {{saleReturn.status}}
+                                        </td>
+                                        <td style="color:#2dc3e8;">
+                                            <i style="margin-left:25px;" class="{{saleReturn.payment}}"></i>
+                                        </td>
+                                        
+
+                                        <td>
+                                            {{saleReturn.VoucherDate|date:'dd/MM/yyyy'}}
+                                        </td>
+                                        <td style="text-align:right;">{{saleReturn.TotalAmount|currency:"":0}} đ</td>
+
+
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div style="margin-top:3px ">
+                            <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" class="ng-isolate-scope">
+                                <ul class="pagination ng-scope" ng-if="1 < pages.length">
+                                    <li ng-if="boundaryLinks" ng-class="{ disabled : pagination.current == 1 }" class="ng-scope disabled">
+                                        <a href="" ng-click="setCurrent(1)">«</a>
+                                    </li>
+                                    <li ng-if="directionLinks" ng-class="{ disabled : pagination.current == 1 }" class="ng-scope disabled">
+                                        <a href="" ng-click="setCurrent(pagination.current - 1)">‹</a>
+                                    </li>
+                                    <li ng-repeat="pageNumber in pages track by $index" ng-class="{ active : pagination.current == pageNumber, disabled : pageNumber == '...' }" class="ng-scope active">
+                                        <a href="" ng-click="setCurrent(pageNumber)" class="ng-binding">1</a>
+                                    </li>
+                                    <li ng-repeat="pageNumber in pages track by $index" ng-class="{ active : pagination.current == pageNumber, disabled : pageNumber == '...' }" class="ng-scope">
+                                        <a href="" ng-click="setCurrent(pageNumber)" class="ng-binding">2</a>
+                                    </li>
+                                    <li ng-if="directionLinks" ng-class="{ disabled : pagination.current == pagination.last }" class="ng-scope">
+                                        <a href="" ng-click="setCurrent(pagination.current + 1)">›</a>
+                                    </li>
+                                    <li ng-if="boundaryLinks" ng-class="{ disabled : pagination.current == pagination.last }" class="ng-scope">
+                                        <a href="" ng-click="setCurrent(pagination.last)">»</a>
+                                    </li>
+                                </ul>
+                            </dir-pagination-controls>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="horizontal-space"></div>
+
+        </div>
+
+    </div>
+</div>
+<!-- /Page Body -->

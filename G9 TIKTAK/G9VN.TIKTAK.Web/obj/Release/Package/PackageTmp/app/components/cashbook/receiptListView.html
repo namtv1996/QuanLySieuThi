@@ -1,0 +1,110 @@
+﻿<!-- Page Breadcrumb -->
+<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+           <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" ui-sref="receipt">Kế toán</a>
+        </li>
+        <li class="active">Danh sách phiếu thu</li>
+    </ul>
+</div>
+<!-- /Page Breadcrumb -->
+<!-- Page Header -->
+<div class="page-header position-relative">
+    <!--<div class="header-title">
+        <h1>
+            Danh sách sản phẩm
+        </h1>
+    </div>-->
+    <!--Header Buttons-->
+    <div class="header-buttons">
+       <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<!-- /Page Header -->
+<!-- Page Body -->
+<div class="page-body">
+    <!-- Your Content Goes Here -->
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+
+
+            <div class="widget-body">
+                <div class="form-group">
+                    <span class="input-icon inverted" style="width:35%;">
+                        <input type="text" style="height:32px;padding-left:40px" class="form-control input-sm" placeholder="Tìm kiếm "  >
+                        <i class="glyphicon glyphicon-search bg-blue"></i>
+                    </span>
+                    <a class="btn btn-default purple" ui-sref="receipt_add" style="float: right; color: #0d55a1 !important"><i class="fa fa-plus"></i> Thêm mới </a>
+                   
+                </div>
+
+
+                <table class="table table-hover" style="width:100%;margin-bottom:5px;">
+                    <thead class="bordered-darkorange bg-themeprimary">
+                        <tr>
+                            <th>
+                                Mã phiếu
+                            </th>
+                            <th>
+                                Chứng từ gốc
+                            </th>
+                            <th>
+                                Đối tượng
+                            </th>
+
+                            <th>
+                                Phương thức thanh toán
+                            </th>
+                            <th>
+                                Người tạo
+                            </th>
+
+                            <th>
+                                Ngày ghi nhận
+                            </th>
+                            <th style="text-align:right;">
+                                Số tiền thu
+                            </th>
+                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr dir-paginate="item in listReceipt|itemsPerPage:10">
+                            <td style="cursor:pointer;color:#337ab7" ui-sref="receipt_detail({id:item.VoucherID})">{{item.VoucherNo}}</td>
+                            <td>{{item.OriginalVoucherNo}}</td>
+                            <td>{{item.ObjectName}}</td>
+                            <td>{{item.method_of_payment}}</td>
+                            <td>{{item.Employee}}</td>
+                          
+                            <td>{{item.VoucherDate| date:'dd/MM/yyyy'}}</td>
+                            <td style="text-align:right;">{{item.TotalAmountOC|currency:"":0}} đ</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div>
+                    <dir-pagination-controls max-size="5"
+                                             direction-links="true"
+                                             boundary-links="true">
+                    </dir-pagination-controls>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- /Page Body -->

@@ -1,0 +1,232 @@
+﻿<style>
+    td {
+        padding-left: 15px;
+    }
+</style>
+<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="javascript:void(0)">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)">Hàng hóa</a>
+        </li>
+        <li class="active">Hóa đơn</li>
+    </ul>
+</div>
+<div class="page-header position-relative">
+    <div class="header-title">
+        <h1>
+
+            <small>
+
+                Tạo hóa đơn nhập
+            </small>
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+        <a class="sidebar-toggler">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" id="refresh-toggler">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" id="fullscreen-toggler">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<br />
+<div class="col-lg-6 col-sm-6 col-xs-12" style="width:100%">
+    <div class="well bordered-top bordered-blueberry">
+
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <b>Mã hóa đơn: </b>
+                    <span class="input-icon icon-right" style="margin-top:2px;">
+                        <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Nhập mã hóa đơn..." style="width: 200px;" ng-model="invoice.INVoucherNo">
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="buttons-preview" style="margin-top: 24px;">
+
+
+                    <a ng-click="AddInvoice()" class="btn btn-info" style=" margin-bottom: 6px; margin-top: 6px; margin-left: 6px;"><i class="glyphicon glyphicon-check"></i>Lưu</a>
+                    <a ui-sref="inwardStockDetails({id:inward.VoucherID})" class="btn btn-default" style=" margin-bottom: 6px; margin-top: 6px; margin-left: 6px;">Thoát</a>
+                </div>
+            </div>
+
+
+        </div>
+        <hr class="wide">
+
+        <div class="row">
+            <div class="col-md-6" style="width:70%">
+                <div class="table-responsive">
+                    <table style="width: 100%;height: 140px;border: 2px solid #3e8e8c;margin-top: 22px;">
+                        <tr>
+                            <td><b>Hóa đơn một phần cho phiếu nhập : {{inward.INVoucherNo}}</b></td>
+                            <td></td>
+
+                        </tr>
+                        <tr>
+                            <td>Nhà cung cấp :      {{inward.VendorName}}</td>
+                            <td>Chi nhánh:    </td>
+                            <!--<td>Thuế :      Đã gồm thuế</td>-->
+
+                        </tr>
+                        <tr>
+                            <td>Địa chỉ :      {{inward.Address}}</td>
+                            <td></td>
+                            <!--<td>Giá bán :      20.000.000đ</td>-->
+                        </tr>
+                        <tr>
+                            <!--<td>Liên hệ :      Hà Nội</td>-->
+                            <td>Điện thoại :      {{inward.Tel}}</td>
+                            <td>Email :      {{inward.Email}}</td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+
+        <hr class="wide">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead class="bordered-darkorange">
+                    <tr>
+                        <th>
+                            SKU
+                        </th>
+                        <th>
+                            Tên hàng hóa
+                        </th>
+                        <th>
+                            Số lượng
+                        </th>
+                        <th>
+                            Còn lại
+                        </th>
+                        <th>
+                            Tổng
+                        </th>
+
+                        <th>
+                            Thuế(%)
+                        </th>
+                        <th>
+                            Chiết khấu phân bổ
+                        </th>
+                        <th>
+                            Thành tiền
+                        </th>
+                        <th style="text-align:center">
+
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr ng-repeat="inward in listInwardStockDetail">
+                        <td>{{inward.SKU}}</td>
+                        <td>{{inward.ItemName}}</td>
+                        <td>
+                            <div class="form-group" style="float: left;margin-top:3px;margin-bottom:5px;">
+                                <div class="controls">
+                                    <input style="border-radius: 5px !important;width:70px ;height:22px" sapo-type="sapoNumber" max="{{inward.maxquantity}}" min="1"
+                                           type="number" class="form-control form-control-input-popup text-right number line_item_quantity valid"
+                                           id="quantity" ng-model="inward.quan" ng-change="changeQuantity(inward.stt)">
+                                </div>
+                            </div>
+                            
+                        </td>
+                        <td>{{inward.conlai|currency:"":0}}</td>
+                        <td>{{inward.Quantity|currency:"":0}}</td>
+
+                        <td>{{inward.VATRate|currency:"":0}}</td>
+                        <td>{{inward.chietkhau|currency:"":0}}</td>
+                        <td>
+                            {{inward.Amount|currency:"":0}} đ
+                        </td>
+                        <td style="text-align:center">
+                            <label>
+                                <input type="checkbox" ng-model="inward.select1" ng-change="Update()">
+                                <span class="text"></span>
+                            </label>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <hr class="wide">
+        <div style="padding-top: 25px;border-top: 1px dashed #a6a6a6; text-align: center; display: block;background-color: #fbfbfb;" id="no-prd" data-original-title="" title="">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <span class="input-icon inverted">
+                            <textarea class="form-control" id="textareaanimated" placeholder="Ghi chú: " style="width: 370px;height: 100px;"></textarea>
+                        </span>
+                        <div style="width:370px;margin-top: 12px;    background-color: #fbfbfb !important;">
+                            <input type="text" data-role="tagsinput" placeholder="Add tags" style="display: none;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <ul style="width:425px;list-style: none;display: grid;">                          
+                            <li>
+                                <b>
+                                    <span style="float:left">Số lượng đang nhận hóa đơn:</span>
+                                    <span style="float:right">{{inward.TotalInvoiceQuantity|currency:"":0}} SP</span>
+                                </b>
+                            </li>
+                            <li>
+                                <b>
+                                    <span style="float:left">Số lượng còn lại:</span>
+                                    <span style="float:right">{{inward.TongConLai|currency:"":0}} SP</span>
+                                </b>
+                            </li>                          
+                            <li>
+                                <b>
+                                    <span style="float:left">Chiết khấu phân bổ cho hóa đơn:</span>
+                                    <span style="float:right">{{inward.DiscountForInvoiceHD|currency:"":0}} VNĐ</span>
+                                </b>
+                            </li>
+                            <li>
+                                <b>
+                                    <span style="float:left">Tiền thanh toán cho hóa đơn:</span>
+                                    <span style="float:right">{{inward.TotalPaymentAmountForInvoice|currency:"":0}} VNĐ</span>
+                                </b>
+                            </li>
+                            <hr class="wide" style="margin:1px;" />
+                            <li>
+                                <b>
+                                    <span style="float:left">Tổng số lượng nhập:</span>
+                                    <span style="float:right">{{inward.TotalPurchaseQuantity|currency:"":0}} SP</span>
+                                </b>
+                            </li>
+                            <li>
+                                <b>
+                                    <span style="float:left">Tổng tiền phải trả:</span>
+                                    <span style="float:right">{{inward.TotalPaymentAmount|currency:"":0}} VNĐ</span>
+                                </b>
+                            </li>                          
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../../../Assets/admin/js/tagsinput/bootstrap-tagsinput.js"></script>

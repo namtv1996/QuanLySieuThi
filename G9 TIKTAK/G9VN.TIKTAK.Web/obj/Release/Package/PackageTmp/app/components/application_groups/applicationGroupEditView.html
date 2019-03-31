@@ -1,0 +1,109 @@
+﻿<div class="page-breadcrumbs ng-scope">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a ui-sref="pageSetting" href="javascript:void(0)">Cài đặt</a>
+        </li>
+        <li>
+            <a ui-sref="application_groups" href="javascript:void(0)">Nhóm người dùng</a>
+        </li>
+        
+    </ul>
+</div>
+<div class="page-header position-relative ng-scope">
+    <div class="header-title">
+        <h1>
+                Cập nhật nhóm người dùng
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+        <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<div class="page-body ng-scope">
+    <!-- Your Content Goes Here -->
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+
+
+            <div class="widget-body">
+                <div class="row" style=" width: 100%;margin: 0px;">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <div class="box box-info">
+                                <div class="box-header with-border">
+                                   
+                                </div><!-- /.box-header -->
+                                <!-- form start -->
+                                <form class="form-horizontal" role="form" novalidate name="frmUpdateAppGroup" ng-submit="updateApplicationGroup()">
+
+                                    <div class="row">
+                                        <div class="row" style=" width: 100%;margin: 0px;">
+                                            <div class="col-md-6" ng-class="{ 'has-error' : frmUpdateAppGroup.name.$invalid && !frmUpdateAppGroup.name.$pristine }">
+                                                <label>Tên danh mục</label>
+                                                <div>
+                                                    <input type="text" name="name" class="form-control"
+                                                           required reqired-message="Tên nhóm bắt buộc." ng-model="group.Name">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Mô tả</label>
+                                                <div>
+                                                    <textarea type="text" name="Description" ng-model="group.Description" class="form-control"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row" style=" width: 100%;margin: 0px;">
+                                            <div class="widget flat radius-bordered">
+                                                <div class="widget-header bordered-bottom bordered-blue">
+                                                    <span class="widget-caption">Chọn quyền cho nhóm người dùng</span>
+                                                </div>
+                                                <div class="widget-body bordered-bottom bordered-darkorange">
+                                                    <div class="row">
+                                                        <div class="col-lg-4 col-sm-4 col-xs-4" ng-repeat="role in roles">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox" class="colored-success" checklist-model="group.Roles" checklist-value="role">
+                                                                    <span class="text">{{role.Description}}</span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" style=" width: 100%;margin: 0px;">
+                                            <div class="col-sm-offset-2 col-sm-10">
+                                                <a ui-sref="application_groups" class="btn btn-default">Hủy bỏ</a>
+                                                <input type="submit" ng-disabled="frmUpdateAppGroup.$invalid" class="btn btn-primary" value="Lưu lại" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div><!-- /.box -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

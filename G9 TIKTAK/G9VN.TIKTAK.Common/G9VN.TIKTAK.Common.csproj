@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{492C16B3-2595-4990-A821-F6BA4789FBDA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>G9VN.TIKTAK.Common</RootNamespace>
+    <AssemblyName>G9VN.TIKTAK.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>G9VN.TIKTAK.Common.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>G9VN.TIKTAK.Common.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EPPlus, Version=4.1.1.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.1.1\lib\net40\EPPlus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\G9VN.TIKTAK.Web\Libs\Microsoft.SqlServer.ConnectionInfo.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Management.Sdk.Sfc, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\G9VN.TIKTAK.Web\Libs\Microsoft.SqlServer.Management.Sdk.Sfc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Smo, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\G9VN.TIKTAK.Web\Libs\Microsoft.SqlServer.Smo.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.SmoExtended, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\G9VN.TIKTAK.Web\Libs\Microsoft.SqlServer.SmoExtended.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Configuration">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutoCode.cs" />
+    <Compile Include="ConfigHelper.cs" />
+    <Compile Include="ConnectDatabase.cs" />
+    <Compile Include="Enum.cs" />
+    <Compile Include="ExcelViewModel\ItemOtionViewModelExcel.cs" />
+    <Compile Include="Exceptions\NameDuplicatedException.cs" />
+    <Compile Include="Helper.cs" />
+    <Compile Include="MailHelperSP.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportHelper.cs" />
+    <Compile Include="ResizeImage.cs" />
+    <Compile Include="ViewsModel\AttributeViewModel.cs" />
+    <Compile Include="ViewsModel\AutoCopleteProduct.cs" />
+    <Compile Include="ViewsModel\BestSellViewModel.cs" />
+    <Compile Include="ViewsModel\ByEndDayStatisticViewModel.cs" />
+    <Compile Include="ViewsModel\CartViewModel.cs" />
+    <Compile Include="ViewsModel\CashBook1ViewModel.cs" />
+    <Compile Include="ViewsModel\CashBookViewModel.cs" />
+    <Compile Include="ViewsModel\CountVoucherAndTotalAmount.cs" />
+    <Compile Include="ViewsModel\DeliveryOrderViewModel.cs" />
+    <Compile Include="ViewsModel\ImportExportStockViewModel.cs" />
+    <Compile Include="ViewsModel\InventoriesHighRateViewModel.cs" />
+    <Compile Include="ViewsModel\InventoriesLowRateViewModel.cs" />
+    <Compile Include="ViewsModel\InventoriesStockAdjustments.cs" />
+    <Compile Include="ViewsModel\ItemOptionByBranchIDViewModel.cs" />
+    <Compile Include="ViewsModel\OrderStatisticsViewModel.cs" />
+    <Compile Include="ViewsModel\ProfitAndLossViewModel.cs" />
+    <Compile Include="ViewsModel\ReceiptViewModel.cs" />
+    <Compile Include="ViewsModel\ReportHomeNewViewModel.cs" />
+    <Compile Include="ViewsModel\reportHomeViewModel.cs" />
+    <Compile Include="ViewsModel\SaleByBranchViewModel.cs" />
+    <Compile Include="ViewsModel\SaleByCustomerViewModel.cs" />
+    <Compile Include="ViewsModel\SaleByDateViewModel.cs" />
+    <Compile Include="ViewsModel\SaleByEmployeeViewModel.cs" />
+    <Compile Include="ViewsModel\SaleInvoice1ViewModel.cs" />
+    <Compile Include="ViewsModel\SaleOrderReturnViewModel.cs" />
+    <Compile Include="ViewsModel\SP_SelectSaleOrderByObjectViewModel.cs" />
+    <Compile Include="ViewsModel\StockInventoryDetail.cs" />
+    <Compile Include="ViewsModel\TransactionStockViewModel.cs" />
+    <Compile Include="ViewsModel\UpdateInventoryParam.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

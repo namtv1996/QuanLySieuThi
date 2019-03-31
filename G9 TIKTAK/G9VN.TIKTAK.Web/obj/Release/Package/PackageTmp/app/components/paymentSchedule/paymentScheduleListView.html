@@ -1,0 +1,116 @@
+﻿<!-- Page Breadcrumb -->
+<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+           <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)">Cài đặt</a>
+        </li>
+        <li class="active">Kỳ hạn thanh toán</li>
+    </ul>
+</div>
+<!-- /Page Breadcrumb -->
+<!-- Page Header -->
+<div class="page-header position-relative">
+    <!--<div class="header-title">
+        <h1>
+            Danh sách sản phẩm
+        </h1>
+    </div>-->
+    <!--Header Buttons-->
+    <div class="header-buttons">
+       <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<!-- /Page Header -->
+<!-- Page Body -->
+<div class="page-body">
+    <!-- Your Content Goes Here -->
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+
+            <div class="widget-header ">
+                <span class="widget-caption">Kỳ hạn thanh toán</span>
+                <div class="widget-buttons">
+                    <a href="javascript:void(0)" data-toggle="maximize">
+                        <i class="fa fa-expand"></i>
+                    </a>
+                    <a href="javascript:void(0)" data-toggle="collapse">
+                        <i class="fa fa-minus"></i>
+                    </a>
+                    <a href="javascript:void(0)" data-toggle="dispose">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="widget-body">
+                <div class="form-group">
+
+
+                    <a class="btn btn-default purple" ui-sref="paymentSchedule_add" style="border-radius: 5px; float: right; color: #0d55a1 !important"><i class="fa fa-plus"></i> Thêm mới </a>
+
+                    <br />
+                    <br />
+                    <!--<a class="btn btn-default purple" ui-sref="vendor_add" style="border-radius:5px;margin-right:10px; float:right;color:#5db2ff !important"><i class="glyphicon glyphicon glyphicon-export"></i> Xuất file </a>
+                    <a class="btn btn-default purple" ui-sref="vendor_add" style="border-radius:5px;margin-right:10px; float:right;color:#5db2ff !important"><i class="glyphicon glyphicon glyphicon-import"></i> Nhập file </a>-->
+
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead class="bordered-darkorange">
+                            <tr>
+
+                                <th>
+                                    Tên
+                                </th>
+                                <th>
+                                    Thời hạn
+                                </th>
+                                <th>
+                                    Mô tả
+                                </th>
+                                <th>
+                                    Trạng thái
+                                </th>
+
+                                <th>
+                                    Quy cách
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr ng-repeat="payment in listPaymentSchedule">
+                                <td>{{payment.PaymentScheduleName}}</td>
+                                <td>{{payment.PayWithin}} ngày kể từ khi tạo hóa đơn</td>
+                                <td>{{payment.Description}}</td>
+
+                                <td>{{payment.Status}}</td>
+
+                                <td style="width:100px;">
+                                    <button ui-sref="paymentSchedule_edit({id:payment.PaymentScheduleID})" class="btn btn-default" style="border:0;color:blue;background-color:white;"><i class="fa fa-pencil-square"></i></button>
+                                    <button ng-click="deletePaymentSchedule(payment.PaymentScheduleID)" class="btn btn-default" style="border:0;color:red;background-color:white;"><i class="fa fa-trash-o"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table></div>
+                </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- /Page Body -->

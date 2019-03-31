@@ -1,0 +1,208 @@
+﻿<style>
+    .cover {
+        border: 1px solid #37a70b;
+        border-radius: 5px;
+        height: 50px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+</style>
+<div class="page-breadcrumbs ng-scope">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a style="text-decoration: none;" href="javascript:void(0)">Trang chủ</a>
+        </li>
+        <li>
+            <a style="text-decoration: none;" href="javascript:void(0)">Báo cáo</a>
+        </li>
+        <li class="active">Báo cáo kho</li>
+    </ul>
+</div>
+<div class="page-header position-relative ng-scope">
+    <div class="header-title">
+        <h1>Báo cáo tồn kho</h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+        <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<div class="page-body ng-scope">
+    <!-- Your Content Goes Here -->
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+            <div class="widget-body">
+                <div class="form-group">
+                    <div class="row">
+
+                        <div class="row" style="width: 100%;margin-left: 0px;">
+                            <div class="col-md-3">
+                                <div class="databox databox-lg radius-bordered databox-shadowed databox-graded">
+                                    <div class="databox-left bg-palegreen">
+                                        <div class="databox-piechart">
+                                            <div data-toggle="easypiechart" class="easyPieChart" data-barcolor="#fff" data-linecap="butt" data-percent="50" data-animate="500" data-linewidth="3" data-size="60" data-trackcolor="#aadc95" style="width: 60px; height: 60px; line-height: 60px;"><i class="fa fa-code-fork"></i><canvas width="60" height="60"></canvas></div>
+                                        </div>
+                                    </div>
+                                    <div class="databox-right">
+                                        <div class="databox-number" style="font-size: 14px;color:green">{{TotalClosingQuantityBranch|currency:"":0}} SP</div>
+                                        <div class="databox-text darkgray">Số lượng tồn kho chi nhánh</div>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="databox databox-lg radius-bordered databox-shadowed databox-graded">
+                                    <div class="databox-left bg-palegreen">
+                                        <div class="databox-piechart">
+                                            <div data-toggle="easypiechart" class="easyPieChart" data-barcolor="#fff" data-linecap="butt" data-percent="50" data-animate="500" data-linewidth="3" data-size="60" data-trackcolor="#aadc95" style="width: 60px; height: 60px; line-height: 60px;"><i class="fa fa-dollar"></i><canvas width="60" height="60"></canvas></div>
+                                        </div>
+                                    </div>
+                                    <div class="databox-right">
+                                        <span class="databox-number" style="font-size: 14px;color:green">{{TotalInventoryAmountBranch|currency:"":0}} đ</span>
+                                        <div class="databox-text darkgray" style="margin-left: -10px;">Giá trị tồn kho chi nhánh</div>
+                                        <div class="databox-stat bg-palegreen radius-bordered">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="databox databox-lg radius-bordered databox-shadowed databox-graded">
+                                    <div class="databox-left bg-palegreen">
+                                        <div class="databox-piechart">
+                                            <div data-toggle="easypiechart" class="easyPieChart" data-barcolor="#fff" data-linecap="butt" data-percent="50" data-animate="500" data-linewidth="3" data-size="60" data-trackcolor="#aadc95" style="width: 60px; height: 60px; line-height: 60px;"><i class="fa fa-server"></i><canvas width="60" height="60"></canvas></div>
+                                        </div>
+                                    </div>
+                                    <div class="databox-right">
+                                        <span class="databox-number" style="font-size: 14px;color:green">{{TotalClosingQuantity|currency:"":0}} SP</span>
+                                        <div class="databox-text darkgray" style="margin-left: -10px;">Số lượng tồn kho hệ thống</div>
+                                        <div class="databox-stat bg-palegreen radius-bordered">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3" >
+                                <div class="databox databox-lg radius-bordered databox-shadowed databox-graded">
+                                    <div class="databox-left bg-palegreen">
+                                        <div class="databox-piechart">
+                                            <div data-toggle="easypiechart" class="easyPieChart" data-barcolor="#fff" data-linecap="butt" data-percent="50" data-animate="500" data-linewidth="3" data-size="60" data-trackcolor="#aadc95" style="width: 60px; height: 60px; line-height: 60px;"><i class="fa fa-money"></i><canvas width="60" height="60"></canvas></div>
+                                        </div>
+                                    </div>
+                                    <div class="databox-right">
+                                        <span class="databox-number" style="font-size: 14px;color:green">{{TotalInventoryAmountSystem|currency:"":0}} đ</span>
+                                        <div class="databox-text darkgray">Giá trị tồn kho hệ thống</div>
+                                        <div class="databox-stat bg-palegreen radius-bordered">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <div class="row" style="width: 100%;margin-left: 0px;">
+                            <div class="col-md-3">
+                                <label for="email">Chi nhánh :</label>
+                                <select class="form-control" style="width:100%" ng-model="branchid" ng-change="ViewReport()">
+                                    <option ng-repeat="br in listBranch" value="{{br.BranchID}}"> {{br.BranchName}}</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-9">
+                                <label for="pwd">Tìm kiếm hàng hóa :</label>
+                                <input style="width:100%" class="form-control" placeholder="Nhập mã, tên..." ng-model="searchText" ng-change="search()">
+                            </div>
+
+                        </div>
+                       <br />
+                        <div class="row" style="width: 100%;margin-left: 0px;">
+                            <div class="table-responsive">
+                                <table class="table table-bordered tbl-report tbl-report--inventory-onhand border-th" style="width:98%;margin-left:1%">
+                                    <thead>
+                                        <tr role="row" style="background: #2dc3e8 !important;color:white">
+                                            <th rowspan="2">STT</th>
+                                            <!--<th rowspan="2">Hàng hóa</th>-->
+                                            <th rowspan="2">Tùy chọn hàng hóa</th>
+                                            <th rowspan="2">SKU</th>
+
+                                            <th colspan="3" style="text-align:center;">Chi nhánh</th>
+                                            <th colspan="2" style="text-align:center;">Hệ thống</th>
+                                            <th rowspan="2" style="cursor:default;"
+                                                data-toggle="tooltip" data-placement="left" title="Giá trị tồn chi nhánh/Giá trị tồn hệ thống">
+                                                Tỉ trọng <i class="fa fa-question-circle"></i><br>(%)
+                                            </th>
+
+                                        </tr>
+                                        <tr role="row" style="background: #2dc3e8 !important;color:white">
+                                            <th style="text-align:center;">Giá nhập</th>
+                                            <th style="text-align:center;">Tồn kho</th>
+                                            <th style="text-align:center;">Giá trị<br> tồn kho</th>
+                                            <th style="text-align:center;">Tồn kho</th>
+                                            <th style="text-align:center;">Giá trị<br> tồn kho</th>
+                                        </tr>
+
+                                    </thead>
+                                    <tbody>
+                                        <tr dir-paginate="item in listItemOpt|filter:searchText| itemsPerPage:50">
+                                            <td>{{item.stt}}</td>
+                                            <!--<td style="text-align:left;"></td>-->
+                                            <td style="text-align:left;cursor:pointer;" ui-sref="itemOption_edit({id:item.ID})">{{item.Name}}</td>
+                                            <td style="text-align: left; cursor:pointer; color:#337ab7;" ui-sref="itemOption_edit({id:item.ID})">
+                                                {{item.SKU}}
+                                            </td>
+
+                                            <td style="text-align:right;">{{item.PurchasePrice|currency:"":0}}</td>
+                                            <td style="text-align:right;">{{item.quantity|currency:"":0}}</td>
+                                            <td style="text-align:right;">{{item.InventoryAmountBranch|currency:"":0}}</td>
+                                            <td style="text-align:right;">{{item.ClosingQuantity|currency:"":0}}</td>
+                                            <td style="text-align:right;">{{item.InventoryAmountSystem|currency:"":0}}</td>
+                                            <td style="text-align:right;">{{item.Proportion}} %</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+
+                                <div style="margin-left:1%;margin-top:3px ">
+                                    <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" class="ng-isolate-scope">
+                                        <ul class="pagination ng-scope" ng-if="1 < pages.length">
+                                            <li ng-if="boundaryLinks" ng-class="{ disabled : pagination.current == 1 }" class="ng-scope disabled">
+                                                <a href="" ng-click="setCurrent(1)">«</a>
+                                            </li>
+                                            <li ng-if="directionLinks" ng-class="{ disabled : pagination.current == 1 }" class="ng-scope disabled">
+                                                <a href="" ng-click="setCurrent(pagination.current - 1)">‹</a>
+                                            </li>
+                                            <li ng-repeat="pageNumber in pages track by $index" ng-class="{ active : pagination.current == pageNumber, disabled : pageNumber == '...' }" class="ng-scope active">
+                                                <a href="" ng-click="setCurrent(pageNumber)" class="ng-binding">1</a>
+                                            </li>
+                                            <li ng-repeat="pageNumber in pages track by $index" ng-class="{ active : pagination.current == pageNumber, disabled : pageNumber == '...' }" class="ng-scope">
+                                                <a href="" ng-click="setCurrent(pageNumber)" class="ng-binding">2</a>
+                                            </li>
+                                            <li ng-if="directionLinks" ng-class="{ disabled : pagination.current == pagination.last }" class="ng-scope">
+                                                <a href="" ng-click="setCurrent(pagination.current + 1)">›</a>
+                                            </li>
+                                            <li ng-if="boundaryLinks" ng-class="{ disabled : pagination.current == pagination.last }" class="ng-scope">
+                                                <a href="" ng-click="setCurrent(pagination.last)">»</a>
+                                            </li>
+                                        </ul>
+                                    </dir-pagination-controls>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,258 @@
+﻿<div class="page-breadcrumbs ng-scope">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+           <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" ui-sref="reportFinance">Báo cáo</a>
+        </li>
+        <li class="active"><a href="javascript:void(0)" ui-sref="reportFinance">Báo cáo tài chính</a></li>
+    </ul>
+</div>
+<div class="page-header position-relative ng-scope">
+    <div class="header-title">
+        <h1>
+            Báo cáo công nợ phải thu của khách hàng
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+        <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<div class="page-body ng-scope">
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+            <div class="widget-body">
+                <div class="form-group">
+                    <!--<div class="row">
+                        <div class="col-md-3">
+                            <label> Chi nhánh</label>
+                            <select ng-model="BranchID" style="width:100%;height:34px;" styledropdown="font-size:12px" styleinput="font-size:12px" tabindex="-1" aria-hidden="true">
+                                <option ng-repeat="item in branch" value="{{item.BranchID}}">{{item.BranchName}}</option>
+
+                            </select> 
+                        </div>
+                    
+                        <div class="col-md-3">
+                            <label> Đến ngày</label>
+                            <input type="date" class="form-control ng-pristine ng-valid ng-empty ng-touched ng-untouched" id="inputEmail3" ng-model="date2" style="width: 100%;">
+                        </div>
+                        <div class="col-md-3">
+                            <label></label>
+                            <a class="btn btn-success" style="width:100%">Xem báo cáo</a>
+                        </div>
+                    </div>-->
+                    <hr />
+
+                    <div class="row" style="width:100%;margin-left:0px">
+                        <div class="table-responsive">
+                            <table class="table table-bordered tbl-report tbl-report--inventory-onhand border-th" cellspacing="0" cellpadding="0" style="width:100%;">
+                                <thead>
+                                    <tr role="row" style="background: #2dc3e8 !important;color:white">
+                                        <th><span class="text">STT</span></th>
+                                        <th><span class="text">Mã khách hàng</span></th>
+                                        <th><span class="text">Tên khách hàng</span></th>
+                                        <th><span class="text">Công nợ phải thu</span></th>
+                                    </tr>
+                                    <tr class="tbl-report__summary-row active">
+                                        <th>Tổng</th>
+                                        <th></th>
+                                        <th></th>
+                                        <th style="text-align:right">{{TotalDebt|currency:"":0}} ₫</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr dir-paginate="i in listCustomer| itemsPerPage:10">
+                                        <td>{{i.stt}}</td>
+                                        <td class="hover" style="text-align:left ;color:#0026ff; cursor:pointer" data-toggle="modal" data-target="#myModal" ng-click="getSaleOrder(i.ObjectID)">{{i.ObjectCode}}</td>
+                                        <td style="text-align:left">{{i.ObjectName}}</td>
+                                        <td style="text-align:right">{{i.Debt|currency:"":0}} ₫</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+                <div style="margin-top:3px ">
+                    <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" class="ng-isolate-scope">
+                        <ul class="pagination ng-scope" ng-if="1 < pages.length">
+                            <li ng-if="boundaryLinks" ng-class="{ disabled : pagination.current == 1 }" class="ng-scope disabled">
+                                <a href="" ng-click="setCurrent(1)">«</a>
+                            </li>
+                            <li ng-if="directionLinks" ng-class="{ disabled : pagination.current == 1 }" class="ng-scope disabled">
+                                <a href="" ng-click="setCurrent(pagination.current - 1)">‹</a>
+                            </li>
+                            <li ng-repeat="pageNumber in pages track by $index" ng-class="{ active : pagination.current == pageNumber, disabled : pageNumber == '...' }" class="ng-scope active">
+                                <a href="" ng-click="setCurrent(pageNumber)" class="ng-binding">1</a>
+                            </li>
+                            <li ng-repeat="pageNumber in pages track by $index" ng-class="{ active : pagination.current == pageNumber, disabled : pageNumber == '...' }" class="ng-scope">
+                                <a href="" ng-click="setCurrent(pageNumber)" class="ng-binding">2</a>
+                            </li>
+                            <li ng-if="directionLinks" ng-class="{ disabled : pagination.current == pagination.last }" class="ng-scope">
+                                <a href="" ng-click="setCurrent(pagination.current + 1)">›</a>
+                            </li>
+                            <li ng-if="boundaryLinks" ng-class="{ disabled : pagination.current == pagination.last }" class="ng-scope">
+                                <a href="" ng-click="setCurrent(pagination.last)">»</a>
+                            </li>
+                        </ul>
+                    </dir-pagination-controls>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg" style="width: 85%;margin-left: 108px;">
+        <div class="modal-content" style="width:  100%;left:  0px;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" sstyle="color: #2dc3e8;font-weight: bold !important;">{{name}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="row" style="width:75%;margin:0 auto">
+                            <img style="width:100%; border-radius: 22px; " id="showimg" src="../../../Assets/admin/img/user.png">
+                           
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-10">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Mã khách hàng:  </label> <label style="color:orangered"> {{ObjectCode}} </label>
+                                <hr />
+                                <label>Tên khách hàng: {{name}}</label>
+                                <!--<label>Tên khách hàng: {{itemOption.PurchasePrice|currency:'':0}} đ</label>-->
+                                <hr />
+                                <label>Email : {{Email}}</label>
+                                <hr />
+                            </div>
+                            <div class="col-md-6">
+                                <label>Giới tính :{{Sex}}</label>
+                                <hr />
+                                <label>Mã số thuế : {{TaxCode}} đ</label>
+                                <hr />
+                                <label>Số điện thoại: {{Tel}} đ</label>
+                                <hr />
+                                <label>Ngày sinh: {{BirthdayDate|date:'dd/MM/yyyy'}}</label>
+
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div style="margin-left:2%">
+                        <div class="widget-main ">
+                            <div class="tabbable">
+                                <ul class="nav nav-tabs tabs-flat" id="myTab11">
+                                    <li class="active">
+                                        <a data-toggle="tab" data-target="#home11" aria-expanded="true">
+                                            Đơn hàng có công nợ
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content tabs-flat">
+                                    <div id="home11" class="tab-pane active">
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table table-hover" style="width:100%;margin-bottom: 5px;">
+                                            <thead class="bordered-darkorange bg-themeprimary">
+                                                <tr style="cursor:pointer;">
+                                                    <th ng-click="orderByTag('VoucherNo')" style="width:11%;">
+                                                        <span><i class={{clas1}}></i></span>    Mã đơn hàng
+                                                    </th>
+
+                                                    <th ng-click="orderByTag('VoucherDate')" style="width: 8%;">
+                                                        <span><i class={{clas3}}></i></span>Ngày tạo
+                                                    </th>
+                                                    <th ng-click="orderByTag('StatusID')" style="width: 15%;">
+                                                        <span><i class={{clas4}}></i></span>  Trạng thái
+                                                    </th>
+                                                    <th style="width:7%;">
+                                                        Đóng gói
+                                                    </th>
+                                                    <th style="width:7%;">
+                                                        Xuất kho
+                                                    </th>
+                                                    <th style="width:9%;">
+                                                        Thanh toán
+                                                    </th>
+                                                    <th style="width:7%;">
+                                                        Trả hàng
+                                                    </th>
+                                                    <th style="width:10%;" ng-click="orderByTag('TotalAmountOC')">
+                                                        <span><i class={{clas5}}></i></span> Số tiền nợ
+                                                    </th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr dir-paginate="saleOrder in listSaleOrder|orderBy:columnname:reverse| itemsPerPage:5|filter:search">
+                                                    <td>
+                                                        <a style="color:rebeccapurple;cursor:pointer" ng-click="close(saleOrder.VoucherID)">
+                                                            {{saleOrder.VoucherNo}}
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        {{saleOrder.VoucherDate| date:'dd/MM/yyyy'}}
+                                                    </td>
+                                                    <td>
+                                                        <span class="status-circle" data-original-title="" title=""><i class="{{saleOrder.icon}}" data-original-title="" title=""></i>{{saleOrder.cl5}}</span>
+                                                    </td>
+                                                    <td style="color: #2dc3e8;font-size:15px;padding-left:30px;">
+                                                        <i class="{{saleOrder.cl1}}"></i>
+                                                    </td>
+                                                    <td style="color: #2dc3e8;font-size:15px;padding-left:30px;">
+                                                        <i class="{{saleOrder.cl2}}"></i>
+                                                    </td>
+                                                    <td style="color: #2dc3e8; font-size: 15px;padding-left:30px;">
+                                                        <i class="{{saleOrder.cl3}}"></i>
+                                                    </td>
+                                                    <td style="color: #2dc3e8; font-size: 15px;padding-left:30px;">
+                                                        <i class="{{saleOrder.cl4}}"></i>
+                                                    </td>
+                                                    <td>
+                                                        {{saleOrder.DebtAmount|currency:'':0}} đ
+                                                    </td>
+
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div>
+                                            <dir-pagination-controls max-size="5"
+                                                                     direction-links="true"
+                                                                     boundary-links="true">
+                                            </dir-pagination-controls>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="modal" style="color:black">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

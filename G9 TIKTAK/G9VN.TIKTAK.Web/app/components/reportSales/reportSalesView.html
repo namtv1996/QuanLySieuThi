@@ -1,0 +1,209 @@
+﻿<style>
+    .text-head {
+        color: #0b5998;
+        font-weight: bold;
+    }
+
+    .image {
+    }
+    a {
+        text-decoration: none;
+    }
+    .text-report:hover {
+        box-shadow: 1px 0 10px 1px rgba(0, 0, 0, .3);
+    }
+  
+</style>
+<div class="page-breadcrumbs ng-scope">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a style="text-decoration: none;" href="javascript:void(0)">Trang chủ</a>
+        </li>
+        <li>
+            <a style="text-decoration: none;" href="javascript:void(0)">Báo cáo</a>
+        </li>
+  
+    </ul>
+</div>
+<div class="page-header position-relative ng-scope">
+    <div class="header-title">
+        <h1>Báo cáo bán hàng</h1>
+    </div>
+    <div class="header-buttons">
+        <a style="text-decoration: none;" class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a style="text-decoration: none;" class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a style="text-decoration: none;" class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+</div>
+<div class="page-body ng-scope">
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-6 col-xs-12">
+                            <div class="well with-header">
+                                <div class="header bordered-darkorange">Chọn báo cáo</div>
+                                <div class="alert alert-warning fade in" style="cursor:pointer;" ui-sref="reportSalesDetail">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img width="60" height="60" src="../../../Assets/admin/img/icon60x60/Bao cao ban hang.png" />
+
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="text-head">Báo cáo bán hàng</div>
+                                            <div style="color:black">Quản lý doanh thu cho, số lượng đơn cho từng trạng thái đơn hàng trong một thời điểm.</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="alert alert-warning fade in" style="cursor:pointer;" ui-sref="reportSalesByDate">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img width="60" height="60" src="../../../Assets/admin/img/icon60x60/Bao cao ban hang theo thoi gian.png" />
+
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="text-head">Báo cáo bán hàng theo thời gian</div>
+                                            <div style="color:black">Theo dõi được doanh thu bán hàng theo thời gian của một chi nhánh hoặc cả hệ thống.</div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="alert alert-warning fade in" style="cursor:pointer;" ui-sref="reportSalesOrders">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img width="60" height="60" src="../../../Assets/admin/img/icon60x60/Bao cao thong ke don hang.png" />
+
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="text-head">Báo cáo thống kê đơn hàng</div>
+                                            <div style="color:black">Theo dõi được tình trạng bán hàng của cửa hàng, doanh số bán hàng.</div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="alert alert-warning fade in" style="cursor:pointer;" ui-sref="reportSalesByLocation">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img width="60" height="60" src="../../../Assets/admin/img/icon60x60/Bao cao ban hang theo chi nhanh.png" />
+
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="text-head">Báo cáo bán hàng theo chi nhánh</div>
+                                            <div style="color:black">Theo dõi được doanh thu bán hàng theo chi nhánh của 1 chi nhánh hoặc cả hệ thống.</div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-lg-6 col-sm-6 col-xs-12">
+                            <div class="well with-header">
+                                <div class="header bordered-blueberry">♦</div>
+                                <div class="alert alert-warning fade in radius-bordered alert-shadowed" style="cursor:pointer;" ui-sref="reportSalesByVariant">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img width="60" height="60" src="../../../Assets/admin/img/icon60x60/Bao cao hang ban chay.png" />
+
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="text-head">Báo cáo hàng bán chạy</div>
+                                            <div style="color:black">Theo dõi được mặt hàng bán chạy trong 1 khoảng thời gian.</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="alert alert-warning fade in radius-bordered alert-shadowed" style="cursor:pointer;" ui-sref="reportSaleByCustomer">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img width="60" height="60" src="../../../Assets/admin/img/icon60x60/Bao cao ban hang theo khach hang.png" />
+
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="text-head">Báo cáo bán hàng theo khách hàng</div>
+                                            <div style="color:black">Theo dõi được doanh thu bán hàng theo khách hàng của 1 chi nhánh hoặc cả hệ thống.</div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="alert alert-warning fade in radius-bordered alert-shadowed" style="cursor:pointer;" ui-sref="reportOrderReturnsByDate">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img width="60" height="60" src="../../../Assets/admin/img/icon60x60/Bao cao tra hang.png" />
+
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="text-head">Báo cáo trả hàng</div>
+                                            <div style="color:black">Theo dõi được số mặt hàng trả và giá trị hàng trả.</div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="alert alert-warning fade in radius-bordered alert-shadowed" style="cursor:pointer;" ui-sref="reportSaleByAccount">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img width="60" height="60" src="../../../Assets/admin/img/icon60x60/Bao cao ban hang theo nhan vien.png" />
+
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="text-head">Báo cáo bán hàng theo nhân viên</div>
+                                            <div style="color:black">Theo dõi được doanh thu bán hàng theo nhân viên của 1 chi nhánh hoặc cả hệ thống.</div>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6" style="display:none">
+                            <a style="text-decoration: none;" href="javascript:void(0)"> <!--ui-sref="reportSalesShipments"-->
+                               <div class="row" style="display: flex;width:100%;">
+                                   <div class="img col-md-2">
+                                       <img width="60" height="60" src="../../../Assets/admin/img/icon60x60/Bao cao giao hang.png" />
+                                   </div>
+                                   <div class="text-report col-md-10" style="border: 1px solid #eee;padding: 15px;">
+                                       <div class="text-head">Báo cáo giao hàng</div>
+                                       <div style="color:black">Theo dõi được tình trạng giao hàng của cửa hàng, giúp cửa hàng vận hành được tốt hơn.</div>
+                                   </div>
+                               </div>
+                                 
+                            </a>
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6" style="display:none">
+                            <a style="text-decoration: none;" href="javascript:void(0)" ui-sref="">
+                                <div class="row" style="display: flex;width:100%;">
+                                    <div class="img col-md-2">
+                                        <img width="60" height="60" src="../../../Assets/admin/img/icon60x60/Bao cao ban hang theo kenh.png" />
+                                    </div>
+                                    <div class="text-report col-md-10" style="border: 1px solid #eee;padding: 15px;">
+                                        <div class="text-head">Báo cáo bán hàng theo kênh</div>
+                                        <div style="color:black">Theo dõi được doanh thu, số lượng bán ra, trả lại theo từng kênh bán hàng.</div>
+                                    </div>
+                                </div>
+                               
+                            </a>
+                        </div>
+                        
+                    </div>
+        </div>
+    </div>
+</div>

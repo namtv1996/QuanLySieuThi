@@ -1,0 +1,484 @@
+﻿<style>
+    .widget-header[class*="bg-"] .widget-caption, .widget-header[class*="bg-"] i {
+        color: white !important;
+    }
+</style>
+<div class="page-breadcrumbs ng-scope">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a ui-sref="pageSetting" href="javascript:void(0)">Cài đặt</a>
+        </li>
+        <li>
+            <a ui-sref="application_groups" href="javascript:void(0)">Nhóm người dùng</a>
+        </li>
+        
+    </ul>
+</div>
+<div class="page-header position-relative ng-scope">
+    <div class="header-title">
+        <h1>
+            Thêm nhóm mới
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+        <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<div class="page-body ng-scope">
+    <!-- Your Content Goes Here -->
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+
+
+            <div class="widget-body">
+                <div class="form-group">
+                    <span class="input-icon inverted" style="width:35%;">
+                        <input type="text" style="height:32px;padding-left:40px" class="form-control input-sm ng-pristine ng-untouched ng-valid ng-empty" placeholder="Tìm kiếm hàng hóa" ng-model="searchText">
+                        <i class="glyphicon glyphicon-search bg-blue"></i>
+                    </span>
+
+                    <a class="btn btn-default purple" ui-sref="items_add" style="float: right; color: #0d55a1 !important" href="#!/items_add"><i class="fa fa-plus"></i> Thêm mới </a>
+                    <a class="btn btn-default purple" ui-sref="items_add" style="margin-right: 10px; float: right; color: #0d55a1 !important" href="#!/items_add"><i class="fa fa-download"></i> Nhập file </a>
+                    <a class="btn btn-default purple" ui-sref="items_add" style="margin-right: 10px; float: right; color: #0d55a1 !important" href="#!/items_add"><i class="fa fa-upload"></i> Xuất file </a>
+                </div>
+                <div class="row" style=" width: 100%;margin: 0px;">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <div class="box box-info">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">{{group.Name}}</h3>
+                                </div><!-- /.box-header -->
+                                <!-- form start -->
+                                <form class="form-horizontal" role="form" novalidate name="frmAddAppGroup" ng-submit="addAppGroup()">
+
+                                    <div class="row">
+                                        <div class="row" style=" width: 100%;margin: 0px;">
+                                            <div class="col-md-6" ng-class="{ 'has-error' : frmAddAppGroup.name.$invalid && !frmAddAppGroup.name.$pristine }">
+                                                <label>Tên nhóm</label>
+                                                <div>
+                                                    <input type="text" name="name" class="form-control"
+                                                           required reqired-message="Tên nhóm bắt buộc." ng-model="group.Name">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Mô tả</label>
+                                                <div>
+                                                    <textarea type="text" name="Description" ng-model="group.Description" class="form-control"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row" style=" width: 100%;margin: 0px;">
+                                            <div class="widget flat radius-bordered">
+                                                <div class="widget-header bordered-bottom bordered-blue">
+                                                    <span class="widget-caption">Chọn quyền cho nhóm người dùng</span>
+                                                </div>
+                                                <div class="widget-body bordered-bottom bordered-darkorange">
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-sm-6 col-xs-12">
+                                                            <div class="widget">
+                                                                <div class="widget-header bg-blue">
+                                                                    <i class="widget-icon fa fa-arrow-left"></i>
+                                                                    <span class="widget-caption">Hàng hóa</span>
+                                                                    <div class="widget-buttons">
+                                                                        <a href="#" data-toggle="config">
+                                                                            <i class="fa fa-cog"></i>
+                                                                        </a>
+                                                                        <a href="#" data-toggle="maximize">
+                                                                            <i class="fa fa-expand"></i>
+                                                                        </a>
+                                                                        <a href="#" data-toggle="collapse">
+                                                                            <i class="fa fa-minus"></i>
+                                                                        </a>
+                                                                        <a href="#" data-toggle="dispose">
+                                                                            <i class="fa fa-times"></i>
+                                                                        </a>
+                                                                    </div><!--Widget Buttons-->
+                                                                </div><!--Widget Header-->
+                                                                <div class="widget-body">
+                                                                    <div class="checkbox" ng-repeat="hh in hanghoa">
+                                                                        <label>
+                                                                            <input type="checkbox" class="colored-success" checklist-model="group.Roles" checklist-value="hh">
+                                                                            <span class="text">{{hh.Description}}</span>
+                                                                        </label>
+                                                                    </div>
+                                                                </div><!--Widget Body-->
+                                                            </div><!--Widget-->
+                                                        </div>
+                                                        <div class="col-lg-6 col-sm-6 col-xs-12">
+                                                            <div class="widget">
+                                                                <div class="widget-header bg-blueberry">
+                                                                    <i class="widget-icon fa fa-arrow-right"></i>
+                                                                    <span class="widget-caption">Khách hàng</span>
+                                                                    <div class="widget-buttons">
+                                                                        <a href="#" data-toggle="config">
+                                                                            <i class="fa fa-cog"></i>
+                                                                        </a>
+                                                                        <a href="#" data-toggle="maximize">
+                                                                            <i class="fa fa-expand"></i>
+                                                                        </a>
+                                                                        <a href="#" data-toggle="collapse">
+                                                                            <i class="fa fa-minus"></i>
+                                                                        </a>
+                                                                        <a href="#" data-toggle="dispose">
+                                                                            <i class="fa fa-times"></i>
+                                                                        </a>
+                                                                    </div><!--Widget Buttons-->
+                                                                </div><!--Widget Header-->
+                                                                <div class="widget-body">
+                                                                    <div class="checkbox" ng-repeat="kh in khachhang">
+                                                                        <label>
+                                                                            <input type="checkbox" class="colored-success" checklist-model="group.Roles" checklist-value="kh">
+                                                                            <span class="text">{{kh.Description}}</span>
+                                                                        </label>
+                                                                    </div>
+                                                                </div><!--Widget Body-->
+                                                            </div><!--Widget-->
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-sm-6 col-xs-12">
+                                                            <div class="widget">
+                                                                <div class="widget-header bg-blue">
+                                                                    <i class="widget-icon fa fa-arrow-left"></i>
+                                                                    <span class="widget-caption">Nhóm người dùng</span>
+                                                                    <div class="widget-buttons">
+                                                                        <a href="#" data-toggle="config">
+                                                                            <i class="fa fa-cog"></i>
+                                                                        </a>
+                                                                        <a href="#" data-toggle="maximize">
+                                                                            <i class="fa fa-expand"></i>
+                                                                        </a>
+                                                                        <a href="#" data-toggle="collapse">
+                                                                            <i class="fa fa-minus"></i>
+                                                                        </a>
+                                                                        <a href="#" data-toggle="dispose">
+                                                                            <i class="fa fa-times"></i>
+                                                                        </a>
+                                                                    </div><!--Widget Buttons-->
+                                                                </div><!--Widget Header-->
+                                                                <div class="widget-body">
+                                                                    <div class="checkbox" ng-repeat="nnd in nhomnguoidung">
+                                                                        <label>
+                                                                            <input type="checkbox" class="colored-success" checklist-model="group.Roles" checklist-value="nnd">
+                                                                            <span class="text">{{nnd.Description}}</span>
+                                                                        </label>
+                                                                    </div>
+                                                                </div><!--Widget Body-->
+                                                            </div><!--Widget-->
+                                                        </div>
+                                                        <div class="col-lg-6 col-sm-6 col-xs-12">
+                                                            <div class="widget">
+                                                                <div class="widget-header bg-blueberry">
+                                                                    <i class="widget-icon fa fa-arrow-right"></i>
+                                                                    <span class="widget-caption">Người dùng</span>
+                                                                    <div class="widget-buttons">
+                                                                        <a href="#" data-toggle="config">
+                                                                            <i class="fa fa-cog"></i>
+                                                                        </a>
+                                                                        <a href="#" data-toggle="maximize">
+                                                                            <i class="fa fa-expand"></i>
+                                                                        </a>
+                                                                        <a href="#" data-toggle="collapse">
+                                                                            <i class="fa fa-minus"></i>
+                                                                        </a>
+                                                                        <a href="#" data-toggle="dispose">
+                                                                            <i class="fa fa-times"></i>
+                                                                        </a>
+                                                                    </div><!--Widget Buttons-->
+                                                                </div><!--Widget Header-->
+                                                                <div class="widget-body">
+                                                                    <div class="checkbox" ng-repeat="nd in nguoidung">
+                                                                        <label>
+                                                                            <input type="checkbox" class="colored-success" checklist-model="group.Roles" checklist-value="nd">
+                                                                            <span class="text">{{nd.Description}}</span>
+                                                                        </label>
+                                                                    </div>
+                                                                </div><!--Widget Body-->
+                                                            </div><!--Widget-->
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-sm-6 col-xs-12">
+                                                            <div class="widget">
+                                                                <div class="widget-header bg-blue">
+                                                                    <i class="widget-icon fa fa-arrow-left"></i>
+                                                                    <span class="widget-caption">Đơn hàng</span>
+                                                                    <div class="widget-buttons">
+                                                                        <a href="#" data-toggle="config">
+                                                                            <i class="fa fa-cog"></i>
+                                                                        </a>
+                                                                        <a href="#" data-toggle="maximize">
+                                                                            <i class="fa fa-expand"></i>
+                                                                        </a>
+                                                                        <a href="#" data-toggle="collapse">
+                                                                            <i class="fa fa-minus"></i>
+                                                                        </a>
+                                                                        <a href="#" data-toggle="dispose">
+                                                                            <i class="fa fa-times"></i>
+                                                                        </a>
+                                                                    </div><!--Widget Buttons-->
+                                                                </div><!--Widget Header-->
+                                                                <div class="widget-body">
+                                                                    <div class="checkbox" ng-repeat="dh in donhang">
+                                                                        <label>
+                                                                            <input type="checkbox" class="colored-success" checklist-model="group.Roles" checklist-value="dh">
+                                                                            <span class="text">{{dh.Description}}</span>
+                                                                        </label>
+                                                                    </div>
+                                                                </div><!--Widget Body-->
+                                                            </div><!--Widget-->
+                                                        </div>
+                                                        <div class="col-lg-6 col-sm-6 col-xs-12">
+                                                            <div class="widget">
+                                                                <div class="widget-header bg-blueberry">
+                                                                    <i class="widget-icon fa fa-arrow-right"></i>
+                                                                    <span class="widget-caption">Nhà cung cấp</span>
+                                                                    <div class="widget-buttons">
+                                                                        <a href="#" data-toggle="config">
+                                                                            <i class="fa fa-cog"></i>
+                                                                        </a>
+                                                                        <a href="#" data-toggle="maximize">
+                                                                            <i class="fa fa-expand"></i>
+                                                                        </a>
+                                                                        <a href="#" data-toggle="collapse">
+                                                                            <i class="fa fa-minus"></i>
+                                                                        </a>
+                                                                        <a href="#" data-toggle="dispose">
+                                                                            <i class="fa fa-times"></i>
+                                                                        </a>
+                                                                    </div><!--Widget Buttons-->
+                                                                </div><!--Widget Header-->
+                                                                <div class="widget-body">
+                                                                    <div class="checkbox" ng-repeat="ncc in nhacungcap">
+                                                                        <label>
+                                                                            <input type="checkbox" class="colored-success" checklist-model="group.Roles" checklist-value="ncc">
+                                                                            <span class="text">{{ncc.Description}}</span>
+                                                                        </label>
+                                                                    </div>
+                                                                </div><!--Widget Body-->
+                                                            </div><!--Widget-->
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-sm-6 col-xs-12">
+                                                            <div class="widget">
+                                                                <div class="widget-header bg-blue">
+                                                                    <i class="widget-icon fa fa-arrow-left"></i>
+                                                                    <span class="widget-caption">Phiếu thu</span>
+                                                                    <div class="widget-buttons">
+                                                                        <a href="#" data-toggle="config">
+                                                                            <i class="fa fa-cog"></i>
+                                                                        </a>
+                                                                        <a href="#" data-toggle="maximize">
+                                                                            <i class="fa fa-expand"></i>
+                                                                        </a>
+                                                                        <a href="#" data-toggle="collapse">
+                                                                            <i class="fa fa-minus"></i>
+                                                                        </a>
+                                                                        <a href="#" data-toggle="dispose">
+                                                                            <i class="fa fa-times"></i>
+                                                                        </a>
+                                                                    </div><!--Widget Buttons-->
+                                                                </div><!--Widget Header-->
+                                                                <div class="widget-body">
+                                                                    <div class="checkbox" ng-repeat="pt in phieuthu">
+                                                                        <label>
+                                                                            <input type="checkbox" class="colored-success" checklist-model="group.Roles" checklist-value="pt">
+                                                                            <span class="text">{{pt.Description}}</span>
+                                                                        </label>
+                                                                    </div>
+                                                                </div><!--Widget Body-->
+                                                            </div><!--Widget-->
+                                                        </div>
+                                                        <div class="col-lg-6 col-sm-6 col-xs-12">
+                                                            <div class="widget">
+                                                                <div class="widget-header bg-blueberry">
+                                                                    <i class="widget-icon fa fa-arrow-right"></i>
+                                                                    <span class="widget-caption">Phiếu chi</span>
+                                                                    <div class="widget-buttons">
+                                                                        <a href="#" data-toggle="config">
+                                                                            <i class="fa fa-cog"></i>
+                                                                        </a>
+                                                                        <a href="#" data-toggle="maximize">
+                                                                            <i class="fa fa-expand"></i>
+                                                                        </a>
+                                                                        <a href="#" data-toggle="collapse">
+                                                                            <i class="fa fa-minus"></i>
+                                                                        </a>
+                                                                        <a href="#" data-toggle="dispose">
+                                                                            <i class="fa fa-times"></i>
+                                                                        </a>
+                                                                    </div><!--Widget Buttons-->
+                                                                </div><!--Widget Header-->
+                                                                <div class="widget-body">
+                                                                    <div class="checkbox" ng-repeat="pc in phieuchi">
+                                                                        <label>
+                                                                            <input type="checkbox" class="colored-success" checklist-model="group.Roles" checklist-value="pc">
+                                                                            <span class="text">{{pc.Description}}</span>
+                                                                        </label>
+                                                                    </div>
+                                                                </div><!--Widget Body-->
+                                                            </div><!--Widget-->
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-sm-6 col-xs-12">
+                                                            <div class="widget">
+                                                                <div class="widget-header bg-blue">
+                                                                    <i class="widget-icon fa fa-arrow-left"></i>
+                                                                    <span class="widget-caption">Kiểm hàng</span>
+                                                                    <div class="widget-buttons">
+                                                                        <a href="#" data-toggle="config">
+                                                                            <i class="fa fa-cog"></i>
+                                                                        </a>
+                                                                        <a href="#" data-toggle="maximize">
+                                                                            <i class="fa fa-expand"></i>
+                                                                        </a>
+                                                                        <a href="#" data-toggle="collapse">
+                                                                            <i class="fa fa-minus"></i>
+                                                                        </a>
+                                                                        <a href="#" data-toggle="dispose">
+                                                                            <i class="fa fa-times"></i>
+                                                                        </a>
+                                                                    </div><!--Widget Buttons-->
+                                                                </div><!--Widget Header-->
+                                                                <div class="widget-body">
+                                                                    <div class="checkbox" ng-repeat="kh in kiemhang">
+                                                                        <label>
+                                                                            <input type="checkbox" class="colored-success" checklist-model="group.Roles" checklist-value="kh">
+                                                                            <span class="text">{{kh.Description}}</span>
+                                                                        </label>
+                                                                    </div>
+                                                                </div><!--Widget Body-->
+                                                            </div><!--Widget-->
+                                                        </div>
+                                                        <div class="col-lg-6 col-sm-6 col-xs-12">
+                                                            <div class="widget">
+                                                                <div class="widget-header bg-blueberry">
+                                                                    <i class="widget-icon fa fa-arrow-right"></i>
+                                                                    <span class="widget-caption">Nhập hàng</span>
+                                                                    <div class="widget-buttons">
+                                                                        <a href="#" data-toggle="config">
+                                                                            <i class="fa fa-cog"></i>
+                                                                        </a>
+                                                                        <a href="#" data-toggle="maximize">
+                                                                            <i class="fa fa-expand"></i>
+                                                                        </a>
+                                                                        <a href="#" data-toggle="collapse">
+                                                                            <i class="fa fa-minus"></i>
+                                                                        </a>
+                                                                        <a href="#" data-toggle="dispose">
+                                                                            <i class="fa fa-times"></i>
+                                                                        </a>
+                                                                    </div><!--Widget Buttons-->
+                                                                </div><!--Widget Header-->
+                                                                <div class="widget-body">
+                                                                    <div class="checkbox" ng-repeat="nh in nhaphang">
+                                                                        <label>
+                                                                            <input type="checkbox" class="colored-success" checklist-model="group.Roles" checklist-value="nh">
+                                                                            <span class="text">{{nh.Description}}</span>
+                                                                        </label>
+                                                                    </div>
+                                                                </div><!--Widget Body-->
+                                                            </div><!--Widget-->
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-sm-6 col-xs-12">
+                                                            <div class="widget">
+                                                                <div class="widget-header bg-blue">
+                                                                    <i class="widget-icon fa fa-arrow-left"></i>
+                                                                    <span class="widget-caption">Báo cáo</span>
+                                                                    <div class="widget-buttons">
+                                                                        <a href="#" data-toggle="config">
+                                                                            <i class="fa fa-cog"></i>
+                                                                        </a>
+                                                                        <a href="#" data-toggle="maximize">
+                                                                            <i class="fa fa-expand"></i>
+                                                                        </a>
+                                                                        <a href="#" data-toggle="collapse">
+                                                                            <i class="fa fa-minus"></i>
+                                                                        </a>
+                                                                        <a href="#" data-toggle="dispose">
+                                                                            <i class="fa fa-times"></i>
+                                                                        </a>
+                                                                    </div><!--Widget Buttons-->
+                                                                </div><!--Widget Header-->
+                                                                <div class="widget-body">
+                                                                    <div class="checkbox" ng-repeat="bc in baocao">
+                                                                        <label>
+                                                                            <input type="checkbox" class="colored-success" checklist-model="group.Roles" checklist-value="bc">
+                                                                            <span class="text">{{bc.Description}}</span>
+                                                                        </label>
+                                                                    </div>
+                                                                </div><!--Widget Body-->
+                                                            </div><!--Widget-->
+                                                        </div>
+                                                        <div class="col-lg-6 col-sm-6 col-xs-12">
+                                                            <div class="widget">
+                                                                <div class="widget-header bg-blueberry">
+                                                                    <i class="widget-icon fa fa-arrow-right"></i>
+                                                                    <span class="widget-caption">Quyền</span>
+                                                                    <div class="widget-buttons">
+                                                                        <a href="#" data-toggle="config">
+                                                                            <i class="fa fa-cog"></i>
+                                                                        </a>
+                                                                        <a href="#" data-toggle="maximize">
+                                                                            <i class="fa fa-expand"></i>
+                                                                        </a>
+                                                                        <a href="#" data-toggle="collapse">
+                                                                            <i class="fa fa-minus"></i>
+                                                                        </a>
+                                                                        <a href="#" data-toggle="dispose">
+                                                                            <i class="fa fa-times"></i>
+                                                                        </a>
+                                                                    </div><!--Widget Buttons-->
+                                                                </div><!--Widget Header-->
+                                                                <div class="widget-body">
+                                                                    <div class="checkbox" ng-repeat="quyen in quyen">
+                                                                        <label>
+                                                                            <input type="checkbox" class="colored-success" checklist-model="group.Roles" checklist-value="quyen">
+                                                                            <span class="text">{{quyen.Description}}</span>
+                                                                        </label>
+                                                                    </div>
+                                                                </div><!--Widget Body-->
+                                                            </div><!--Widget-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" style=" width: 100%;margin: 0px;">
+                                            <div class="col-sm-offset-2 col-sm-10">
+                                                <a ui-sref="application_groups" class="btn btn-default">Hủy bỏ</a>
+                                                <input type="submit" ng-disabled="frmAddAppGroup.$invalid" class="btn btn-primary" value="Lưu lại" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div><!-- /.box -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

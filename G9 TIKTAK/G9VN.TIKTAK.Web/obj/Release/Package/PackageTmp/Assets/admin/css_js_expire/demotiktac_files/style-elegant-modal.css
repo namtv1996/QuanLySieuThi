@@ -1,0 +1,373 @@
+/* Modal */
+.btn-modal {
+  /*padding: 14px 10px;*/
+  background: url("../images/dangnhap2.png");
+  background-repeat: no-repeat;
+  color: #ffffff;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  display: block;
+  text-transform: uppercase;
+  transition: all 0.2s;
+  text-align: center;
+  width: 20px;
+  /* position: relative; */
+  /* top: 150px; */
+  z-index: 9999;
+  /* text-align: center; */
+  margin: 0 auto;
+  box-shadow: none;
+  float: right;
+  font-weight: bold;
+  line-height: 4px;
+  font-family: font-helveticaNeueRegular, arial, sans-serif;
+  margin-right: 5px;
+  margin-top: 7px;
+  height: 20px;
+  background-size: 20px 20px;
+}
+.btn-modal-dk1 {
+  padding: 14px 10px;
+  background: url("../images/dangky2.png");
+  background-repeat: no-repeat;
+  color: #ffffff;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  display: block;
+  text-transform: uppercase;
+  transition: all 0.2s;
+  text-align: center;
+  width: 20px;
+  /* position: relative; */
+  /* top: 150px; */
+  z-index: 9999;
+  /* text-align: center; */
+  margin: 0 auto;
+  box-shadow: none;
+  float: right;
+  font-weight: bold;
+  line-height: 4px;
+  font-family: font-helveticaNeueRegular, arial, sans-serif;
+  margin-top: 7px;
+  height: 20px;
+  background-size: 20px 20px;
+}
+.site-header .site-branding  {
+  width: 25%;
+  margin-top: 0 !important;
+}
+.site-title-wrapper .site-title{
+  padding-bottom: 0 !important;
+}
+.bt-front-slider-wrapper .slider-info{
+  z-index: 2;
+}
+#site-navigation .nav-wrapper{
+  width: auto;
+  display: inherit;
+  float: left;
+  line-height: 30px;
+}
+.content-button-close {
+  padding: 13px 30px;
+  background: white;
+  color: #0B1847;
+  border-radius: 60px;
+  border: 2px solid #0B1847;
+  cursor: pointer;
+  font-size: 0.7em;
+  display: block;
+  text-transform: uppercase;
+  transition: all 0.2s;
+  text-align: center;
+  width: 200px;
+  margin: 60px auto 0 auto;
+}
+
+.btn-modal:hover{
+  background: url("../images/dangnhap1.png");
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+}
+.btn-modal-dk1:hover{
+  background: url("../images/dangky1.png");
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+}
+.content-button-close:hover {
+  background: #0B1847;
+  color: white;
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  background: red;
+  font-weight: 900;
+  color: #606268;
+  cursor: pointer;
+  border: 0;
+  border-radius: 50px;
+  -webkit-box-shadow: 0px 9px 15px -5px rgba(0, 0, 0, 0.46);
+  -moz-box-shadow: 0px 9px 15px -5px rgba(0, 0, 0, 0.46);
+  box-shadow: 0px 9px 15px -5px rgba(0, 0, 0, 0.46);
+  opacity: .6;
+}
+
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 50;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.7s;
+}
+
+.elegant-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 640px;
+  height: 230px;
+  margin-left: -320px;
+  margin-top: -240px;
+  z-index: 100;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.5s ease-out;
+  transform: translateY(45px);
+  background-color: rgba(255, 255, 255, 0);
+  text-align: center;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 9px 15px -5px rgba(0, 0, 0, 0.46);
+  -moz-box-shadow: 0px 9px 15px -5px rgba(0, 0, 0, 0.46);
+  box-shadow: 0px 9px 15px -5px rgba(0, 0, 0, 0.46);
+
+}
+
+.active {
+  visibility: visible;
+  opacity: 1;
+  transition: all .2s;
+}
+
+.active + .elegant-modal {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.elegant-modal h1.title-modal {
+  /* margin: 20px 0 20px 0; */
+  padding: 15px;
+  font-size: 20px;
+  background: #2dc3e8;
+  margin-top: 0;
+  border-radius: 5px 5px 0px 0px;
+  text-transform: uppercase;
+  color: #fff;
+}
+.elegant-modal input{
+  float: left;
+  width: calc(100% - 75px);
+  border-radius: 5px 0px 0px 5px;
+}
+.elegant-modal span{
+  float: right;
+  width: 75px;
+  border: 1px solid #ccc;
+  height: 34px;
+  border-left: none;
+  line-height: 34px;
+  border-radius: 0px 5px 5px 0px;
+  background: #dedede;
+}
+.elegant-modal #send{
+  font-size: 14px;
+  margin-top: 20px;
+  padding: 10px 34px;
+  background: #2dc3e8;
+  color: #fff;
+  font-family: font-helveticaNeueRegular, arial, sans-serif;
+}
+.elegant-modal #send:hover{
+  background: #91e0f3;
+  border: none;
+}
+.elegant-modal hr.line-modal {
+  border: 1px solid #F2F2F2;
+}
+@media (max-width: 960px){
+  /*.btn-modal{
+    font-size: 0;
+    width: 37px;
+    height: 37px;
+    /* margin-right: 40px;
+    background: url("dangnhap.png");
+    background-repeat: no-repeat;
+    background-size: 37px 37px;
+    left: 0;
+    cursor: pointer;
+    right: 40px;
+    position: relative;
+  }
+  .btn-modal:hover{
+    background: url("dangnhap.png");
+    background-repeat: no-repeat;
+    background-size: 37px 37px;
+  }*/
+  .htbt1{
+    display: block !important;
+  }
+  .htbt2{
+    display: none !important;
+  }
+}
+.htbt1{
+  display: none;
+}
+.htbt2{
+  display: block;
+}
+@media (max-width: 401px) {
+  /*.elegant-modal {*/
+  /*position: fixed;*/
+  /*top: 50%;*/
+  /*left: 0;*/
+  /*width: 100%;*/
+  /*height: 230px;*/
+  /*margin-left: 0px;*/
+  /*margin-top: -100px;*/
+  /*z-index: 100;*/
+  /*visibility: hidden;*/
+  /*opacity: 0;*/
+  /*transition: 0.5s ease-out;*/
+  /*transform: translateY(45px);*/
+  /*background-color: #FFFFFF;*/
+  /*text-align: center;*/
+  /*border-radius: 5px;*/
+  /*-webkit-box-shadow: 0px 9px 15px -5px rgba(0, 0, 0, 0.46);*/
+  /*-moz-box-shadow: 0px 9px 15px -5px rgba(0, 0, 0, 0.46);*/
+  /*box-shadow: 0px 9px 15px -5px rgba(0, 0, 0, 0.46);*/
+  /*}*/
+}
+
+.elegant-modal p.paragraph-modal {
+  font-size: 18px;
+  margin-top: 20px;
+  padding: 0 45px;
+  color: #B7B7B7;
+}
+.noidung-thongbao-tieude h1{
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #2dc3e8;
+}
+#shortcode-widget-4 h2{
+  font-size: 14px;
+  font-weight: bold;
+  color: #2dc3e8;
+  text-transform: uppercase;
+}
+.footer-tren{
+  background: #2dc3e8;
+  width: 100%;
+  display: inline-flex;
+  padding: 20px 0;
+}
+.khoibao-footer h2, #shortcode-widget-41 h2{
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #000;
+}
+.khoi-footer1 a{
+  color: #000;
+}
+.khoi-footer-facebook h2{
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #000;
+}
+#shortcode-widget-41 .truso-nd2{
+  color: #000;
+}
+.footer-duoi {
+  width: 100%;
+  background: #000;
+  display: inline-flex;
+}
+.footer-duoi p{
+  color: #fff;
+  display: inline-flex;
+  margin: 10px;
+}
+#shortcode-widget-41 .truso-nd1 {
+  width: 25px;
+  height: 40px;
+  float: left;
+  display: block;
+}
+.content-noidung{
+  padding: 3% 0;
+}
+.content-noidung-anh img{
+  max-width: 320px;
+  margin: auto;
+  display: block;
+  margin-top: 0;
+}
+.form-dangky-giahan .form-horizontal .form-group {
+  margin-right: inherit;
+  margin-left: inherit;
+  margin-bottom: 5px;
+  display: flex;
+}
+.form-dangky-giahan{
+  margin-top: 15px;
+  padding: 0;
+  max-width: 470px;
+}
+.form-dangky-giahan .col-xs-3, .form-dangky-giahan .col-xs-9{
+  padding: 0;
+}
+.form-dangky-giahan .form-horizontal .control-label{
+  text-align: left;
+  margin-top: 8px;
+  min-width: 115px;
+}
+.form-dangky-giahan .btn-primary {
+  color: #fff;
+  background-color: #0c55a1;
+  border-color: inherit;
+  margin: auto;
+  display: block;
+  box-shadow: inherit;
+}
+.bt-wrapper {
+  padding: 0 !important;
+}
+@media (min-width: 992px){
+    .noidung-thongbao{
+        margin-top: 5%;
+    }
+}
+@media (max-width: 992px){
+  .noidung-thongbao{
+    margin: auto;
+    display: table;
+  }
+}

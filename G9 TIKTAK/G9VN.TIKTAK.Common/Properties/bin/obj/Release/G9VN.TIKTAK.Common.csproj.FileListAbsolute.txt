@@ -1,0 +1,6 @@
+D:\Develop\G9 TIKTAK\G9VN.TIKTAK.Common\bin\Release\G9VN.TIKTAK.Common.dll
+D:\Develop\G9 TIKTAK\G9VN.TIKTAK.Common\bin\Release\G9VN.TIKTAK.Common.pdb
+D:\Develop\G9 TIKTAK\G9VN.TIKTAK.Common\bin\Release\G9VN.TIKTAK.Common.XML
+D:\Develop\G9 TIKTAK\G9VN.TIKTAK.Common\obj\Release\G9VN.TIKTAK.Common.csprojResolveAssemblyReference.cache
+D:\Develop\G9 TIKTAK\G9VN.TIKTAK.Common\obj\Release\G9VN.TIKTAK.Common.dll
+D:\Develop\G9 TIKTAK\G9VN.TIKTAK.Common\obj\Release\G9VN.TIKTAK.Common.pdb

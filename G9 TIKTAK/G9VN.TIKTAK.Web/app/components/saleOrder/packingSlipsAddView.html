@@ -1,0 +1,309 @@
+﻿<style>
+    .scrollbar {
+        float: left;
+        height: 215px;
+        background: #ffffff;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        width: 100%;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .force-overflow {
+    }
+
+    #style-5::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: #F5F5F5;
+    }
+
+    #style-5::-webkit-scrollbar {
+        width: 3px;
+        background-color: #F5F5F5;
+    }
+
+    #style-5::-webkit-scrollbar-thumb {
+        background-color: #0ae;
+        background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(.5, rgba(255, 255, 255, .2)), color-stop(.5, transparent), to(transparent));
+    }
+</style>
+<div class="page-breadcrumbs ng-scope">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+           <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+         <li>
+            <i class="fa fa-home"></i>
+           <a href="javascript:void(0)" ui-sref="saleOrder">Danh sách đơn hàng</a>
+        </li>
+        <li>
+            Đơn hàng
+        </li>
+        <li class="active">Thêm mới đóng gói</li>
+    </ul>
+</div>
+<div class="page-header position-relative ng-scope">
+    <div class="header-title">
+        <h1>
+            Đơn hàng <a ui-sref="saleOrder_Detail({id:saleOrders.VoucherID})">{{packingSlips.OriginalVoucherNo}}</a>
+
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+       <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<div class="page-body ng-scope">
+    <!-- Your Content Goes Here -->
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+            <div class="widget-body">
+                <div class="row">
+                    <div class="col-md-4" style="margin-top: 8px;">
+                       
+                        <!--<span class="status-circle ng-binding" data-original-title="" title=""><i class="{{display.icon}}" data-original-title="" title=""></i>{{state.title}}</span>-->
+                        <div  style="margin-top:-7px;display:{{display.dis11}};width: 60%;">
+                            <select ng-model="method_of_receipt" ng-init="method_of_receipt='0'" style="width:100%">
+                                <option value="0">Phương thức giao hàng</option>
+                                <option value="1">Nhận tại của hàng</option>
+                                <option value="2">Giao hàng</option>
+                            </select>
+                        </div>
+                       
+                    </div>
+                    <div class="col-md-4">
+                        <label> <i class="fa fa-truck" style="font-size:25px"></i><label>&nbsp;&nbsp;&nbsp;&nbsp;Chi nhánh mặc định</label></label>
+                    </div>
+                    <div class="col-md-4" style="display:{{display.dis9}}">
+                        <a class="btn btn-success" style="margin-right: 10px; float: right;" ng-click="printInvoice()">Thêm</a>
+                        <a ng-disabled="display.act" class="btn btn-default purple" ng-click="Revise('huy_don')" style="margin-right: 10px; float: right; color: #0d55a1 !important;pointer-events:{{display.noclick1}}"><i class="fa fa-remove"></i>Hủy</a>           
+                        <!--<a class="btn btn-default purple" style="margin-right: 10px; float: right; color: #0d55a1 !important" ui-sref="saleOrder_Edit({id:packingSlips.VoucherID})"><i class="fa fa-cog"></i>Sửa</a>-->
+                    </div>
+                </div>
+                <br />
+
+                <style>
+                    .before-blue:hover:before {
+                        background-color: #fb6e52 !important;
+                    }
+                </style>
+
+                </br>
+                <!--DANH SÁCH HÀNG MUA-->
+                <div class="table-content table-responsive" style="margin-top:5px;max-height: 370px;border-bottom: 1px solid #d6d6d6;margin-bottom: -25px;">
+                    <table id="cvtext" class="table table-hover" style="margin-top:5px;margin: 0px 0px 0px;border: none;width: 100%;">
+                        <thead class="bordered-darkorange bg-themeprimary" style="color:white">
+                            <tr>
+                                <th style="width:5%;text-align: left;border-bottom:none;">
+
+                                </th>
+                                <th style="width: 10%;text-align:center;border-bottom:none">
+                                    Mã hàng
+                                </th>
+                                <th style="width: 25%;text-align:left;border-bottom:none">
+                                    Tên
+                                </th>
+                                <th style="width: 10%;text-align:center;border-bottom:none;">
+                                    Số lượng
+                                </th>
+                                <th style="width: 12%;text-align: center;border-bottom:none;">
+                                    Đơn giá
+                                </th>
+                                <th style="width: 12%;text-align: center;border-bottom:none;">
+                                    Chiết khấu
+                                </th>
+                                <th style="width: 10%;text-align:center;border-bottom:none;">
+                                    Thuế (%)
+                                </th>
+                                <th style="width: 15%;text-align:right;border-bottom:none;">
+                                    Thành tiền
+                                </th>
+                                <th style="text-align:right;border-bottom:none">
+                                </th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <div class="scrollbar" id="style-5">
+                        <div class="force-overflow">
+                            <div class="form-group has-feedback" style="max-height: 200px;margin-right: 0px;">
+                                <table id="cvtext" style="border: none; width: 100%;margin: 0px 0px 0px;" class="table table-hover">
+                                    <tbody>
+                                        <tr style="text-align:center" ng-repeat="item in listview">
+                                            <td style="width:5%"><img style="height:50px;width:50px" src="{{item.Image1}}" /></td>
+                                            <td style="width:10%;text-align:left">   <a style="color:black">{{item.SKU}}</a> </td>
+                                            <td style="width:25%;text-align:left"> {{item.Name}} </td>
+
+                                            <td style="width:10%">
+                                                <i></i>
+                                                {{item.Quantity}}
+                                            </td>
+                                            <td style="width:12%">
+                                                <i></i>
+                                                {{item.UnitPrice|currency:'':0}}đ
+                                            </td>
+                                            <td style="width:12%">
+                                                <i></i>
+                                                {{item.discount}}
+
+                                            </td>
+                                            <td style="width:10%">
+                                                <i></i>
+                                                {{item.vat}}
+
+                                            </td>
+                                            <td style="text-align:right">
+                                                <i></i>
+                                                {{item.money_amount|currency:'':0}}đ
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                </br>
+
+                <!--THÔNG TIN ĐƠN HÀNG-->
+                <div class="row" style="width: 100%;margin-left:0px;">
+                    <br />
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <textarea placeholder="Ghi chú...   " style="width: 80%;min-height: 70px;"></textarea>
+                        </div>
+
+                        
+                    </div>
+                    <div class="col-md-4" style="padding-right:0px;">
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label no-padding-right">Tổng tiền</label>
+                            <div class="col-sm-10" style="text-align: right;padding-right: 11px; margin-bottom: 5px;">
+                                <label for="inputEmail3" class="col-sm-2 control-label no-padding-right" style="width:100%">{{packingSlips.TotalAmountOC|currency:"":0}}  đ</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label no-padding-right">VAT</label>
+                            <div class="col-sm-10" style="text-align: right;padding-right: 11px;margin-bottom: 5px;">
+                                <label for="inputEmail3" class="col-sm-2 control-label no-padding-right" style="width:100%">{{packingSlips.TotalVATAmountOC|currency:"":0}}  đ </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label no-padding-right">Chiết khấu</label>
+                            <div class="col-sm-10" style="text-align: right;padding-right: 11px;margin-bottom: 5px;">
+                                <label for="inputEmail3" class="col-sm-2 control-label no-padding-right" style="width:100%">{{packingSlips.TotalDiscountAmountOC|currency:"":0}}  đ</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label no-padding-right">Khách phải trả</label>
+                            <div class="col-sm-10" style="text-align: right;padding-right: 11px;margin-bottom: 5px;">
+                                <label for="inputEmail3" class="col-sm-2 control-label no-padding-right" style="width:100%">{{packingSlips.TotalAmountOC|currency:"":0}}  đ</label>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<form id="form1">
+    <div style="padding:5%; font-size:0.8em;font-family:tahoma;display:none;" id="dvContents">
+        <table cellpadding="0" cellspacing="0" style="width:100%">
+            <tbody>
+                <tr>
+                    <td style="width:77%; float:left;padding-left:2%">
+                        <table cellpadding="0" cellspacing="0" style="width:100%;font-size:0.8em">
+                            <tbody>
+                                <tr>
+                                    <td><span style="font-family:tahoma,geneva,sans-serif;">Siêu thị G9</span></td>
+                                </tr>
+                                <tr>
+                                    <td>14 Pháo Đài Láng</td>
+                                </tr>
+                                <tr>
+                                    <td>0989999999</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="width: 100%; text-align: center;padding:10px 0 0  10px;font-size:1em"><strong>Chi tiết phiếu đóng gói</strong></div>
+        <table cellpadding="0" cellspacing="0" style="width:100%;font-size:0.8em; border-bottom-width: 2px; border-bottom-style: dotted;">
+            <tbody>
+                <tr>
+                    <td style="width: 55%;">Số: {{packingSlips.VoucherNo}}</td>
+                    <td style="text-align: right;">Ngày: {{packingSlips.VoucherDate|date:'dd-MM-yyyy HH:mm:ss'}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Khách hàng: {{customer.ObjectName}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">&nbsp;</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table cellpadding="0" cellspacing="0" style="width:100%;font-size:0.8em">
+            <tbody>
+                <tr>
+                    <td style="width: 40%; border-bottom:1px solid #7a7676; padding: 1% 0px;"><strong>Tên hàng hóa</strong></td>
+                    <td style="width: 10%; border-bottom:1px solid #7a7676; text-align: center;padding:1% 0"><strong>SL</strong></td>
+                    <td style="width: 25%; border-bottom:1px solid #7a7676; text-align: center;padding:1% 0"><strong>Đơn giá</strong></td>
+                    <td style="border-bottom:1px solid #7a7676; text-align: center;padding:1% 0"><strong>Thành tiền</strong></td>
+                </tr>
+                <!--<#assign lines = model.orderLineItems>--><!--<#list lines as line>-->
+                <tr ng-repeat="item in listview">
+                    <td style="border-bottom:1px solid #7a7676;padding:1% 0">{{item.Name}}</td>
+                    <td style="border-bottom:1px solid #7a7676; text-align: center;padding:1% 0">{{item.Quantity}}</td>
+                    <td style="border-bottom:1px solid #7a7676; text-align: right;padding:1% 0">{{item.UnitPrice}}</td>
+                    <td style="border-bottom:1px solid #7a7676; text-align: right;padding:1% 0">{{item.money_amount}}</td>
+                </tr>
+                <!--</#list>-->
+            </tbody>
+        </table>
+        <div>&nbsp;</div>
+        <table cellpadding="0" cellspacing="0" style="width:100%;font-size:0.8em ">
+            <tbody>
+                <tr>
+                    <td style="width: 50%;padding:1% 0">Cộng tiền hàng:</td>
+                    <td style="text-align: right;padding:1% 0">{{packingSlips.TotalAmountOC|currency:"":0}}đ</td>
+                </tr>
+                <tr>
+                    <td style="padding:1% 0">Chiết khấu:</td>
+                    <td style="text-align: right;padding:1% 0">{{packingSlips.TotalDiscountAmountOC|currency:"":0}}đ</td>
+                </tr>
+                <tr>
+                    <td style="padding:1% 0"><strong>Khách phải trả:</strong></td>
+                    <td style="text-align: right;padding:1% 0">{{packingSlips.TotalAmountOC+packingSlips.TotalVATAmountOC-packingSlips.TotalDiscountAmountOC|currency:"":0}}đ</td>
+                </tr>
+                <tr>
+                    <td style="padding:1% 0">Tiền khách đưa:</td>
+                    <td style="text-align: right;padding:1% 0">0 đ</td>
+                </tr>
+                <tr>
+                    <td>Trả lại:</td>
+                    <td style="text-align: right;padding:1% 0">0 đ</td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="width: 100%;font-size:0.8em; text-align: center;padding:10px 0 0  10px;"><em>Cám ơn quý khách. Hẹn gặp lại!</em></div>
+    </div>
+    <footer style="page-break-after: always">.</footer>
+</form>

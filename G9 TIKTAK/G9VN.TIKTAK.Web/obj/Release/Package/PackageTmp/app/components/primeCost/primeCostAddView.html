@@ -1,0 +1,143 @@
+﻿<div class="page-breadcrumbs ng-scope">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+           <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)">Cài đặt</a>
+        </li>
+        <li class="active">Điều chỉnh giá vốn</li>
+    </ul>
+</div>
+<div class="page-header position-relative ng-scope">
+    <div class="header-title">
+        
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+       <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<div class="page-body ng-scope">
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 col-xs-12">
+            <div class="row" style="display:inline-block; width:93%;">
+                <div class="col-xs-12 col-md-6" style="width: 83%;">
+
+                    <div class="widget-header ">
+                        <span class="widget-caption">Phiếu điều chỉnh</span>
+                        <div class="widget-buttons">
+                            <a href="javascript:void(0)" data-toggle="maximize">
+                                <i class="fa fa-expand"></i>
+                            </a>
+                            <a href="javascript:void(0)" data-toggle="collapse">
+                                <i class="fa fa-minus"></i>
+                            </a>
+                            <a href="javascript:void(0)" data-toggle="dispose">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="widget-body">
+                        <div class="form-group">
+                            <div style="margin: 0px 3px 0px 0px;display: flex;">
+                                <span class="input-icon">
+                                    <input type="text" class="form-control input-sm">
+                                    <i class="glyphicon glyphicon-search blue"></i>
+                                </span>
+                               
+                                <div class="btn-group" style="margin: 0px 67px 0px 4px;">
+                                    <a class="btn btn-default dropdown-toggle" style="width:170px" data-toggle="dropdown" aria-expanded="false">
+                                        Chọn chi nhánh<i class="fa fa-angle-down"></i>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="javascript:void(0);">Chi nhánh mặc định</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">Another action</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">Something else here</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a href="javascript:void(0);">Separated link</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <input type="text" class="form-control" id="inputinfo2" value="IA0124568778">
+                            </div>
+                            <hr class="wide">
+
+                        </div>
+
+                        <table class="table table-hover">
+                            <thead class="bordered-darkorange">
+                                <tr>
+                                    <th>
+                                        Mã Hàng hóa
+                                    </th>
+                                    <th>
+                                        Tên hang hóa
+                                    </th>
+                                    <th>
+                                        Giá vốn hiện tại
+                                    </th>
+                                    <th>
+                                        Chênh lệch
+                                    </th>
+                                    <th>
+                                        Điều chỉnh
+                                    </th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td> NV01 </td>
+                                    <td> Steve </td>
+                                    <td> 80 </td>
+                                    <td> 79 </td>
+                                    <td><input type="number" class="form-control" id="inputinfo2" value="1"></td>
+                                    
+                                </tr>
+
+
+                            </tbody>
+                        </table>
+                        <hr class="wide">
+                        <textarea class="form-control" rows="6" id="form-field-8" placeholder="Ghi chú"></textarea>
+                        <hr class="wide">
+                        <div class="buttons-preview" style="background:#dddcdc">
+
+                            <a class="btn btn-success" href="javascript:void(0);" style=" margin-bottom: 6px; margin-top: 6px; margin-left: 6px;">Lưu<i class="fa fa-check right"></i></a>
+                            <a onclick="goBack()" class="btn btn-info" href="javascript:void(0);" style=" margin-bottom: 6px; margin-top: 6px; margin-left: 6px;">Thoát<i class="fa fa-warning right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="well with-header  with-footer" style="width: 28%;margin-left: 82%;">
+                    <div class="header bordered-blue">Phiếu điều chỉnh</div>
+                    <div class="buttons-preview">
+                        <div style="background:#dddcdc;height: 27px;text-align: center;"><a href="javascript:void(0);"><span style="font-size:20px">IA0124568778</span></a></div>
+
+                    </div>
+                    <div class="footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,141 @@
+﻿<!-- Page Breadcrumb -->
+
+<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" ui-sref="items">Đơn hàng</a>
+        </li>
+        <li class="active">Đối tác vận chuyển</li>
+    </ul>
+</div>
+<!-- /Page Breadcrumb -->
+<!-- Page Header -->
+<div class="page-header position-relative">
+    <div class="header-title">
+        <h1>
+            Danh sách đối tác
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+        <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<!-- /Page Header -->
+<!-- /Page Body -->
+<div class="page-body">
+    <!-- Your Content Goes Here -->
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+
+
+            <div class="widget-body">
+                <div class="form-group">
+                    <span class="input-icon inverted" style="width:35%;">
+                        <input type="text" style="height:32px;padding-left:40px" class="form-control input-sm" placeholder="Tìm kiếm " ng-model="searchText" ng-keyup="search()">
+                        <i class="glyphicon glyphicon-search bg-blue"></i>
+                    </span>
+
+                    <a class="btn btn-default purple" ui-sref="transporter_add" style="  float: right; color: #0d55a1 !important"><i class="fa fa-plus"></i> Thêm mới </a>
+                </div>
+                <table class="table table-hover" style="width:100%">
+                    <thead class="bordered-darkorange bg-themeprimary">
+                        <tr>
+                            <th>
+                                Mã đối tác
+                            </th>
+                            <th>
+                                Tên đối tác
+                            </th>
+                            <th>
+                                Địa chỉ
+                            </th>
+                            <th>
+                                SĐT
+                            </th>
+                            <th>
+                                Đối tác nợ
+                            </th>
+                            
+
+                            <th style="width:100px;">
+                                Tùy chọn
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr dir-paginate="transport in listTransporter| itemsPerPage:10">
+
+                            <td ui-sref="transporter_detail({id:transport.ObjectID})" style="cursor:pointer;color:#338fd0;">
+                                {{transport.ObjectCode}}
+                            </td>
+                            <td ui-sref="transporter_detail({id:transport.ObjectID})" style="cursor:pointer;">
+
+                                {{transport.ObjectName}}
+
+                            </td>
+                            <td>
+                                {{transport.ObjectAddress}}
+                            </td>
+                            <td>
+                                {{transport.Tel}}
+                            </td>
+                            
+                            <td>
+                                {{transport.Debt|currency:'':0}}
+                            </td>
+
+
+                            <td style="width:100px;">
+
+                                <button ui-sref="transporter_detail({id:transport.ObjectID})" class="btn btn-default" style="float:inherit; width: 35px; height: 30px; "><i class="fa fa-pencil-square"></i></button>
+                                <button ng-click="deleteVendors(transport.ObjectID)" class="btn btn-default" style=" width: 35px; height: 30px;"><i class="fa fa-trash-o"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="margin-top:3px ">
+                    <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" class="ng-isolate-scope">
+                        <ul class="pagination ng-scope" ng-if="1 < pages.length">
+                            <li ng-if="boundaryLinks" ng-class="{ disabled : pagination.current == 1 }" class="ng-scope disabled">
+                                <a href="" ng-click="setCurrent(1)">«</a>
+                            </li>
+                            <li ng-if="directionLinks" ng-class="{ disabled : pagination.current == 1 }" class="ng-scope disabled">
+                                <a href="" ng-click="setCurrent(pagination.current - 1)">‹</a>
+                            </li>
+                            <li ng-repeat="pageNumber in pages track by $index" ng-class="{ active : pagination.current == pageNumber, disabled : pageNumber == '...' }" class="ng-scope active">
+                                <a href="" ng-click="setCurrent(pageNumber)" class="ng-binding">1</a>
+                            </li>
+                            <li ng-repeat="pageNumber in pages track by $index" ng-class="{ active : pagination.current == pageNumber, disabled : pageNumber == '...' }" class="ng-scope">
+                                <a href="" ng-click="setCurrent(pageNumber)" class="ng-binding">2</a>
+                            </li>
+                            <li ng-if="directionLinks" ng-class="{ disabled : pagination.current == pagination.last }" class="ng-scope">
+                                <a href="" ng-click="setCurrent(pagination.current + 1)">›</a>
+                            </li>
+                            <li ng-if="boundaryLinks" ng-class="{ disabled : pagination.current == pagination.last }" class="ng-scope">
+                                <a href="" ng-click="setCurrent(pagination.last)">»</a>
+                            </li>
+                        </ul>
+                    </dir-pagination-controls>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- /Page Body -->

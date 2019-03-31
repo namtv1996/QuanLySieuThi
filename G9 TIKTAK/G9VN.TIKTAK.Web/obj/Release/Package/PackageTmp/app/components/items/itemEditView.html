@@ -1,0 +1,174 @@
+﻿<!-- Page Breadcrumb -->
+<style>
+    #q:hover {
+        background: #2dc3e8;
+    }
+</style>
+<script type="text/javascript">
+    var loadFile = function (event) {
+        var output = document.getElementById('showimg');
+        output.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script>
+<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+           <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" ui-sref="items">Hàng hóa</a>
+        </li>
+        <li class="active">Cập nhật hàng hóa</li>
+    </ul>
+</div>
+<!-- /Page Breadcrumb -->
+<!-- Page Header -->
+<div class="page-header position-relative">
+    <div class="header-title">
+        <h1>
+            Cập nhật hàng hóa
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+       <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<!-- /Page Header -->
+<!-- Page Body -->
+<form class="form-horizontal" role="form" novalidate name="frmEditItems" ng-submit="UpdateItems()">
+
+    <div class="page-body">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 col-xs-12">
+                <div class="row">
+                    <div class="col-lg-6 col-sm-6 col-xs-12" style="width:100%">
+                        <div class="widget">
+                            <div class="widget-header bordered-top bordered-palegreen">
+                                <span style="font-weight: bold !important;" class="widget-caption">Cập nhật hàng hóa</span>
+                            </div>
+                            <div class="widget-body">
+                                <div id="horizontal-form" style="background:#ffffff">
+                                    <div class="row" style="margin-top:10px;margin-left: 20px;">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label style="width:20%" class="col-sm-2 control-label no-padding-right">Tên hàng hóa</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" style="width:100%" class="form-control" name="Name" data-ng-model="items.Name">
+                                                </div>
+                                            </div>
+                                            <div class="form-group" >
+                                                <label class="col-sm-2 control-label no-padding-right" style="width:20%">Loại hàng hóa</label>
+
+                                                <div class="col-sm-10">
+                                                   
+                                                        <input style="width:100%" type="text" class="form-control" name="ItemCategoryName" ng-model="key" ng-change="search()">
+                                                        <div style="overflow:auto;overflow-x:hidden;max-height:200px;background: white;position: absolute;z-index: 1;width: 93.9%;">
+                                                            <a href="javascript:void(0)" ng-click="addItemCategory()" style="text-decoration: none;">
+                                                                <span id="q" style="{{dp}}"><i class="fa fa-plus-square"></i>     {{key}}</span>
+                                                            </a>
+                                                            <div id="q" class="force" ng-click="" ng-repeat="item in lsItemCategory">
+                                                                <a href="javascript:void(0)" ng-click="choose(item)" style=" text-decoration: none;">
+                                                                    <ul style="height: 29px;padding: 3px 39px 0px;margin-bottom: 2px;">
+                                                                        <li style="list-style:none">
+                                                                            <div>
+                                                                                <span>{{item.ItemCategoryName}}</span>
+                                                                            </div>
+                                                                        </li>
+                                                                    </ul>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label style="width:20%" class="col-sm-2 control-label no-padding-right">Nhãn hiệu</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" style="width:100%" class="form-control" name="Brand" data-ng-model="items.Brand">
+                                                </div>
+                                            </div>
+                                            <!--<div class="form-group">
+                                                <label style="width:20%" class="col-sm-2 control-label no-padding-right">Xuất xứ
+                                                </label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" style="width:100%" class="form-control" name="Unit">
+                                                </div>
+                                            </div>-->
+                                         
+                                            <!--<div class="form-group">
+                                                <label style="width:20%" class="col-sm-2 control-label no-padding-right">Tags</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" style="width:100%" class="form-control" name="CreateBy" data-ng-model="items.Tags">
+                                                </div>
+                                            </div>-->
+                                            <div class="form-group">
+                                                <label style="width:20%" class="col-sm-2 control-label no-padding-right">Mô tả</label>
+                                                <div class="col-sm-10">
+                                                    <textarea style="width:100%" class="form-control" rows="6" id="form-field-8" placeholder="Nhập mô tả" data-ng-model="items.Description"></textarea>
+
+                                                </div>
+                                            </div>
+                                       
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div>
+                                                <div class="col-md-6">
+                                                    <img src="{{items.Image}}" style="width: 199px;height:200px;border-radius: 22px;margin-left: 0px;border: 1px solid #dedddd;" id="showimg" />
+                                                </div>
+
+                                            </div>
+                                            <span class="file-input btn btn-azure btn-file" style="margin-left: -80px;margin-top: 230px;border-radius:5px;">
+                                                Browse <input type="file" onchange="loadFile(event)" class="form-control" name="file" data-ak-file-model="items.File" style="width:80%;border-right:none">
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+               
+                    <div class="col-lg-6 col-sm-6 col-xs-12" style="width:100%;margin-top:-20px">
+                        <div class="widget">
+
+                            <div class="widget-body" style="border-left: 3px solid #2dc3e8;">
+                                <div id="horizontal-form">
+                                    <div class="row" style="margin-top:10px;margin-left: 20px;">
+                                        <div class="col-md-8" style="margin-bottom:13px">
+                                            <div class="checkbox" style=" margin-left: -30px;">
+                                                <label>
+                                                    <input class="checkbox-slider toggle colored-blue" type="checkbox" name="Status" data-ng-model="items.Status">
+                                                    <span class="text"> Đang sử dụng</span>
+                                                </label>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <a onclick="goBack()" class="btn btn-default purple" style=" padding: 3px 10px 1px; height: 32px; margin-right: 10px; float: right; color: #0d55a1 !important" href="#!/items"><i class="typcn typcn-cancel"></i> Hủy </a>
+                                            <button type="button" ng-click="UpdateItems(items)" class="btn btn-default purple" style="margin-right: 10px; float: right; color: #0d55a1 !important"><i class="glyphicon glyphicon-floppy-saved"></i>Lưu</button>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

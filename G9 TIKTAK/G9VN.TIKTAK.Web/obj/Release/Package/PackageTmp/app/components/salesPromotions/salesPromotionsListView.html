@@ -1,0 +1,143 @@
+﻿<style>
+    .wizard_horizontal ul.wizard_steps {
+        display: table;
+        list-style: none;
+        position: relative;
+        width: 100%;
+        margin: 0 0 20px;
+    }
+</style>
+<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)">Khuyến mại</a>
+        </li>
+        <li class="active">Danh sách khuyến mại
+    </ul>
+</div>
+<div class="page-header position-relative">
+    <div class="header-title">
+        <h1>
+            Khuyến mại
+            <small>
+                <i class="fa fa-angle-right"></i>
+                Danh sách
+            </small>
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+        <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<div class="page-body">
+    <!-- Your Content Goes Here -->
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+            <div class="widget-body">
+                <div class="form-group">
+                    <span class="input-icon inverted" style="width:35%">
+                        <input type="text" style="height:32px;" class="form-control input-sm" placeholder="Tìm kiếm  ">
+                        <i class="glyphicon glyphicon-search bg-blue"></i>
+                    </span>
+                    
+                    <a class="btn btn-default purple" style="margin-right: 10px; float: right; color: #0d55a1 !important" href="#!/items_add"><i class="fa fa-download"></i> Nhập file </a>
+                    <a class="btn btn-default purple" style="margin-right: 10px; float: right; color: #0d55a1 !important" href="#!/salesPromotions_add"><i class="fa fa-upload"></i> Xuất file </a>
+                    <div class="btn-group"style="margin-top: 0px !important;cursor: pointer;float:  right;margin-right: 15px;">
+                        <a class="btn btn-default purple" data-toggle="dropdown" aria-expanded="false" style="float: right; color: #0d55a1 !important"><i class="fa fa-plus"></i> Thêm mới </a>
+                        <ul class="dropdown-menu dropdown-azure">
+                            <li>
+                                <a href="javascript:void(0);" ui-sref="salesPromotions_add">Chiết khấu theo tổng đơn hàng</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="javascript:void(0);" ui-sref="salesPromotionsItem_Add">Chiếu khấu theo từng hàng hóa</a>
+                            </li>
+                        </ul>
+                    </div>
+                 </div>
+                <div style="height: 18px;border-bottom: 1px solid #2dc3e8;background-color: white;margin-bottom: 20px;">
+                    <div style="padding-top: 5px;width: 400px;background: white;">
+                        <label>
+                            <input name="form-field-radio" type="radio" class="colored-blue" ng-click="getSaleOrder0()">
+                            <span class="text">Tất cả&nbsp;-</span>
+                        </label>
+                        <label>
+                            <input name="form-field-radio" type="radio" class="colored-blue" ng-click="getSaleOrder1()">
+                            <span class="text">Đang chạy&nbsp;-</span>
+                        </label>
+                        <label>
+                            <input name="form-field-radio" type="radio" class="colored-blue" ng-click="getSaleOrder2()">
+                            <span class="text">Tạm dừng&nbsp;-</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover" style="width:100%">
+                        <thead class="bordered-darkorange bg-themeprimary" style="cursor:pointer">
+                            <tr>
+                                <th class="autoSize">
+                                    Mã
+                                </th>
+                                <th class="autoSize">
+                                    <span><i class=""></i></span> Tên chương trình
+                                </th>
+                                <th>
+                                    Số phiếu còn lại
+                                </th>
+                                <th>
+                                    Bắt đầu
+                                </th>
+                                <th>
+                                    Kết thúc
+                                </th>
+                                <th>
+                                    Trạng thái
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="ng-scope" ng-repeat="spr in listSalesPromotion">
+                                <td>
+                                    <a href="javascript:void(0)" ui-sref="salesPromotions_detail({id:spr.VoucherID})" style="color:black" class="ng-binding">
+                                        {{spr.VoucherNo}}
+                                    </a>
+                                </td>
+                                <td class="ng-binding">
+                                    {{spr.PromotionName}}
+                                </td>
+                                <td class="autoSize1">
+                                    {{spr.ApplyQuantity}}
+                                </td>
+                                <td>
+                                    {{spr.CreateDate|date:'dd/MM/yyyy'}}
+                                </td>
+                                <td>
+                                    {{spr.Expirydate|date:'dd/MM/yyyy'}}
+                                </td>
+                                <td class="ng-binding">
+                                    <i class="{{spr.cs}}" data-original-title="" title=""></i>
+                                    {{spr.tt}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,162 @@
+﻿<style>
+    /* Basic styling */
+    html, body {
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        font-family: Georgia, serif;
+        line-height: 1.4;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-weight: normal;
+        font-style: italic;
+    }
+
+    code {
+        display: block;
+        background-color: #eee;
+        padding: 2em;
+        overflow: scroll;
+        white-space: nowrap;
+    }
+
+    .body {
+        max-width: 800px;
+        padding: 40px;
+        margin: 0 auto;
+    }
+
+    .meta {
+        margin: 0 0 40px 0;
+        font-size: 0.8em;
+    }
+
+    .properties-table {
+        width: 100%;
+        padding: 0;
+        border-spacing: 0;
+        margin-top: 2em;
+        font-size: .85em;
+        background-color: #eee;
+    }
+
+        .properties-table th, .properties-table td {
+            text-align: left;
+            padding: 10px;
+        }
+
+        .properties-table th {
+            border-bottom: 1px solid #333;
+            line-height: 2;
+        }
+    /* End Basic styling */
+
+
+    #demo-1 {
+        position: relative; /* can either be relative, absolute or fixed. If position is not set (i.e. static), it would be set to "relative" by script */
+        overflow: hidden; /* to bound the empty top space created by inner element's top margin */
+        width: 100%;
+        min-height: 100%;
+        background-color: #999;
+    }
+
+    .demo-inner-content {
+         position: relative;
+    z-index: 2;
+    margin: 80px auto;
+    /* padding: 40px; */
+    max-width: 600px;
+    color: #fff;
+    text-align: center;
+    font-size: 1.5em;
+    }
+
+        .demo-inner-content h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+</style>
+<link href="../../../Assets/admin/css/zoomslider.css" rel="stylesheet" />
+<script src="../../../Assets/admin/js/modernizr-2.6.2.min.js"></script>
+<div class="loading-container">
+    <div class="loader"></div>
+</div>
+<div style="z-index: 2000;position: fixed;top: 0;left: 0;right: 0;bottom: 0;">
+    <div id="demo-1" data-zs-src='["../../../Assets/admin/img/1607.jpg", "../../../Assets/admin/img/U7Fc1sy5SCUDIu4tlJY3_NY_by_PhilippHenzler_philmotion.de.jpg","../../../Assets/admin/img/tech-sales-career-image-1030x618.jpg"]' 
+         data-zs-overlay="dots" style="font-family: 'RobotoDraft', 'Roboto', sans-serif;">
+        <div class="demo-inner-content">
+          
+            <h1 style="font-family: 'RobotoDraft', 'Roboto', sans-serif;"><span>Tiktac</span><span></span></h1>
+            <p>Bán hàng nhanh chóng – Báo cáo tức thời.</p>
+            <div class="module form-module" style="z-index: 2000;position: fixed;left: 0;right: 0;">
+                <div class="toggle">
+                    <i class="fa fa-user fa-unlock-alt" id="click"></i>
+                    <div class="tooltip view-login " id="qmk">Quên mật khẩu</div>
+                    <div class="tooltip view-forgot" id="dn">Đăng nhập</div>
+                </div>
+                <div class="form">
+                    <h2 style="font-style: initial;">Đăng nhập vào cửa hàng</h2>
+                    <form role="form" method="post" ng-submit="loginSubmit()">
+                        <input type="text" ng-model="loginData.userName" placeholder="Tên đăng nhập" />
+                        <input type="password" ng-model="loginData.password" placeholder="Mật khẩu" />
+                        <button type="submit">Đăng nhập</button>
+                    </form>
+                </div>
+                <div class="form">
+                    <h2>Quên mật khẩu</h2>
+                    <form>
+                        <input type="text" placeholder="Tên đăng nhập" />
+                        <input type="email" placeholder="Địa chỉ Email" />
+                        <button>Gửi yêu cầu</button>
+                    </form>
+                </div>
+                <div class="cta"><a href="http://dangky.tiktac.vn/Account/Register">Dùng thử miễn phí</a></div>
+            </div>
+        </div>
+    </div>
+    <script src="../../../Assets/admin/js/jquery.zoomslider.min.js"></script>
+</div>
+<script type="text/javascript">
+    // Toggle Function
+
+    var a = true;
+    $('#dn').hide();
+    $('#qmk').hide();
+    function load() {
+        if (a == true) {
+            $('#qmk').show();
+            $('#dn').hide();
+        } else {
+            $('#qmk').hide();
+            $('#dn').show();
+        }
+    }
+
+    $('.toggle').click(function () {
+        // Switches the Icon
+        $(this).children('i').toggleClass('fa-unlock-alt');
+        $(this).toggleClass('view');
+        // Switches the forms
+        if (a == true) {
+            a = false;
+            load();
+        } else {
+            a = true;
+            load();
+        }
+        $('.form').animate({
+            height: "toggle",
+            'padding-top': 'toggle',
+            'padding-bottom': 'toggle',
+            opacity: "toggle"
+        }, "slow");
+    });
+    $('.toggle').hover(function () {
+        load();
+    },
+        function () {
+            $('#dn').hide();
+            $('#qmk').hide();
+        });
+</script>

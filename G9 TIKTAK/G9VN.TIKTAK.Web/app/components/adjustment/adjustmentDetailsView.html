@@ -1,0 +1,296 @@
+﻿<style>
+    td {
+        padding-left: 15px;
+    }
+</style>
+<form id="form1">
+    <div id="dvContents" style="border: 1px dotted black; padding: 5px; width: 300px ;display:none">
+        <table cellpadding="0" cellspacing="0" style="border-bottom: 1px solid #d7e8e2; width:100%;margin-top:3%">
+            <tbody>
+                <tr>
+                    <td><span style="font-size:14px;"><strong>PHIẾU KIỂM HÀNG</strong></span></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+            </tbody>
+        </table>
+        <table style="width:100%">
+            <tbody>
+                <tr>
+                    <td style="width: 35%;">&nbsp;</td>
+                    <td style="width: 35%;">&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Hoàng hải</td>
+                    <td><strong>Mã phiếu:</strong>{{voucherCheck.VoucherCode}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">20 Trân Duy Hưng</td>
+                </tr>
+                <tr>
+                    <td colspan="2">016897554878</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Longvuong@gmail.com</td>
+                    <td>{reason}</td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="border-bottom: 1px solid #d7e8e2">&nbsp;</td>
+                    <td style="border-bottom: 1px solid #d7e8e2">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td colspan="2" rowspan="1"><strong>Chi nhánh:</strong></td>
+                    <td><strong>Ngày kiểm hàng:</strong></td>
+                </tr>
+                <tr>
+                    <td colspan="2" rowspan="1">{location_name}</td>
+                    <td>{adjusted_on}</td>
+                </tr>
+                <tr>
+                    <td colspan="2" rowspan="1">{location_address}</td>
+                    <td>{note}</td>
+                </tr>
+                <tr>
+                    <td colspan="2" rowspan="1">{location_province} - {location_country}</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+            </tbody>
+        </table>
+        <table cellpadding="0" cellspacing="0" style="max-width: 100%;border-left: 1px solid #7a7676;border-top: 1px solid #7a7676">
+            <tbody>
+                <tr>
+                    <td style="padding: 1%; width: 15%;border-bottom:1px solid #7a7676;border-right:1px solid #7a7676;font-size: 1em;"><strong>Mã hàng hóa</strong></td>
+                    <td style="padding: 1%; width: 20%; border-bottom: 1px solid #7a7676; border-right: 1px solid #7a7676; font-size: 1em;"><strong>Tên hàng hóa</strong></td>
+                    <td style="padding: 1%; width: 15%; border-bottom: 1px solid #7a7676; border-right: 1px solid #7a7676; font-size: 1em; text-align: center;"><strong>Tồn kho</strong></td>
+                    <td style="padding: 1%; width: 20%; border-bottom: 1px solid #7a7676; border-right: 1px solid #7a7676; font-size: 1em; text-align: center;"><strong>Sau điều chỉnh</strong></td>
+                    <td style="padding: 1%; width: 15%; border-bottom: 1px solid #7a7676; border-right: 1px solid #7a7676; font-size: 1em; text-align: center;"><strong>Chênh lệch</strong></td>
+                    <td style="padding: 1%; border-bottom:1px solid #7a7676;border-right:1px solid #7a7676; font-size: 1em; text-align: center;"><b>Lý do</b></td>
+                </tr>
+                <!--<#assign lines = model.lineItems>--><!--<#list lines as line>-->
+                <tr ng-repeat="voucher in voucherDetail">
+                    <td style="padding: 1%; border-bottom:1px solid #7a7676;border-right:1px solid #7a7676;">{{voucher.SKU_Code}}</td>
+                    <td style="padding: 1%; border-bottom:1px solid #7a7676;border-right:1px solid #7a7676;"><span style=" font-size: 1em;"><span style=" font-size: 1em;">{{voucher.ItemName}}</span></span></td>
+                    <td style="padding:1%;text-align: center;border-bottom:1px solid #7a7676;border-right:1px solid #7a7676;"><span style=" font-size: 1em;"><span style=" font-size: 1em;">{{voucher.InStock}}</span></span></td>
+                    <td style="padding:1%;text-align: center;border-bottom:1px solid #7a7676;border-right:1px solid #7a7676;">{{voucher.AfterCheck}}</td>
+                    <td style="padding:1%;text-align:right;border-bottom:1px solid #7a7676;border-right:1px solid #7a7676;"><span style=" font-size: 1em;"><span style=" font-size: 1em;">{{voucher.Result}}</span></span></td>
+                    <td style="padding:1%;text-align:right;border-bottom:1px solid #7a7676;border-right:1px solid #7a7676;"><span style=" font-size: 1em;"><span style=" font-size: 1em;">{{voucher.Reason}}</span></span></td>
+                </tr>
+                <!--</#list>-->
+            </tbody>
+        </table>
+        <table style="width:100%">
+            <tbody>
+                <tr>
+                    <td style="width: 50%;">&nbsp;</td>
+                    <td style="width: 25%;">&nbsp;</td>
+                    <td style="text-align: right;">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td style="width: 50%;">&nbsp;</td>
+                    <td style="width: 25%;border-bottom: 1px solid #d7e8e2">Tổng số lượng</td>
+                    <td style="text-align: right;border-bottom: 1px solid #d7e8e2">{total_quantity}</td>
+                </tr>
+                <tr>
+                    <td style="width: 50%;">&nbsp;</td>
+                    <td style="width: 25%;border-bottom: 1px solid #d7e8e2">Tổng giá trị</td>
+                    <td style="text-align: right;border-bottom: 1px solid #d7e8e2">{total}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</form>
+
+
+<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            Hàng hóa
+        </li>
+
+        <li class="active">Kiểm hàng</li>
+    </ul>
+</div>
+<div class="page-header position-relative">
+    <div class="header-title">
+        <h1>
+
+            <small>
+
+                Chi tiết phiếu kiểm hàng
+            </small>
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+        <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<br />
+<div class="col-lg-6 col-sm-6 col-xs-12" style="width:100%">
+    <div class="well bordered-top bordered-blueberry">
+
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="buttons-preview" style="display: -webkit-box">
+                    <div class="order-menu-screen__left-customer_name-icon fl" data-original-title="" title="">
+                        <a style="font-size: 20px; font-weight: 800; text-decoration: none; ">{{voucherCheck.VoucherCode}}</a>
+                        <span style="font-weight:500; font-size:15px ;" class="status-circle" data-original-title="" title="">
+                            <i class="{{voucherCheck.cs}}" data-original-title="" title=""></i>
+                            {{voucherCheck.tt}}
+                        </span>
+
+
+                    </div>
+
+                </div>
+                <br />
+                <b>
+                    <span class="input-icon inverted" style="width:35%">
+                        <!--<a style="font-size:22px">Ngày tạo  :</a><input style="margin-left:17px" type="date" ng-model="" />-->
+                        Ngày tạo: <span style="float:right">{{voucherCheck.CreateDate|date:'dd/MM/yyyy'}}</span>
+                    </span>
+                </b>
+                <br />
+                <b>
+                    <span class="input-icon inverted" style="width:35%">
+                        <!--<a style="font-size:22px">Ngày tạo  :</a><input style="margin-left:17px" type="date" ng-model="" />-->
+                        Ngày kiểm:
+                        <span style="float:right">{{voucherCheck.VoucherDate|date:'dd/MM/yyyy'}}</span>
+                    </span>
+                </b>
+            </div>
+            <div class="col-md-6">
+                <div class="buttons-preview">
+
+                    <a class="btn btn-success" ui-sref="adjustment_add" style="margin-left: 79%;margin-top:7%;"><i class="fa fa-plus"></i> Tạo phiếu</a>
+
+
+                </div>
+            </div>
+
+
+        </div>
+        <hr class="wide">
+
+        <div class="row" style="margin-left:8px;">
+
+        </div>
+        <div class="form-group" style="margin-bottom:5%;">
+
+            <a class="btn btn-default purple" style="float:right;color:#5db2ff !important" ng-click="PrintDiv()"><i class="fa fa-print"></i> In</a>
+            <a class="btn btn-default purple" ui-sref="adjustment_edit({id:voucherCheck.VoucherID})" style="margin-right:10px; float:right;color:#5db2ff !important;display:{{voucherCheck.display_btn}}"> <i class="fa fa-pencil-square"></i> Sửa</a>
+            <button ng-click="deleteVoucher(voucherCheck.VoucherID)"
+                    class="btn btn-default purple" style="margin-right:10px; float:right;color:#5db2ff !important">
+                <i class="fa fa-trash-o">
+                </i> Xóa
+            </button>
+            <button ng-click="balance()" class="btn btn-default purple"
+                    style="margin-right:10px; float:right;color:#5db2ff !important">
+                <i class="fa fa-upload"></i> Cân bằng kho
+            </button>
+        </div>
+        <!--<hr class="wide">-->
+        <table class="table table-hover" style="width:100%">
+            <thead class="bordered-darkorange bg-themeprimary">
+                <tr>
+                    <th>
+                        Mã hàng hóa
+                    </th>
+                    <th>
+                        Tên hàng hóa
+                    </th>
+                    <th>
+                        Tồn kho
+                    </th>
+                    <th>
+                        Sau điều chỉnh
+                    </th>
+                    <th>
+                        Chênh lệch
+                    </th>
+                    <th>
+                        Lý do
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="voucher in voucherDetail">
+                    <td> {{voucher.SKU_Code}}</td>
+                    <td>{{voucher.ItemName}} </td>
+                    <td>{{voucher.InStock}}</td>
+                    <td>{{voucher.AfterCheck}}</td>
+                    <td>{{voucher.Result}}</td>
+                    <td> {{voucher.Reason}} </td>
+
+                </tr>
+
+            </tbody>
+        </table>
+        <hr class="wide">
+        <div style="padding-top: 25px;border-top: 1px dashed #a6a6a6; text-align: center; display: block;background-color: #fbfbfb;" id="no-prd" data-original-title="" title="">
+            <div class="row">
+                <div class="col-sm-6">                   
+                    <div class="form-group row">
+                        <label class="col-md-2" for="inputEmail3"><strong>Ghi chú : </strong></label>
+                        <div class="col-md-10" style="text-align: left;margin-bottom: 5px;">
+                            <label for="inputEmail3" class="col-sm-2 control-label no-padding-right" style="width:100%">
+                                <span>{{voucherCheck.Note}}</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <ul style="width: 482px;list-style: none;display: grid;">
+                            <li>
+                                <b><span style="float:left">Tổng số lượng sau điều chỉnh:</span></b>
+                                <b><span style="float:right">{{voucherCheck.TotalAfterCheck}}</span></b>
+                            </li>
+                            <li>
+                                <b><span style="float:left">Tổng số lượng chênh lệch:</span></b>
+                                <b><span style="float:right">{{voucherCheck.TotalDifference}}</span></b>
+                            </li>
+
+
+                        </ul>
+                        <br /><br />
+                        <a class="btn btn-default" style="width: 104px;background-color: #32ca0f;color:white;margin-top: 10%;margin-left: 70%;" ui-sref="adjustment">
+                            <i class="fa fa-reply-all"></i>
+                           Trở về
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="../../../Assets/admin/js/tagsinput/bootstrap-tagsinput.js"></script>
+</div>

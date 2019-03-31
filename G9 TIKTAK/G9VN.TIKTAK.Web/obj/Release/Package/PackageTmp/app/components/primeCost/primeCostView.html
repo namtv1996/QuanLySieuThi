@@ -1,0 +1,187 @@
+﻿<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+           <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)">Cài đặt</a>
+        </li>
+        <li class="active">Điều chỉnh giá vốn </li>
+    </ul>
+</div>
+<div class="page-header position-relative">
+    <div class="header-title">
+        <h1></h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+       <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<div class="page-body ng-scope">
+    <!-- Your Content Goes Here -->
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+
+            <div class="widget-header ">
+                <span class="widget-caption">Danh sách phiếu điều chỉnh</span>
+                <div class="widget-buttons">
+                    <a href="javascript:void(0)" data-toggle="maximize">
+                        <i class="fa fa-expand"></i>
+                    </a>
+                    <a href="javascript:void(0)" data-toggle="collapse">
+                        <i class="fa fa-minus"></i>
+                    </a>
+                    <a href="javascript:void(0)" data-toggle="dispose">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="widget-body" style="height:500px">
+                <div class="form-group">
+                    <span class="input-icon inverted" style="width:35%">
+                        <input type="text" style="height:32px;" class="form-control input-sm" placeholder="Tìm kiếm ...">
+                        <i class="glyphicon glyphicon-search bg-blue"></i>
+                    </span>
+
+                    <a class="btn btn-default purple" ui-sref="primeCost_add" style="float: right; color: #0d55a1 !important" href="#!/items_add"><i class="fa fa-plus"></i> Thêm mới </a>
+                    <a class="btn btn-default purple" ui-sref="#" style="margin-right: 10px; float: right; color: #0d55a1 !important" href="#!/items_add"><i class="fa fa-download"></i> Nhập file </a>
+                    <a class="btn btn-default purple" ui-sref="#" style="margin-right: 10px; float: right; color: #0d55a1 !important" href="#!/items_add"><i class="fa fa-upload"></i> Xuất file </a>
+                    <div class="col-lg-6 col-sm-6 col-xs-12" style="width:100%;margin-top: 15px;margin-left: -15px;">
+                        <section class="tabs">
+                            <input id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked" />
+                            <label for="tab-1" class="tab-label-1">Đang điều chỉnh</label>
+
+                            <input id="tab-2" type="radio" name="radio-set" class="tab-selector-2" />
+                            <label for="tab-2" class="tab-label-2">Tất cả</label>
+
+                            <input id="tab-3" type="radio" name="radio-set" class="tab-selector-3" />
+                            <label for="tab-3" class="tab-label-3">Bộ lọc</label>
+
+
+                            <div class="clear-shadow"></div>
+
+                            <div class="content">
+                                <div class="content-1">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover" style="width:100%">
+                                            <thead class="bordered-darkorange">
+                                                <tr>
+                                                    <th>
+                                                        Mã phiếu
+                                                    </th>
+                                                    <th>
+                                                        Kho điều chỉnh
+                                                    </th>
+                                                    <th>
+                                                        Ngày tạo
+                                                    </th>
+                                                    <th>
+                                                        Ngày điều chỉnh
+                                                    </th>
+                                                    <th>
+                                                        Cập nhật cuối
+                                                    </th>
+                                                    <th>
+                                                        Trang thái
+                                                    </th>
+
+                                                    <!--<th>
+                        Cập nhật
+                    </th>-->
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ui-sref="itemTransferDetail">
+                                                    <td> NV01 </td>
+                                                    <td> Steve </td>
+                                                    <td> 02/09/2017 </td>
+                                                    <td> 02/09/2017 </td>
+                                                    <td> 02/09/2017 11:11:11 </td>
+                                                    <td>
+                                                        <span class="status-circle ng-binding" data-original-title="" title="">
+                                                            <i class="available" data-original-title="" title=""></i>
+                                                            Đã điều chỉnh
+                                                        </span>
+                                                    </td>
+
+                                                </tr>
+
+                                            </tbody>
+                                        </table></div>
+
+                                    </div>
+                                <div class="content-2">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead class="bordered-darkorange">
+                                                <tr>
+                                                    <th>
+                                                        Mã phiếu
+                                                    </th>
+                                                    <th>
+                                                        Kho điều chỉnh
+                                                    </th>
+                                                    <th>
+                                                        Ngày tạo
+                                                    </th>
+                                                    <th>
+                                                        Ngày điều chỉnh
+                                                    </th>
+                                                    <th>
+                                                        Cập nhật cuối
+                                                    </th>
+                                                    <th>
+                                                        Trang thái
+                                                    </th>
+
+                                                    <!--<th>
+                        Cập nhật
+                    </th>-->
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ui-sref="itemTransferDetail">
+                                                    <td> NV01 </td>
+                                                    <td> Steve </td>
+                                                    <td> 02/09/2017 </td>
+                                                    <td> 02/09/2017 </td>
+                                                    <td> 02/09/2017 11:11:11 </td>
+                                                    <td>
+                                                        <span class="status-circle ng-binding" data-original-title="" title="">
+                                                            <i class="available" data-original-title="" title=""></i>
+                                                            Đã điều chỉnh
+                                                        </span>
+                                                    </td>
+
+                                                </tr>
+
+                                            </tbody>
+                                        </table></div>
+                                    </div>
+                                <div class="content-3" style="height:300px">
+                                    <h2>Portfolio</h2>
+                                    
+                                </div>
+
+                            </div>
+                        </section>
+                        <script src="../../../Assets/admin/js/modernizr.custom.04022.js"></script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

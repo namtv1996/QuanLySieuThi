@@ -1,0 +1,379 @@
+﻿<form id="form1">
+    <div id="dvContents" style="border: 1px dotted black; padding: 5px; width: 300px ;display:none">
+        <div>
+            <table cellpadding="0" cellspacing="0" style="border-bottom: 1px solid #d7e8e2; width:100%;margin-top:3%">
+                <tbody>
+                    <tr>
+                        <td><span style="font-size:14px;"><strong>PHIẾU CHUYỂN HÀNG</strong></span></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table style="width:100%">
+                <tbody>
+                    <tr>
+                        <td style="width: 35%;">&nbsp;</td>
+                        <td style="width: 35%;">&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">{{authentication.storeName}}</td>
+                        <td><strong>Mã phiếu:</strong>{{ListItemTransfer.VoucherNo}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">{{authentication.address}}</td>
+                        <td><strong>Ngày tạo:</strong> {{listgetitemTransfer.MobilizationDate|date:'dd/MM/yyyy'}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">{{authentication.phoneNumber}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">{{authentication.Email}}</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="border-bottom: 1px solid #d7e8e2">&nbsp;</td>
+                        <td style="border-bottom: 1px solid #d7e8e2">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Chi nhánh chuyển:</strong></td>
+                        <td><strong>Chi nhánh nhận:</strong></td>
+                        <td><strong>Ngày chuyển:</strong>&nbsp;{{listgetitemTransfer.MobilizationDate|date:'dd/MM/yyyy'}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{listNew.cnchuyen}}</td>
+                        <td>{{listNew.cnnhan}}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>____________</td>
+                        <td>____________</td>
+                        <td><strong>Ngày nhận:</strong>&nbsp;{{listgetitemTransfer.VoucherDate|date:'dd/MM/yyyy'}}</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table cellpadding="0" cellspacing="0" style="width: 100%;border-left: 1px solid #7a7676;border-top: 1px solid #7a7676">
+                <tbody>
+                    <tr>
+                        <td style="padding:1%;width: 15%; text-align: center; border-bottom:1px solid #7a7676;border-right:1px solid #7a7676;"><span style="font-size:12px;"><strong>Mã hàng hóa</strong></span></td>
+                        <td style="padding:1%;width: 35%; text-align: center;border-bottom:1px solid #7a7676;border-right:1px solid #7a7676;"><span style="font-size:12px;"><strong><span style="font-family: arial, helvetica, sans-serif;">Tên hàng hóa</span></strong></span></td>
+                        <td style="padding:1%;width: 10%; text-align: center; border-bottom:1px solid #7a7676;border-right:1px solid #7a7676;"><span style="font-size:12px;"><strong><span style="font-family: arial, helvetica, sans-serif;">Số lượng</span></strong></span></td>
+                        <td style="padding:1%;width: 20%; text-align: center; border-bottom:1px solid #7a7676;border-right:1px solid #7a7676;"><span style="font-size:12px;"><strong><span style="font-family: arial, helvetica, sans-serif;">Đơn giá</span></strong></span></td>
+                        <td style="padding:1%;text-align: center; border-bottom:1px solid #7a7676;border-right:1px solid #7a7676; "><font face="arial, helvetica, sans-serif"><span style="font-size: 12px; line-height: 19.2px;"><b>Giá trị</b></span></font></td>
+                    </tr>
+                    <!--<#assign lines = model.lineItems>--><!--<#list lines as line>-->
+                    <tr ng-repeat="i in lisItem">
+                        <td style="padding:1%;text-align: center;border-bottom:1px solid #7a7676;border-right:1px solid #7a7676;">{{i.SKU_Code}}</td>
+                        <td style="padding: 1%; border-bottom:1px solid #7a7676;border-right:1px solid #7a7676;"><span style=" font-size: 1em;"><span style=" font-size: 1em;">{{i.ItemName}}</span></span></td>
+                        <td style="padding:1%;text-align: center;border-bottom:1px solid #7a7676;border-right:1px solid #7a7676;"><span style=" font-size: 1em;"><span style=" font-size: 1em;">{{i.SL}}</span></span></td>
+                        <td style="padding:1%;text-align:right;border-bottom:1px solid #7a7676;border-right:1px solid #7a7676;"><span style=" font-size: 1em;"><span style=" font-size: 1em;">{{i.DG}}</span></span></td>
+                        <td style="padding:1%;text-align:right;border-bottom:1px solid #7a7676;border-right:1px solid #7a7676;"><span style=" font-size: 1em;"><span style=" font-size: 1em;">{{i.TT}}</span></span></td>
+                    </tr>
+                    <!--</#list>-->
+                </tbody>
+            </table>
+
+            <table style="width:100%">
+                <tbody>
+                    <tr>
+                        <td style="width: 50%;">&nbsp;</td>
+                        <td style="width: 25%;">&nbsp;</td>
+                        <td style="text-align: right;">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%;padding:1%">&nbsp;</td>
+                        <td style="width: 25%;border-bottom: 1px solid #d7e8e2">Tổng số lượng</td>
+                        <td style="text-align: right;border-bottom: 1px solid #d7e8e2">{{lisItem.length}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%;padding:1%">&nbsp;</td>
+                        <td style="width: 25%;border-bottom: 1px solid #d7e8e2">Tổng giá trị</td>
+                        <td style="text-align: right;border-bottom: 1px solid #d7e8e2">{{listgetitemTransfer.TotalAmount}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <footer style="page-break-after: always">.</footer>
+
+    </div>
+</form>
+
+
+<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)">Chuyển hàng</a>
+        </li>
+        <li class="active">Danh sách chuyển hàng
+    </ul>
+</div>
+<div class="page-header position-relative">
+    <div class="header-title">
+        <h1>
+            Danh sách chuyển hàng
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+        <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<div class="page-body ng-scope">
+    <!-- Your Content Goes Here -->
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+            <div class="widget-body" >
+                <div class="row" style="margin-left:0px;margin-bottom: 20px;width:100%;">
+                    <div class="col-md-6">
+                        <div class="order-menu-screen__left-customer_name-icon fl" data-original-title="" title="">
+                            <a style="font-size: 20px; font-weight: 800; text-decoration: none; " class="ng-binding">{{ListItemTransfer.VoucherNo}} </a>
+                            <span style="font-weight:500; font-size:15px ;" class="status-circle ng-binding" data-original-title="" title="">
+                                <i class="{{ListItemTransfer.cs}}" data-original-title="" title=""></i>
+                                {{ListItemTransfer.tt}}
+                            </span> 
+
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-6">
+                        <div class="col-md-3">
+                            <a style="width:100%" ui-sref="itemTransfer" class="btn btn-info" href="#!/inwardStock"><i class=""></i>Trở về</a>
+
+                        </div>
+                        <div class="col-md-3">
+                            <a style="width:100%" ng-click="deleteItemTransfes(inwardStock.VoucherID)" class="btn btn-info"><i class="fa fa-trash-o"></i>Xóa</a>
+
+                        </div>
+                        <div class="col-md-3">
+                            <a style="width:100%" ng-click="PrintDiv()" class="btn btn-info"><i class="glyphicon glyphicon-print"></i>In phiếu</a>
+
+                        </div>
+                        <div class="col-md-3">
+                            <a style="width:100%" ng-click="editItemTransfes()" class="btn btn-info">Sửa phiếu</a>
+
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="row" style="display:none;display:{{ListItemTransfer.dst_duyet}}">
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <div class="widget" style="margin-bottom:10px">
+                          
+                            <div class="widget-body bordered-left bordered-warning">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label>
+                                            <b>Chờ duyệt : </b>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button type="submit" style="width:100%" class="btn btn-palegreen" ng-click="statusChange(2)">Duyệt</button>
+                                    </div>
+                                </div>
+                                
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="display:none;display:{{ListItemTransfer.dst_duyet1}}">
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <div class="widget" style="margin-bottom:10px">
+                          
+                            <div class="widget-body bordered-left bordered-warning">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label>
+                                            <b>Chờ duyệt : </b>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label>Đang thực hiện chuyển</label>
+                                    </div>
+                                </div>
+                                
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-lg-6 col-sm-6 col-xs-12" style="display:none;display:{{ListItemTransfer.dst_chuyen}}">
+                        <div class="widget" style="margin-bottom:10px">
+                            <div class="widget-header bordered-bottom bordered-palegreen">
+                                <span class="widget-caption">{{listNew.cnchuyen}} chuyển hàng - <i style="font-size:  13px;font-weight:  normal;color:  black;">Ngày tạo phiếu {{listNew.ngaynhan|date:'dd/MM/yyyy'}}</i></span>
+
+                            </div>
+                            <div class="widget-body">
+                                <div>
+                                    <form class="form-horizontal form-bordered" role="form">
+                                        <div class="row" style="display:none;margin-bottom: 12px;display:{{ListItemTransfer.cdtc}}">
+                                            <div class="col-md-6">
+                                                <label>{{ListItemTransfer.VoucherNo}}</label>
+                                            </div>
+                                            <div class="col-md-6" style="text-align:center">
+                                                <label><i>Đã chuyển</i></label>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="display:none;margin-bottom: 12px;display:{{ListItemTransfer.dc}}">
+                                            <div class="col-md-6">
+                                                <label>{{ListItemTransfer.VoucherNo}}</label>
+                                            </div>
+                                            <div class="col-md-6" style="text-align:center">
+                                                <label><i>Đang chuyển</i></label>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="display:none;display:{{ListItemTransfer.cd}}">
+                                            <div class="col-md-6">
+                                                <label style="padding-top:8px">{{ListItemTransfer.VoucherNo}}</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <button ng-click="statusChange(3)" style="width:100%" class="btn btn-palegreen">Chuyển hàng</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-6 col-xs-12" style="display:none;display:{{ListItemTransfer.dst_nhan}}">
+                        <div class="widget" style="margin-bottom:10px">
+                            <div class="widget-header bordered-bottom bordered-pink">
+                                <span class="widget-caption">{{listNew.cnnhan}} nhận hàng - <i style="font-size:  13px;font-weight:  normal;color:  black;">Ngày hẹn nhận {{ListItemTransfer.MobilizationDate|date:'dd/MM/yyyy'}}</i></span>
+                                
+                            </div>
+                            <div class="widget-body">
+                                <div id="horizontal-form">
+                                    <form class="form-horizontal" role="form">
+                                        <div class="row" style="display:none;margin-bottom: 12px;display:{{ListItemTransfer.ndtc}}">
+                                            <div class="col-md-6">
+                                                <label >{{ListItemTransfer.VoucherNo}}</label>
+                                            </div>
+                                            <div class="col-md-6" style="text-align:center">
+                                                <label><i>Đã Nhận</i></label>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="display:none;margin-bottom: 12px;display:{{ListItemTransfer.cncn1}}">
+                                            <div class="col-md-6">
+                                                <label>{{ListItemTransfer.VoucherNo}}</label>
+                                            </div>
+                                            <div class="col-md-6" style="text-align:center">
+                                                <label><i>Đang chờ nhận</i></label>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="display:none;margin-bottom: 12px;display:{{ListItemTransfer.cn}}">
+                                            <div class="col-md-6">
+                                                <label>{{ListItemTransfer.VoucherNo}}</label>
+                                            </div>
+                                            <div class="col-md-6" style="text-align:center">
+                                                <label><i>Chưa nhận</i></label>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="display:none;display:{{ListItemTransfer.nd}}">
+                                            <div class="col-md-6">
+                                                <label style="padding-top:8px">{{ListItemTransfer.VoucherNo}}</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <button ng-click="statusChange(4)" style="width:100%" class="btn btn-palegreen">Nhận hàng</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-left:0px;width:100%"></div>
+                <div class="table-responsive">
+                    <table class="table table-hover" style="margin-top: 10px;width:100%">
+                        <thead class="bordered-darkorange bg-themeprimary ">
+                            <tr>
+                                <th>
+                                    Mã hàng hóa
+                                </th>
+                                <th>
+                                    Tên hàng hóa
+                                </th>
+
+                                <th>
+                                    Số lượng
+                                </th>
+                                <th>
+                                    Đơn giá
+                                </th>
+                                <th>
+                                    Thành tiền
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="i in lisItem">
+                                <td>
+                                        {{i.SKU_Code}}
+                                </td>
+                                <td>{{i.ItemName}}</td>
+                                <td>
+                                    <input ng-model="i.SL" ng-change="updateprice(i.stt)" style="border-radius: 7px !important;width:85% ;height:25px" type="number" class="form-control form-control-input-popup text-right number line_item_quantity valid" >
+                                </td>
+                                <td>
+                                    <input ng-model="i.DG" ng-change="updateprice(i.stt)" style="border-radius: 7px !important;width:85% ;height:25px" type="number" class="form-control form-control-input-popup text-right number line_item_quantity valid" >
+                                </td>
+
+                                <td>{{i.TT}}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

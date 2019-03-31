@@ -1,0 +1,221 @@
+﻿
+
+<!-- Page Breadcrumb -->
+<style type="text/css">
+    .modal-content {
+        width: 406px;
+        left: 22%;
+    }
+</style>
+<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+           <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" ui-sref="customer">Khách hàng</a>
+        </li>
+        <li class="active">Danh sách khách hàng</li>
+    </ul>
+</div>
+<!-- /Page Breadcrumb -->
+<!-- Page Header -->
+<div class="page-header position-relative">
+    <div class="header-title">
+        <h1>
+            Danh sách khách hàng
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+        <a class="sidebar-toggler" href="#">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="#">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="#">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<!-- /Page Header -->
+<!-- Page Body -->
+<div class="page-body">
+    <!-- Your Content Goes Here -->
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+            <div class="widget-body">
+                <div class="row">
+                    <div class="col-xs-5">
+                        <form class="form-horizontal ng-valid ng-dirty ng-valid-parse">
+                            <div class="form-group">
+                                <label for="text" class="col-sm-4 control-label">Text</label>
+                                <div class="col-sm-8">
+                                    <input ng-model="txt" type="text" class="form-control ng-valid ng-dirty ng-valid-parse ng-not-empty ng-touched" id="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="format" class="col-sm-4 control-label">Format</label>
+                                <div class="col-sm-8">
+                                    <select ng-model="bc.format" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" id="format">
+                                        <optgroup label="CODE128">
+                                            <option value="CODE128" selected="selected">CODE128</option>
+                                            <option value="CODE128A">CODE128A</option>
+                                            <option value="CODE128B">CODE128B</option>
+                                            <option value="CODE128C">CODE128C</option>
+                                        </optgroup>
+
+                                        <optgroup label="EAN / UPC">
+                                            <option value="UPC">UPC</option>
+                                            <option value="EAN">EAN</option>
+                                            <option value="EAN8">EAN8</option>
+                                            <option value="EAN5">EAN5</option>
+                                            <option value="EAN2">EAN2</option>
+                                        </optgroup>
+
+                                        <optgroup label="CODE39">
+                                            <option value="CODE39">CODE39</option>
+                                        </optgroup>
+
+                                        <optgroup label="ITF">
+                                            <option value="ITF14">ITF14</option>
+                                        </optgroup>
+
+                                        <optgroup label="MSI">
+                                            <option value="MSI">MSI</option>
+                                            <option value="MSI10">MSI10</option>
+                                            <option value="MSI11">MSI11</option>
+                                            <option value="MSI1010">MSI1010</option>
+                                            <option value="MSI1110">MSI1110</option>
+                                        </optgroup>
+
+                                        <optgroup label="Pharmacode">
+                                            <option value="pharmacode">pharmacode</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="lineColor" class="col-sm-4 control-label">Line Color</label>
+                                <div class="col-sm-8">
+                                    <input ng-model="bc.lineColor" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" id="lineColor" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="width" class="col-sm-4 control-label">Width</label>
+                                <div class="col-sm-8">
+                                    <input ng-model="bc.width" type="number" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" id="width" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="height" class="col-sm-4 control-label">Height</label>
+                                <div class="col-sm-8">
+                                    <input ng-model="bc.height" type="number" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" id="height" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="displayValue" class="col-sm-4 control-label">Display Value</label>
+                                <div class="col-sm-8">
+                                    <input ng-model="bc.displayValue" type="checkbox" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" id="displayValue" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="fontOptions" class="col-sm-4 control-label">Font Options</label>
+                                <div class="col-sm-8">
+                                    <input ng-model="bc.fontOptions" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-empty" id="fontOptions" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="font" class="col-sm-4 control-label">Font</label>
+                                <div class="col-sm-8">
+                                    <input ng-model="bc.font" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" id="font" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="textAlign" class="col-sm-4 control-label">Text Align</label>
+                                <div class="col-sm-8">
+                                    <select ng-model="bc.textAlign" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" id="textAlign">
+                                        <option value="left">left</option>
+                                        <option value="center" selected="selected">center</option>
+                                        <option value="right">right</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="textPosition" class="col-sm-4 control-label">Text Position</label>
+                                <div class="col-sm-8">
+                                    <select ng-model="bc.textPosition" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" id="textPosition">
+                                        <option value="top">top</option>
+                                        <option value="bottom" selected="selected">bottom</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="textMargin" class="col-sm-4 control-label">Text Margin</label>
+                                <div class="col-sm-8">
+                                    <input ng-model="bc.textMargin" type="number" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" id="textMargin" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="fontSize" class="col-sm-4 control-label">Font Size</label>
+                                <div class="col-sm-8">
+                                    <input ng-model="bc.fontSize" type="number" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" id="fontSize" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="background" class="col-sm-4 control-label">Background</label>
+                                <div class="col-sm-8">
+                                    <input ng-model="bc.background" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" id="background" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="margin" class="col-sm-4 control-label">Margin</label>
+                                <div class="col-sm-8">
+                                    <input ng-model="bc.margin" type="number" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" id="margin" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="marginTop" class="col-sm-4 control-label">Margin Top</label>
+                                <div class="col-sm-8">
+                                    <input ng-model="bc.marginTop" type="number" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" id="marginTop" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="marginBottom" class="col-sm-4 control-label">Margin Bottom</label>
+                                <div class="col-sm-8">
+                                    <input ng-model="bc.marginBottom" type="number" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" id="marginBottom" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="marginLeft" class="col-sm-4 control-label">Margin Left</label>
+                                <div class="col-sm-8">
+                                    <input ng-model="bc.marginLeft" type="number" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" id="marginLeft" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="marginRight" class="col-sm-4 control-label">Margin Right</label>
+                                <div class="col-sm-8">
+                                    <input ng-model="bc.marginRight" type="number" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" id="marginRight" placeholder="">
+                                </div>
+                            </div>
+                            <!-- TODO add valid function code-->
+
+                        </form>
+                    </div>
+                    <div class="col-xs-7">
+                        <angular-barcode ng-model="txt" bc-options="bc" bc-class="barcode" bc-type="svg"></angular-barcode>
+                    </div>
+                </div>
+                    
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- /Page Body -->
+
+

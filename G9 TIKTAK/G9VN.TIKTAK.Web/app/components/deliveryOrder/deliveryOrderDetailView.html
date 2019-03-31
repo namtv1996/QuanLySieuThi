@@ -1,0 +1,434 @@
+﻿<style>
+    .scrollbar {
+        float: left;
+        height: 215px;
+        background: #ffffff;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        width: 100%;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .force-overflow {
+    }
+
+    #style-5::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: #F5F5F5;
+    }
+
+    #style-5::-webkit-scrollbar {
+        width: 3px;
+        background-color: #F5F5F5;
+    }
+
+    #style-5::-webkit-scrollbar-thumb {
+        background-color: #0ae;
+        background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(.5, rgba(255, 255, 255, .2)), color-stop(.5, transparent), to(transparent));
+    }
+</style>
+<div class="page-breadcrumbs ng-scope">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="javascript:void(0)">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)">Đơn hàng</a>
+        </li>
+        <li class="active">Giao hàng</li>
+    </ul>
+</div>
+<div class="page-header position-relative ng-scope">
+    <div class="header-title">
+        <h1>
+            Chi tiết đơn giao hàng
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+        <a class="sidebar-toggler" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" id="refresh-toggler" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" id="fullscreen-toggler" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<div class="page-body ng-scope">
+    <!-- Your Content Goes Here -->
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+            <div class="widget-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label style="font-weight:800; font-size:25px;" class="ng-binding"> {{deliveryOrder.VoucherNo}}</label>
+                        <span class="status-circle ng-binding" data-original-title="" title="" style="margin-left:10px;"><i class="{{deliveryOrder.cs}}" data-original-title="" title=""></i>{{deliveryOrder.status}}</span>
+                       
+                    </div>
+                    <div class="col-md-4">
+                        <label> <i class="fa fa-truck" style="font-size:20px;margin-top:5px;"></i><label style="font-size:15px;">&nbsp;&nbsp;&nbsp;&nbsp;{{deliveryOrder.TransporterName}}</label></label>
+                    </div>
+                    <div class="col-md-4" style="display:{{display.dis9}}">
+                        <a class="btn btn-default purple" style="margin-right: 10px; float: right; color: #0d55a1 !important;" onclick="goBack()"><i class=""></i>Trở về</a>
+                        <a class="btn btn-default purple" style="margin-right: 10px; float: right; color: #0d55a1 !important;"><i class="fa fa-trash-o"></i>Xóa</a>
+                        <a class="btn btn-default purple" style="margin-right: 10px; float: right; color: #0d55a1 !important;"><i class="fa fa-print"></i>In</a>
+
+                    </div>
+                </div>
+                <br />
+
+                <style>
+                    .before-blue:hover:before {
+                        background-color: #fb6e52 !important;
+                    }
+                </style>
+                <div class="row" style="border: 1px solid rgba(128, 128, 128, 0.32);width: 100%;margin-left: 0px; padding-top:5px;padding-bottom:5px;">
+
+                    <div class="col-md-4" style="width:31%;">                       
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-md-4" style="width:37%;">Ngày chứng từ</label>
+                            <div class="col-md-8" style="width:63%;">
+                                <label for="inputEmail3" style="width:100%">{{deliveryOrder.VoucherDate|date:'dd/MM/yyyy'}}</label>
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-md-4" style="width:37%;">Gói hàng</label>
+                            <div class="col-md-8" style="width:63%;">
+                                <label for="inputEmail3" style="width:100%">{{deliveryOrder.PackageVoucherNo}}</label>
+
+                            </div>
+                        </div>   
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-md-4" style="width:37%;">Đơn hàng</label>
+                            <div class="col-md-8" style="width:63%;">
+                                <label for="inputEmail3" style="width:100%"><a ui-sref="saleOrder_Detail({id:deliveryOrder.SaleOrderID})">{{deliveryOrder.SaleOrderVoucherNo}}</a></label>
+
+                            </div>
+                        </div>   
+                    </div>
+                    
+                    <div class="col-md-4" style="width:40%;border-right:1px solid rgba(128, 128, 128, 0.32);border-left:1px solid rgba(128, 128, 128, 0.32);">
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-md-4" style="width:25%;">Người nhận</label>
+                            <div class="col-md-8" style="width:75%;">
+                                <label for="inputEmail3" style="width:100%">{{deliveryOrder.ObjectName}}</label>
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-md-4" style="width:25%;">Địa chỉ</label>
+                            <div class="col-md-8" style="width:75%;">
+                                <label for="inputEmail3" style="width:100%">{{deliveryOrder.ObjectAddress}}</label>
+
+                            </div>
+                        </div>
+                       
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-md-4" style="width:25%;">SĐT</label>
+                            <div class="col-md-8" style="width:75%;">
+                                <label for="inputEmail3" style="width:100%">{{deliveryOrder.ObjectTel}}</label>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4" style="width:29%;">
+
+
+                        <div class="form-group row">
+
+                            <label for="inputEmail3" class="col-md-4" style="width: 42%;"><b>Tiền thu hộ : </b></label>
+                            <div class="col-md-8" style="width: 58%;">
+                                <label for="inputEmail3" style="width:100%"><span style="float: right;padding-right: 20px;"><b>{{deliveryOrder.TotalAmount|currency:"":0}} </b>đ</span></label>
+
+                            </div>
+                        </div>
+                       
+                        <div class="form-group row">
+
+                            <label for="inputEmail3" class="col-md-4" style="width: 42%;"><b>Phí trả shipper : </b></label>
+                            <div class="col-md-8" style="width: 58%;">
+                                <label for="inputEmail3" style="width:100%"><span style="float: right;padding-right: 20px;"><b>{{deliveryOrder.ShippingAmount|currency:"":0}} </b>đ</span></label>
+
+                            </div>
+                        </div>
+                      
+
+                    </div>
+                </div>
+                <!--thao tác trên đơn hàng-->
+                <div class="row" style="width:100%;margin-left:0px;display:block;margin-top:10px;margin-bottom:-35px;">
+
+                    <div class="widget">
+
+                        <div class="widget-body" style="border-left: 3px solid #2dc3e8; box-shadow: none; background: aliceblue;">
+                            <div id="horizontal-form">
+
+
+                                <div class="row" style="width:100%;margin-left:0px;display: block;border: 1px solid #d6d6d6;margin-bottom: 5px;">
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <label class="col-sm-12 col-md-12 no-padding-right" style="margin-bottom: 10px;width: 100%;border-bottom: 1px #b4b2b2 dashed;margin-top: 15px;padding-left: 0px;">
+
+                                        </label>
+                                        <div>
+                                            <div class="form-group row" style="height:65px;">
+                                                <label class="col-sm-4 col-md-4 no-padding-right ng-binding" style="width:15%;">
+                                                    <h5 style="color: black;"><i class="fa fa-truck"></i><strong> Giao hàng</strong></h5>
+                                                    <span style="margin-left: 25px;color:#53a93f"><i class="{{cls}}"></i> {{thongbao}}</span>
+                                                </label>
+
+                                                <div class="col-sm-8 col-md-8" style="display:{{display_btn_delivery}}">
+                                                    <a class="btn btn-success" ng-click="Delivered()" style="margin-right: 5px;"> <i class="fa fa-forward" style="display:initial !important;" aria-hidden="true" data-original-title="" title=""></i>Xác nhận giao hàng</a>
+                                                    <a ng-click="Warning()" class="btn">Hủy giao hàng</a>
+                                                </div>
+
+                                            </div>
+                                            <label class="col-sm-12 col-md-12 no-padding-right" style="margin-bottom: 10px;width: 100%;border-bottom: 1px #b4b2b2 dashed;margin-top: 15px;padding-left: 0px;">
+
+                                            </label>
+                                        </div>
+                                        <div style="display:{{display_payment}};" class="row">
+                                            <div class="form-group col-md-6 row" style="height:65px;">
+                                                <div class="row">
+                                                    <label class="col-md-6" style="width:45%;">
+                                                        <h5 style="color: black;padding-left:7%;"><i class="fa fa-money"></i><strong> Thanh toán </strong></h5>
+                                                        <span style="margin-left: 40px;color:#53a93f;"><i class="{{cls1}}"></i> {{thongbaos}}</span>
+                                                        <span style="margin-left: 40px;color:#53a93f;"><i class="{{cls2}}"></i> {{thongbao2}}</span>
+                                                    </label>
+
+                                                    <div class="col-md-6" style="width:41%;margin-left:-25px;">
+                                                        <a class="btn btn-success" ng-click="COD_Paymented()" style="margin-right: 5px;display:{{dis_btn_pay1}}; "> <i class="fa fa-forward" style="display:initial !important;" aria-hidden="true" data-original-title="" title=""></i>Nhận tiền thu hộ</a>
+                                                        <a ng-click="PaymentShippingAmount()" class="btn btn-success" style="margin-right: 5px;display:{{dis_btn_pay2}};"><i class="fa fa-forward" style="display:initial !important;" aria-hidden="true" data-original-title="" title=""></i>Thanh toán phí ship</a>
+                                                    </div>
+
+                                                   
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group col-md-6 row" style="border-left:1px solid #cc1313; display:{{displayReceipt}}">
+                                                <label style="margin-left:5%;display:{{displayReceipt1}}">
+                                                    <h5 style="color: black;"><i class="fa fa-money"></i><strong> Phiếu thu - Nhận tiền thu hộ </strong></h5>
+
+                                                </label>
+                                                <div style="margin-left: 10%;margin-top:5px;display:{{displayReceipt1}}">
+
+                                                    <table style="width:100%">
+                                                        <tr ng-repeat="inv in listReceipt" style="height:30px">
+                                                            <td style="float:left;">{{inv.VoucherNo}}</td>
+                                                            <td style="float:left;width:180px;"><span style="float:right;">{{inv.TotalAmount|currency:"":0}} đ</span></td>
+                                                            <td style="float:left;margin-left: 5%;"><span>{{inv.VoucherDate|date:'dd/MM/yyyy'}}</span></td>
+                                                        </tr>
+                                                    </table>
+
+                                                </div>
+                                               
+
+                                                <label style="margin-left:5%;display:{{displayReceipt2}}">
+                                                    <h5 style="color: black;"><i class="fa fa-money"></i><strong> Phiếu chi - Thanh toán phí ship </strong></h5>
+
+                                                </label>
+                                                
+                                                <div style="margin-left: 10%;margin-top:5px;display:{{displayReceipt2}}">
+
+                                                    <table style="width:100%">
+                                                        <tr ng-repeat="inv in listCashPayment" style="height:30px">
+                                                            <td style="float:left">{{inv.INVoucherNo}}</td>
+                                                            <td style="float:left;width:180px;"><span style="float:right;">{{inv.TotalAmount|currency:"":0}} đ</span></td>
+                                                            <td style="float:left;margin-left: 5%;"><span>{{inv.INVoucherDate|date:'dd/MM/yyyy'}}</span></td>
+                                                        </tr>
+                                                    </table>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <!--DANH SÁCH HÀNG MUA-->
+                <div class="row" style="width: 100%;margin-left: 0px;">
+                    <table class="table table-hover" style="width:100%">
+                        <thead class="bordered-darkorange bg-themeprimary ">
+                            <tr>
+
+                                <th>
+                                    SKU
+                                </th>
+                                <th>
+                                    Tên hàng hóa
+                                </th>
+                                <th>
+                                    Số lượng
+                                </th>
+                                <th>
+                                    Đơn giá
+                                </th>
+                                <th>
+                                    Chiết khấu
+                                </th>
+                                <th>
+                                    Thuế(%)
+                                </th>
+                                <th>
+                                    Thành tiền
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- ngRepeat: item in listview -->
+                            <tr ng-repeat="i in deliveryOrderDetail">
+                                <td>
+                                    {{i.SKU}}
+                                </td>
+
+                                <td>
+                                    {{i.ItemName}}
+                                </td>
+
+                                <td>
+                                    {{i.Quantity}}
+                                </td>
+
+                                <td>
+                                    {{i.UnitPrice|currency:"":0}}
+                                </td>
+
+                                <td>
+                                    {{i.DiscountAmount|currency:"":0}}
+                                </td>
+
+                                <td>
+                                    {{i.VATRate|currency:"":0}}
+                                </td>
+
+                                <td>
+                                    {{i.Amount|currency:"":0}} đ
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br />
+
+                <hr class="wide" />
+                <!--THÔNG TIN ĐƠN HÀNG-->
+                <div class="row" style="width: 100%;margin-left:0px;">
+                    <br />
+
+                    <div class="col-md-6">
+
+                        <div class="form-group row">
+                            <label class="col-md-2" for="inputEmail3"><strong>Ghi chú : </strong></label>
+                            <div class="col-md-10" style="text-align: left;margin-bottom: 5px;">
+                                <label for="inputEmail3" class="col-sm-2 control-label no-padding-right" style="width:100%">
+                                    <span>{{deliveryOrder.Description}}</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<form id="form1">
+    <div style="padding:5%; font-size:0.8em;font-family:tahoma;display:none;" id="dvContents">
+        <table cellpadding="0" cellspacing="0" style="width:100%">
+            <tbody>
+                <tr>
+                    <td style="width:77%; float:left;padding-left:2%">
+                        <table cellpadding="0" cellspacing="0" style="width:100%;font-size:0.8em">
+                            <tbody>
+                                <tr>
+                                    <td><span style="font-family:tahoma,geneva,sans-serif;">Siêu thị G9</span></td>
+                                </tr>
+                                <tr>
+                                    <td>14 Pháo Đài Láng</td>
+                                </tr>
+                                <tr>
+                                    <td>0989999999</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="width: 100%; text-align: center;padding:10px 0 0  10px;font-size:1em"><strong>ĐƠN HÀNG</strong></div>
+        <table cellpadding="0" cellspacing="0" style="width:100%;font-size:0.8em; border-bottom-width: 2px; border-bottom-style: dotted;">
+            <tbody>
+                <tr>
+                    <td style="width: 55%;">Số: {{saleOrders.VoucherNo}}</td>
+                    <td style="text-align: right;">Ngày: {{saleOrders.VoucherDate}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Khách hàng: {{customer.ObjectName}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">&nbsp;</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table cellpadding="0" cellspacing="0" style="width:100%;font-size:0.8em">
+            <tbody>
+                <tr>
+                    <td style="width: 40%; border-bottom:1px solid #7a7676; padding: 1% 0px;"><strong>Tên hàng hóa</strong></td>
+                    <td style="width: 10%; border-bottom:1px solid #7a7676; text-align: center;padding:1% 0"><strong>SL</strong></td>
+                    <td style="width: 25%; border-bottom:1px solid #7a7676; text-align: center;padding:1% 0"><strong>Đơn giá</strong></td>
+                    <td style="border-bottom:1px solid #7a7676; text-align: center;padding:1% 0"><strong>Thành tiền</strong></td>
+                </tr>
+                <!--<#assign lines = model.orderLineItems>--><!--<#list lines as line>-->
+                <tr ng-repeat="item in listview">
+                    <td style="border-bottom:1px solid #7a7676;padding:1% 0">{{item.Name}}</td>
+                    <td style="border-bottom:1px solid #7a7676; text-align: center;padding:1% 0">{{item.Quantity}}</td>
+                    <td style="border-bottom:1px solid #7a7676; text-align: right;padding:1% 0">{{item.UnitPrice}}</td>
+                    <td style="border-bottom:1px solid #7a7676; text-align: right;padding:1% 0">{{item.money_amount}}</td>
+                </tr>
+                <!--</#list>-->
+            </tbody>
+        </table>
+        <div>&nbsp;</div>
+        <table cellpadding="0" cellspacing="0" style="width:100%;font-size:0.8em ">
+            <tbody>
+                <tr>
+                    <td style="width: 50%;padding:1% 0">Cộng tiền hàng:</td>
+                    <td style="text-align: right;padding:1% 0">{{saleOrders.TotalAmountOC|currency:"":0}}đ</td>
+                </tr>
+                <tr>
+                    <td style="padding:1% 0">Chiết khấu:</td>
+                    <td style="text-align: right;padding:1% 0">{{saleOrders.TotalDiscountAmountOC|currency:"":0}}đ</td>
+                </tr>
+                <tr>
+                    <td style="padding:1% 0"><strong>Khách phải trả:</strong></td>
+                    <td style="text-align: right;padding:1% 0">{{saleOrders.TotalAmountOC+saleOrders.TotalVATAmountOC-saleOrders.TotalDiscountAmountOC|currency:"":0}}đ</td>
+                </tr>
+                <tr>
+                    <td style="padding:1% 0">Tiền khách đưa:</td>
+                    <td style="text-align: right;padding:1% 0">0 đ</td>
+                </tr>
+                <tr>
+                    <td>Trả lại:</td>
+                    <td style="text-align: right;padding:1% 0">0 đ</td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="width: 100%;font-size:0.8em; text-align: center;padding:10px 0 0  10px;"><em>Cám ơn quý khách. Hẹn gặp lại!</em></div>
+    </div>
+    <footer style="page-break-after: always">.</footer>
+</form>

@@ -1,0 +1,260 @@
+﻿<style>
+    #close_table_select::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: #F5F5F5;
+    }
+
+    #close_table_select::-webkit-scrollbar {
+        width: 3px;
+        background-color: #F5F5F5;
+    }
+
+    #close_table_select::-webkit-scrollbar-thumb {
+        background-color: blue;
+        background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(.5, rgba(255, 255, 255, .2)), color-stop(.5, transparent), to(transparent));
+    }
+</style>
+<div class="page-breadcrumbs ng-scope">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            Hàng hóa
+        </li>
+        <li class="active">Chuyển hàng</li>
+    </ul>
+</div>
+<div class="page-header position-relative ng-scope">
+    <div class="header-title">
+        <h1>
+            Tạo phiếu chuyển hàng
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+        <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<div class="page-body ng-scope">
+    <form role="form" novalidate name="frmItemTransferAdd">
+        <div class="row">
+            <div class="col-xs-12 col-md-6" style="width:100%">
+
+
+                <div class="widget-body">
+                    <div class="form-group">
+                        <span class="input-icon inverted" style="width:35%;">
+                            <h3 style="font-weight:bold !important">{{code}} </h3>
+                        </span>
+                        <a class="btn btn-default purple" style="float: right;background: #2dc3e8;color: #ffffff !important;" ui-sref="itemTransfer_add"><i class="fa fa-plus"></i>Thêm phiếu chuyển</a>
+                    </div>
+                    <hr />
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <span class="input-icon inverted" style="width:100%">
+                                <input type="text" style="height:32px;padding-left:40px;width:100%" class="form-control input-sm ng-pristine ng-untouched ng-valid ng-empty" placeholder="Tìm kiếm hàng hóa " ng-keyup="search()" ng-model="searchText">
+                                <i class="glyphicon glyphicon-search bg-blue"></i>
+                            </span>
+                            <div class="table-autocomplete col-md-8 col-xs-8 col-sm-8" style="position: absolute;top: 34px;left: -40px;z-index: 1001;">
+                                <ul id="close_table_select" class="nnn" role="listbox" aria-activedescendant="ui-active-menuitem" style="z-index: 2147483647; display: {{dis}};width:345%;overflow:auto;overflow-x:hidden;max-height:275px;">
+
+                                    <li class="close_table_select" ng-repeat="item in filterList|filter:searchText" ng-click="chooseProduct(item.ID)" style="float:left;width:100%;list-style: none; background-color: #fbfbe4;box-shadow: 3px 3px 6px 0px rgb(210, 210, 210);border-bottom: 1px #e3e3e3 solid;" role="menuitem">
+                                        <a href="javascript:void(0)" tabindex="-1" class="ui-corner-all" style="font-size: 13px;">
+                                            <div style="padding: 6px 0;float: left;width: 8%;text-align: center;">
+                                                <div class="thumb">
+                                                    <img style="margin-left: 3px;border-radius: 3px;" alt="Ảnh" class="block s-none thumb-30" height="40" width="40" src="{{item.Image1}}" title="Ảnh">
+                                                </div>
+                                            </div>
+                                            <div class="search-product-content" style="padding: 6px; float:left;width:58%">
+                                                <div class="search-product-content-name" style="margin-left: 10px;">
+                                                    <span>{{item.Name}}</span>
+                                                </div>
+                                                <div class="search-product-content-sku" style="color: #27b467;margin-left: 10px;">  {{item.SKU}}  </div>
+                                            </div>
+                                            <div class="search-product-content" style="width: 32%;float:left; text-align: center; padding-right: 2%;padding: 6px;">
+                                                <div class="search-product-content-name">Giá nhập: {{item.PurchasePrice|currency:"":0}} VNĐ</div>
+                                                <div class="search-product-content-sku" style="text-transform: none; ">
+                                                    Tồn kho: <span style="font-weight:bold;">{{item.quantity|currency:"":0}}</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <select style="width:100%" ng-model="ItemTransfer.FromStockID" placeholder="Chọn chi nhánh" class="ng-pristine ng-valid ng-empty ng-touched" required="">
+                                <option value="">Chọn chi nhánh gửi</option>
+                                <option ng-repeat="option in listBranchs" value="{{option.BranchID}}">{{option.BranchName}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <select style="width:100%" ng-model="ItemTransfer.ToStockID" placeholder="Chọn chi nhánh" class="ng-pristine ng-valid ng-empty ng-touched" required="">
+                                <option value="">Chọn chi nhánh nhận</option>
+                                <option ng-repeat="option1 in listBranchs" value="{{option1.BranchID}}">{{option1.BranchName}}</option>
+                            </select>
+
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control ng-pristine ng-valid ng-empty ng-touched" placeholder="Tham chiếu" style="width: 100%;" ng-model="ItemTransfer.Reference">
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+
+                        </div>
+                        <div class="col-md-3">
+                            <label>Thủ kho chuyển</label>
+                        </div>
+                        <div class="col-md-3">
+                            <label>Thủ kho nhận</label>
+                        </div>
+                        <div class="col-md-3">
+                            <label>Ngày hẹn chuyển</label>
+                        </div>
+
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control ng-pristine ng-valid ng-empty ng-touched" required="" placeholder="Tên thủ kho chuyển" style="width: 100%;margin-top:5px" ng-model="ItemTransfer.OutwardStockKeeper">
+
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control ng-pristine ng-valid ng-empty ng-touched" required="" placeholder="Tên thủ kho Nhận" style="width: 100%;margin-top:5px" ng-model="ItemTransfer.InwardStockKeeper">
+
+                        </div>
+                        <div class="col-md-3">
+                            <input type="date" class="form-control ng-pristine ng-valid ng-empty ng-touched" placeholder="Ngày chuyển" style="width: 100%;margin-top:5px" ng-model="ItemTransfer.MobilizationDate">
+
+                        </div>
+                        
+
+                    </div>
+                    <div class="row" style="width:100%;margin-top: 15px;margin-left: 0px;">
+
+                        <div class="table-responsive">
+                            <table class="table" style="width:100%">
+                                <thead class="bordered-darkorange bg-themeprimary">
+                                    <tr>
+                                        <th>STT</th>
+                                        <th>
+                                            Mã SKU
+                                        </th>
+                                        <th>
+                                            Tên hàng hóa
+                                        </th>
+                                        <th>
+                                            Số lượng
+                                        </th>
+                                        <th>
+                                            Đơn giá
+                                        </th>
+                                        <th style=" text-align:right">
+                                            Thành tiền
+                                        </th>
+                                        <th>
+                                           
+                                        </th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+
+                                    <tr ng-repeat="i in cart.list_selected">
+                                        <td>{{i.stt}}</td>
+                                        <td>{{i.SKU}}</td>
+                                        <td>{{i.Name}}</td>
+                                        <td>
+
+                                            <div class="form-group" style="float: left;">
+                                                <div class="controls">
+                                                    <input ng-model="i.quan" ng-change="updateprice(i.stt)" style="border-radius: 5px !important;width:100% ;height:25px" type="number" class="form-control form-control-input-popup text-right number line_item_quantity valid">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group" style="float: left;">
+                                                <div class="controls">
+                                                    <input ng-model="i.SalePrice" ng-change="updateprice(i.stt)" style="border-radius: 7px !important;width:85% ;height:25px" type="number" class="form-control form-control-input-popup text-right number line_item_quantity valid" disabled>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style="text-align:right">{{i.thanhtien|currency:"":0}} đ</td>
+                                        <td ng-click="del(i.stt)" style="cursor: pointer; width:10px;"><div class="fa-hover col-md-3 col-sm-4"><i class="fa fa-trash"></i></div></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="row" style="width:100%;margin-left:0px;display:{{distable}}">
+                                <div style="margin:0 auto;width:20%">
+                                    <img src="../../../Assets/admin/img/no-prd.png" />
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                    <div class="row" style="width:100%;margin-left:0px;background: #eeeeee;border: 1px solid #2dc3e8;">
+                        <div class="col-md-6">
+                            <textarea class="form-control" ng-model="ItemTransfer.Description" id="textareaanimated" placeholder="Ghi chú: " style="width: 100%;height: 100px;margin-top:  10px;margin-bottom: 10px;"></textarea>
+                        </div>
+                            <div class="col-md-6">
+                            <label style="width: 100%;margin-top:  10px;margin-bottom: 10px;">Tổng số lượng :     {{tongsoluong}} SP</label>
+                                <label style="width: 100%;margin-top:  10px;margin-bottom: 10px;" >Tổng giá trị :    {{tongtien}} đ</label>
+                               
+                            
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-6" style="width:100%;margin-top:10px">
+                <div class="widget">
+
+                    <div class="widget-body" style="border-left: 3px solid #2dc3e8;">
+                        <div id="horizontal-form">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="checkbox" style=" margin-left: -30px;">
+
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-4">
+                                    <a ui-sref="items" class="btn btn-default purple" style=" padding: 3px 10px 1px; height: 32px; margin-right: 10px; float: right; color: #0d55a1 !important" href="#!/items"><i class="typcn typcn-cancel"></i> Hủy </a>
+                                    <button type="submit" data-ng-click="AddItemTransfer()" class="btn btn-default purple" style="margin-right: 10px; float: right; color: #0d55a1 !important"><i class="glyphicon glyphicon-floppy-saved"></i>Thêm mới</button>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+    <!-- Your Content Goes Here -->
+    
+</div>

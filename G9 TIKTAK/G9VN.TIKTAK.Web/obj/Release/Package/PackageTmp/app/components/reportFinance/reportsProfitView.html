@@ -1,0 +1,480 @@
+﻿<div class="page-breadcrumbs ng-scope">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" ui-sref="reportFinance">Báo cáo</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" ui-sref="reportFinance">Báo cáo tài chính</a>
+        </li>
+</ul>
+</div>
+<div class="page-header position-relative ng-scope">
+    <div class="header-title">
+        <h1>
+           Báo cáo lãi lỗ
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+        <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<div class="page-body ng-scope">
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+            <div class="widget-body">
+                <div class="form-group">
+                    <!--<div class="row">
+                        <div class="col-md-3">
+                            <label> Chi nhánh</label>
+                            <select ng-model="BranchID" style="width: 100%;">
+                                <option ng-repeat="item in branch" value="{{item.BranchID}}">{{item.BranchName}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label> Từ ngày</label>
+                            <input type="date" class="form-control ng-pristine ng-valid ng-empty ng-touched ng-untouched" id="inputEmail3" ng-model="date1" style="width: 100%;">
+                        </div>
+                        <div class="col-md-3">
+                            <label> Đến ngày</label>
+                            <input type="date" class="form-control ng-pristine ng-valid ng-empty ng-touched ng-untouched" id="inputEmail3" ng-model="date2" style="width: 100%;">
+                        </div>
+                        <div class="col-md-3" style="margin-top: 17px;padding-left: 75px;">
+                            <label></label>
+                            <a class="btn btn-success" style="width:100%" ng-click="ViewReport()">Xem báo cáo</a>
+                        </div>
+                    </div>-->
+                    <hr />
+                    <div class="row">
+                        <form class="form-inline report-filter" role="form" style="overflow:initial;display:inline-table" novalidate="novalidate">
+                            <div class="col-md-12">
+                                <div class="col-md-3" style="padding-left:0px">
+                                    <div class="form-group">
+                                        <label for="email">Chi nhánh</label>
+                                        <div class="form-group">
+
+                                            <select ng-model="BranchID" style="width:200px;" styledropdown="font-size:12px" styleinput="font-size:12px" tabindex="-1" aria-hidden="true">
+                                                <option ng-repeat="item in branch" value="{{item.BranchID}}">{{item.BranchName}}</option>
+
+                                            </select> 
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="border-bottom: 1px solid #ddd;padding-bottom: 6px;padding-right:0px">
+                                    <div style="width:25%;float: left;padding-top: 8px;">KỲ HIỆN TẠI</div>
+                                    <div class="field form-group" style="width:37%">
+                                        <label class="control-label" style="width:60px;">Từ ngày</label>
+                                        <div class="datepicker-input fl" style="border-color: #CBD5DE;">
+                                            <div class="form-datepicker-common" data-original-title="" title="">
+                                                <input type="date" class="inline filter-input no-margin valid datefield startDate" name="StartDate" ng-model="date1" >
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="field form-group" style="width:37%">
+                                        <label class="control-label" style="width:60px;">Đến ngày</label>
+                                        <div class="datepicker-input fl" style="border-color: #CBD5DE;">
+                                            <div class="form-datepicker-common" data-original-title="" title="">
+                                                <input type="date" class="inline filter-input no-margin valid datefield endDate" name="EndDate" ng-model="date2" >
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3" style="margin-top: 19px;padding-left: 75px;"><button type="submit" class="btn btn-success" ng-click="ViewReport()">Xem báo cáo</button></div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-md-3" style="padding-left:0px">
+
+                                </div>
+                                <div class="col-md-6" style="padding-top: 5px;padding-right:0px">
+                                    <div style="width:25%;float: left;padding-top: 8px;">KỲ TRƯỚC</div>
+                                    <div class="field form-group" style="width:37%">
+                                        <label class="control-label" style="width:60px;">Từ ngày</label>
+                                        <div class="datepicker-input fl" style="border-color: #CBD5DE;">
+                                            <div class="datepicker-input fl" style="border-color: #CBD5DE;">
+                                                <div class="form-datepicker-common" data-original-title="" title="">
+                                                    <input type="date" style="pointer-events:none;" class="inline filter-input no-margin valid datefield startDate" name="StartDate" ng-model="date3">
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="field form-group" style="width:37%">
+                                        <label class="control-label" style="width:60px;">Đến ngày</label>
+                                        <div class="datepicker-input fl" style="border-color: #CBD5DE;">
+                                            <div class="form-datepicker-common" data-original-title="" title="">
+                                                <input type="date" style="pointer-events:none;" class="inline filter-input no-margin valid datefield startDate" name="StartDate" ng-model="date4">
+                                             
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3"></div>
+                            </div>
+                        </form>     
+                    </div>
+                  
+                    <div class="row">
+                        <div class="col-md-3">
+                            <a href="javascript:void(0)" style="margin-right:  18px;margin-top:  7px;" data-toggle="modal" data-target="#myModal">
+                                Chú giải
+                            </a>
+                        </div>
+
+                    </div>
+                    <div class="row" style="width:100%;margin-left:0px">
+                        <div class="table-responsive">
+                            <table class="table table-bordered tbl-report tbl-report--inventory-onhand border-th" cellspacing="0" cellpadding="0">
+                                <thead>
+                                    <tr role="row" style="background: #2dc3e8 !important;color:white">
+                                        <th><span class="text">Tài chính tổng hợp</span></th>
+                                        <th><span class="text">Kỳ trước</span></th>
+                                        <th><span class="text">Kỳ hiện tại</span></th>
+                                        <th><span class="text">Thay đổi (%)</span></th>
+                                    </tr>
+
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="title">Doanh thu bán hàng và cung cấp dịch vụ (1)</td>
+                                        <td style="text-align:right">{{report1.a1|currency:"":0}}  đ</td>
+                                        <td style="text-align:right">{{report.a1|currency:"":0}}  đ</td>
+                                        <td class="percent-1" style="text-align:center">{{(((report.a1==0&&report1.a1==0)?0:(report.a1 - report1.a1)*100/report1.a1))==0?0:((report.a1 - report1.a1)*100/report1.a1>100?100:(report.a1 - report1.a1)*100/report1.a1).toFixed(2)}}</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td class="title">Giảm trừ doanh thu (2 = 2.1 + 2.2)</td>
+                                        <td style="text-align:right" class="number-begin-2" id="0,0000">{{report1.a2|currency:"":0}}  đ</td>
+                                        <td style="text-align:right" class="number-end-2" id="0,0000">{{report.a2|currency:"":0}}  đ</td>
+                                        <td class="percent-2" style="text-align:center">{{(((report.a2==0&&report1.a2==0)?0:(report.a2 - report1.a2)*100/report1.a2))==0?0:((report.a2 - report1.a2)*100/report1.a2>100?100:(report.a2 - report1.a2)*100/report1.a2).toFixed(2)}}</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td class="title-chil">Chiết khấu thương mại (2.1)</td>
+                                        <td style="text-align:right">{{report1.a2_1|currency:"":0}}  đ</td>
+                                        <td style="text-align:right">{{report.a2_1|currency:"":0}}  đ</td>
+                                        <td class="percent-3" style="text-align:center">{{(((report.a2_1==0&&report1.a2_1==0)?0:(report.a2_1 - report1.a2_1)*100/report1.a2_1))==0?0:((report.a2_1 - report1.a2_1)*100/report1.a2_1>100?100:(report.a2_1 - report1.a2_1)*100/report1.a2_1).toFixed(2)}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title-chil">Giá trị hàng bán bị trả lại (2.2)</td>
+                                        <td style="text-align:right">{{report1.a2_2|currency:"":0}}  đ</td>
+                                        <td style="text-align:right">{{report.a2_2|currency:"":0}}  đ</td>
+                                        <td class="percent-4" style="text-align:center">{{(((report.a2_2==0&&report1.a2_2==0)?0:(report.a2_2 - report1.a2_2)*100/report1.a2_2))==0?0:((report.a2_2 - report1.a2_2)*100/report1.a2_2>100?100:(report.a2_2 - report1.a2_2)*100/report1.a2_2).toFixed(2)}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">Doanh thu thuần (3 = 1 - 2)</td>
+                                        <td style="text-align:right" class="number-begin-5" id="0,0000">{{report1.a3|currency:"":0}}  đ</td>
+                                        <td style="text-align:right" class="number-end-5" id="7437000,0000">{{report.a3|currency:"":0}}  đ</td>
+                                        <td class="percent-5" style="text-align:center">{{(((report.a3==0&&report1.a3==0)?0:(report.a3 - report1.a3)*100/report1.a3))==0?0:((report.a3 - report1.a3)*100/report1.a3>100?100:(report.a3 - report1.a3)*100/report1.a3).toFixed(2)}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">Giá vốn bán hàng (chi phí hàng hóa) (4 = 4.1 - 4.2)</td>
+                                        <td style="text-align:right" class="number-begin-6" id="0,0000">{{report1.a4|currency:"":0}}  đ</td>
+                                        <td style="text-align:right" class="number-end-6" id="5478000,0000">{{report.a4|currency:"":0}}  đ</td>
+                                        <td class="percent-6" style="text-align:center">{{(((report.a4==0&&report1.a4==0)?0:(report.a4 - report1.a4)*100/report1.a4))==0?0:((report.a4 - report1.a4)*100/report1.a4>100?100:(report.a4 - report1.a4)*100/report1.a4).toFixed(2)}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title-chil">Giá vốn xuất kho (4.1)</td>
+                                        <td style="text-align:right">{{report1.a4_1|currency:"":0}}  đ</td>
+                                        <td style="text-align:right">{{report.a4_1|currency:"":0}}  đ</td>
+                                        <td class="percent-7" style="text-align:center">{{(((report.a4_1==0&&report1.a4_1==0)?0:(report.a4_1 - report1.a4_1)*100/report1.a4_1))==0?0:((report.a4_1 - report1.a4_1)*100/report1.a4_1>100?100:(report.a4_1 - report1.a4_1)*100/report1.a4_1).toFixed(2)}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title-chil">Giá nhập kho cho hàng bị trả lại (4.2)</td>
+                                        <td style="text-align:right">{{report1.a4_2|currency:"":0}}  đ</td>
+                                        <td style="text-align:right">{{report.a4_2|currency:"":0}}  đ</td>
+                                        <td class="percent-8" style="text-align:center">{{(((report.a4_2==0&&report1.a4_2==0)?0:(report.a4_2 - report1.a4_2)*100/report1.a4_2))==0?0:((report.a4_2 - report1.a4_2)*100/report1.a4_2>100?100:(report.a4_2 - report1.a4_2)*100/report1.a4_2).toFixed(2)}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">Lợi nhuận gộp về bán hàng (5 = 3 - 4)</td>
+                                        <td style="text-align:right" class="number-begin-9" id="0,0000">{{report1.a5|currency:"":0}}  đ</td>
+                                        <td style="text-align:right" class="number-end-9" id="1959000,0000">{{report.a5|currency:"":0}}  đ</td>
+                                        <td class="percent-9" style="text-align:center">{{(((report.a5==0&&report1.a5==0)?0:(report.a5 - report1.a5)*100/report1.a5))==0?0:((report.a5 - report1.a5)*100/report1.a5>100?100:(report.a5 - report1.a5)*100/report1.a5).toFixed(2)}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">
+                                            Chi phí (6 = 6.1 + 6.2)
+                                            <span class="helpAddmin" data-toggle="tooltip" data-placement="right" title="" data-original-title="Chi phí nhân viên, bán hàng,bảo hành, chi phí tích điểm (thanh toán bằng điểm)">
+                                                <i class="fa fa-question-circle"></i>
+                                            </span>
+                                        </td>
+                                        <td style="text-align:right" class="number-begin-10" id="0,0000">{{report1.a6|currency:"":0}}  đ</td>
+                                        <td style="text-align:right" class="number-end-10" id="0,0000">{{report.a6|currency:"":0}}  đ</td>
+                                        <td class="percent-10" style="text-align:center">{{(((report.a6==0&&report1.a6==0)?0:(report.a6 - report1.a6)*100/report1.a6))==0?0:((report.a6 - report1.a6)*100/report1.a6>100?100:(report.a6 - report1.a6)*100/report1.a6).toFixed(2)}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title-chil">Thanh toán bằng điểm (6.1)</td>
+                                        <td style="text-align:right">{{report1.a6_1|currency:"":0}}  đ</td>
+                                        <td style="text-align:right">{{report.a6_1|currency:"":0}}  đ</td>
+                                        <td class="percent-11" style="text-align:center">{{(((report.a6_1==0&&report1.a6_1==0)?0:(report.a6_1 - report1.a6_1)*100/report1.a6_1))==0?0:((report.a6_1 - report1.a6_1)*100/report1.a6_1>100?100:(report.a6_1 - report1.a6_1)*100/report1.a6_1).toFixed(2)}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title-chil">Phí giao hàng trả đối tác (6.2)</td>
+                                        <td style="text-align:right">{{report1.a6_2|currency:"":0}}  đ</td>
+                                        <td style="text-align:right">{{report.a6_2|currency:"":0}}  đ</td>
+                                        <td class="percent-12" style="text-align:center">{{(((report.a6_2==0&&report1.a6_2==0)?0:(report.a6_2 - report1.a6_2)*100/report1.a6_2))==0?0:((report.a6_2 - report1.a6_2)*100/report1.a6_2>100?100:(report.a6_2 - report1.a6_2)*100/report1.a6_2).toFixed(2)}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">
+                                            Thu nhập khác (7)
+                                            <span class="helpAddmin" data-toggle="tooltip" data-placement="right" title="" data-original-title="Từ phiếu thu chủ động (có hạch toán kết quả kinh doanh) và phí phát sinh khi khách trả hàng ">
+                                                <i class="fa fa-question-circle"></i>
+                                            </span>
+                                        </td>
+                                        <td style="text-align:right" class="number-begin-13" id="0,0000">{{report1.a7|currency:"":0}}  đ</td>
+                                        <td style="text-align:right" class="number-end-13" id="0,0000">{{report.a7|currency:"":0}}  đ</td>
+                                        <td class="percent-13" style="text-align:center">{{(((report.a7==0&&report1.a7==0)?0:(report.a7 - report1.a7)*100/report1.a7))==0?0:((report.a7 - report1.a7)*100/report1.a7>100?100:(report.a7 - report1.a7)*100/report1.a7.toFixed(2))}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title-chil">Phiếu thu chủ động có hạch toán kinh doanh (7.1)</td>
+                                        <td style="text-align:right">{{report1.a7_1|currency:"":0}}  đ</td>
+                                        <td style="text-align:right">{{report.a7_1|currency:"":0}}  đ</td>
+                                        <td class="percent-14" style="text-align:center">{{(((report.a7_1==0&&report1.a7_1==0)?0:(report.a7_1 - report1.a7_1)*100/report1.a7_1))==0?0:((report.a7_1 - report1.a7_1)*100/report1.a7_1>100?100:(report.a7_1 - report1.a7_1)*100/report1.a7_1).toFixed(2)}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title-chil">Thu nhập khác từ trả hàng (7.2 = 2.2 - 7.2.1)</td>
+
+                                        <td style="text-align:right" class="number-begin-15" id="0,0000">{{report1.a7_2|currency:"":0}}  đ</td>
+                                        <td style="text-align:right" class="number-end-15" id="0,0000">{{report.a7_2|currency:"":0}}  đ</td>
+                                        <td class="percent-15" style="text-align:center">{{(((report.a7_2==0&&report1.a7_2==0)?0:(report.a7_2 - report1.a7_2)*100/report1.a7_2))==0?0:((report.a7_2 - report1.a7_2)*100/report1.a7_2>100?100:(report.a7_2 - report1.a7_2)*100/report1.a7_2).toFixed(2)}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title-chil-chil">Hoàn tiền cho khách trả hàng (7.2.1)</td>
+                                        <td style="text-align:right">{{report1.a7_2_1|currency:"":0}}  đ</td>
+                                        <td style="text-align:right">{{report.a7_2_1|currency:"":0}}  đ</td>
+                                        <td class="percent-16" style="text-align:center">{{(((report.a7_2_1==0&&report1.a7_2_1==0)?0:(report.a7_2_1 - report1.a7_2_1)*100/report1.a7_2_1))==0?0:((report.a7_2_1 - report1.a7_2_1)*100/report1.a7_2_1>100?100:(report.a7_2_1 - report1.a7_2_1)*100/report1.a7_2_1).toFixed(2)}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">
+                                            Chi phí khác (8)
+                                            <span class="helpAddmin" data-toggle="tooltip" data-placement="right" title="" data-original-title="Từ phiếu chi chủ động (có hạch toán kết quả kinh doanh)">
+                                                <i class="fa fa-question-circle"></i>
+                                            </span>
+                                        </td>
+                                        <td style="text-align:right">{{report1.a8|currency:"":0}}  đ</td>
+                                        <td style="text-align:right">{{report.a8|currency:"":0}}  đ</td>
+                                        <td class="percent-17" style="text-align:center">{{(((report.a8==0&&report1.a8==0)?0:(report.a8 - report1.a8)*100/report1.a8))==0?0:((report.a8 - report1.a8)*100/report1.a8>100?100:(report.a8 - report1.a8)*100/report1.a8).toFixed(2)}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">Lợi nhuận khác (9 = 7 - 8)</td>
+                                        <td style="text-align:right" class="number-begin-18" id="0,0000">{{report1.a9|currency:"":0}}  đ</td>
+                                        <td style="text-align:right" class="number-end-18" id="0,0000">{{report.a9|currency:"":0}}  đ</td>
+                                        <td class="percent-18" style="text-align:center">{{(((report.a9==0&&report1.a9==0)?0:(report.a9 - report1.a9)*100/report1.a9))==0?0:((report.a9 - report1.a9)*100/report1.a9>100?100:(report.a9 - report1.a9)*100/report1.a9).toFixed(2)}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title" style="font-weight:bold">Lợi nhuận ròng (10 = 5 - 6)</td>
+                                        <td style="text-align:right" class="number-begin-19" id="0,0000">{{report1.a10|currency:"":0}}  đ</td>
+                                        <td style="text-align:right" class="number-end-19" id="1959000,0000">{{report.a10|currency:"":0}}  đ</td>
+                                        <td class="percent-19" style="text-align:center">{{(((report.a10==0&&report1.a10==0)?0:(report.a10 - report1.a10)*100/report1.a10))==0?0:((report.a10 - report1.a10)*100/report1.a10>100?100:(report.a10 - report1.a10)*100/report1.a10).toFixed(2)}}</td>
+                                    </tr>
+                                    <!--<tr>
+                                        <td class="title">Lợi nhuận thuần (11 = 10 + 9)</td>
+                                        <td style="text-align:right" class="number-begin-20" id="0,0000">0₫</td>
+                                        <td style="text-align:right" class="number-end-20" id="1959000,0000">1,959,000₫</td>
+                                        <td class="percent-20" style="text-align:center">100</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">Tỷ trọng CKTM trên doanh thu (%) </td>
+                                        <td style="text-align:right">100%</td>
+
+                                        <td style="text-align:right">0%</td>
+
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">Tỷ trọng hàng trả lại trên doanh thu (%) </td>
+                                        <td style="text-align:right">100%</td>
+
+                                        <td style="text-align:right">0%</td>
+
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">Tỷ suất lợi nhuận gộp </td>
+                                        <td style="text-align:right">100%</td>
+
+                                        <td style="text-align:right">26.341%</td>
+
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">Tỷ suất lợi nhuận ròng </td>
+                                        <td style="text-align:right">100%</td>
+
+                                        <td style="text-align:right">26.341%</td>
+
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">Tỷ suất lợi nhuận thuần </td>
+                                        <td style="text-align:right">100%</td>
+
+                                        <td style="text-align:right">26.341%</td>
+
+                                        <td></td>
+                                    </tr>-->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>    
+             
+                <div style="margin-left:  82.4%;margin-top:3px ">
+                    <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" class="ng-isolate-scope"><!-- ngIf: 1 < pages.length --></dir-pagination-controls>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<!--modal chú giải-->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog" style="width:80% !important;margin-left:245px !important;margin-top:43px;">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:#2dc3e8;font-size:18px;text-align:center;">
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button"></button>
+                <span class="ui-dialog-title" id="ui-dialog-title-1" >
+                    Bảng giải thích dữ liệu trong báo cáo
+                </span>           
+            </div>
+            <div class="modal-body-report product-option-edit pull-center" style="overflow: auto; height: 522px;">
+                <div id="table-height" class="bulk-action-context">
+                    <table class="table table-bordered tbl-report tbl-report--inventory-onhand border-th" id="parent-variant" style="width:100%;">
+                        <thead>
+                            <tr>
+
+                                <th style="width:20%;text-align:center">Trường dữ liệu</th>
+                                <th style="width:20%;text-align:center;border-right: 1px solid #dcdee2 !important;">Chi tiết</th>
+                                <th style="width:80%;text-align:center">Giải thích</th>
+                            </tr>
+                        </thead>
+                        <tbody class="tbody-scoler">
+                            <tr>
+                                <td>Doanh thu bán hàng và cung cấp dịch vụ (1)</td>
+                                <td style="border-right: 1px solid #dcdee2 !important;"></td>
+                                <td>( Đơn giá * số lượng) + phí vận chuyển ( ko tính thuế, lưu ý: giá khi chưa chiết khấu cả line item lẫn tổng đơn hàng) Ghi nhận doanh thu vào thời điểm đơn hàng đã giao thành công</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">Giảm trừ doanh thu (2=2.1+2.2)</td>
+                                <td style="border-right: 1px solid #dcdee2 !important;">Chiết khấu thương mại (2.1)</td>
+                                <td>Tổng chiết khấu trong tất cả các hóa đơn( tính cả chiết khấu của line item và CK tổng đơn hàng khi tích điểm)</td>
+                            </tr>
+                            <tr>
+                                <td>Giá trị hàng bán bị trả lại (2.2)</td>
+                                <td>Tổng tiền ở phiếu trả hàng</td>
+                            </tr>
+                            <tr>
+                                <td>Doanh thu thuần (3=1-2)</td>
+                                <td style="border-right: 1px solid #dcdee2 !important;"></td>
+                                <td>Doanh thu bán hàng và cung cấp dịch vụ - Giảm trừ doanh thu</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">Giá vốn bán hàng (chi phí hàng hóa) (4 = 4.1 - 4.2)</td>
+                                <td style="border-right: 1px solid #dcdee2 !important;">Giá vốn xuất kho (4.1)</td>
+                                <td>Giá MAC * Số lượng sản phẩm đã xuất ra trong kì</td>
+                            </tr>
+
+                            <tr>
+                                <td>Giá nhập kho cho hàng bị trả lại (4.2)</td>
+                                <td>Giá nhập kho * Số lượng hàng bán bị trả lại</td>
+                            </tr>
+                            <tr>
+                                <td>Lợi nhuận gộp về bán hàng (5=3-4)</td>
+                                <td style="border-right: 1px solid #dcdee2 !important;"></td>
+                                <td>Doanh thu thuần - Giá vốn bán hàng (chi phí hàng hóa)</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">Chi phí (6=6.1+6.2)</td>
+                                <td style="border-right: 1px solid #dcdee2 !important;">Thanh toán bằng điểm (6.1) </td>
+                                <td> Khách hàng thanh toán đơn hàng bằng điểm (Số tiền quy đổi từ điểm ra tiền)</td>
+                            </tr>
+                            <tr>
+                                <td>Phí giao hàng trả đối tác (6.2)</td>
+                                <td>Khoản tiền cửa hàng bỏ ra cho việc vận chuyển(phí trả shiper, phí trả giao hàng nhanh)</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="3">Thu nhập khác (7)</td>
+                                <td style="border-right: 1px solid #dcdee2 !important;">Phiếu thu chủ động (7.1)</td>
+                                <td>Các phiếu thu tạo chủ động có hạch toán kết quả kinh doanh</td>
+                            </tr>
+                            <tr>
+                                <td>Thu nhập khác từ trả hàng (7.2 = 2.2 - 7.2.1)</td>
+                                <td>Là khoản chênh lệch do tiền cửa hàng hoàn trả nhỏ hơn so với tổng tiền trong đơn trả</td>
+                            </tr>
+                            <tr>
+                                <td>Hoàn tiền cho khách trả hàng (7.2.1)</td>
+                                <td>Số tiền cửa hàng hoàn trả cho khách khi khách trả hàng</td>
+                            </tr>
+                            <tr>
+                                <td>Chi phí khác (8)</td>
+                                <td style="border-right: 1px solid #dcdee2 !important;"></td>
+                                <td>Chi phí khác: Từ các phiếu chi chủ động (có hạch toán kết quả kinh doanh)</td>
+                            </tr>
+                            <tr>
+                                <td>Lợi nhuận khác (9=7-8)</td>
+                                <td style="border-right: 1px solid #dcdee2 !important;"></td>
+                                <td>Thu nhập khác - Chi phí khác</td>
+                            </tr>
+                            <tr>
+                                <td>Lợi nhuận ròng (10=5-6) </td>
+                                <td style="border-right: 1px solid #dcdee2 !important;"></td>
+                                <td>Lợi nhuận gộp về bán hàng - Chi phí</td>
+                            </tr>
+                            <tr>
+                                <td>Lợi nhuận thuần (11 = (10 + 9))</td>
+                                <td style="border-right: 1px solid #dcdee2 !important;"></td>
+                                <td>Lợi nhuận ròng + Lợi nhuận khác</td>
+                            </tr>
+                            <tr>
+                                <td>Tỷ trọng CKTM trên doanh thu (%)</td>
+                                <td style="border-right: 1px solid #dcdee2 !important;"></td>
+                                <td>Tỷ trọng CKTM trên doanh thu (%) = (CKTM/DTBHvaCCDV)*100</td>
+                            </tr>
+                            <tr>
+                                <td>Tỷ trọng hàng trả lại trên doanh thu (%)</td>
+                                <td style="border-right: 1px solid #dcdee2 !important;"></td>
+                                <td>Tỷ trọng hàng trả lại trên doanh thu = (Giá trị hàng bán bị trả lại/DTBHvaCCDV)*100</td>
+                            </tr>
+                            <tr>
+                                <td>Tỷ suất lợi nhuận gộp</td>
+                                <td style="border-right: 1px solid #dcdee2 !important;"></td>
+                                <td>Tỷ suất lợi nhuận gộp=(Lợi nhuận gộp/Doanh thu bán hàng và cung cấp dịch vụ)*100</td>
+                            </tr>
+                            <tr>
+                                <td>Tỷ suất lợi nhuận ròng</td>
+                                <td style="border-right: 1px solid #dcdee2 !important;"></td>
+                                <td>Tỷ suất lợi nhuận ròng = (Lợi nhuận ròng/Doanh thu bán hàng và cung cấp dịch vụ)*100</td>
+                            </tr>
+                            <tr>
+                                <td>Tỷ suất lợi nhuận thuần</td>
+                                <td style="border-right: 1px solid #dcdee2 !important;"></td>
+                                <td>Tỷ suất lợi nhuận thuần = Lợi nhuận thuần / Doanh thu bán hàng và cung cấp dịch vụ) * 100</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer-report" style="text-align:left;color:#666666;padding:8px">
+            </div>
+
+        </div>
+    </div>
+</div>

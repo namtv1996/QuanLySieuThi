@@ -1,0 +1,225 @@
+﻿<div class="page-breadcrumbs ng-scope">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" ui-sref="reportFinance">Báo cáo</a>
+        </li>
+        <li class="active"><a href="javascript:void(0)" ui-sref="reportFinance">Báo cáo tài chính</a></li>
+    </ul>
+</div>
+<div class="page-header position-relative ng-scope">
+    <div class="header-title">
+        <h1>
+            Sổ quỹ
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+        <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<div class="page-body ng-scope">
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+            <div class="widget-body">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label> Chi nhánh</label>
+                            <select ng-model="BranchID" style="width:200px;" styledropdown="font-size:12px" styleinput="font-size:12px" tabindex="-1" aria-hidden="true">
+                                <option ng-repeat="item in branch" value="{{item.BranchID}}">{{item.BranchName}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label> Từ ngày</label>
+                            <input type="date" class="form-control ng-pristine ng-valid ng-empty ng-touched ng-untouched" id="inputEmail3" ng-model="date1" style="width: 100%;">
+                        </div>
+                        <div class="col-md-3">
+                            <label> Đến ngày</label>
+                            <input type="date" class="form-control ng-pristine ng-valid ng-empty ng-touched ng-untouched" id="inputEmail3" ng-model="date2" style="width: 100%;">
+                        </div>
+                        <div class="col-md-3">
+                            <label></label>
+                            <a class="btn btn-success" style="width:100%" ng-click="ReportCashBook()">Xem báo cáo</a>
+                        </div>
+                    </div>
+
+                    <hr />
+                    <div class="row" style="padding-left:15px;padding-right:15px;margin-bottom:15px;">
+                        <div class="col-md-12" data-original-title="" title="" style="box-shadow:0px 0px 12px 5px #e0dcdc;font-size: 19px;color: black;">
+                            <div class="col-md-12" data-original-title="" title="">
+                                <div class="col-md-3" data-original-title="" title=""><div style="float:left" data-original-title="" title="">Tồn cuối kỳ</div><div style="float:left;margin-left:40%">=</div></div>
+                                <div class="col-md-3" data-original-title="" title=""><div style="float:left" data-original-title="" title="">Số dư đầu kỳ</div><div style="float:left;margin-left:30%">+</div></div>
+                                <div class="col-md-3"><div style="float:left">Tổng thu</div><div style="float:left;margin-left:40%">-</div></div>
+                                <div class="col-md-3"><div style="float:left">Tổng chi</div></div>
+                            </div>
+                            <div class="col-md-12" style="margin-bottom:10px" data-original-title="" title="">
+                                <div class="col-md-3 number-left" data-original-title="" title="">{{data.a4|currency:"":0}}</div>
+                                <div class="col-md-3 number-left" data-original-title="" title="">{{data.a3|currency:"":0}}</div>
+                                <div class="col-md-3 number-left">{{data.a1|currency:"":0}}</div>
+                                <div class="col-md-3 number-left">{{data.a2|currency:"":0}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <a href="javascript:void(0)" style="margin-right:  18px;margin-top:  7px;" data-toggle="modal" data-target="#myModal">
+                                Chú giải
+                            </a>
+                        </div>
+
+                    </div>
+                    <div class="row" style="width:100%;margin-left:0px">
+                        <div class="table-responsive">
+                            <table class="table table-bordered tbl-report tbl-report--inventory-onhand border-th" cellspacing="0" cellpadding="0" style="border: 1px solid #94a8b5 !important;width:100%;">
+                                <thead>
+                                    <tr role="row" style="background: #2dc3e8 !important;color:white">
+                                        <th><span class="text">STT</span></th>
+
+                                        <th><span class="text">Loại phiếu</span></th>
+
+                                        <th><span class="text">Ngày ghi nhận</span></th>
+                                        <th><span class="text">Mã phiếu</span></th>
+
+                                        <th><span class="text">Mã chứng từ</span></th>
+                                        <th><span class="text">Người nhận/nộp</span></th>
+
+                                        <th><span class="text">Phương thức thanh toán</span></th>
+
+                                        <th><span class="text">Tiền thu</span></th>
+                                        <th><span class="text">Tiền chi</span></th>
+                                        <!--<th><span class="text">Mô tả</span></th>-->
+                                        <!--<th><span class="text">Tham chiếu</span></th>-->
+                                    </tr>
+                                    <tr class="tbl-report__summary-row active">
+                                        <th>Tổng</th>
+                                        <th></th>
+
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+
+                                        <th style="text-align:right">{{data.a1|currency:"":0}} ₫</th>
+                                        <th style="text-align:right">{{data.a2|currency:"":0}} ₫</th>
+                                        <!--<th></th>-->
+                                        <!--<th></th>-->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr dir-paginate="i in listReport| itemsPerPage:10">
+                                        <td>{{$index+1}}</td>
+
+
+                                        <td style="text-align:left">{{(i.Status==0)?'Tự động':'Thủ công'}}</td>
+
+                                        <td style="text-align:left">{{i.VoucherDate|date:'dd/MM/yyyy'}}</td>
+                                        <td class="link" style="text-align:left;cursor:pointer">
+                                            <a ng-click="getVoucherDetail(i.stt)">
+                                                {{i.VoucherNo}}
+                                            </a>
+                                        </td>
+
+                                        <td class="link" style="text-align:left;" bind-event-click="linkToDocumentRoot('receipt', '6073461','customer','prepayment')">{{i.OriginalVoucherNo}}</td>
+                                        <td style="text-align:left">{{i.ObjectName}}</td>
+
+                                        <td style="text-align:left">{{(i.VoucherType==20||i.VoucherType==40||i.VoucherType==23)?'Tiền mặt':((i.VoucherType==21||i.VoucherType==41||i.VoucherType==25)?'COD':((i.VoucherType==22||i.VoucherType==42||i.VoucherType==24)?'Chuyển khoản':''))}}</td>
+
+                                        <td style="text-align:right">{{(i.VoucherType>=20 && i.VoucherType<=25)?(i.TotalAmount|currency:"":0)+' đ':''}} </td>
+                                        <td style="text-align:right">{{(i.VoucherType>=40 && i.VoucherType<=42)?(i.TotalAmount|currency:"":0)+' đ':''}}</td>
+                                        <!-- <td style="text-align:left"><div class="count" data-toggle="tooltip" data-placement="left"></div></td>-->
+                                        <!--<td style="text-align:left">-</td>-->
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top:3px ">
+                    <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" class="ng-isolate-scope">
+                        <ul class="pagination ng-scope" ng-if="1 < pages.length">
+                            <li ng-if="boundaryLinks" ng-class="{ disabled : pagination.current == 1 }" class="ng-scope disabled">
+                                <a href="" ng-click="setCurrent(1)">«</a>
+                            </li>
+                            <li ng-if="directionLinks" ng-class="{ disabled : pagination.current == 1 }" class="ng-scope disabled">
+                                <a href="" ng-click="setCurrent(pagination.current - 1)">‹</a>
+                            </li>
+                            <li ng-repeat="pageNumber in pages track by $index" ng-class="{ active : pagination.current == pageNumber, disabled : pageNumber == '...' }" class="ng-scope active">
+                                <a href="" ng-click="setCurrent(pageNumber)" class="ng-binding">1</a>
+                            </li>
+                            <li ng-repeat="pageNumber in pages track by $index" ng-class="{ active : pagination.current == pageNumber, disabled : pageNumber == '...' }" class="ng-scope">
+                                <a href="" ng-click="setCurrent(pageNumber)" class="ng-binding">2</a>
+                            </li>
+                            <li ng-if="directionLinks" ng-class="{ disabled : pagination.current == pagination.last }" class="ng-scope">
+                                <a href="" ng-click="setCurrent(pagination.current + 1)">›</a>
+                            </li>
+                            <li ng-if="boundaryLinks" ng-class="{ disabled : pagination.current == pagination.last }" class="ng-scope">
+                                <a href="" ng-click="setCurrent(pagination.last)">»</a>
+                            </li>
+                        </ul>
+                    </dir-pagination-controls>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog" style="width:80% !important;margin-left:245px !important;margin-top:43px;">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:#2dc3e8;font-size:18px;text-align:center;">
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button"></button>
+                <span class="ui-dialog-title" id="ui-dialog-title-1">
+                    Bảng giải thích dữ liệu trong báo cáo
+                </span>               
+            </div>
+            <div class="modal-body-report product-option-edit pull-center" style="overflow: auto;">
+                <div id="table-height" class="bulk-action-context">
+                    <table class="table table-bordered tbl-report tbl-report--inventory-onhand border-th" id="parent-variant" style="width:100%;">
+                        <thead>
+                            <tr>
+
+                                <th style="width:20%;text-align:center">Trường dữ liệu</th>
+                                <th style="width: 60%;text-align:center">Giải thích</th>
+                            </tr>
+                        </thead>
+                        <tbody class="tbody-scoler">
+                            <tr>
+                                <td>Tồn cuối kì = Số dư đầu kỳ +Tổng thu - Tổng chi</td>
+                                <td>
+                                    VD: Trong kho G9VN:<br>
+                                    Trong khoảng thời gian từ T7-T8 (theo lọc), Tồn quỹ (T7-T8 , G9VN) = Dư đầu kỳ (T7,G9VN) + Tổng thu (T7-T8 , G9VN) - Tổng chi (T7-T8,G9VN)<br>
+                                    Dư đầu kỳ của thời điểm (T7-T8) = Tổng các giá trị phiếu thu trước T7 - Tổng các giá trị phiếu chi trước tháng 7<br>
+                                    Tổng thu = Tổng các giá trị phiếu thu trong khoảng thời gian lựa chọn<br>
+                                    Tổng chi = Tổng các giá trị phiếu chi trong khoảng thời gian lựa chọn<br>
+                                    Số dư đầu kỳ bằng lượng tồn quỹ kỳ trước. Ví dụ: Số dư đầu kỳ của ngày hôm nay = tồn quỹ tính đến thời điểm cuối ngày hôm qua
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer-report" style="text-align:left;color:#666666;padding:8px">
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,157 @@
+﻿<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)">Cài đặt</a>
+        </li>
+        <li class="active">Giao hàng</li>
+    </ul>
+</div>
+<div class="page-header position-relative">
+    <!--<div class="header-title">
+        <h1>
+            Forms
+            <small>
+                <i class="fa fa-angle-right"></i>
+                Data Pickers
+            </small>
+        </h1>
+    </div>-->
+    <!--Header Buttons-->
+    <div class="header-buttons">
+        <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<br />
+<div class="col-lg-6 col-sm-6 col-xs-12" style="width:100%">
+    <div class="well bordered-top bordered-blueberry">
+        <div class="row">
+            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12" style="width:100%">
+                <table style="width:100%;border: 1px solid #ddd;border-left: 2px solid #2dc3e8;" cellpadding="0" cellspacing="0" class="deliveries-table giaohangnhanh">
+                    <tbody>
+                        <tr class="deliveries-app" style="border-bottom: 1px solid #ddd">
+                            <td style="width:40%;height:100px">
+                                <img  src="../../../Assets/admin/img/giaohangnhanh.PNG" style="max-width:100%">
+                            </td>
+                            <td style="vertical-align: middle;padding-left:10px">
+                                <br>Để tìm hiểu thêm về Giao hàng nhanh và các thông tin khác vui lòng<br>
+                                <a href="https://giaohangnhanh.vn/" target="_blank" style="color:#0088FF; cursor:pointer">Xem tại đây</a>
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ddd">
+                            <td style="padding:20px 0px 20px 20px;vertical-align: middle;display:  inline-flex ;">
+                                
+                                <div>{{ghnstt}}</div>
+                                <div style="width: 20px;border-radius: 100%;padding: 0px 3px 1px;margin-left: 10px;display:none ;display:{{displ}}" class="databox-state bg-themeprimary">
+                                    <i class="fa fa-check"></i>
+                                </div>
+                            </td>
+                          
+                            <td>
+                                <a ng-click="myFunction()" class="btn btn-default pull-right btn-a-active" style="margin-top: 13px;margin-right: 20px;">Thiết lập</a>
+                            </td>
+                        </tr>
+                        <tr id="myDIV" style="border-bottom: 1px solid #ddd;display:none;display:{{display}}"><td colspan="2">
+                            <div style="padding:20px 0 10px 20px; font-weight:bold">Email giao hàng nhanh</div>
+                            <input class="form-control sapo-textbox" ng-model="Usesignup.Email"  placeholder="Nhập địa chỉ email giao hàng nhanh" style="width:340px;margin-left:20px">
+                            <div style="padding:10px 0 10px 20px;font-weight:bold">Mật khẩu</div>
+                            <input class="form-control" ng-model="Usesignup.Password"  type="password" placeholder="Nhập thông tin mật khẩu giao hàng nhanh" style="width:340px;margin-left:20px">
+                           
+                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin:20px 0 10px 0px">
+                            <a class="btn btn-default pull-right success" ng-click="SignUpGHN()" bind-event-click="saveLoginDelivery(&quot;giaohangnhanh&quot;)" style="margin-left:20px;float:right">Lưu</a>
+                            <a class="button btn btn-blank has-error" bind-event-click="cancelLoginDelivery(&quot;giaohangnhanh&quot;)" ng-click="myFunction()" style="float:right;">Thoát</a></div>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                
+                <br />
+
+                <table style="width:100%;border: 1px solid #ddd;border-left: 2px solid #2dc3e8;" cellpadding="0" cellspacing="0" class="deliveries-table giaohangnhanh">
+                    <tbody>
+                        <tr class="deliveries-app" style="border-bottom: 1px solid #ddd">
+                            <td style="width:40%;height:100px">
+                                <img src="../../../Assets/admin/img/giaohang-tietkiem.png" style="max-width:100%">
+                            </td>
+                            <td style="vertical-align: middle;padding-left:10px">
+                                <br>Để tìm hiểu thêm về Giao hàng tiết kiệm và các thông tin khác vui lòng<br>
+                                <a href="https://giaohangtietkiem.vn/" target="_blank" style="color:#0088FF; cursor:pointer">Xem tại đây</a>
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ddd">
+                            <td style="padding:20px 0px 20px 20px;vertical-align: middle;">Chúng tôi chưa thể kết nối</td>
+                            <td>
+                                <a ng-click="myFunction1()" class="btn btn-default pull-right btn-a-active" style="margin-top: 13px;margin-right: 20px;display:none;">Thiết lập</a>
+                            </td>
+                        </tr>
+                        <tr id="myDIV1" style="border-bottom: 1px solid #ddd;display:none;display:{{display1}}"><td colspan="2"><div style="padding:20px 0 10px 20px; font-weight:bold">Email giao hàng nhanh</div><input class="form-control sapo-textbox"  placeholder="Nhập địa chỉ email giao hàng nhanh" style="width:340px;margin-left:20px"><div style="padding:10px 0 10px 20px;font-weight:bold">Mật khẩu</div><input class="form-control sapo-textbox"  placeholder="Nhập thông tin mật khẩu giao hàng nhanh" style="width:340px;margin-left:20px"><div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin:20px 0 10px 0px"><a class="btn btn-default pull-right" bind-event-click="saveLoginDelivery(&quot;giaohangnhanh&quot;)" style="margin-left:20px;float:right">Lưu</a><a class="button btn btn-blank" bind-event-click="cancelLoginDelivery(&quot;giaohangnhanh&quot;)" onclick="myFunction1()" style="float:right;">Thoát</a></div></td></tr>
+
+                    </tbody>
+                </table>
+                <br />
+                <table style="width:100%;border: 1px solid #ddd;border-left: 2px solid #2dc3e8;" cellpadding="0" cellspacing="0" class="deliveries-table giaohangnhanh">
+                    <tbody>
+                        <tr class="deliveries-app" style="border-bottom: 1px solid #ddd">
+                            <td style="width:40%;height:100px">
+                                <img src="../../../Assets/admin/img/viettelpost.png" style="max-width:100%">
+                            </td>
+                            <td style="vertical-align: middle;padding-left:10px">
+                               <br>Để tìm hiểu thêm về ViettelPost và các thông tin khác vui lòng<br>
+                                <a href="http://www.viettelpost.com.vn/" target="_blank" style="color:#0088FF; cursor:pointer">Xem tại đây</a>
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ddd">
+                            <td style="padding:20px 0px 20px 20px;vertical-align: middle;">Chúng tôi chưa thể kết nối</td>
+                            <td>
+                                <a ng-click="myFunction2()" class="btn btn-default pull-right btn-a-active" style="margin-top: 13px;margin-right: 20px;display:none;">Thiết lập</a>
+                            </td>
+                        </tr>
+                        <tr id="myDIV2" style="border-bottom: 1px solid #ddd;display:none;display:{{display2}}"><td colspan="2"><div style="padding:20px 0 10px 20px; font-weight:bold">Email giao hàng nhanh</div><input class="form-control sapo-textbox"  placeholder="Nhập địa chỉ email giao hàng nhanh" style="width:340px;margin-left:20px"><div style="padding:10px 0 10px 20px;font-weight:bold">Mật khẩu</div><input class="form-control sapo-textbox"  placeholder="Nhập thông tin mật khẩu giao hàng nhanh" style="width:340px;margin-left:20px"><div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin:20px 0 10px 0px"><a class="btn btn-default pull-right" bind-event-click="saveLoginDelivery(&quot;giaohangnhanh&quot;)" style="margin-left:20px;float:right">Lưu</a><a class="button btn btn-blank" bind-event-click="cancelLoginDelivery(&quot;giaohangnhanh&quot;)" onclick="myFunction2()" style="float:right;">Thoát</a></div></td></tr>
+
+                    </tbody>
+                </table>
+                <br />
+                <table style="width:100%;border: 1px solid #ddd;border-left: 2px solid #2dc3e8;" cellpadding="0" cellspacing="0" class="deliveries-table giaohangnhanh">
+                    <tbody>
+                        <tr class="deliveries-app" style="border-bottom: 1px solid #ddd">
+                            <td style="width:40%;height:100px">
+                                <img src="../../../Assets/admin/img/shipchung.png" style="max-width:100%">
+                            </td>
+                            <td style="vertical-align: middle;padding-left:10px">
+                                <br>Để tìm hiểu thêm về Ship Chung và các thông tin khác vui lòng<br>
+                                <a href="https://www.shipchung.vn/" target="_blank" style="color:#0088FF; cursor:pointer">Xem tại đây</a>
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ddd">
+                            <td style="padding:20px 0px 20px 20px;vertical-align: middle;">Chúng tôi chưa thể kết nối</td>
+                            <td>
+                                <a ng-click="myFunction3()" class="btn btn-default pull-right btn-a-active" style="margin-top: 13px;margin-right: 20px;display:none;">Thiết lập</a>
+                            </td>
+                        </tr>
+                        <tr id="myDIV3" style="border-bottom: 1px solid #ddd;display:none;display:{{display3}}"><td colspan="2">
+                            <div style="padding:20px 0 10px 20px; font-weight:bold">Email giao hàng nhanh</div>
+                            <input class="form-control sapo-textbox"  placeholder="Nhập địa chỉ email gi,ao hàng nhanh" style="width:340px;margin-left:20px">
+                            <div style="padding:10px 0 10px 20px;font-weight:bold">Mật khẩu</div>
+                            <input class="form-control sapo-textbox"  placeholder="Nhập thông tin mật khẩu giao hàng nhanh" style="width:340px;margin-left:20px"><div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin:20px 0 10px 0px">
+                            <a class="btn btn-default pull-right" bind-event-click="saveLoginDelivery(&quot;giaohangnhanh&quot;)" style="margin-left:20px;float:right">Lưu</a>
+                            <a ng-click="myFunction3()" class="button btn btn-blank" bind-event-click="cancelLoginDelivery(&quot;giaohangnhanh&quot;)" style="float:right;">Thoát</a></div></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

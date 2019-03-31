@@ -1,0 +1,145 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G9VN.TIKTAK.Web", "G9VN.TIKTAK.Web\G9VN.TIKTAK.Web.csproj", "{78EB29E8-CB3B-468D-8DA9-8794F267DF27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G9VN.TIKTAK.UnitTest", "G9VN.TIKTAK.UnitTest\G9VN.TIKTAK.UnitTest.csproj", "{59717817-1AA9-4DF1-9737-5D2083A9C73B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G9VN.TIKTAK.Service", "G9VN.TIKTAK.Service\G9VN.TIKTAK.Service.csproj", "{6947E99E-D09A-4105-91A7-3078AC3264FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G9VN.TIKTAK.Model", "G9VN.TIKTAK.Model\G9VN.TIKTAK.Model.csproj", "{1EDC527A-269B-4BF5-B596-A75373680344}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G9VN.TIKTAK.Data", "G9VN.TIKTAK.Data\G9VN.TIKTAK.Data.csproj", "{277BDBA6-D509-41F4-9D49-E333283F7FF6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G9VN.TIKTAK.Common", "G9VN.TIKTAK.Common\G9VN.TIKTAK.Common.csproj", "{492C16B3-2595-4990-A821-F6BA4789FBDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G9VN.TIKTAK.SYSTEM", "G9VN.TIKTAK.SYSTEM\G9VN.TIKTAK.SYSTEM.csproj", "{217DC787-2984-4C8A-8B01-E2B25EA8C8F4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{78EB29E8-CB3B-468D-8DA9-8794F267DF27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78EB29E8-CB3B-468D-8DA9-8794F267DF27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78EB29E8-CB3B-468D-8DA9-8794F267DF27}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{78EB29E8-CB3B-468D-8DA9-8794F267DF27}.Debug|x64.Build.0 = Debug|Any CPU
+		{78EB29E8-CB3B-468D-8DA9-8794F267DF27}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{78EB29E8-CB3B-468D-8DA9-8794F267DF27}.Debug|x86.Build.0 = Debug|Any CPU
+		{78EB29E8-CB3B-468D-8DA9-8794F267DF27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78EB29E8-CB3B-468D-8DA9-8794F267DF27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78EB29E8-CB3B-468D-8DA9-8794F267DF27}.Release|x64.ActiveCfg = Release|Any CPU
+		{78EB29E8-CB3B-468D-8DA9-8794F267DF27}.Release|x64.Build.0 = Release|Any CPU
+		{78EB29E8-CB3B-468D-8DA9-8794F267DF27}.Release|x86.ActiveCfg = Release|Any CPU
+		{78EB29E8-CB3B-468D-8DA9-8794F267DF27}.Release|x86.Build.0 = Release|Any CPU
+		{59717817-1AA9-4DF1-9737-5D2083A9C73B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59717817-1AA9-4DF1-9737-5D2083A9C73B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59717817-1AA9-4DF1-9737-5D2083A9C73B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{59717817-1AA9-4DF1-9737-5D2083A9C73B}.Debug|x64.Build.0 = Debug|Any CPU
+		{59717817-1AA9-4DF1-9737-5D2083A9C73B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{59717817-1AA9-4DF1-9737-5D2083A9C73B}.Debug|x86.Build.0 = Debug|Any CPU
+		{59717817-1AA9-4DF1-9737-5D2083A9C73B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59717817-1AA9-4DF1-9737-5D2083A9C73B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59717817-1AA9-4DF1-9737-5D2083A9C73B}.Release|x64.ActiveCfg = Release|Any CPU
+		{59717817-1AA9-4DF1-9737-5D2083A9C73B}.Release|x64.Build.0 = Release|Any CPU
+		{59717817-1AA9-4DF1-9737-5D2083A9C73B}.Release|x86.ActiveCfg = Release|Any CPU
+		{59717817-1AA9-4DF1-9737-5D2083A9C73B}.Release|x86.Build.0 = Release|Any CPU
+		{6947E99E-D09A-4105-91A7-3078AC3264FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6947E99E-D09A-4105-91A7-3078AC3264FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6947E99E-D09A-4105-91A7-3078AC3264FA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6947E99E-D09A-4105-91A7-3078AC3264FA}.Debug|x64.Build.0 = Debug|Any CPU
+		{6947E99E-D09A-4105-91A7-3078AC3264FA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6947E99E-D09A-4105-91A7-3078AC3264FA}.Debug|x86.Build.0 = Debug|Any CPU
+		{6947E99E-D09A-4105-91A7-3078AC3264FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6947E99E-D09A-4105-91A7-3078AC3264FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6947E99E-D09A-4105-91A7-3078AC3264FA}.Release|x64.ActiveCfg = Release|Any CPU
+		{6947E99E-D09A-4105-91A7-3078AC3264FA}.Release|x64.Build.0 = Release|Any CPU
+		{6947E99E-D09A-4105-91A7-3078AC3264FA}.Release|x86.ActiveCfg = Release|Any CPU
+		{6947E99E-D09A-4105-91A7-3078AC3264FA}.Release|x86.Build.0 = Release|Any CPU
+		{1EDC527A-269B-4BF5-B596-A75373680344}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EDC527A-269B-4BF5-B596-A75373680344}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EDC527A-269B-4BF5-B596-A75373680344}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1EDC527A-269B-4BF5-B596-A75373680344}.Debug|x64.Build.0 = Debug|Any CPU
+		{1EDC527A-269B-4BF5-B596-A75373680344}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1EDC527A-269B-4BF5-B596-A75373680344}.Debug|x86.Build.0 = Debug|Any CPU
+		{1EDC527A-269B-4BF5-B596-A75373680344}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EDC527A-269B-4BF5-B596-A75373680344}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EDC527A-269B-4BF5-B596-A75373680344}.Release|x64.ActiveCfg = Release|Any CPU
+		{1EDC527A-269B-4BF5-B596-A75373680344}.Release|x64.Build.0 = Release|Any CPU
+		{1EDC527A-269B-4BF5-B596-A75373680344}.Release|x86.ActiveCfg = Release|Any CPU
+		{1EDC527A-269B-4BF5-B596-A75373680344}.Release|x86.Build.0 = Release|Any CPU
+		{277BDBA6-D509-41F4-9D49-E333283F7FF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{277BDBA6-D509-41F4-9D49-E333283F7FF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{277BDBA6-D509-41F4-9D49-E333283F7FF6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{277BDBA6-D509-41F4-9D49-E333283F7FF6}.Debug|x64.Build.0 = Debug|Any CPU
+		{277BDBA6-D509-41F4-9D49-E333283F7FF6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{277BDBA6-D509-41F4-9D49-E333283F7FF6}.Debug|x86.Build.0 = Debug|Any CPU
+		{277BDBA6-D509-41F4-9D49-E333283F7FF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{277BDBA6-D509-41F4-9D49-E333283F7FF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{277BDBA6-D509-41F4-9D49-E333283F7FF6}.Release|x64.ActiveCfg = Release|Any CPU
+		{277BDBA6-D509-41F4-9D49-E333283F7FF6}.Release|x64.Build.0 = Release|Any CPU
+		{277BDBA6-D509-41F4-9D49-E333283F7FF6}.Release|x86.ActiveCfg = Release|Any CPU
+		{277BDBA6-D509-41F4-9D49-E333283F7FF6}.Release|x86.Build.0 = Release|Any CPU
+		{492C16B3-2595-4990-A821-F6BA4789FBDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{492C16B3-2595-4990-A821-F6BA4789FBDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{492C16B3-2595-4990-A821-F6BA4789FBDA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{492C16B3-2595-4990-A821-F6BA4789FBDA}.Debug|x64.Build.0 = Debug|Any CPU
+		{492C16B3-2595-4990-A821-F6BA4789FBDA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{492C16B3-2595-4990-A821-F6BA4789FBDA}.Debug|x86.Build.0 = Debug|Any CPU
+		{492C16B3-2595-4990-A821-F6BA4789FBDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{492C16B3-2595-4990-A821-F6BA4789FBDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{492C16B3-2595-4990-A821-F6BA4789FBDA}.Release|x64.ActiveCfg = Release|Any CPU
+		{492C16B3-2595-4990-A821-F6BA4789FBDA}.Release|x64.Build.0 = Release|Any CPU
+		{492C16B3-2595-4990-A821-F6BA4789FBDA}.Release|x86.ActiveCfg = Release|Any CPU
+		{492C16B3-2595-4990-A821-F6BA4789FBDA}.Release|x86.Build.0 = Release|Any CPU
+		{217DC787-2984-4C8A-8B01-E2B25EA8C8F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{217DC787-2984-4C8A-8B01-E2B25EA8C8F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{217DC787-2984-4C8A-8B01-E2B25EA8C8F4}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{217DC787-2984-4C8A-8B01-E2B25EA8C8F4}.Debug|x64.Build.0 = Debug|Any CPU
+		{217DC787-2984-4C8A-8B01-E2B25EA8C8F4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{217DC787-2984-4C8A-8B01-E2B25EA8C8F4}.Debug|x86.Build.0 = Debug|Any CPU
+		{217DC787-2984-4C8A-8B01-E2B25EA8C8F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{217DC787-2984-4C8A-8B01-E2B25EA8C8F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{217DC787-2984-4C8A-8B01-E2B25EA8C8F4}.Release|x64.ActiveCfg = Release|Any CPU
+		{217DC787-2984-4C8A-8B01-E2B25EA8C8F4}.Release|x64.Build.0 = Release|Any CPU
+		{217DC787-2984-4C8A-8B01-E2B25EA8C8F4}.Release|x86.ActiveCfg = Release|Any CPU
+		{217DC787-2984-4C8A-8B01-E2B25EA8C8F4}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 8
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://192.168.1.199:8080/tfs/g9tiktak
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = G9VN.TIKTAK.Model\\G9VN.TIKTAK.Model.csproj
+		SccProjectName1 = G9VN.TIKTAK.Model
+		SccLocalPath1 = G9VN.TIKTAK.Model
+		SccProjectUniqueName2 = G9VN.TIKTAK.Common\\G9VN.TIKTAK.Common.csproj
+		SccProjectName2 = G9VN.TIKTAK.Common
+		SccLocalPath2 = G9VN.TIKTAK.Common
+		SccProjectUniqueName3 = G9VN.TIKTAK.Data\\G9VN.TIKTAK.Data.csproj
+		SccProjectName3 = G9VN.TIKTAK.Data
+		SccLocalPath3 = G9VN.TIKTAK.Data
+		SccProjectUniqueName4 = G9VN.TIKTAK.Service\\G9VN.TIKTAK.Service.csproj
+		SccProjectName4 = G9VN.TIKTAK.Service
+		SccLocalPath4 = G9VN.TIKTAK.Service
+		SccProjectUniqueName5 = G9VN.TIKTAK.Web\\G9VN.TIKTAK.Web.csproj
+		SccProjectName5 = G9VN.TIKTAK.Web
+		SccLocalPath5 = G9VN.TIKTAK.Web
+		SccProjectUniqueName6 = G9VN.TIKTAK.UnitTest\\G9VN.TIKTAK.UnitTest.csproj
+		SccProjectName6 = G9VN.TIKTAK.UnitTest
+		SccLocalPath6 = G9VN.TIKTAK.UnitTest
+		SccProjectUniqueName7 = G9VN.TIKTAK.SYSTEM\\G9VN.TIKTAK.SYSTEM.csproj
+		SccProjectName7 = G9VN.TIKTAK.SYSTEM
+		SccLocalPath7 = G9VN.TIKTAK.SYSTEM
+	EndGlobalSection
+EndGlobal

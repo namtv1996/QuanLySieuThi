@@ -1,0 +1,277 @@
+﻿<!-- uiView: -->
+<link href="../../../Assets/admin/css/style2.css" rel="stylesheet" />
+
+<script type="text/javascript">
+    function myFunction() {
+        var x = document.getElementById("myTextarea").value;
+        document.getElementById("demo").innerHTML = x;
+    }
+</script>
+<div>
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+            </li>
+            <li>
+                <a ui-sref="pageSetting" href="javascript:void(0)">Cài đặt</a>
+            </li>
+
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Header -->
+    <div class="page-header position-relative mail-header">
+        <div class="header-title">
+            <h1>
+                Cài đặt
+            </h1>
+        </div>
+        <!--Header Buttons-->
+        <div class="header-buttons">
+            <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+                <i class="fa fa-arrows-h"></i>
+            </a>
+            <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+                <i class="glyphicon glyphicon-refresh"></i>
+            </a>
+            <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+                <i class="glyphicon glyphicon-fullscreen"></i>
+            </a>
+        </div>
+        <!--Header Buttons End-->
+    </div>
+    <!-- /Page Header -->
+    <!-- Page Body -->
+    <div class="page-body no-padding">
+        <div class="mail-container">
+            <div class="mail-header">
+                <div class="draft">
+                    Cài đặt chung cho cửa hàng
+                </div>
+            </div>
+            <div class="mail-body">
+                <div>
+                    <div class="page-body ng-scope">
+                        <!-- Your Content Goes Here -->
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6" style="width:100%">
+
+
+                                <div class="widget-body">
+                                    <div class="form-group">
+                                        <form ng-submit="updateStore(store)">
+                                            <h5 class="row-title before-blue"><i class="fa fa-tags blue"></i> Thông tin cửa hàng</h5>
+                                            <hr />
+                                            <div class="profile-container">
+                                                <div class="profile-header row">
+                                                    <div class="col-lg-2 col-md-4 col-sm-12 text-center">
+                                                        <img src="{{store.Logo}}" alt="" class="header-avatar" id="output">
+                                                    </div>
+                                                    <div class="col-lg-5 col-md-8 col-sm-12 profile-info" style="padding:12px">
+                                                        <div class="header-fullname">{{authentication.storeName}}</div>
+                                                        <div class="header-information">
+                                                            Địa chỉ :  {{store.Address}} ;  Lĩnh vực kinh doanh : {{store.Business}} .
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12 profile-stats">
+                                                        <div class="row">
+                                                                <div class="stats-title"> Ngày khởi tạo</div>
+                                                                <div class="stats-value pink" style="font-size:22px"> {{store.CreateDate|date:'dd/MM/yyyy'}}</div>
+                                                                <div class="stats-title"> Ngày hết hạn</div>
+                                                                <div class="stats-value pink" style="font-size:22px"> {{store.Expirydate|date:'dd/MM/yyyy'}}</div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 inlinestats-col">
+                                                                <span style="float:right;margin-left:10px;border-radius:5px" class="file-input btn btn-azure btn-file">Thay logo cửa hàng<input type="file" data-ak-file-model="store.File" onchange="loadFile(event)"></span>
+                                                            </div>
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 inlinestats-col">
+                                                                <button type="submit" class="btn btn-blue" style="border-radius:5px;float:right">Cập nhật</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="row" style="width:  100%;margin-left: 0px;">
+                                                <div style="margin-right:96px">
+                                                </div>
+                                               
+                                            </div>
+                                            <hr />
+                               <div style="display:none">
+                                   <input type="text" value="{{authentication.storeName}}" class="form-control" disabled>
+                                   <input type="text" class="form-control" data-ng-model="store.Address" name="Address">
+                                   <input type="text" class="form-control" data-ng-model="store.CreateDate" name="CreateDate">
+                                   <input type="text" class="form-control" data-ng-model="store.Expirydate" name="Expirydate">
+                                   <input type="text" class="form-control" data-ng-model="store.Business" name="Business">
+                               </div>
+                                        </form>
+                                        <form ng-controller="branchListController" class="form-horizontal ng-pristine ng-valid" role="form" novalidate="">
+                                            <h5 class="row-title before-blue"><i class="fa fa-tags blue"></i>  Danh sách chi nhánh</h5>
+                                          
+                                            <div class="table-responsive">
+                                                <table class="table table-hover">
+                                                    <thead class="bordered-darkorange bg-themeprimary">
+                                                        <tr>
+                                                            <th>
+                                                                Mã chi nhánh
+                                                            </th>
+                                                            <th>
+                                                                Tên chi nhánh
+                                                            </th>
+                                                            <th>
+                                                                Địa chỉ
+                                                            </th>
+                                                            <th>
+                                                                SĐT
+                                                            </th>
+                                                            <th>
+                                                                Trạng thái
+                                                            </th>
+                                                            
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr ng-repeat="item in filterList">
+                                                            <td>
+                                                                {{item.BranchCode}}
+                                                            </td>
+                                                            <td>
+                                                                {{item.BranchName}}
+                                                            </td>
+                                                            <td>
+                                                                {{item.Address}}
+                                                            </td>
+                                                            <td>
+                                                                {{item.TelephoneNumber}}
+                                                            </td>
+                                                            <td>
+                                                                <i class="{{item.cs}}" data-original-title="" title=""></i>
+                                                                {{item.tt}}
+                                                            </td>
+                                                          
+
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                       
+                </div>
+            </div>
+            <div class="mail-sidebar">
+                <ul class="mail-menu">
+                    <li>
+                        <a ui-sref="pageSetting">
+                            <i class="fa fa-inbox"></i>
+                            Thông tin cửa hàng
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)" ui-sref="configurationStore">
+                            <i class="fa fa-gear"></i>
+                            Cấu hình cửa hàng
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" ui-sref="employee">
+                            <i class="fa fa-users"></i>
+                            Nhân viên
+                        </a>
+                    </li>
+
+                    <li>
+                        <a ui-sref="application_groups">
+                            <i class="fa fa-street-view"></i>
+                            Nhóm người dùng
+                        </a>
+                    </li>
+                    <li>
+                        <a ui-sref="application_users">
+                            <i class="fa fa-fax"></i>
+                            Danh sách người dùng
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)" ui-sref="printedForm">
+                            <i class="fa fa-print"></i>
+                            Mẫu in
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-calculator"></i>
+                            Thanh toán
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-truck"></i>
+                            Đối tác vận chuyển
+                        </a>
+                    </li>
+                    <!--<li>
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-truck"></i>
+                            Kênh bán hàng
+                        </a>
+                    </li>-->
+                    <li>
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-leanpub"></i>
+                            Nhật ký hệ thống
+                        </a>
+                    </li>
+
+                </ul>
+                <ul class="mail-menu">
+                    <li class="menu-title">
+                        <h6></h6>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                           
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)">
+                           
+
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)">
+                            
+
+                        </a>
+                    </li>
+                    <li class="divider">
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                           
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Body -->
+</div>
+

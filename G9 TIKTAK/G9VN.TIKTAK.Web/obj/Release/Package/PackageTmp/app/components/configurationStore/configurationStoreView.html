@@ -1,0 +1,309 @@
+﻿<!-- uiView: -->
+<link href="../../../Assets/admin/css/style2.css" rel="stylesheet" />
+
+<script type="text/javascript">
+    function myFunction() {
+        var x = document.getElementById("myTextarea").value;
+        document.getElementById("demo").innerHTML = x;
+    }
+</script>
+<style>
+    .head::before {
+        content: '';
+        position: absolute;
+        left:32.5%;
+        border-bottom: 22px solid transparent;
+        border-left: 22px solid #6495ed;
+        width: 0;
+    }
+   
+</style>
+
+<div>
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+            </li>
+            <li>
+                <a ui-sref="pageSetting" href="javascript:void(0)">Cài đặt</a>
+            </li>
+
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Header -->
+    <div class="page-header position-relative mail-header">
+        <div class="header-title">
+            <h1>
+                Cài đặt
+            </h1>
+        </div>
+        <!--Header Buttons-->
+        <div class="header-buttons">
+            <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+                <i class="fa fa-arrows-h"></i>
+            </a>
+            <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+                <i class="glyphicon glyphicon-refresh"></i>
+            </a>
+            <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+                <i class="glyphicon glyphicon-fullscreen"></i>
+            </a>
+        </div>
+        <!--Header Buttons End-->
+    </div>
+    <!-- /Page Header -->
+    <!-- Page Body -->
+    <div class="page-body no-padding">
+        <div class="mail-container">
+            <div class="mail-header">
+
+
+                <div class="draft">
+                    Cài đặt chung cho cửa hàng
+                </div>
+            </div>
+            <div class="mail-body">
+                <div>
+                    <div class="page-body ng-scope">
+                        <!-- Your Content Goes Here -->
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6" style="width:100%">
+
+                                <div class="widget-body">
+                                    <div class="form-group" style="width:100%">
+                                        <div class="row" style="width:100%;margin-left:0px">
+                                            <div class="col-md-6" style="background-color: #e5e5e5;border-radius: 7px;width: 49%;">
+                                               
+                                                <div class="form-group head" id="thue" style="width:35%;background-color:cornflowerblue;margin-left: -15px;border-top-left-radius: 7px;text-align:center;color: white;">
+                                                    <p><span class="widget-caption">Thuế</span></p>
+                                                </div>
+
+                                                <div class="form-group" style="width:100%">
+                                                    <label>Thuế bán hàng mặc định</label>
+
+                                                    <div class="input-group">
+                                                        <input type="number" class="form-control form-control-input-popup text-right number line_item_quantity valid"
+                                                               oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                                               ng-model="configStore_detail.SaleTaxDefault" min="0" max="100" />
+                                                        <span class="input-group-btn">
+                                                            <button id="pt" class="btn btn-default" type="button" style="font-size:14px;"> % </button>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group" style="width:100%">
+                                                    <label>Thuế nhập hàng mặc định</label>
+
+                                                    <div class="input-group">
+                                                        <input type="number" class="form-control form-control-input-popup text-right number line_item_quantity valid"
+                                                               oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                                               ng-model="configStore_detail.PurchaseTaxDefault" min="0" max="100" />
+                                                        <span class="input-group-btn">
+                                                            <button id="pt" class="btn btn-default" type="button" style="font-size:14px;"> % </button>
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-md-6" style="background-color: #e5e5e5;border-radius: 7px;width: 49%;margin-left:2%;height:175px;">
+                                                <div class="form-group head" style="width:35%;background-color:cornflowerblue;margin-left: -15px;border-top-left-radius: 7px;text-align:center;color: white;">
+                                                    <p>Thanh Toán</p>
+                                                </div>
+                                                <div class="form-group" style="width:100%">
+                                                    <label>Kỳ hạn thanh toán</label>
+                                                    <div>
+                                                        <select style="width:100%" class="form-control ng-pristine ng-untouched ng-valid" ng-model="configStore_detail.PaymentScheduleDefault">
+                                                            <option ng-repeat="p in listPaymentSchedule" value="{{p.PaymentScheduleID}}">{{p.PaymentScheduleName}}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group" style="width:100%;margin-top: 12%;">
+                                                    <label>Phương thức thanh toán</label>
+                                                    <div>
+                                                        <select style="width:100%" class="form-control ng-pristine ng-untouched ng-valid" name="ObjectCategoryID" ng-model="configStore_detail.PaymentMethodDefault">
+                                                            <option value="1">
+                                                                Tiền mặt
+                                                            </option>
+                                                            <option value="2">
+                                                                Chuyển khoản
+                                                            </option>
+                                                            <option value="3">
+                                                                COD
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+
+                                        <div class="row" style="width:100%;margin-left: 15px;margin-top: 2%;">
+                                            <div class="col-md-6 row" style="background-color: #e5e5e5;border-radius: 7px;width: 100%;">
+
+                                                <div class="form-group head" style="width:33.7%;background-color:cornflowerblue;margin-left: -15px;border-top-left-radius: 7px;text-align:center;color: white;">
+                                                    <p><span class="widget-caption">Chính Sách Giá</span></p>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6" style="height: 70px;">
+                                                        <div class="form-group" style="width:100%">
+                                                            <label>Giá bán hàng mặc định</label>
+                                                            <div>
+                                                                <select style="width:100%" class="form-control ng-pristine ng-untouched ng-valid" ng-model="configStore_detail.SalePricePolicyDefault">
+                                                                    <option ng-repeat="p in listPricePolicy" value="{{p.PricePolicyID}}">
+                                                                        {{p.PricePolicyName}}
+                                                                    </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6" style="height: 70px;">
+                                                        <div class="form-group" style="width:100%">
+                                                            <label>Giá nhập hàng mặc định</label>
+                                                            <div>
+                                                                <select style="width:100%" class="form-control ng-pristine ng-untouched ng-valid" ng-model="configStore_detail.PurchasePricePolicyDefault">
+                                                                    <option ng-repeat="p in listPricePolicy" value="{{p.PricePolicyID}}">
+                                                                        {{p.PricePolicyName}}
+                                                                    </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+
+                                        </div>
+
+                                        <br>
+
+                                        <div class="row" style="width:100%;margin-left:0px">
+                                            <div class="form-group" style="float:right;margin-right:50px;">
+                                                <div class="col-sm-offset-2 col-sm-10" style="margin-left:310px;">
+                                                    <button type="button" ng-click="UpdateConfigStore()" class="btn btn-default purple" style="color: #0d55a1 !important"><i class="glyphicon glyphicon-floppy-saved"></i> Cập nhật</button>
+                                                    <button type="button" ui-sref="pageSetting" class="btn btn-default purple" style="color: #0d55a1 !important"><i class="typcn typcn-cancel"></i> Hủy bỏ</button>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="mail-sidebar">
+                <ul class="mail-menu">
+                    <li>
+                        <a ui-sref="pageSetting">
+                            <i class="fa fa-inbox"></i>
+                            Thông tin cửa hàng
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)" ui-sref="configurationStore">
+                            <i class="fa fa-gear"></i>
+                            Cấu hình cửa hàng
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" ui-sref="employee">
+                            <i class="fa fa-users"></i>
+                            Nhân viên
+                        </a>
+                    </li>
+
+                    <li>
+                        <a ui-sref="application_groups">
+                            <i class="fa fa-street-view"></i>
+                            Nhóm người dùng
+                        </a>
+                    </li>
+                    <li>
+                        <a ui-sref="application_users">
+                            <i class="fa fa-fax"></i>
+                            Danh sách người dùng
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)" ui-sref="printedForm">
+                            <i class="fa fa-print"></i>
+                            Mẫu in
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-calculator"></i>
+                            Thanh toán
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-truck"></i>
+                            Giao hàng
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-leanpub"></i>
+                            Nhật ký hệ thống
+                        </a>
+                    </li>
+
+                </ul>
+                <ul class="mail-menu">
+                    <li class="menu-title">
+                        <h6></h6>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+
+
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)">
+
+
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)">
+
+
+                        </a>
+                    </li>
+                    <li class="divider">
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Body -->
+</div>

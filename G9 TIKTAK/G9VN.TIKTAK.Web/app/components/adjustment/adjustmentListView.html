@@ -1,0 +1,119 @@
+﻿
+
+<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" ui-sref="items">Hàng hóa</a>
+        </li>
+        <li class="active">Kiểm hàng
+    </ul>
+</div>
+<div class="page-header position-relative">
+    <!--Header Buttons-->
+    <div class="header-buttons">
+       <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<div class="page-body ng-scope">
+    <!-- Your Content Goes Here -->
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+
+
+            <div class="widget-body">
+                <div class="form-group">
+
+                    <!--<span class="input-icon inverted" style="width:35%">
+                        <input type="text" style="height:32px;" class="form-control input-sm" placeholder="Tìm kiếm phiếu ...">
+                        <i class="glyphicon glyphicon-search bg-blue"></i>
+                    </span>-->
+
+                    <!--<a class="btn btn-default purple" style="float: right; color: #0d55a1 !important"><i class="fa fa-download"></i> Nhập file </a>-->
+                    <a class="btn btn-default purple" ui-sref="adjustment_add" style="margin-right: 10px; float: right; color: #0d55a1 !important" href="#!/items_add"><i class="fa fa-plus"></i> Thêm mới phiếu kiểm</a>
+                </div>
+                <br />
+
+                <div style="height: 18px;border-bottom: 1px solid #2dc3e8;background-color: white;margin-bottom: 20px;">
+                    <div style="padding-top: 5px;width: 180px;background: white;">
+                        <label>
+                            <input name="form-field-radio" type="radio" class="colored-blue" ng-click="getAdjustment()">
+                            <span class="text">Tất cả -</span>
+                        </label>
+                        <label>
+                            <input name="form-field-radio" type="radio" class="colored-blue" ng-click="getByStatus()">
+                            <span class="text"> Đang kiểm </span>
+                        </label>
+                      
+                    </div></div>
+                    <div class="table-responsive">
+                        <table class="table table-hover" style="width:100%">
+                            <thead class="bordered-darkorange bg-themeprimary ">
+                                <tr>
+                                    <th>
+                                        Mã phiếu
+                                    </th>
+                                    <th>
+                                        Kho kiểm hàng
+                                    </th>
+
+                                    <th>
+                                        Ngày tạo
+                                    </th>
+                                    <th>
+                                        Ngày kiểm
+                                    </th>
+                                    <th>
+                                        Cập nhật cuối
+                                    </th>
+                                    <th>
+                                        Trạng thái
+                                    </th>
+                                    <th style="text-align:right;padding-right:20px">
+                                      
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr ng-repeat="adjustment in listAdjustment">
+                                    <td ui-sref="adjustmentDetails({id:adjustment.VoucherID})" style="cursor:pointer;color:#337ab7;">
+                                            {{adjustment.VoucherCode}}
+                                    </td>
+                                    <td> {{adjustment.BranchName}} </td>
+                                    <td> {{adjustment.CreateDate|date:'dd/MM/yyyy'}} </td>
+                                    <td> {{adjustment.VoucherDate|date:'dd/MM/yyyy'}}</td>
+                                    <td>{{adjustment.EndUpdate|date:'dd/MM/yyyy'}}</td>
+                                    <td>
+                                        <i class="{{adjustment.cs}}" data-original-title="" title=""></i>
+                                        {{adjustment.tt}}
+                                    </td>
+                                    <td>
+                                        <button ng-click="deleteVoucher(adjustment.VoucherID,adjustment.Status)" class="btn btn-default" style="float:right;margin-left:5px; width: 35px; height: 30px;"><i class="fa fa-trash-o"></i></button>
+                                        <!--<button ui-sref="adjustment_edit({id:adjustment.VoucherID})" class="btn btn-default" style="float:right; width: 35px; height: 30px;"><i class="fa fa-pencil-square"></i></button>-->
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" class="ng-isolate-scope"><!-- ngIf: 1 < pages.length --></dir-pagination-controls>
+                    </div>
+                </div>
+        </div>
+
+    </div>
+    
+</div>

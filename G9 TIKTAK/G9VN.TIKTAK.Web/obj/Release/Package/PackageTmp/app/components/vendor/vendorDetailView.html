@@ -1,0 +1,52 @@
+﻿<!-- Page Breadcrumb -->
+<!--<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+           <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" ui-sref="items">Hàng hóa</a>
+        </li>
+        <li class="active">Nhà Cung Cấp</li>
+    </ul>
+</div>-->
+<!-- /Page Breadcrumb -->
+<!-- Page Header -->
+
+<!-- /Page Header -->
+<!-- Page Body -->
+<div class="page-body">
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="col-lg-6 col-sm-6 col-xs-12" style="width:100%">
+                    <div class="widget">
+                        <div class="widget-header bordered-bottom bordered-lightred">
+                            <span class="widget-caption">Thông tin nhà cung cấp {{vendors.ObjectName}}</span>
+                        </div>
+                        <div class="widget-body">
+                            <div id="horizontal-form">
+                                <form class="form-horizontal" role="form" novalidate name="frmAddVendors" ng-submit="AddVendors()">
+                                    <style>
+                                        .form-control {
+                                            border-radius: 7px;
+                                        }
+                                    </style>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label no-padding-right">Mã nhà cung cấp: </label>
+                                        <div class="col-sm-10">
+                                            {{vendors.ObjectCode}}
+                                        </div>
+                                    </div>
+                                    
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

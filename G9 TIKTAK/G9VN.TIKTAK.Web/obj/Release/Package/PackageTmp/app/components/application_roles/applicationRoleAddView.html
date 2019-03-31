@@ -1,0 +1,88 @@
+﻿<div class="page-breadcrumbs ng-scope">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+           <a href="javascript:void(0)" ui-sref="home">Trang chủ</a>
+        </li>
+        <li>
+            <a ui-sref="pageSetting" href="javascript:void(0)">Cài đặt</a>
+        </li>
+        <li>
+            <a ui-sref="application_roles" href="javascript:void(0)">Danh mục quyền</a>
+        </li>
+        <li class="active">Thêm mới quyền</li>
+    </ul>
+</div>
+<div class="page-header position-relative ng-scope">
+    <div class="header-title">
+        <h1>
+            Thêm mới quyền
+        </h1>
+    </div>
+    <!--Header Buttons-->
+    <div class="header-buttons">
+       <a class="sidebar-toggler" onclick="addSize()" href="javascript:void(0)">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" onclick="reLoad()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" onclick="show()" href="javascript:void(0)">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+    <!--Header Buttons End-->
+</div>
+<div class="page-body ng-scope">
+    <!-- Your Content Goes Here -->
+    <div class="row">
+        <div class="col-xs-12 col-md-6" style="width:100%">
+
+
+            <div class="widget-body">
+                
+                <div class="table-responsive">
+                        <div>
+                            <div>
+                                <div class="box box-info">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">{{role.Name}}</h3>
+                                    </div><!-- /.box-header -->
+                                    <!-- form start -->
+                                    <form class="form-horizontal" role="form" novalidate name="frmAddAppRole" ng-submit="addAppRole()">
+                                        <div class="box-body">
+                                            <div class="col-md-8">
+                                                <div class="form-group" ng-class="{ 'has-error' : frmAddAppRole.name.$invalid && !frmAddAppRole.name.$pristine }">
+                                                    <label class="col-sm-2 control-label">Tên quyền</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" name="name" class="form-control"
+                                                               required reqired-message="Tên nhóm bắt buộc." ng-model="role.Name">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label">Mô tả</label>
+                                                    <div class="col-sm-10">
+                                                        <textarea type="text" class="form-control" ng-model="role.Description"></textarea>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="col-sm-offset-2 col-sm-10">
+                                                        <a ui-sref="application_roles" class="btn btn-default">Hủy bỏ</a>
+                                                        <input type="submit" ng-disabled="frmAddAppRole.$invalid" class="btn btn-primary" value="Lưu lại" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!-- /.box-body -->
+                                    </form>
+                                </div><!-- /.box -->
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
