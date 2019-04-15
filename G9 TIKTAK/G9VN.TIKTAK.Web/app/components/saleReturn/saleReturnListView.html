@@ -37,6 +37,7 @@
 <!-- Page Body -->
 <div class="page-body">
     <!-- Your Content Goes Here -->
+
     <div class="row">
         <div class="col-lg-6 col-sm-6 col-xs-12" style="width:100%">
 
@@ -45,6 +46,14 @@
 
                 <div class="tab-content">
                     <div id="home" class="tab-pane in active">
+                        <div class="form-group row">
+                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                <span class="input-icon inverted">
+                                    <input type="text" style="height:32px;padding-left:40px" class="form-control input-sm ng-pristine ng-untouched ng-valid ng-empty" placeholder="Tìm kiếm " ng-model="search">
+                                    <i class="glyphicon glyphicon-search bg-blue"></i>
+                                </span>
+                            </div>
+                        </div>
                         <div class="table-responsive">
                             <table class="table table-hover" style="width:100%">
                                 <thead class="bordered-darkorange bg-themeprimary">
@@ -72,7 +81,7 @@
                                         <th style="text-align:right;">
                                             Tổng tiền
                                         </th>
-                                        
+
 
 
                                     </tr>
@@ -80,7 +89,7 @@
                                 <tbody>
 
 
-                                    <tr dir-paginate="saleReturn in listSaleReturn| itemsPerPage:10">
+                                    <tr dir-paginate="saleReturn in listSaleReturn| itemsPerPage:10 | filter:search">
 
                                         <td ui-sref="saleReturn_detail({id:saleReturn.VoucherID})" style="cursor:pointer; color:#337ab7;">
                                             {{saleReturn.VoucherNo}}
@@ -95,7 +104,7 @@
                                         <td style="color:#2dc3e8;">
                                             <i style="margin-left:25px;" class="{{saleReturn.payment}}"></i>
                                         </td>
-                                        
+
 
                                         <td>
                                             {{saleReturn.VoucherDate|date:'dd/MM/yyyy'}}
