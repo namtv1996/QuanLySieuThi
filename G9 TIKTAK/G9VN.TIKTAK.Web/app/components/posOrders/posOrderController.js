@@ -268,11 +268,14 @@
         $scope.ConvertNumber = ConvertNumber;
         $scope.limitChar = limitChar;
         function limitChar(str, limit) {
-            var cutString = str.slice(0, limit);
-            if (str.length >= limit) {
-                str = cutString + '...';
-            } else {
-                str = cutString
+            if (str != null) {
+                var cutString = str.slice(0, limit);
+                if (str.length >= limit) {
+                    str = cutString + '...';
+                } else {
+                    str = cutString
+                }
+                return str
             }
             return str;
         }
