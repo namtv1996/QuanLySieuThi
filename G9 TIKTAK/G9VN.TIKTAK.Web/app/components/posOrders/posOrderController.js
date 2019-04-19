@@ -1171,6 +1171,7 @@
                     $scope.listItems[i].NameCut = $scope.limitChar($scope.listItems[i].Name, 10);
                     $scope.listItems[i].saleprice = $scope.listItems[i].SalePrice;
                     $scope.listItems[i].image1 = $scope.listItems[i].Image1;
+                    $scope.listItems[i].quantity = $scope.listItems[i].ClosingQuantity;
                 }
             }, function () {
                 console.log('load items failed');
