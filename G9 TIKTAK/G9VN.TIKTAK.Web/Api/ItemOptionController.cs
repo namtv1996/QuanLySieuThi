@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using G9VN.TIKTAK.Common;
+using G9VN.TIKTAK.Common.Constant;
 using G9VN.TIKTAK.Common.ViewsModel;
 using G9VN.TIKTAK.Model.Models;
 using G9VN.TIKTAK.Service;
@@ -325,7 +326,7 @@ namespace G9VN.TIKTAK.Web.Api
 
                                 // Specify the directory you want to manipulate.
                                 //string path = @"C:\inetpub\vhosts\tiktac.vn\httpdocs\POS\UploadedFiles\images\" + store + @"\itemoption";
-                                string path = @"E:\DEVELOP\TEST\EDU\QuanLySieuThi\G9 TIKTAK\G9VN.TIKTAK.Web\UploadedFiles\images";
+                                string path = Constant.pathUploadFile;
 
                                 // Determine whether the directory exists.
                                 if (!Directory.Exists(path))
@@ -486,7 +487,7 @@ namespace G9VN.TIKTAK.Web.Api
 
                                 // Specify the directory you want to manipulate.
                                 //string path = @"C:\inetpub\vhosts\tiktac.vn\httpdocs\POS\UploadedFiles\images\" + store + @"\itemoption";
-                                string path = @"E:\DEVELOP\TEST\EDU\QuanLySieuThi\G9 TIKTAK\G9VN.TIKTAK.Web\UploadedFiles\images";
+                                string path = Constant.pathUploadFile;
 
                                 // Determine whether the directory exists.
                                 if (!Directory.Exists(path))
