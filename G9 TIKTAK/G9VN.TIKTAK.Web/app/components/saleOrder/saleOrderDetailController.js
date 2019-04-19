@@ -42,12 +42,19 @@
 
         $scope.limitChar = limitChar;
         function limitChar(str, limit) {
-            var cutString = str.slice(0, limit);
-            if (str.length >= limit) {
-                str = cutString + '...';
-            } else {
-                str = cutString
+            if (str != null) {
+                var cutString = str.slice(0, limit);
+                if (str.length >= limit) {
+                    str = cutString + '...';
+                } else {
+                    str = cutString
+                }
+                return str;
             }
+            else {
+                return "";
+            }
+
             return str;
         }
 
@@ -110,7 +117,7 @@
         function GetWards(pn, dn, idw) {
             ToDistrictID = idw;
             $scope.Districts = '' + dn + ' - ' + pn;
-            for (var n = 0 ; n < $scope.Wards.length; n++) {
+            for (var n = 0; n < $scope.Wards.length; n++) {
                 if ($scope.Wards[n].DistrictID == idw) {
                     $scope.Wards_list.push($scope.Wards[n]);
                     ix++;
@@ -138,19 +145,19 @@
             }
         ]
         $scope.ServiceList = [
-                {
-                    id: 53319,
-                    name: '6 giờ',
-                    content: 'nội thành (nội vùng)'
-                }, {
-                    id: 53320,
-                    name: '1 ngày',
-                    content: 'nội thành (nội vùng)'
-                }, {
-                    id: 53330,
-                    name: 'Chuyển phát cá nhân tại điểm',
-                    content: 'nội thành (nội vùng)'
-                }
+            {
+                id: 53319,
+                name: '6 giờ',
+                content: 'nội thành (nội vùng)'
+            }, {
+                id: 53320,
+                name: '1 ngày',
+                content: 'nội thành (nội vùng)'
+            }, {
+                id: 53330,
+                name: 'Chuyển phát cá nhân tại điểm',
+                content: 'nội thành (nội vùng)'
+            }
 
         ]
 
@@ -228,11 +235,11 @@
             $scope.delivery_voucher.BranchID = $scope.saleOrders.BranchID;
             $scope.delivery_voucher.StatusID = 0;
         }
-        $scope.nametransport='';
+        $scope.nametransport = '';
         $scope.changeTransporter = changeTransporter;
         function changeTransporter(id, NAME) {
-            $scope.delivery_voucher.TransporterID=id;
-            $scope.nametransport=NAME;
+            $scope.delivery_voucher.TransporterID = id;
+            $scope.nametransport = NAME;
             apiService.get('api/transporter/getbyid/' + id, null, function (result) {
                 $scope.delivery_voucher.TransporterID = id;
                 $scope.delivery_voucher.TransporterName = result.data.ObjectName;
@@ -288,7 +295,7 @@
             }
         }
         $scope.AddDeliveryVoucher = AddDeliveryVoucher;
-        function AddDeliveryVoucher() {           
+        function AddDeliveryVoucher() {
             if ($scope.frmAddDeliveryVoucher.$valid == true) {
                 if ($scope.nametransport == 'GHN') {
                     $scope.CreateOrder.ClientAddress = $scope.Districts;
@@ -327,7 +334,7 @@
                 } else {
                     submit();
                 }
-                
+
             } else {
                 notificationService.displayWarning('Bạn cần nhập đầy đủ các mục dữ liệu bắt buộc !!');
             }
