@@ -150,7 +150,7 @@
                                                 <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;"> Tỉnh/Thành phố </label>
                                                 <div class="col-sm-10">
                                                     <select style="width:100%" class="row1"  ng-model="customers.ObjectState" ng-change="selectDistrict()">
-                                                        <option>Lựa chọn</option>
+                                                        <option value="">Lựa chọn</option>
                                                         <option ng-repeat="District in listRegion" value="{{District.RegionID}}">{{District.RegionName}}</option>
                                                     </select>
                                                 </div>
@@ -159,7 +159,7 @@
                                                 <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;"> Quận/huyện</label>
                                                 <div class="col-sm-10">
                                                     <select class="row2" style="width:100%"  ng-model="customers.ObjectDistrict"  ng-change="selectTown()">
-                                                        <option>Lựa chọn</option>
+                                                        <option value="">Lựa chọn</option>
                                                         <option ng-repeat="icon in listRegionaddress" value="{{icon.RegionID}}">{{icon.RegionName}}</option>
                                                     </select>
                                                 </div>
@@ -168,7 +168,7 @@
                                                 <label class="col-sm-2 control-label no-padding-right" style="text-align: left;width: 26%;">Phường/Xã</label>
                                                 <div class="col-sm-10">
                                                     <select style="width:100%" class="now3"  ng-model="customers.ObjectWard">
-                                                        <option>Lựa chọn</option>
+                                                        <option value="">Lựa chọn</option>
                                                         <option ng-repeat="icon in listRegionTown" value="{{icon.RegionID}}">{{icon.RegionName}}</option>
                                                     </select>
                                                 </div>

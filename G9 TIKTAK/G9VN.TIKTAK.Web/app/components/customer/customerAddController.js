@@ -25,11 +25,11 @@
             TaxRateDefault: 0,
             DiscountRateDefault: 0,
             PaymentMethodDefault: '1',
-            PaymentScheduleDefault:null
+            PaymentScheduleDefault: null
         }
 
         $scope.listObjectCategory = [];
-       
+
         $scope.getObjectCategory = getObjectCategory;
         $scope.getEmployee = getEmployee;
         $scope.getcustomer = getcustomer;
@@ -37,9 +37,9 @@
         $scope.option = option;
         $scope.option1 = option1;
         $scope.mediate = '';
-       
+
         $scope.getRegion = getRegion;
-        $scope.listRegion = [];      
+        $scope.listRegion = [];
         $scope.selectDistrict = selectDistrict;
         $scope.listRegionaddress = [];
         $scope.selectTown = selectTown;
@@ -68,21 +68,24 @@
         }
 
         function selectDistrict() {
-            apiService.get('api/Region/getaddress?key=' + $scope.customers.ObjectState, null, function (result) {
-                $scope.listRegionaddress = result.data;
+            if ($scope.customers.ObjectState != null) {
+                apiService.get('api/Region/getaddress?key=' + $scope.customers.ObjectState, null, function (result) {
+                    $scope.listRegionaddress = result.data;
 
-            }, function () {
-                console.log('load items failed');
-            });
+                }, function () {
+                    console.log('load items failed');
+                });
+            }
         }
         function selectTown() {
+            if ($scope.customers.ObjectDistrict != null) {
+                apiService.get('api/Region/getaddress?key=' + $scope.customers.ObjectDistrict, null, function (result) {
+                    $scope.listRegionTown = result.data;
 
-            apiService.get('api/Region/getaddress?key=' + $scope.customers.ObjectDistrict, null, function (result) {
-                $scope.listRegionTown = result.data;
-
-            }, function () {
-                console.log('load items failed');
-            });
+                }, function () {
+                    console.log('load items failed');
+                });
+            }
         }
         function getRegion() {
             apiService.get('api/Region/getone', null, function (result) {
@@ -93,10 +96,10 @@
                 console.log('load items failed');
             });
         }
-        
+
         function getcustomer() {
             apiService.get('api/Customer/getall', null, function (result) {
-               
+
                 $scope.listCustomer = result.data;
 
             }, function () {
@@ -106,7 +109,7 @@
         function option() {
 
             $scope.mediate = 'customer_add';
-           
+
         }
         function option1() {
             $scope.mediate = 'customer';
@@ -118,10 +121,10 @@
 
                 if ($scope.mediate == '') {
                     $scope.mediate = 'customer';
-                    
+
                 }
                 var a = null;
-            
+
                 if ($scope.listCustomer.length != 0) {
                     for (var i = 0; i < $scope.listCustomer.length; i++) {
                         if ($scope.customers.ObjectCode == null) { a = true } else {
@@ -137,9 +140,9 @@
                 } else {
                     a = true;
                 }
-             
+
                 if (a == true) {
-                    
+
                     $scope.customers.ApplyIncentives = Number($scope.customers.ApplyIncentives);
                     if ($scope.customers.ApplyIncentives === 1 || $scope.customers.ApplyIncentives === 3) {
                         $scope.customers.PricePolicyDefault = null;
@@ -156,7 +159,7 @@
                             $scope.customers.PaymentMethodDefault = Number($scope.customers.PaymentMethodDefault);
                         }
                     }
-                    
+
                     apiService.post('api/Customer/create', $scope.customers,
                         function (result) {
                             notificationService.displaySuccess(result.data.ObjectCode + ' đã được thêm mới.');
@@ -185,7 +188,7 @@
                         }, function (error) {
                             notificationService.displayError('Thêm mới không thành công.');
                         });
-                   
+
                 }
             } else {
                 notificationService.displayWarning('nhập đầy đủ các trương có dấu chấm đỏ');
@@ -207,7 +210,7 @@
                 $scope.listGetEmployee = result.data;
             }, function () {
                 console.log('load items failed');
-                });
+            });
             apiService.get('api/Customer/getCustomerCode', null, function (result) {
                 $scope.customers.ObjectCode = result.data;
             }, function () {

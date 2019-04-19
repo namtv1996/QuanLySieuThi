@@ -1358,21 +1358,24 @@
         $scope.selectTown = selectTown;
         $scope.listRegionTown = [];
         function selectDistrict() {
-            apiService.get('api/Region/getaddress?key=' + $scope.customer.ObjectState, null, function (result) {
-                $scope.listRegionaddress = result.data;
+            if ($scope.customer.ObjectState != null) {
+                apiService.get('api/Region/getaddress?key=' + $scope.customer.ObjectState, null, function (result) {
+                    $scope.listRegionaddress = result.data;
 
-            }, function () {
-                console.log('load items failed');
-            });
+                }, function () {
+                    console.log('load items failed');
+                });
+            }
         }
         function selectTown() {
+            if ($scope.customer.ObjectDistrict != null) {
+                apiService.get('api/Region/getaddress?key=' + $scope.customer.ObjectDistrict, null, function (result) {
+                    $scope.listRegionTown = result.data;
 
-            apiService.get('api/Region/getaddress?key=' + $scope.customer.ObjectDistrict, null, function (result) {
-                $scope.listRegionTown = result.data;
-
-            }, function () {
-                console.log('load items failed');
-            });
+                }, function () {
+                    console.log('load items failed');
+                });
+            }
         }
         function getRegion() {
             apiService.get('api/Region/getone', null, function (result) {
