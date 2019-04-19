@@ -8,12 +8,9 @@ using G9VN.TIKTAK.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Net;
 using System.Net.Http;
-using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -32,7 +29,7 @@ namespace G9VN.TIKTAK.Web.Api
             this._itemService = itemService;
             this._appUserService = appUserService;
         }
-      
+
         [Route("getall")]
         [HttpGet]
         [Authorize(Roles = "Item_View")]
@@ -83,6 +80,7 @@ namespace G9VN.TIKTAK.Web.Api
                 return response;
             });
         }
+
         [Route("SaveFile")]
         [HttpPost]
         [ResponseType(typeof(void))]
@@ -112,6 +110,7 @@ namespace G9VN.TIKTAK.Web.Api
                 return response;
             });
         }
+
         [Route("create")]
         [HttpPost]
         [Authorize(Roles = "Item_Add")]
@@ -126,7 +125,7 @@ namespace G9VN.TIKTAK.Web.Api
                 }
                 else
                 {
-                        Item newItem = new Item();
+                    Item newItem = new Item();
                     newItem.UpdateItem(ItemVm);
                     newItem.CreateDate = DateTime.Now;
                     newItem.CreateBy = User.Identity.Name;
@@ -143,7 +142,6 @@ namespace G9VN.TIKTAK.Web.Api
                     {
                         string a = ex.Message;
                         Console.WriteLine(ex.Message);
-
                     }
                 }
                 return response;
@@ -229,8 +227,7 @@ namespace G9VN.TIKTAK.Web.Api
                         var postedFile = httpRequest.Files[file];
                         if (postedFile != null && postedFile.ContentLength > 0)
                         {
-
-                            int MaxContentLength = 1024 * 1024 * 5; //Size = 5 MB  
+                            int MaxContentLength = 1024 * 1024 * 5; //Size = 5 MB
 
                             IList<string> AllowedFileExtensions = new List<string> { ".jpg", ".gif", ".png", ".jpeg" };
                             var ext = postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.'));
@@ -242,7 +239,6 @@ namespace G9VN.TIKTAK.Web.Api
                             }
                             else if (postedFile.ContentLength > MaxContentLength)
                             {
-
                                 var message = string.Format("Please Upload a file upto 5 mb.");
                                 return request.CreateErrorResponse(HttpStatusCode.BadRequest, message);
                             }
@@ -291,7 +287,6 @@ namespace G9VN.TIKTAK.Web.Api
                     {
                         string a = ex.Message;
                         Console.WriteLine(ex.Message);
-
                     }
                 }
                 return response;
@@ -347,8 +342,7 @@ namespace G9VN.TIKTAK.Web.Api
                         var postedFile = httpRequest.Files[file];
                         if (postedFile != null && postedFile.ContentLength > 0)
                         {
-
-                            int MaxContentLength = 1024 * 1024 * 5; //Size = 5 MB  
+                            int MaxContentLength = 1024 * 1024 * 5; //Size = 5 MB
 
                             IList<string> AllowedFileExtensions = new List<string> { ".jpg", ".gif", ".png", ".jpeg" };
                             var ext = postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.'));
@@ -360,7 +354,6 @@ namespace G9VN.TIKTAK.Web.Api
                             }
                             else if (postedFile.ContentLength > MaxContentLength)
                             {
-
                                 var message = string.Format("Please Upload a file upto 5 mb.");
                                 return request.CreateErrorResponse(HttpStatusCode.BadRequest, message);
                             }
@@ -370,7 +363,8 @@ namespace G9VN.TIKTAK.Web.Api
                                 store = _appUserService.GetStoreName(User.Identity.Name);
 
                                 // Specify the directory you want to manipulate.
-                                string path = @"C:\inetpub\vhosts\tiktac.vn\httpdocs\POS\UploadedFiles\images\" + store + @"\item";
+                                //string path = @"C:\inetpub\vhosts\tiktac.vn\httpdocs\POS\UploadedFiles\images\" + store + @"\item";
+                                string path = @"E:\DEVELOP\TEST\EDU\QuanLySieuThi\G9 TIKTAK\G9VN.TIKTAK.Web\UploadedFiles\images";
                                 // Determine whether the directory exists.
                                 if (!Directory.Exists(path))
                                 {
@@ -395,13 +389,15 @@ namespace G9VN.TIKTAK.Web.Api
                     dbItem.UpdateItem(itemVm);
                     dbItem.ModifiedDate = DateTime.Now;
                     dbItem.ModifiedBy = User.Identity.Name;
-                    if (extension == "" && IMG== "../../../Assets/admin/img/imgpsh_fullsize (3).png")
+                    if (extension == "" && IMG == "../../../Assets/admin/img/imgpsh_fullsize (3).png")
                     {
                         dbItem.Image = "../../../Assets/admin/img/imgpsh_fullsize (3).png";
                     }
                     if (extension != "")
                     {
-                        dbItem.Image = "/UploadedFiles/images/" + store + "/item/" + itemVm.ItemID + extension;
+                        //dbItem.Image = "../../../UploadedFiles/images/" + store + "/item/" + itemVm.ItemID + extension;
+
+                        dbItem.Image = "../../../UploadedFiles/images/" + itemVm.ItemID + extension;
                     }
                     if (extension == "" && IMG != "../../../Assets/admin/img/imgpsh_fullsize (3).png")
                     {
@@ -414,7 +410,6 @@ namespace G9VN.TIKTAK.Web.Api
                     if (dbItem.Brand == "null")
                     {
                         dbItem.Brand = "";
-
                     }
                     _itemService.Update(dbItem);
                     _itemService.SaveChanges();

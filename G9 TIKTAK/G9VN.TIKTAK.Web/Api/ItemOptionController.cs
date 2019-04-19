@@ -12,7 +12,6 @@ using System.Drawing;
 using System.IO;
 using System.Net;
 using System.Net.Http;
-using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -31,9 +30,9 @@ namespace G9VN.TIKTAK.Web.Api
             this._itemOptionService = itemOptionService;
             this._appUserService = appUserService;
         }
+
         public string ConvertNumber(string str)
         {
-
             string monney = "";
             for (var i = 0; i < str.Length; i++)
             {
@@ -44,6 +43,7 @@ namespace G9VN.TIKTAK.Web.Api
             }
             return monney.ToString();
         }
+
         [Route("SaveFile")]
         [HttpPost]
         [ResponseType(typeof(void))]
@@ -73,6 +73,7 @@ namespace G9VN.TIKTAK.Web.Api
                 return response;
             });
         }
+
         [Route("getall")]
         [HttpGet]
         [Authorize(Roles = "Item_View")]
@@ -89,6 +90,7 @@ namespace G9VN.TIKTAK.Web.Api
                 return response;
             });
         }
+
         // ds tuy chon theo chi nhanh
         [Route("getListItemOptionByBranchID")]
         [HttpGet]
@@ -106,6 +108,7 @@ namespace G9VN.TIKTAK.Web.Api
                 return response;
             });
         }
+
         [Route("getbyitemid/{id:Guid}")]
         [HttpGet]
         [Authorize(Roles = "Item_View")]
@@ -138,6 +141,7 @@ namespace G9VN.TIKTAK.Web.Api
                 return response;
             });
         }
+
         [Route("getbyid/{id:Guid}")]
         [HttpGet]
         [Authorize(Roles = "Item_View")]
@@ -168,9 +172,9 @@ namespace G9VN.TIKTAK.Web.Api
 
                 response = request.CreateResponse(HttpStatusCode.OK, ItemOptionVm);
                 return response;
-
             });
         }
+
         [Route("getitemsaleinvoice/{id:Guid}")]
         [HttpGet]
         [Authorize(Roles = "SaleOrder_View")]
@@ -186,6 +190,7 @@ namespace G9VN.TIKTAK.Web.Api
                 return response;
             });
         }
+
         [Route("getitemsaleinvoice1/{id:Guid}")]
         [HttpGet]
         [Authorize(Roles = "SaleOrder_View")]
@@ -198,9 +203,9 @@ namespace G9VN.TIKTAK.Web.Api
                 var cartItemVm = Mapper.Map<List<CartViewModel>>(cartItem);
                 response = request.CreateResponse(HttpStatusCode.OK, cartItemVm);
                 return response;
-
             });
         }
+
         [Route("create")]
         [HttpPost]
         [Authorize(Roles = "Item_Add")]
@@ -234,7 +239,6 @@ namespace G9VN.TIKTAK.Web.Api
                     }
                     catch (Exception)
                     {
-
                     }
                 }
                 return response;
@@ -284,7 +288,6 @@ namespace G9VN.TIKTAK.Web.Api
                 if (httpRequest.Form["WholesalePrice"] != null)
                     itemOptionVm.WholesalePrice = decimal.Parse(ConvertNumber(httpRequest.Form["WholesalePrice"]));
 
-
                 HttpResponseMessage response = null;
                 if (!ModelState.IsValid)
                 {
@@ -300,8 +303,7 @@ namespace G9VN.TIKTAK.Web.Api
                         var postedFile = httpRequest.Files[file];
                         if (postedFile != null && postedFile.ContentLength > 0)
                         {
-
-                            int MaxContentLength = 1024 * 1024 * 5; //Size = 5 MB  
+                            int MaxContentLength = 1024 * 1024 * 5; //Size = 5 MB
 
                             IList<string> AllowedFileExtensions = new List<string> { ".jpg", ".gif", ".png", ".jpeg" };
                             var ext = postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.'));
@@ -313,7 +315,6 @@ namespace G9VN.TIKTAK.Web.Api
                             }
                             else if (postedFile.ContentLength > MaxContentLength)
                             {
-
                                 var message = string.Format("Please Upload a file upto 5 mb.");
                                 return request.CreateErrorResponse(HttpStatusCode.BadRequest, message);
                             }
@@ -323,7 +324,9 @@ namespace G9VN.TIKTAK.Web.Api
                                 store = _appUserService.GetStoreName(User.Identity.Name);
 
                                 // Specify the directory you want to manipulate.
-                                string path = @"C:\inetpub\vhosts\tiktac.vn\httpdocs\POS\UploadedFiles\images\" + store + @"\itemoption";
+                                //string path = @"C:\inetpub\vhosts\tiktac.vn\httpdocs\POS\UploadedFiles\images\" + store + @"\itemoption";
+                                string path = @"E:\DEVELOP\TEST\EDU\QuanLySieuThi\G9 TIKTAK\G9VN.TIKTAK.Web\UploadedFiles\images";
+
                                 // Determine whether the directory exists.
                                 if (!Directory.Exists(path))
                                 {
@@ -353,12 +356,11 @@ namespace G9VN.TIKTAK.Web.Api
                     if (extension == "")
                     {
                         newItemOption.Image1 = "../../../Assets/admin/img/imgpsh_fullsize (3).png";
-
                     }
                     else
                     {
-                        newItemOption.Image1 = "/UploadedFiles/images/" + store + "/itemoption/" + itemOptionVm.ID + extension;
-
+                        //newItemOption.Image1 = "/UploadedFiles/images/" + store + "/itemoption/" + itemOptionVm.ID + extension;
+                        newItemOption.Image1 = "../../../UploadedFiles/images/" + itemOptionVm.ID + extension;
                     }
                     try
                     {
@@ -376,31 +378,31 @@ namespace G9VN.TIKTAK.Web.Api
             });
         }
 
-       // [HttpGet]
-       // [Route("ExportXls")]
-       // public async Task<HttpResponseMessage> ExportXls(HttpRequestMessage request, string filter = null)
-       // {
-            //string fileName = string.Concat("Product_" + DateTime.Now.ToString("yyyyMMddhhmmsss") + ".xlsx");
-            //var folderReport = ConfigHelper.GetByKey("ReportFolder");
-            //string filePath = HttpContext.Current.Server.MapPath(folderReport);
-            //if (!Directory.Exists(filePath))
-           // {
-            //    Directory.CreateDirectory(filePath);
-            //}
-            //string fullPath = Path.Combine(filePath, fileName);
-            //try
-            //{
-            //    var data = _itemOptionService.GetListProduct(filter);
+        // [HttpGet]
+        // [Route("ExportXls")]
+        // public async Task<HttpResponseMessage> ExportXls(HttpRequestMessage request, string filter = null)
+        // {
+        //string fileName = string.Concat("Product_" + DateTime.Now.ToString("yyyyMMddhhmmsss") + ".xlsx");
+        //var folderReport = ConfigHelper.GetByKey("ReportFolder");
+        //string filePath = HttpContext.Current.Server.MapPath(folderReport);
+        //if (!Directory.Exists(filePath))
+        // {
+        //    Directory.CreateDirectory(filePath);
+        //}
+        //string fullPath = Path.Combine(filePath, fileName);
+        //try
+        //{
+        //    var data = _itemOptionService.GetListProduct(filter);
 
-            //    await ReportHelper.GenerateXls(data, fullPath);
-            //    return request.CreateErrorResponse(HttpStatusCode.OK, Path.Combine(folderReport, fileName));
-           // }
-            //catch (Exception ex)
-           // {
-            //    return request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
-            //}
-           // return null;
-       // }
+        //    await ReportHelper.GenerateXls(data, fullPath);
+        //    return request.CreateErrorResponse(HttpStatusCode.OK, Path.Combine(folderReport, fileName));
+        // }
+        //catch (Exception ex)
+        // {
+        //    return request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
+        //}
+        // return null;
+        // }
 
         [Route("updateImg")]
         [HttpPut]
@@ -462,8 +464,7 @@ namespace G9VN.TIKTAK.Web.Api
                         var postedFile = httpRequest.Files[file];
                         if (postedFile != null && postedFile.ContentLength > 0)
                         {
-
-                            int MaxContentLength = 1024 * 1024 * 5; //Size = 5 MB  
+                            int MaxContentLength = 1024 * 1024 * 5; //Size = 5 MB
 
                             IList<string> AllowedFileExtensions = new List<string> { ".jpg", ".gif", ".png", ".jpeg" };
                             var ext = postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.'));
@@ -475,7 +476,6 @@ namespace G9VN.TIKTAK.Web.Api
                             }
                             else if (postedFile.ContentLength > MaxContentLength)
                             {
-
                                 var message = string.Format("Please Upload a file upto 5 mb.");
                                 return request.CreateErrorResponse(HttpStatusCode.BadRequest, message);
                             }
@@ -485,7 +485,9 @@ namespace G9VN.TIKTAK.Web.Api
                                 store = _appUserService.GetStoreName(User.Identity.Name);
 
                                 // Specify the directory you want to manipulate.
-                                string path = @"C:\inetpub\vhosts\tiktac.vn\httpdocs\POS\UploadedFiles\images\" + store + @"\itemoption";
+                                //string path = @"C:\inetpub\vhosts\tiktac.vn\httpdocs\POS\UploadedFiles\images\" + store + @"\itemoption";
+                                string path = @"E:\DEVELOP\TEST\EDU\QuanLySieuThi\G9 TIKTAK\G9VN.TIKTAK.Web\UploadedFiles\images";
+
                                 // Determine whether the directory exists.
                                 if (!Directory.Exists(path))
                                 {
@@ -502,11 +504,10 @@ namespace G9VN.TIKTAK.Web.Api
                     var dbItemOption = _itemOptionService.GetByID(itemOptionVm.ID);
                     if (dbItemOption.Image1 == null)
                     {
-
                         dbItemOption.UpdateItemOption(itemOptionVm);
                         dbItemOption.ModifiedDate = DateTime.Now;
                         dbItemOption.ModifiedBy = User.Identity.Name;
-                        dbItemOption.Image1 = "/UploadedFiles/images/" + store + "/itemoption/" + itemOptionVm.ID + extension;
+                        dbItemOption.Image1 = "../../../UploadedFiles/images/" + itemOptionVm.ID + extension;
                     }
                     else
                     {
@@ -522,12 +523,9 @@ namespace G9VN.TIKTAK.Web.Api
                             dbItemOption.UpdateItemOption(itemOptionVm);
                             dbItemOption.ModifiedDate = DateTime.Now;
                             dbItemOption.ModifiedBy = User.Identity.Name;
-                            dbItemOption.Image1 = "/UploadedFiles/images/" + store + "/itemoption/" + itemOptionVm.ID + extension;
+                            dbItemOption.Image1 = "../../../UploadedFiles/images/" + itemOptionVm.ID + extension;
                         }
-
-
                     }
-
 
                     _itemOptionService.Update(dbItemOption);
                     _itemOptionService.SaveChanges();
@@ -594,6 +592,7 @@ namespace G9VN.TIKTAK.Web.Api
                 return response;
             });
         }
+
         ///lấy mã sku khi thêm mới hàng hóa
         [Route("getSKU")]
         [HttpGet]
@@ -613,12 +612,11 @@ namespace G9VN.TIKTAK.Web.Api
         {
             return CreateHttpResponse(request, () =>
             {
-                int delete_status = _itemOptionService.DeleteItemOption(id, itemid);              
+                int delete_status = _itemOptionService.DeleteItemOption(id, itemid);
                 HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, delete_status);
                 return response;
             });
         }
-
 
         [Route("AutoComplete")]
         [HttpGet]
@@ -626,7 +624,6 @@ namespace G9VN.TIKTAK.Web.Api
         {
             return CreateHttpResponse(request, () =>
             {
-
                 var ItemOptionVM = Mapper.Map<List<AutoCopleteProduct>>(_itemOptionService.AutoComplete(BranchID));
 
                 HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, ItemOptionVM);
