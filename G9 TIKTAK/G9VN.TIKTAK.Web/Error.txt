@@ -1749,3 +1749,10 @@ Date :3/13/2019 7:03:29 PM
 
 -----------------------------------------------------------------------------
 
+Message :Could not load file or assembly 'Microsoft.SqlServer.SqlEnum, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91' or one of its dependencies. The system cannot find the file specified.<br/>
+StackTrace :   at G9VN.TIKTAK.Common.ConnectDatabase.ConnectServer()
+   at G9VN.TIKTAK.Web.Controllers.AccountController.<Register>d__14.MoveNext() in E:\DEVELOP\TEST\EDU\QuanLySieuThi\G9 TIKTAK\G9VN.TIKTAK.Web\Controllers\AccountController.cs:line 150
+Date :4/18/2019 9:30:05 AM
+
+-----------------------------------------------------------------------------
+

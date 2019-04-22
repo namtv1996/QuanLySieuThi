@@ -98,6 +98,7 @@
     <Compile Include="AutoCode.cs" />
     <Compile Include="ConfigHelper.cs" />
     <Compile Include="ConnectDatabase.cs" />
+    <Compile Include="Constant\Constant.cs" />
     <Compile Include="Enum.cs" />
     <Compile Include="ExcelViewModel\ItemOtionViewModelExcel.cs" />
     <Compile Include="Exceptions\NameDuplicatedException.cs" />

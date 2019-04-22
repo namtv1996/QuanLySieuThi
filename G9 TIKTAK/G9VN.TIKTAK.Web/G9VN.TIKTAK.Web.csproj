@@ -31,6 +31,7 @@
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
     <TypeScriptToolsVersion>2.1</TypeScriptToolsVersion>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -4206,6 +4207,20 @@
     <Content Include="Libs\Microsoft.SqlServer.Management.Sdk.Sfc.dll" />
     <Content Include="Libs\Microsoft.SqlServer.Smo.dll" />
     <Content Include="Libs\Microsoft.SqlServer.SmoExtended.dll" />
+    <Content Include="UploadedFiles\images\Bim bim Oishi snack tôm cay gói 45gr.jpg" />
+    <Content Include="UploadedFiles\_thumbs\Images\1446802602949_6850588.jpg" />
+    <Content Include="UploadedFiles\_thumbs\Images\17.jpg" />
+    <Content Include="UploadedFiles\_thumbs\Images\banh-trung-thu-dai-phat-2015.jpg" />
+    <Content Include="UploadedFiles\_thumbs\Images\beef.jpg" />
+    <Content Include="UploadedFiles\_thumbs\Images\Bim bim Oishi snack tôm cay gói 45gr.jpg" />
+    <Content Include="UploadedFiles\_thumbs\Images\Bim Bim Poca vị cua hoàng đế Alaska gói 30g.jpg" />
+    <Content Include="UploadedFiles\_thumbs\Images\cach-nau-chao-long-ngon-8.jpg" />
+    <Content Include="UploadedFiles\_thumbs\Images\chai-khong-duong.jpg" />
+    <Content Include="UploadedFiles\_thumbs\Images\comsuon.jpg" />
+    <Content Include="UploadedFiles\_thumbs\Images\FM_product_LessSugar_540x440_acf_cropped.png" />
+    <Content Include="UploadedFiles\_thumbs\Images\hop-banh-kinh-chon-san.jpg" />
+    <Content Include="UploadedFiles\_thumbs\Images\may-ep-nuoc-mia-sieu-sach-gia-re-40.jpg" />
+    <Content Include="UploadedFiles\_thumbs\Images\rose-blue-flower-rose-blooms-67636.jpeg" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -4227,8 +4242,6 @@
     <Folder Include="Assets\admin\sound\" />
     <Folder Include="UploadedFiles\Avatar\" />
     <Folder Include="UploadedFiles\files\" />
-    <Folder Include="UploadedFiles\images\" />
-    <Folder Include="UploadedFiles\_thumbs\Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

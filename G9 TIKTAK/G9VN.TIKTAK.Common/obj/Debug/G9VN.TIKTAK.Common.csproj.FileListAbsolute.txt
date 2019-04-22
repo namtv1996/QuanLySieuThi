@@ -68,3 +68,27 @@ D:\DO AN\QuanLySieuThi\G9 TIKTAK\G9VN.TIKTAK.Common\obj\Debug\G9VN.TIKTAK.Common
 D:\DO AN\QuanLySieuThi\G9 TIKTAK\G9VN.TIKTAK.Common\obj\Debug\G9VN.TIKTAK.Common.csproj.CopyComplete
 D:\DO AN\QuanLySieuThi\G9 TIKTAK\G9VN.TIKTAK.Common\obj\Debug\G9VN.TIKTAK.Common.dll
 D:\DO AN\QuanLySieuThi\G9 TIKTAK\G9VN.TIKTAK.Common\obj\Debug\G9VN.TIKTAK.Common.pdb
+E:\DEVELOP\TEST\EDU\QuanLySieuThi\G9 TIKTAK\G9VN.TIKTAK.Common\bin\Debug\G9VN.TIKTAK.Common.dll.config
+E:\DEVELOP\TEST\EDU\QuanLySieuThi\G9 TIKTAK\G9VN.TIKTAK.Common\bin\Debug\G9VN.TIKTAK.Common.dll
+E:\DEVELOP\TEST\EDU\QuanLySieuThi\G9 TIKTAK\G9VN.TIKTAK.Common\bin\Debug\G9VN.TIKTAK.Common.pdb
+E:\DEVELOP\TEST\EDU\QuanLySieuThi\G9 TIKTAK\G9VN.TIKTAK.Common\bin\Debug\G9VN.TIKTAK.Common.XML
+E:\DEVELOP\TEST\EDU\QuanLySieuThi\G9 TIKTAK\G9VN.TIKTAK.Common\bin\Debug\EPPlus.dll
+E:\DEVELOP\TEST\EDU\QuanLySieuThi\G9 TIKTAK\G9VN.TIKTAK.Common\bin\Debug\Microsoft.CSharp.dll
+E:\DEVELOP\TEST\EDU\QuanLySieuThi\G9 TIKTAK\G9VN.TIKTAK.Common\bin\Debug\Microsoft.SqlServer.ConnectionInfo.dll
+E:\DEVELOP\TEST\EDU\QuanLySieuThi\G9 TIKTAK\G9VN.TIKTAK.Common\bin\Debug\Microsoft.SqlServer.Management.Sdk.Sfc.dll
+E:\DEVELOP\TEST\EDU\QuanLySieuThi\G9 TIKTAK\G9VN.TIKTAK.Common\bin\Debug\Microsoft.SqlServer.Smo.dll
+E:\DEVELOP\TEST\EDU\QuanLySieuThi\G9 TIKTAK\G9VN.TIKTAK.Common\bin\Debug\Microsoft.SqlServer.SmoExtended.dll
+E:\DEVELOP\TEST\EDU\QuanLySieuThi\G9 TIKTAK\G9VN.TIKTAK.Common\bin\Debug\System.Configuration.dll
+E:\DEVELOP\TEST\EDU\QuanLySieuThi\G9 TIKTAK\G9VN.TIKTAK.Common\bin\Debug\System.Data.DataSetExtensions.dll
+E:\DEVELOP\TEST\EDU\QuanLySieuThi\G9 TIKTAK\G9VN.TIKTAK.Common\bin\Debug\System.Data.dll
+E:\DEVELOP\TEST\EDU\QuanLySieuThi\G9 TIKTAK\G9VN.TIKTAK.Common\bin\Debug\System.dll
+E:\DEVELOP\TEST\EDU\QuanLySieuThi\G9 TIKTAK\G9VN.TIKTAK.Common\bin\Debug\System.Net.Http.dll
+E:\DEVELOP\TEST\EDU\QuanLySieuThi\G9 TIKTAK\G9VN.TIKTAK.Common\bin\Debug\System.Web.dll
+E:\DEVELOP\TEST\EDU\QuanLySieuThi\G9 TIKTAK\G9VN.TIKTAK.Common\bin\Debug\System.Xml.dll
+E:\DEVELOP\TEST\EDU\QuanLySieuThi\G9 TIKTAK\G9VN.TIKTAK.Common\bin\Debug\System.Xml.Linq.dll
+E:\DEVELOP\TEST\EDU\QuanLySieuThi\G9 TIKTAK\G9VN.TIKTAK.Common\bin\Debug\EPPlus.xml
+E:\DEVELOP\TEST\EDU\QuanLySieuThi\G9 TIKTAK\G9VN.TIKTAK.Common\obj\Debug\G9VN.TIKTAK.Common.csprojAssemblyReference.cache
+E:\DEVELOP\TEST\EDU\QuanLySieuThi\G9 TIKTAK\G9VN.TIKTAK.Common\obj\Debug\G9VN.TIKTAK.Common.csproj.CoreCompileInputs.cache
+E:\DEVELOP\TEST\EDU\QuanLySieuThi\G9 TIKTAK\G9VN.TIKTAK.Common\obj\Debug\G9VN.TIKTAK.Common.csproj.CopyComplete
+E:\DEVELOP\TEST\EDU\QuanLySieuThi\G9 TIKTAK\G9VN.TIKTAK.Common\obj\Debug\G9VN.TIKTAK.Common.dll
+E:\DEVELOP\TEST\EDU\QuanLySieuThi\G9 TIKTAK\G9VN.TIKTAK.Common\obj\Debug\G9VN.TIKTAK.Common.pdb
