@@ -93,80 +93,77 @@
                     <div class="col-md-4" style="width:31%;">
 
                        
-                        <div class="form-group">
+                        <div >
                             <label for="inputEmail3" class="col-sm-2 control-label no-padding-right">Ngày nhận</label>
                             <div class="col-sm-10">
-                                <label for="inputEmail3" class="col-sm-2 control-label no-padding-right ng-binding" style="width:100%">{{saleReturn.VoucherDate|date:'dd/MM/yyyy'}}</label>
+                                <label for="inputEmail3" class="control-label no-padding-right ng-binding" style="width:100%">{{saleReturn.VoucherDate|date:'dd/MM/yyyy'}}</label>
 
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div >
                             <label for="inputEmail3" class="col-sm-2 control-label no-padding-right">Ngày tạo</label>
                             <div class="col-sm-10">
-                                <label for="inputEmail3" class="col-sm-2 control-label no-padding-right ng-binding" style="width:100%">{{saleReturn.InvDate|date:'dd/MM/yyyy'}}</label>
+                                <label for="inputEmail3" class="control-label no-padding-right ng-binding" style="width:100%">{{saleReturn.InvDate|date:'dd/MM/yyyy'}}</label>
 
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div >
                             <label for="inputEmail3" class="col-sm-2 control-label no-padding-right">Chứng từ gốc</label>
                             <div class="col-sm-10">
-                                <label for="inputEmail3" class="col-sm-2 control-label no-padding-right ng-binding" style="width:100%">{{saleReturn.OriginalVoucherNo}}</label>
+                                <label for="inputEmail3" class="control-label no-padding-right ng-binding" style="width:100%">{{saleReturn.OriginalVoucherNo}}</label>
 
                             </div>
                         </div>
 
                     </div>
                     <div class="col-md-4" style="width:40%;border-left:1px solid rgba(128, 128, 128, 0.32);">
-
-                        <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label no-padding-right" style="width:15%;">Địa chỉ</label>
-                            <div class="col-sm-10" style="width:85%;">
-                                <label for="inputEmail3" class="col-sm-2 control-label no-padding-right ng-binding" style="width:100%">{{saleReturn.CustomerAddress}}</label>
+                        <div >
+                            <label  class="col-sm-2 control-label no-padding-right">Địa chỉ </label>
+                            <div class="col-sm-10">
+                                <label class="control-label no-padding-right ng-binding" style="width:100%">{{saleReturn.CustomerAddress}}</label>
+                            </div>
+                        </div>
+                        <div >
+                            <label  class="col-sm-2 control-label no-padding-right">Email</label>
+                            <div class="col-sm-10">
+                                <label class=" control-label no-padding-right ng-binding" style="width:100%">{{saleReturn.CustomerEmail}}</label>
 
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label no-padding-right" style="width:15%;">Email</label>
-                            <div class="col-sm-10" style="width:85%;">
-                                <label for="inputEmail3" class="col-sm-2 control-label no-padding-right ng-binding" style="width:100%">{{saleReturn.CustomerEmail}}</label>
+                        <div >
+                            <label  class="col-sm-2 control-label no-padding-right">SĐT</label>
+                            <div class="col-sm-10">
+                                <label class=" control-label no-padding-right ng-binding" style="width:100%">{{saleReturn.CustomerTel}}</label>
 
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label no-padding-right" style="width:15%;">SĐT</label>
-                            <div class="col-sm-10" style="width:85%;">
-                                <label for="inputEmail3" class="col-sm-2 control-label no-padding-right ng-binding" style="width:100%">{{saleReturn.CustomerTel}}</label>
-
-                            </div>
-                        </div>
-
                     </div>
 
                     <div class="col-md-4" style="border-left:1px solid rgba(128, 128, 128, 0.32);margin-bottom:20px;width:29%;">
 
 
-                        <div class="form-group">
+                        <div >
 
                             <label for="inputEmail3" class="col-sm-2 control-label no-padding-right"><b>Tổng tiền: </b></label>
                             <div class="col-sm-10">
-                                <label for="inputEmail3" class="col-sm-2 control-label no-padding-right ng-binding" style="width:100%"><b>{{saleReturn.TotalAmount|currency:"":0}} </b>đ</label>
+                                <label for="inputEmail3" class="control-label no-padding-right ng-binding" style="width:100%"><b>{{saleReturn.TotalAmount|currency:"":0}} </b>đ</label>
 
                             </div>
                         </div>
                        
-                        <div class="form-group">
+                        <div >
 
                             <label for="inputEmail3" class="col-sm-2 control-label no-padding-right"><b>Đã hoàn trả: </b></label>
                             <div class="col-sm-10">
-                                <label for="inputEmail3" class="col-sm-2 control-label no-padding-right ng-binding" style="width:100%"><b>{{saleReturn.TotalPaymented|currency:"":0}} </b>đ</label>
+                                <label for="inputEmail3" class="control-label no-padding-right ng-binding" style="width:100%"><b>{{saleReturn.TotalPaymented|currency:"":0}} </b>đ</label>
 
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div >
 
                             <label for="inputEmail3" class="col-sm-2 control-label no-padding-right"><b>Còn lại: </b></label>
                             <div class="col-sm-10">
-                                <label for="inputEmail3" class="col-sm-2 control-label no-padding-right ng-binding" style="width:100%"><b>{{saleReturn.ConLai|currency:"":0}} </b>đ</label>
+                                <label for="inputEmail3" class="control-label no-padding-right ng-binding" style="width:100%"><b>{{saleReturn.ConLai|currency:"":0}} </b>đ</label>
 
                             </div>
                         </div>
