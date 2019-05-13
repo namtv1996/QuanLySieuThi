@@ -95,26 +95,26 @@
                     function (result) {
                        
                         //công nợ đối tác vận chuyển
-                        apiService.get('api/transporter/getbyid/' + $scope.deliveryOrder.TransporterID, null,
-                            function (result) {
-                                var tran = {};
-                                tran = result.data;
+                        //apiService.get('api/transporter/getbyid/' + $scope.deliveryOrder.TransporterID, null,
+                        //    function (result) {
+                        //        var tran = {};
+                        //        tran = result.data;
 
-                                tran.Debt = tran.Debt + Number($scope.deliveryOrder.ShippingAmount);
-                                apiService.put('api/transporter/update', tran,
-                                    function (result) {
-                                        console.log('công nợ đối tác vận chuyển');
+                        //        tran.Debt = tran.Debt + Number($scope.deliveryOrder.ShippingAmount);
+                        //        apiService.put('api/transporter/update', tran,
+                        //            function (result) {
+                        //                console.log('công nợ đối tác vận chuyển');
                                        
-                                    },
-                                    function (error) {
-                                        console.log('update fail');
-                                    }
-                                );
-                            },
-                            function (error) {
-                                console.log('Thêm mới chi tiết đóng gói không thành công');
-                            }
-                        );
+                        //            },
+                        //            function (error) {
+                        //                console.log('update fail');
+                        //            }
+                        //        );
+                        //    },
+                        //    function (error) {
+                        //        console.log('Thêm mới chi tiết đóng gói không thành công');
+                        //    }
+                        //);
                         $scope.GetCashPayment();
                         $scope.deliveryOrder.cs = 'available';
                         $scope.deliveryOrder.status = 'Hoàn thành';
@@ -153,8 +153,8 @@
                 receipt.SortOrder = 10;
                 receipt.StatusID = 0;
                 receipt.VoucherDate = new Date();
-                receipt.TotalAmount = $scope.deliveryOrder.TotalAmount;
-                receipt.TotalAmountOC = $scope.deliveryOrder.TotalAmount;
+                receipt.TotalAmount = $scope.deliveryOrder.TotalAmount + $scope.deliveryOrder.ShippingAmount;
+                receipt.TotalAmountOC = $scope.deliveryOrder.TotalAmount + + $scope.deliveryOrder.ShippingAmount;
                 receipt.Description = 'Nhận tiền thu hộ từ đối tác vận chuyển ' + $scope.deliveryOrder.TransporterName;
                 apiService.post('api/saleOrder/create_receipt', receipt,
                     function (result) {

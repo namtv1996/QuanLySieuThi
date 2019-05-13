@@ -365,7 +365,7 @@
                         var tran = {};
                         tran = result.data;
 
-                        tran.Debt = tran.Debt + Number($scope.delivery_voucher.TotalAmount) - Number($scope.delivery_voucher.ShippingAmount);
+                        tran.Debt = tran.Debt + Number($scope.delivery_voucher.TotalAmount) /*- Number($scope.delivery_voucher.ShippingAmount)*/;
                         apiService.put('api/transporter/update', tran,
                             function (result) { },
                             function (error) {
@@ -1336,7 +1336,7 @@
             var arr = new String(str);
             var monney = '';
             for (var i = 0; i < arr.length; i++) {
-                if (arr[i] != ',') {
+                if (arr[i] != ',' && !isNaN(arr[i])) {
                     monney = monney + arr[i];
                 }
             }
